@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://billionairecollection.com/sitemap.xml
+
+# Billionaire Collection — billionairecollection.com
+# The world's premier luxury ecosystem for ultra-high-net-worth individuals.

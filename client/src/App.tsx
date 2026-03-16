@@ -11,6 +11,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import BackToTop from "./components/BackToTop";
 
 // Pages
 import Home from "./pages/Home";
@@ -48,6 +49,7 @@ function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div style={{ minHeight: "100vh", background: "#000", display: "flex", flexDirection: "column" }}>
       <ScrollToTop />
+      <BackToTop />
       <Navbar />
       <main style={{ flex: 1 }}>
         {children}

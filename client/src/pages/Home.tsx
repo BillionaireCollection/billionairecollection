@@ -5,8 +5,10 @@
    ============================================================ */
 
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Link } from "wouter";
+import SphereAnimation from "@/components/SphereAnimation";
+import { useSEO } from "@/hooks/useSEO";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -62,7 +64,40 @@ const BRANDS = [
   "Sotheby's", "Christie's", "Virtuoso", "Lürssen", "Graff",
 ];
 
+function AnimatedCounter({ target, suffix = "", prefix = "" }: { target: number; suffix?: string; prefix?: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const [display, setDisplay] = useState(0);
+  const started = useRef(false);
+
+  useEffect(() => {
+    if (!inView || started.current) return;
+    started.current = true;
+    let startTs: number | null = null;
+    const duration = 2000;
+    const step = (ts: number) => {
+      if (!startTs) startTs = ts;
+      const progress = Math.min((ts - startTs) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setDisplay(Math.round(eased * target));
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }, [inView, target]);
+
+  return (
+    <span ref={ref}>
+      {prefix}{display.toLocaleString()}{suffix}
+    </span>
+  );
+}
+
 export default function Home() {
+  useSEO({
+    title: "The Place for Everything You Desire",
+    description: "Billionaire Collection is the world's premier luxury ecosystem — curating ultra-prime real estate, superyachts, private aviation, rare automobiles, fine art, and bespoke experiences for ultra-high-net-worth individuals.",
+  });
+
   return (
     <div style={{ background: "#000" }}>
       {/* ── HERO ── */}
@@ -108,14 +143,25 @@ export default function Home() {
           </motion.div>
         </div>
 
-        {/* Decorative vertical gold line */}
+        {/* ── 3D Sphere Animation ── */}
         <motion.div
-          initial={{ scaleY: 0 }}
-          animate={{ scaleY: 1 }}
-          transition={{ duration: 1.5, delay: 0.5 }}
-          style={{ position: "absolute", right: "10%", top: "15%", bottom: "15%", width: "1px", background: `linear-gradient(to bottom, transparent, ${GOLD}, transparent)`, opacity: 0.25, transformOrigin: "top" }}
+          initial={{ opacity: 0, scale: 0.85 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.4, delay: 0.4, ease: "easeOut" }}
+          style={{
+            position: "absolute",
+            right: "-5%",
+            top: "50%",
+            transform: "translateY(-50%)",
+            width: "clamp(320px, 45vw, 680px)",
+            height: "clamp(320px, 45vw, 680px)",
+            pointerEvents: "auto",
+            zIndex: 2,
+          }}
           className="hidden lg:block"
-        />
+        >
+          <SphereAnimation />
+        </motion.div>
 
         {/* Scroll indicator */}
         <motion.div
@@ -131,6 +177,30 @@ export default function Home() {
             style={{ width: "1px", height: "32px", background: `linear-gradient(to bottom, ${GOLD}, transparent)` }}
           />
         </motion.div>
+      </section>
+
+      {/* ── STATS COUNTER ── */}
+      <section style={{ padding: "4rem 0", borderTop: "1px solid rgba(201,168,76,0.1)", borderBottom: "1px solid rgba(201,168,76,0.1)", background: "rgba(201,168,76,0.02)" }}>
+        <div className="container">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: "2rem", textAlign: "center" }}>
+            {[
+              { value: 40, suffix: "+", label: "Countries" },
+              { value: 395000, suffix: "+", label: "UHNW Members" },
+              { value: 12, suffix: "B+", prefix: "$", label: "Assets Managed" },
+              { value: 24, suffix: "/7", label: "Concierge" },
+              { value: 500, suffix: "+", label: "Elite Partners" },
+            ].map((stat, i) => (
+              <FadeUp key={stat.label} delay={i * 0.08}>
+                <div>
+                  <div style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "clamp(1.75rem, 3vw, 2.5rem)", color: GOLD, marginBottom: "0.5rem", letterSpacing: "-0.02em" }}>
+                    <AnimatedCounter target={stat.value} suffix={stat.suffix} prefix={stat.prefix} />
+                  </div>
+                  <div style={{ fontFamily: FONT_UI, fontSize: "0.6875rem", textTransform: "uppercase", letterSpacing: "0.15em", color: "rgba(255,255,255,0.4)" }}>{stat.label}</div>
+                </div>
+              </FadeUp>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* ── INTRO ── */}
