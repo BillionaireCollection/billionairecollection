@@ -91,7 +91,7 @@ export default function Navbar() {
 
         <div className="container" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: "72px" }}>
           {/* Wordmark */}
-          <Link href="/">
+          <Link href="/" style={{ marginRight: "1.5rem", flexShrink: 0 }}>
             <div style={{ display: "flex", flexDirection: "row", alignItems: "baseline", gap: "0.45em", cursor: "pointer" }}>
               <span style={{
                 fontFamily: FONT_UI,
