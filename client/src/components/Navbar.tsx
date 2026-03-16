@@ -92,7 +92,7 @@ export default function Navbar() {
         <div className="container" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: "72px" }}>
           {/* Wordmark */}
           <Link href="/">
-            <div style={{ display: "flex", flexDirection: "column", gap: "2px", cursor: "pointer" }}>
+            <div style={{ display: "flex", flexDirection: "row", alignItems: "baseline", gap: "0.45em", cursor: "pointer" }}>
               <span style={{
                 fontFamily: FONT_UI,
                 fontWeight: 600,
@@ -100,18 +100,20 @@ export default function Navbar() {
                 textTransform: "uppercase",
                 letterSpacing: "0.12em",
                 color: "#fff",
+                whiteSpace: "nowrap",
               }}>
-                Billionaire Collection
+                Billionaire
               </span>
               <span style={{
                 fontFamily: FONT_UI,
-                fontWeight: 400,
-                fontSize: "0.5rem",
+                fontWeight: 600,
+                fontSize: "0.9375rem",
                 textTransform: "uppercase",
-                letterSpacing: "0.15em",
-                color: `rgba(201,168,76,0.5)`,
+                letterSpacing: "0.12em",
+                color: GOLD,
+                whiteSpace: "nowrap",
               }}>
-                The Place for Everything You Desire
+                Collection
               </span>
             </div>
           </Link>
