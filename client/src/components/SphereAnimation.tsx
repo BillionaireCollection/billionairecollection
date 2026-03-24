@@ -237,14 +237,35 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
 
   return (
     <div
-      ref={mountRef}
       className={className}
       style={{
         width: "100%",
         height: "100%",
-        cursor: "grab",
+        position: "relative",
         ...style,
       }}
-    />
+    >
+      {/* Dark radial backdrop so hero image doesn't bleed through the transparent canvas */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(0,0,0,0.72) 38%, rgba(0,0,0,0.45) 65%, transparent 100%)",
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      />
+      <div
+        ref={mountRef}
+        style={{
+          width: "100%",
+          height: "100%",
+          cursor: "grab",
+          position: "relative",
+          zIndex: 1,
+        }}
+      />
+    </div>
   );
 }
