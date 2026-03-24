@@ -115,34 +115,7 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
       scene.add(new THREE.Mesh(g, m));
     });
 
-    // ── Inner orbit ring of bright dots ──────────────────────
-    const RING_COUNT = 80;
-    const ringPositions = new Float32Array(RING_COUNT * 3);
-    const ringColors = new Float32Array(RING_COUNT * 3);
-    for (let i = 0; i < RING_COUNT; i++) {
-      const angle = (i / RING_COUNT) * Math.PI * 2;
-      const r = 2.2 + Math.sin(i * 0.8) * 0.15;
-      ringPositions[i * 3] = Math.cos(angle) * r;
-      ringPositions[i * 3 + 1] = Math.sin(angle * 1.3) * 0.6;
-      ringPositions[i * 3 + 2] = Math.sin(angle) * r;
-      const c = new THREE.Color(0xC9A84C).lerp(new THREE.Color(0xffffff), Math.random() * 0.5);
-      ringColors[i * 3] = c.r;
-      ringColors[i * 3 + 1] = c.g;
-      ringColors[i * 3 + 2] = c.b;
-    }
-    const ringGeo = new THREE.BufferGeometry();
-    ringGeo.setAttribute("position", new THREE.BufferAttribute(ringPositions, 3));
-    ringGeo.setAttribute("color", new THREE.BufferAttribute(ringColors, 3));
-    const ringMat = new THREE.PointsMaterial({
-      size: 0.12,
-      vertexColors: true,
-      transparent: true,
-      opacity: 0.85,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false,
-    });
-    const ring = new THREE.Points(ringGeo, ringMat);
-    scene.add(ring);
+    // Inner orbit ring removed — clean sphere only
 
     // ── Mouse interaction ─────────────────────────────────────
     let mouseX = 0;
@@ -235,9 +208,6 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
         dragRotX = points.rotation.x;
         dragRotY = points.rotation.y;
       }
-
-      ring.rotation.y = points.rotation.y * 0.6 + t * 0.3;
-      ring.rotation.x = Math.sin(t * 0.4) * 0.3;
 
       // Pulsing core
       const pulse = 1 + Math.sin(t * 2.5) * 0.08;
