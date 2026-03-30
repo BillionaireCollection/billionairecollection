@@ -463,6 +463,147 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ── ECOSYSTEM HUB ── */}
+      <section style={{ padding: "7rem 0 6rem", background: "#000", borderTop: "1px solid rgba(201,168,76,0.12)" }}>
+        <div className="container">
+          <FadeUp>
+            <div style={{ textAlign: "center", marginBottom: "4rem" }}>
+              <span className="bc-badge" style={{ marginBottom: "1.25rem" }}>The Full Ecosystem</span>
+              <h2 style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "clamp(2rem, 4vw, 3rem)", color: "#fff", letterSpacing: "-0.02em", marginBottom: "1rem" }}>
+                One Collection. Every Desire.
+              </h2>
+              <p style={{ fontFamily: FONT_UI, fontSize: "1rem", color: "rgba(255,255,255,0.45)", maxWidth: "560px", margin: "0 auto", lineHeight: 1.7 }}>
+                Billionaire Collection is the central hub connecting the world’s most exclusive luxury brands, services, and experiences.
+              </p>
+            </div>
+          </FadeUp>
+
+          {[
+            {
+              category: "Education & Transformation",
+              brands: [
+                { name: "Billionaire University", domain: "billionaireuniversity.com" },
+                { name: "Best Book on Sales", domain: "bestbookonsales.com" },
+                { name: "The Game of Sales", domain: "thegameofsales.com" },
+                { name: "Billionaire Tutor", domain: "billionairetutor.com" },
+                { name: "The Impossible Coach", domain: "theimpossiblecoach.com" },
+                { name: "Ghetto Coach", domain: "ghettocoach.com" },
+                { name: "Ghetto Ghost", domain: "ghettoghost.com" },
+                { name: "Billionaire Counsel", domain: "billionairecounsel.com" },
+              ],
+            },
+            {
+              category: "Health & Peak Performance",
+              brands: [
+                { name: "Billionaire Vitality", domain: "billionairevitality.com" },
+                { name: "Billionaire Peptide", domain: "billionairepeptide.com" },
+                { name: "Cognition Water", domain: "cognitionwater.com" },
+              ],
+            },
+            {
+              category: "Luxury Products & Indulgences",
+              brands: [
+                { name: "Billionaire Vodka", domain: "billionairevodka.com" },
+                { name: "Billionaire Champagne", domain: "billionairechampagne.com" },
+                { name: "Billionaire Oud", domain: "billionaireoud.com" },
+                { name: "Billionaire Cigar", domain: "billionairecigar.com" },
+                { name: "Billionaire Chrono", domain: "billionairechrono.com" },
+                { name: "Billionaire Art", domain: "billionaireart.com" },
+              ],
+            },
+            {
+              category: "Lifestyle Assets & Experiences",
+              brands: [
+                { name: "Billionaire Air", domain: "billionaireair.com" },
+                { name: "Billionaire Boat", domain: "billionaireboat.com" },
+                { name: "Billionaire Car", domain: "billionairecar.com" },
+                { name: "Billionaire F1", domain: "billionairef1.com" },
+                { name: "Billionaire Golf", domain: "billionairegolf.com" },
+                { name: "Billionaire Estates", domain: "billionaireestates.com" },
+                { name: "OffMarket Hotel", domain: "offmarkethotel.com" },
+                { name: "The Off Market Sale", domain: "theoffmarketsale.com" },
+              ],
+            },
+            {
+              category: "Media & Entertainment",
+              brands: [
+                { name: "Billionaire Television", domain: "billionairetelevision.com" },
+                { name: "Billionaire Radio", domain: "billionaireradio.com" },
+                { name: "Billionaire Collection Magazine", domain: "billionairecollectionmagazine.com" },
+                { name: "Millionaire Magazine", domain: "themillionairemagazine.com" },
+                { name: "Billionaire Digital", domain: "billionairedigital.com" },
+                { name: "Billionaire Media Group", domain: "billionairemediagroup.com" },
+              ],
+            },
+            {
+              category: "Wealth Creation & Business",
+              brands: [
+                { name: "Billionaire Forex", domain: "billionaireforex.com" },
+                { name: "Billionaire Funding", domain: "billionairefunding.com" },
+                { name: "Billionaire Classifieds", domain: "billionaireclassifieds.com" },
+                { name: "Billionaire Store", domain: "thebillionairestore.com" },
+              ],
+            },
+            {
+              category: "Legacy & Special",
+              brands: [
+                { name: "Billionaire Giving", domain: "billionairegiving.com" },
+                { name: "Pregolert", domain: "pregolert.com" },
+              ],
+            },
+          ].map((group, gi) => (
+            <FadeUp key={group.category} delay={gi * 0.05}>
+              <div style={{ marginBottom: "3rem" }}>
+                {/* Category header */}
+                <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.25rem" }}>
+                  <div style={{ width: "24px", height: "1px", background: GOLD }} />
+                  <span style={{ fontFamily: FONT_UI, fontSize: "0.625rem", textTransform: "uppercase", letterSpacing: "0.2em", color: GOLD }}>
+                    {group.category}
+                  </span>
+                  <div style={{ flex: 1, height: "1px", background: "rgba(201,168,76,0.12)" }} />
+                </div>
+                {/* Brand grid */}
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: "0.75rem" }}>
+                  {group.brands.map((brand) => (
+                    <a
+                      key={brand.domain}
+                      href={`https://${brand.domain}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        padding: "1rem 1.25rem",
+                        border: "1px solid rgba(201,168,76,0.12)",
+                        background: "rgba(201,168,76,0.02)",
+                        textDecoration: "none",
+                        transition: "border-color 0.2s, background 0.2s",
+                        cursor: "pointer",
+                      }}
+                      onMouseEnter={(e) => {
+                        (e.currentTarget as HTMLElement).style.borderColor = "rgba(201,168,76,0.45)";
+                        (e.currentTarget as HTMLElement).style.background = "rgba(201,168,76,0.06)";
+                      }}
+                      onMouseLeave={(e) => {
+                        (e.currentTarget as HTMLElement).style.borderColor = "rgba(201,168,76,0.12)";
+                        (e.currentTarget as HTMLElement).style.background = "rgba(201,168,76,0.02)";
+                      }}
+                    >
+                      <span style={{ fontFamily: FONT_UI, fontWeight: 600, fontSize: "0.8125rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "#fff", marginBottom: "0.25rem" }}>
+                        {brand.name}
+                      </span>
+                      <span style={{ fontFamily: FONT_UI, fontSize: "0.6875rem", color: "rgba(201,168,76,0.55)", letterSpacing: "0.04em" }}>
+                        {brand.domain}
+                      </span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </FadeUp>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

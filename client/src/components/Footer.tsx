@@ -177,6 +177,66 @@ export default function Footer() {
           ))}
         </div>
 
+        {/* Ecosystem brands strip */}
+        <div style={{ marginTop: "3rem", paddingTop: "2.5rem", borderTop: `1px solid rgba(201,168,76,0.1)` }}>
+          <div style={{ fontFamily: FONT_UI, fontWeight: 700, fontSize: "0.6875rem", textTransform: "uppercase", letterSpacing: "0.12em", color: GOLD, marginBottom: "1.5rem" }}>
+            The Ecosystem
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem 1.5rem" }}>
+            {[
+              { name: "Billionaire University", href: "https://billionaireuniversity.com" },
+              { name: "Best Book on Sales", href: "https://bestbookonsales.com" },
+              { name: "The Game of Sales", href: "https://thegameofsales.com" },
+              { name: "Billionaire Tutor", href: "https://billionairetutor.com" },
+              { name: "The Impossible Coach", href: "https://theimpossiblecoach.com" },
+              { name: "Ghetto Coach", href: "https://ghettocoach.com" },
+              { name: "Ghetto Ghost", href: "https://ghettoghost.com" },
+              { name: "Billionaire Counsel", href: "https://billionairecounsel.com" },
+              { name: "Billionaire Vitality", href: "https://billionairevitality.com" },
+              { name: "Billionaire Peptide", href: "https://billionairepeptide.com" },
+              { name: "Cognition Water", href: "https://cognitionwater.com" },
+              { name: "Billionaire Vodka", href: "https://billionairevodka.com" },
+              { name: "Billionaire Champagne", href: "https://billionairechampagne.com" },
+              { name: "Billionaire Oud", href: "https://billionaireoud.com" },
+              { name: "Billionaire Cigar", href: "https://billionairecigar.com" },
+              { name: "Billionaire Chrono", href: "https://billionairechrono.com" },
+              { name: "Billionaire Art", href: "https://billionaireart.com" },
+              { name: "Billionaire Air", href: "https://billionaireair.com" },
+              { name: "Billionaire Boat", href: "https://billionaireboat.com" },
+              { name: "Billionaire Car", href: "https://billionairecar.com" },
+              { name: "Billionaire F1", href: "https://billionairef1.com" },
+              { name: "Billionaire Golf", href: "https://billionairegolf.com" },
+              { name: "Billionaire Estates", href: "https://billionaireestates.com" },
+              { name: "OffMarket Hotel", href: "https://offmarkethotel.com" },
+              { name: "The Off Market Sale", href: "https://theoffmarketsale.com" },
+              { name: "Billionaire Television", href: "https://billionairetelevision.com" },
+              { name: "Billionaire Radio", href: "https://billionaireradio.com" },
+              { name: "Billionaire Collection Magazine", href: "https://billionairecollectionmagazine.com" },
+              { name: "Millionaire Magazine", href: "https://themillionairemagazine.com" },
+              { name: "Billionaire Digital", href: "https://billionairedigital.com" },
+              { name: "Billionaire Media Group", href: "https://billionairemediagroup.com" },
+              { name: "Billionaire Forex", href: "https://billionaireforex.com" },
+              { name: "Billionaire Funding", href: "https://billionairefunding.com" },
+              { name: "Billionaire Classifieds", href: "https://billionaireclassifieds.com" },
+              { name: "Billionaire Store", href: "https://thebillionairestore.com" },
+              { name: "Billionaire Giving", href: "https://billionairegiving.com" },
+              { name: "Pregolert", href: "https://pregolert.com" },
+            ].map((brand) => (
+              <a
+                key={brand.href}
+                href={brand.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ fontFamily: FONT_UI, fontSize: "0.6875rem", color: "rgba(255,255,255,0.3)", textDecoration: "none", transition: "color 0.2s", whiteSpace: "nowrap" }}
+                onMouseEnter={(e) => { (e.target as HTMLElement).style.color = GOLD; }}
+                onMouseLeave={(e) => { (e.target as HTMLElement).style.color = "rgba(255,255,255,0.3)"; }}
+              >
+                {brand.name}
+              </a>
+            ))}
+          </div>
+        </div>
+
         {/* Copyright */}
         <div style={{ marginTop: "2rem", paddingTop: "1.5rem", borderTop: `1px solid rgba(201,168,76,0.08)`, display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "1rem" }}>
           <span style={{ fontFamily: FONT_UI, fontSize: "0.75rem", color: "rgba(255,255,255,0.25)" }}>
