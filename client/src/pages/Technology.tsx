@@ -60,7 +60,7 @@ export default function Technology() {
       <section style={{ position: "relative", padding: "8rem 0", overflow: "hidden" }}>
         {/* Sphere background */}
         <div style={{ position: "absolute", right: "-15%", top: "50%", transform: "translateY(-50%)", width: "700px", height: "700px", opacity: 0.35, pointerEvents: "none" }} className="hidden lg:block">
-          <FlowerOfLife size={600} spinDuration={36} goldOpacity={0.55} glowIntensity={0.4} />
+          <FlowerOfLife size={600} />
         </div>
         <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at 70% 50%, rgba(201,168,76,0.04) 0%, #000 60%)" }} />
 

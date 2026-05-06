@@ -1,133 +1,246 @@
 /* ============================================================
-   BILLIONAIRE COLLECTION — Flower of Life
-   Neo-Deco Maximalism: Mathematically precise sacred geometry,
-   gold stroke on transparent background, continuous CSS spin.
+   BILLIONAIRE COLLECTION — Flower of Life (3D)
+   Three.js sphere with Flower of Life geometry lines projected
+   onto its surface. Gold glow, auto-rotation, depth shading.
    ============================================================ */
 
 import { useEffect, useRef } from "react";
+import * as THREE from "three";
 
 interface FlowerOfLifeProps {
-  size?: number;          // px, default 520
-  goldOpacity?: number;   // 0–1, default 0.72
-  spinDuration?: number;  // seconds, default 28
-  glowIntensity?: number; // 0–1, default 0.5
+  size?: number;
   className?: string;
   style?: React.CSSProperties;
 }
 
+const GOLD = new THREE.Color(0xc9a84c);
+
 /**
- * Draws the Flower of Life using pure SVG arcs.
- * The pattern: one central circle + 6 surrounding circles at radius r,
- * then 6 more at the corners, all of radius r, clipped to the outer boundary.
- * Each pair of overlapping circles produces vesica piscis "petals".
+ * Projects a 2D point (in the Flower of Life plane) onto the surface
+ * of a unit sphere using spherical mapping, then scales by radius.
  */
+function projectOnSphere(
+  x: number,
+  y: number,
+  planeRadius: number,
+  sphereRadius: number
+): THREE.Vector3 {
+  // Normalise to [-1, 1]
+  const nx = x / planeRadius;
+  const ny = y / planeRadius;
+  const len = Math.sqrt(nx * nx + ny * ny);
+
+  if (len >= 1) {
+    // Clamp to equator
+    return new THREE.Vector3(
+      (nx / len) * sphereRadius,
+      (ny / len) * sphereRadius,
+      0
+    );
+  }
+
+  // Map onto sphere surface via inverse stereographic-like projection
+  const nz = Math.sqrt(Math.max(0, 1 - len * len));
+  return new THREE.Vector3(nx * sphereRadius, ny * sphereRadius, nz * sphereRadius);
+}
+
+/**
+ * Creates arc segments for a circle projected onto the sphere.
+ * cx, cy = circle centre in 2D plane
+ * r      = circle radius in 2D plane
+ * planeR = radius of the Flower of Life pattern in 2D
+ * sphR   = Three.js sphere radius
+ */
+function makeCircleOnSphere(
+  cx: number,
+  cy: number,
+  r: number,
+  planeR: number,
+  sphR: number,
+  segments = 96
+): THREE.Vector3[] {
+  const pts: THREE.Vector3[] = [];
+  for (let i = 0; i <= segments; i++) {
+    const a = (i / segments) * Math.PI * 2;
+    const x = cx + r * Math.cos(a);
+    const y = cy + r * Math.sin(a);
+    pts.push(projectOnSphere(x, y, planeR, sphR));
+  }
+  return pts;
+}
+
 export default function FlowerOfLife({
-  size = 520,
-  goldOpacity = 0.72,
-  spinDuration = 28,
-  glowIntensity = 0.5,
+  size = 600,
   className = "",
   style = {},
 }: FlowerOfLifeProps) {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  // Gold colour
-  const GOLD = `rgba(201,168,76,${goldOpacity})`;
-  const GOLD_GLOW = `rgba(201,168,76,${glowIntensity * 0.4})`;
+  const mountRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+    const mount = mountRef.current;
+    if (!mount) return;
 
-    const dpr = window.devicePixelRatio || 1;
-    canvas.width = size * dpr;
-    canvas.height = size * dpr;
-    ctx.scale(dpr, dpr);
+    // ── Renderer ──────────────────────────────────────────────
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(size, size);
+    renderer.setClearColor(0x000000, 0);
+    mount.appendChild(renderer.domElement);
 
-    const cx = size / 2;
-    const cy = size / 2;
-    const r = size / 7.2; // circle radius — tuned so 7 circles fit in the outer boundary
+    // ── Scene & Camera ────────────────────────────────────────
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+    camera.position.set(0, 0, 3.2);
 
-    function drawCircle(x: number, y: number) {
-      ctx!.beginPath();
-      ctx!.arc(x, y, r, 0, Math.PI * 2);
-      ctx!.stroke();
+    // ── Sphere radius & Flower of Life plane radius ───────────
+    const SPHERE_R = 1.0;
+    const PLANE_R = 1.05; // slightly larger so the pattern fills the sphere
+
+    // ── Outer boundary double ring ────────────────────────────
+    const RING_R = SPHERE_R * 0.98;
+
+    // ── Gold line material with glow ──────────────────────────
+    const lineMat = new THREE.LineBasicMaterial({
+      color: GOLD,
+      transparent: true,
+      opacity: 0.85,
+      linewidth: 1,
+    });
+
+    // ── Helper: add a projected circle to the scene ───────────
+    function addCircle(cx: number, cy: number, r: number) {
+      const pts = makeCircleOnSphere(cx, cy, r, PLANE_R, SPHERE_R);
+      const geo = new THREE.BufferGeometry().setFromPoints(pts);
+      scene.add(new THREE.Line(geo, lineMat));
     }
 
-    function render(angle: number) {
-      ctx!.clearRect(0, 0, size, size);
+    // ── Flower of Life circles ────────────────────────────────
+    // The pattern uses circles of radius `cr` (= half the plane radius / 1.73)
+    // arranged in the classic hexagonal grid.
+    const cr = PLANE_R / 3.46; // circle radius in plane coords
 
-      ctx!.save();
-      ctx!.translate(cx, cy);
-      ctx!.rotate(angle);
-      ctx!.translate(-cx, -cy);
+    // Central circle
+    addCircle(0, 0, cr);
 
-      // Glow shadow
-      ctx!.shadowColor = GOLD_GLOW;
-      ctx!.shadowBlur = 18;
-      ctx!.strokeStyle = GOLD;
-      ctx!.lineWidth = 0.9;
-
-      // Outer boundary circle (double ring)
-      ctx!.beginPath();
-      ctx!.arc(cx, cy, r * 3.46, 0, Math.PI * 2);
-      ctx!.stroke();
-      ctx!.beginPath();
-      ctx!.arc(cx, cy, r * 3.62, 0, Math.PI * 2);
-      ctx!.stroke();
-
-      // Central circle
-      drawCircle(cx, cy);
-
-      // First ring: 6 circles at distance r from centre
-      for (let i = 0; i < 6; i++) {
-        const a = (i * Math.PI) / 3;
-        drawCircle(cx + r * Math.cos(a), cy + r * Math.sin(a));
-      }
-
-      // Second ring: 6 circles at distance 2r from centre (at 60° offsets)
-      for (let i = 0; i < 6; i++) {
-        const a = (i * Math.PI) / 3;
-        drawCircle(cx + 2 * r * Math.cos(a), cy + 2 * r * Math.sin(a));
-      }
-
-      // Third ring: 6 circles at distance 2r from centre (at 30° offsets, i.e. between the above)
-      for (let i = 0; i < 6; i++) {
-        const a = Math.PI / 6 + (i * Math.PI) / 3;
-        drawCircle(cx + 2 * r * Math.cos(a), cy + 2 * r * Math.sin(a));
-      }
-
-      // Outermost partial ring: 6 circles at distance 2r√3 ≈ 3.46r (corners)
-      for (let i = 0; i < 6; i++) {
-        const a = Math.PI / 6 + (i * Math.PI) / 3;
-        drawCircle(cx + r * Math.sqrt(3) * 2 * Math.cos(a), cy + r * Math.sqrt(3) * 2 * Math.sin(a));
-      }
-
-      ctx!.restore();
+    // First ring: 6 circles at distance cr from centre
+    for (let i = 0; i < 6; i++) {
+      const a = (i * Math.PI) / 3;
+      addCircle(cr * Math.cos(a), cr * Math.sin(a), cr);
     }
 
-    let startTime: number | null = null;
+    // Second ring: 6 circles at distance 2cr (on-axis)
+    for (let i = 0; i < 6; i++) {
+      const a = (i * Math.PI) / 3;
+      addCircle(2 * cr * Math.cos(a), 2 * cr * Math.sin(a), cr);
+    }
+
+    // Second ring: 6 circles at distance 2cr (off-axis, 30° offset)
+    for (let i = 0; i < 6; i++) {
+      const a = Math.PI / 6 + (i * Math.PI) / 3;
+      addCircle(2 * cr * Math.cos(a), 2 * cr * Math.sin(a), cr);
+    }
+
+    // Outer partial ring: 6 circles at distance 2cr√3 (corners)
+    for (let i = 0; i < 6; i++) {
+      const a = Math.PI / 6 + (i * Math.PI) / 3;
+      const d = cr * Math.sqrt(3) * 2;
+      addCircle(d * Math.cos(a), d * Math.sin(a), cr);
+    }
+
+    // ── Outer boundary rings (two concentric) ─────────────────
+    {
+      const pts1 = makeCircleOnSphere(0, 0, RING_R * 0.995, PLANE_R, SPHERE_R, 128);
+      const pts2 = makeCircleOnSphere(0, 0, RING_R * 1.04, PLANE_R, SPHERE_R, 128);
+      const g1 = new THREE.BufferGeometry().setFromPoints(pts1);
+      const g2 = new THREE.BufferGeometry().setFromPoints(pts2);
+      scene.add(new THREE.Line(g1, lineMat));
+      scene.add(new THREE.Line(g2, lineMat));
+    }
+
+    // ── Invisible sphere for depth reference (no mesh needed) ─
+    // Add a very faint sphere mesh so the 3D depth reads correctly
+    const sphereGeo = new THREE.SphereGeometry(SPHERE_R, 64, 64);
+    const sphereMat = new THREE.MeshPhongMaterial({
+      color: 0x000000,
+      transparent: true,
+      opacity: 0.55,
+      shininess: 60,
+      specular: new THREE.Color(0xc9a84c).multiplyScalar(0.15),
+    });
+    const sphereMesh = new THREE.Mesh(sphereGeo, sphereMat);
+    scene.add(sphereMesh);
+
+    // ── Lighting ──────────────────────────────────────────────
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
+    scene.add(ambientLight);
+
+    const goldLight = new THREE.PointLight(0xc9a84c, 2.5, 8);
+    goldLight.position.set(2, 2, 3);
+    scene.add(goldLight);
+
+    const rimLight = new THREE.PointLight(0xffffff, 0.6, 8);
+    rimLight.position.set(-2, -1, -2);
+    scene.add(rimLight);
+
+    // ── Group all lines for rotation ──────────────────────────
+    const group = new THREE.Group();
+    scene.children
+      .filter((c) => c instanceof THREE.Line)
+      .forEach((c) => {
+        scene.remove(c);
+        group.add(c);
+      });
+    group.add(sphereMesh);
+    scene.add(group);
+
+    // ── Mouse interaction ─────────────────────────────────────
+    let mouseX = 0;
+    let mouseY = 0;
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = mount.getBoundingClientRect();
+      mouseX = ((e.clientX - rect.left) / size - 0.5) * 2;
+      mouseY = -((e.clientY - rect.top) / size - 0.5) * 2;
+    };
+    mount.addEventListener("mousemove", handleMouseMove);
+
+    // ── Animation loop ────────────────────────────────────────
     let rafId: number;
+    const clock = new THREE.Clock();
 
-    function animate(ts: number) {
-      if (!startTime) startTime = ts;
-      const elapsed = ts - startTime;
-      const angle = (elapsed / 1000 / spinDuration) * Math.PI * 2;
-      render(angle);
+    function animate() {
       rafId = requestAnimationFrame(animate);
+      const t = clock.getElapsedTime();
+
+      // Primary auto-rotation (slow, majestic)
+      group.rotation.y = t * 0.18;
+      group.rotation.x = Math.sin(t * 0.07) * 0.25;
+
+      // Subtle mouse parallax
+      group.rotation.y += mouseX * 0.06;
+      group.rotation.x += mouseY * 0.04;
+
+      // Gold light orbit
+      goldLight.position.x = Math.cos(t * 0.4) * 3;
+      goldLight.position.z = Math.sin(t * 0.4) * 3 + 1;
+
+      renderer.render(scene, camera);
     }
 
-    rafId = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(rafId);
-  }, [size, goldOpacity, spinDuration, glowIntensity]);
+    animate();
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      mount.removeEventListener("mousemove", handleMouseMove);
+      renderer.dispose();
+      if (mount.contains(renderer.domElement)) {
+        mount.removeChild(renderer.domElement);
+      }
+    };
+  }, [size]);
 
   return (
-    <canvas
-      ref={canvasRef}
-      width={size}
-      height={size}
+    <div
+      ref={mountRef}
       className={className}
       style={{
         width: size,

@@ -172,7 +172,7 @@ export default function Home() {
             zIndex: 0,
           }} />
           <div style={{ position: "relative", zIndex: 1 }}>
-            <FlowerOfLife size={520} spinDuration={28} goldOpacity={0.82} glowIntensity={0.65} />
+            <FlowerOfLife size={520} />
           </div>
         </motion.div>
 
