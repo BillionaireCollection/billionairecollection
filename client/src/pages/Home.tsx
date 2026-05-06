@@ -7,7 +7,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { Link } from "wouter";
-import SphereAnimation from "@/components/SphereAnimation";
+import FlowerOfLife from "@/components/FlowerOfLife";
 import { useSEO } from "@/hooks/useSEO";
 
 const GOLD = "#C9A84C";
@@ -160,7 +160,7 @@ export default function Home() {
           }}
           className="hidden lg:block"
         >
-          <SphereAnimation />
+          <FlowerOfLife size={520} spinDuration={28} goldOpacity={0.75} glowIntensity={0.6} />
         </motion.div>
 
         {/* Scroll indicator */}
