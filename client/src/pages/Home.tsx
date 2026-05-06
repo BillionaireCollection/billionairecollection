@@ -143,7 +143,7 @@ export default function Home() {
           </motion.div>
         </div>
 
-        {/* ── 3D Sphere Animation ── */}
+        {/* ── Flower of Life Animation ── */}
         <motion.div
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -155,12 +155,25 @@ export default function Home() {
             transform: "translateY(-50%)",
             width: "clamp(320px, 45vw, 680px)",
             height: "clamp(320px, 45vw, 680px)",
-            pointerEvents: "auto",
+            pointerEvents: "none",
             zIndex: 2,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
           className="hidden lg:block"
         >
-          <FlowerOfLife size={520} spinDuration={28} goldOpacity={0.75} glowIntensity={0.6} />
+          {/* Dark radial backdrop to prevent hero image bleeding through */}
+          <div style={{
+            position: "absolute",
+            inset: 0,
+            borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(0,0,0,0.82) 38%, rgba(0,0,0,0.55) 62%, transparent 80%)",
+            zIndex: 0,
+          }} />
+          <div style={{ position: "relative", zIndex: 1 }}>
+            <FlowerOfLife size={520} spinDuration={28} goldOpacity={0.82} glowIntensity={0.65} />
+          </div>
         </motion.div>
 
         {/* Scroll indicator */}
