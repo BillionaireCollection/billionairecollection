@@ -5,8 +5,8 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
+import { trpc } from "@/lib/trpc";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -42,11 +42,26 @@ const REQUEST_TYPES = [
 
 export default function CardConcierge() {
   const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({ name: "", email: "", phone: "", type: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", type: "", message: "", budget: "" });
+  const [formError, setFormError] = useState("");
+
+  const submitMutation = trpc.concierge.submit.useMutation({
+    onSuccess: () => setSubmitted(true),
+    onError: (err) => setFormError(err.message || "Something went wrong. Please try again."),
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setFormError("");
+    if (!form.type) { setFormError("Please select a request type."); return; }
+    submitMutation.mutate({
+      name: form.name,
+      email: form.email,
+      phone: form.phone || undefined,
+      requestType: form.type,
+      description: form.message,
+      budget: form.budget || undefined,
+    });
   };
 
   return (
@@ -160,8 +175,9 @@ export default function CardConcierge() {
                       placeholder="Please describe your request in detail..."
                       style={{ width: "100%", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(201,168,76,0.2)", padding: "14px 16px", fontFamily: FONT_UI, fontSize: "0.875rem", color: "#fff", outline: "none", resize: "vertical" }} />
                   </div>
-                  <button type="submit" className="btn-gold" style={{ width: "100%", marginTop: "0.5rem" }}>
-                    Submit Request
+                  {formError && <p style={{ fontFamily: FONT_UI, fontSize: "0.8125rem", color: "#e57373" }}>{formError}</p>}
+                  <button type="submit" className="btn-gold" style={{ width: "100%", marginTop: "0.5rem" }} disabled={submitMutation.isPending}>
+                    {submitMutation.isPending ? "Submitting…" : "Submit Request"}
                   </button>
                   <p style={{ fontFamily: FONT_UI, fontSize: "0.75rem", color: "rgba(255,255,255,0.3)", textAlign: "center" }}>
                     Your information is kept strictly confidential. Response within 15 minutes.

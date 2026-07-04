@@ -8,6 +8,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import PageHero from "@/components/PageHero";
 import { useNewsFeeds } from "@/hooks/useNewsFeeds";
+import { trpc } from "@/lib/trpc";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -50,6 +51,12 @@ export default function News() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
+  const [subscribeError, setSubscribeError] = useState("");
+
+  const subscribeMutation = trpc.newsletter.subscribe.useMutation({
+    onSuccess: () => setSubscribed(true),
+    onError: (err) => setSubscribeError(err.message || "Something went wrong. Please try again."),
+  });
   const { articles, loading, liveCount, lastUpdated, refresh } = useNewsFeeds();
 
   const filtered = activeCategory === "All"
@@ -278,7 +285,9 @@ export default function News() {
                 You are now subscribed to the Billionaire Daily Brief.
               </motion.div>
             ) : (
-              <form onSubmit={(e) => { e.preventDefault(); setSubscribed(true); }} style={{ display: "flex", justifyContent: "center", gap: "0", maxWidth: "480px", margin: "0 auto" }}>
+              <>
+              {subscribeError && <p style={{ fontFamily: FONT_UI, fontSize: "0.8125rem", color: "#e57373", marginBottom: "0.5rem" }}>{subscribeError}</p>}
+              <form onSubmit={(e) => { e.preventDefault(); setSubscribeError(""); subscribeMutation.mutate({ email }); }} style={{ display: "flex", justifyContent: "center", gap: "0", maxWidth: "480px", margin: "0 auto" }}>
                 <input
                   type="email"
                   required
@@ -301,7 +310,8 @@ export default function News() {
                   Subscribe
                 </button>
               </form>
-            )}
+              </>)
+            }
           </FadeUp>
         </div>
       </section>

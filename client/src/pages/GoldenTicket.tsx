@@ -7,6 +7,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
+import { trpc } from "@/lib/trpc";
 
 const GOLD = "#C9A84C";
 const GOLD_LIGHT = "#E8C97A";
@@ -57,7 +58,13 @@ const TIERS = [
 
 export default function GoldenTicket() {
   const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", country: "", message: "", referredBy: "" });
+  const [formError, setFormError] = useState("");
+
+  const applyMutation = trpc.goldenTicket.submit.useMutation({
+    onSuccess: () => setSubmitted(true),
+    onError: (err: { message?: string }) => setFormError(err.message || "Something went wrong. Please try again."),
+  });
 
   return (
     <div style={{ background: "#000" }}>
@@ -247,7 +254,7 @@ export default function GoldenTicket() {
                   </p>
                 </div>
               ) : (
-                <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }} style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+                <form onSubmit={(e) => { e.preventDefault(); setFormError(""); applyMutation.mutate({ name: form.name, email: form.email, phone: form.phone || undefined, country: form.country || undefined, message: form.message || undefined, referredBy: form.referredBy || undefined }); }} style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.25rem" }}>
                     <div>
                       <label style={{ fontFamily: FONT_UI, fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "rgba(255,255,255,0.4)", display: "block", marginBottom: "8px" }}>Full Name</label>
@@ -271,8 +278,9 @@ export default function GoldenTicket() {
                       placeholder="Please share a brief introduction and why you are interested in the Golden Ticket..."
                       style={{ width: "100%", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(201,168,76,0.2)", padding: "14px 16px", fontFamily: FONT_UI, fontSize: "0.875rem", color: "#fff", outline: "none", resize: "vertical" }} />
                   </div>
-                  <button type="submit" className="btn-gold" style={{ width: "100%", marginTop: "0.5rem" }}>
-                    Submit Application
+                  {formError && <p style={{ fontFamily: FONT_UI, fontSize: "0.8125rem", color: "#e57373" }}>{formError}</p>}
+                  <button type="submit" className="btn-gold" style={{ width: "100%", marginTop: "0.5rem" }} disabled={applyMutation.isPending}>
+                    {applyMutation.isPending ? "Submitting…" : "Submit Application"}
                   </button>
                   <p style={{ fontFamily: FONT_UI, fontSize: "0.75rem", color: "rgba(255,255,255,0.25)", textAlign: "center" }}>
                     All applications are reviewed in strict confidence. Response within 48 hours.

@@ -58,8 +58,8 @@ function Layout({ children }: { children: React.ReactNode }) {
     </div>
   );
 }
-
 function Router() {
+  // make sure to consider if you need authentication for certain routes
   return (
     <Layout>
       <Switch>
