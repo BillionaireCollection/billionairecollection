@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
+import { useSEO } from "@/hooks/useSEO";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -18,6 +19,11 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 }
 
 export default function Funding() {
+  useSEO({
+    title: "Funding & Capital | Billionaire Collection",
+    description: "Access exclusive funding and capital solutions through Billionaire Collection. Connecting ultra-high-net-worth individuals with bespoke financing, investment, and capital raising opportunities.",
+    keywords: "luxury funding, capital solutions, investment, UHNW financing, private capital",
+  });
   return (
     <div style={{ background: "#000" }}>
       <PageHero badge="Billionaire Funding" title="Capital &" titleAccent="Investment" subtitle="Exclusive access to private equity, venture capital, and bespoke funding solutions for ultra-high-net-worth individuals and family offices." image="https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-lifestyle-AH2eKQkWWtkQqo8wcxHVw2.webp" cta={{ label: "Speak to an Advisor", href: "/card-concierge" }} />

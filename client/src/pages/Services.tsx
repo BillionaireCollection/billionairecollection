@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
+import { useSEO } from "@/hooks/useSEO";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -18,6 +19,11 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 }
 
 export default function Services() {
+  useSEO({
+    title: "Premium Services | Billionaire Collection",
+    description: "Explore the full suite of premium services from Billionaire Collection — from funding and golf to travel and the exclusive Billionaire Card.",
+    keywords: "premium services, luxury services, UHNW services, Billionaire Collection services",
+  });
   const services = [
     { label: "Funding & Investments", icon: "💰", desc: "Access to exclusive investment opportunities, private equity, and funding solutions for ultra-high-net-worth individuals and family offices.", href: "/funding" },
     { label: "Golf", icon: "⛳", desc: "Private access to the world's most exclusive golf courses, tournaments, and bespoke golf travel experiences.", href: "/golf" },

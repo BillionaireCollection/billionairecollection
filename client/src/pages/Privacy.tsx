@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
+import { useSEO } from "@/hooks/useSEO";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -18,6 +19,11 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 }
 
 export default function Privacy() {
+  useSEO({
+    title: "Privacy Policy | Billionaire Collection",
+    description: "Read the Billionaire Collection privacy policy. We are committed to protecting your personal information and maintaining the highest standards of data privacy and security.",
+    keywords: "privacy policy, data protection, GDPR, personal data, Billionaire Collection",
+  });
   return (
     <div style={{ background: "#000" }}>
       <PageHero badge="Legal" title="Privacy" titleAccent="Policy" subtitle="How Billionaire Collection collects, uses, and protects your personal information." image="https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-main-QJbNmDnsM8Jru6dBDixZQ8.webp" height="50vh" />

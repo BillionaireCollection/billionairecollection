@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
+import { useSEO } from "@/hooks/useSEO";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -18,6 +19,11 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 }
 
 export default function Terms() {
+  useSEO({
+    title: "Terms & Conditions | Billionaire Collection",
+    description: "Read the Billionaire Collection terms and conditions. By using our website and services you agree to these terms governing your relationship with Billionaire Collection.",
+    keywords: "terms and conditions, legal terms, website terms, Billionaire Collection legal",
+  });
   return (
     <div style={{ background: "#000" }}>
       <PageHero badge="Legal" title="Terms of" titleAccent="Service" subtitle="The terms and conditions governing your use of Billionaire Collection services." image="https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-main-QJbNmDnsM8Jru6dBDixZQ8.webp" height="50vh" />

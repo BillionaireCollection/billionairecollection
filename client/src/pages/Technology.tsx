@@ -8,6 +8,7 @@ import { useRef } from "react";
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
 import SphereAnimation from "@/components/SphereAnimation";
+import { useSEO } from "@/hooks/useSEO";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -24,6 +25,11 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 }
 
 export default function Technology() {
+  useSEO({
+    title: "Billionaire Technology | Billionaire Collection",
+    description: "Billionaire Collection Technology encompasses cutting-edge digital platforms, university education, and vitality solutions for the ultra-high-net-worth community.",
+    keywords: "Billionaire Technology, luxury tech, UHNW technology, digital innovation, Billionaire University",
+  });
   const divisions = [
     {
       label: "Billionaire University",

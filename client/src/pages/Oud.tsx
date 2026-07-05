@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
+import { useSEO } from "@/hooks/useSEO";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -18,6 +19,11 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 }
 
 export default function Oud() {
+  useSEO({
+    title: "Bespoke Oud & Arabian Fragrances | Billionaire Collection",
+    description: "Discover bespoke Arabian oud fragrances of unparalleled rarity through Billionaire Collection. Hand-crafted perfumes and oud oils sourced from the finest distilleries in the Middle East.",
+    keywords: "oud fragrance, Arabian perfume, luxury oud, bespoke fragrance, rare perfume",
+  });
   return (
     <div style={{ background: "#000" }}>
       <PageHero badge="Billionaire Oud" title="Bespoke" titleAccent="Arabian Fragrances" subtitle="The rarest oud oils and bespoke fragrances from the world's most prestigious Arabian perfumers — presented in hand-crafted crystal flacons of extraordinary beauty." image="https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-lifestyle-AH2eKQkWWtkQqo8wcxHVw2.webp" cta={{ label: "Enquire", href: "/card-concierge" }} />

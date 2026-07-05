@@ -1,6 +1,12 @@
 import DivisionPage from "@/components/DivisionPage";
+import { useSEO } from "@/hooks/useSEO";
 
 export default function Air() {
+  useSEO({
+    title: "Private Aviation | Billionaire Collection",
+    description: "Charter and acquire the world's finest private jets and helicopters through Billionaire Collection's exclusive private aviation brokerage. Tailored travel for the ultra-discerning.",
+    keywords: "private aviation, private jet charter, helicopter hire, luxury aviation, aircraft acquisition",
+  });
   return (
     <DivisionPage
       badge="Billionaire Air"

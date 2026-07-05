@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
+import { useSEO } from "@/hooks/useSEO";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -18,6 +19,11 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 }
 
 export default function Radio() {
+  useSEO({
+    title: "Billionaire Radio | Billionaire Collection",
+    description: "Tune in to Billionaire Radio — the exclusive audio channel for ultra-high-net-worth individuals. Featuring wealth insights, luxury lifestyle content, and interviews with the world's most successful people.",
+    keywords: "Billionaire Radio, luxury radio, wealth radio, UHNW audio, premium podcast",
+  });
   return (
     <div style={{ background: "#000" }}>
       <PageHero badge="Billionaire Radio" title="Elite" titleAccent="Audio" subtitle="Curated audio content for the global elite — expert conversations on wealth, investment, lifestyle, and the forces shaping the world of ultra-high-net-worth individuals." image="https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-main-QJbNmDnsM8Jru6dBDixZQ8.webp" cta={{ label: "Listen Now", href: "/media" }} />

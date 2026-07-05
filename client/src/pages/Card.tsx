@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
 import { trpc } from "@/lib/trpc";
+import { useSEO } from "@/hooks/useSEO";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -19,6 +20,11 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 }
 
 export default function Card() {
+  useSEO({
+    title: "Billionaire Card — The World's Most Exclusive Card",
+    description: "Apply for the Billionaire Card — the world's most exclusive membership card offering 24/7 global concierge, private aviation access, elite hotel privileges, and bespoke experiences.",
+    keywords: "Billionaire Card, exclusive membership card, luxury concierge card, black card, elite membership",
+  });
   const benefits = [
     { icon: "🌐", title: "Global Concierge", desc: "24/7 dedicated concierge team available anywhere in the world" },
     { icon: "✈️", title: "Private Aviation", desc: "Priority access to private jets and helicopter transfers" },

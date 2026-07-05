@@ -1,6 +1,12 @@
 import DivisionPage from "@/components/DivisionPage";
+import { useSEO } from "@/hooks/useSEO";
 
 export default function Estates() {
+  useSEO({
+    title: "Ultra-Prime Real Estate | Billionaire Collection",
+    description: "Discover and acquire ultra-prime real estate worldwide through Billionaire Collection Estates. Private islands, trophy penthouses, historic estates, and off-market properties.",
+    keywords: "ultra-prime real estate, luxury property, off-market property, trophy homes, private islands",
+  });
   return (
     <DivisionPage
       badge="Billionaire Estates"

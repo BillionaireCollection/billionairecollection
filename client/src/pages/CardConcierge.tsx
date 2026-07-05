@@ -7,6 +7,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import PageHero from "@/components/PageHero";
 import { trpc } from "@/lib/trpc";
+import { useSEO } from "@/hooks/useSEO";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -41,6 +42,11 @@ const REQUEST_TYPES = [
 ];
 
 export default function CardConcierge() {
+  useSEO({
+    title: "Concierge Request | Billionaire Collection",
+    description: "Submit a concierge request to the Billionaire Collection team. Our 24/7 global concierge service handles everything from private jet bookings to exclusive event access.",
+    keywords: "luxury concierge service, personal concierge, VIP service, bespoke requests, 24/7 concierge",
+  });
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", phone: "", type: "", message: "", budget: "" });
   const [formError, setFormError] = useState("");

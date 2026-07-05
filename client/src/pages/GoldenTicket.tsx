@@ -8,6 +8,7 @@ import { useRef, useState } from "react";
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
 import { trpc } from "@/lib/trpc";
+import { useSEO } from "@/hooks/useSEO";
 
 const GOLD = "#C9A84C";
 const GOLD_LIGHT = "#E8C97A";
@@ -57,6 +58,11 @@ const TIERS = [
 ];
 
 export default function GoldenTicket() {
+  useSEO({
+    title: "The Golden Ticket | Billionaire Collection",
+    description: "The Golden Ticket is the most exclusive membership tier in the Billionaire Collection ecosystem. Gain access to the inner circle of ultra-high-net-worth individuals, private events, and unprecedented privileges.",
+    keywords: "Golden Ticket, exclusive membership, VIP membership, ultra-exclusive, Billionaire Collection membership",
+  });
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", phone: "", country: "", message: "", referredBy: "" });
   const [formError, setFormError] = useState("");

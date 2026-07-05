@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
+import { useSEO } from "@/hooks/useSEO";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -18,6 +19,11 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 }
 
 export default function Television() {
+  useSEO({
+    title: "Billionaire Television | Billionaire Collection",
+    description: "Watch Billionaire Television — the premium channel dedicated to ultra-luxury lifestyle, wealth creation, and the world of ultra-high-net-worth individuals.",
+    keywords: "Billionaire Television, luxury TV, wealth TV, UHNW television, premium channel",
+  });
   return (
     <div style={{ background: "#000" }}>
       <PageHero badge="Billionaire Television" title="Luxury" titleAccent="Television" subtitle="Exclusive programming for the world's most discerning viewers — documentary series, lifestyle content, and live events from the pinnacle of luxury culture." image="https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-main-QJbNmDnsM8Jru6dBDixZQ8.webp" cta={{ label: "Watch Now", href: "/media" }} />

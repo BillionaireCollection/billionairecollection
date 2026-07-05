@@ -74,3 +74,14 @@
 
 - [x] Fix Issue 1: Wire footer newsletter Subscribe button with trpc.newsletter.subscribe mutation
 - [x] Fix Issue 2: Change Card page hero CTA from /card-concierge to #apply
+
+## Launch Instructions Implementation (from PDF)
+
+- [x] SEO: Update useSEO hook to support keywords prop rendering <meta name="keywords">
+- [x] SEO: Optimise title (30-60 chars), meta description (50-160 chars), add keywords on all pages
+- [x] Header: Ensure brand name "BILLIONAIRE COLLECTION" visible on ALL screen sizes including mobile (already correct — no hidden classes used)
+- [ ] Images: Audit product card images to use object-fit: contain not cover
+- [x] Admin: Enhance admin dashboard with user/subscriber list (roles, join dates, last sign-in)
+- [ ] Admin: Add revenue/stats overview section to admin dashboard
+- [x] X-Offer page: Create /x-offer landing page with 48-hour countdown timer, promo code display, and struck-through original price
+- [x] X-Offer page: Timer must persist across page refreshes using localStorage

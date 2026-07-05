@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import PageHero from "@/components/PageHero";
 import { trpc } from "@/lib/trpc";
+import { useSEO } from "@/hooks/useSEO";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -29,6 +30,11 @@ const inputStyle: React.CSSProperties = {
 };
 
 export default function Contact() {
+  useSEO({
+    title: "Contact Billionaire Collection",
+    description: "Get in touch with the Billionaire Collection team. Whether you have an enquiry about our services, brokerage, or membership, our team is ready to assist.",
+    keywords: "contact Billionaire Collection, luxury enquiry, brokerage contact, membership enquiry",
+  });
   const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");

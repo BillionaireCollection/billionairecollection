@@ -17,6 +17,7 @@ import {
   getContactEnquiries,
   getGoldenTicketApplications,
   getAdminStats,
+  getUsers,
   updateCardApplicationStatus,
   updateGoldenTicketStatus,
   updateConciergeStatus,
@@ -201,6 +202,7 @@ export const appRouter = router({
 
   admin: router({
     stats: adminProcedure.query(async () => getAdminStats()),
+    listUsers: adminProcedure.query(async () => getUsers()),
   }),
 });
 

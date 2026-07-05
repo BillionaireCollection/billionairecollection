@@ -9,6 +9,7 @@ import { useRef, useState } from "react";
 import PageHero from "@/components/PageHero";
 import { useNewsFeeds } from "@/hooks/useNewsFeeds";
 import { trpc } from "@/lib/trpc";
+import { useSEO } from "@/hooks/useSEO";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -48,6 +49,11 @@ const FALLBACK_IMGS = [
 ];
 
 export default function News() {
+  useSEO({
+    title: "Luxury News & Insights | Billionaire Collection",
+    description: "Stay informed with the latest luxury news, market insights, and exclusive stories from the world of ultra-high-net-worth individuals through Billionaire Collection.",
+    keywords: "luxury news, wealth insights, UHNW news, luxury market, Billionaire Collection news",
+  });
   const [activeCategory, setActiveCategory] = useState("All");
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);

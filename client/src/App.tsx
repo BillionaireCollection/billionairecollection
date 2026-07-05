@@ -45,6 +45,7 @@ import NotFound from "./pages/NotFound";
 import About from "./pages/About";
 import GoldenTicket from "./pages/GoldenTicket";
 import Admin from "./pages/Admin";
+import XOffer from "./pages/XOffer";
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -65,6 +66,9 @@ function Router() {
     <Switch>
       {/* Admin dashboard — outside public Layout (no Navbar/Footer) */}
       <Route path="/admin" component={Admin} />
+      {/* X (Twitter) offer page — standalone, no Navbar/Footer */}
+      <Route path="/x-offer" component={XOffer} />
+      <Route path="/offer" component={XOffer} />
       <Route>
         {/* All public pages wrapped in the luxury Layout */}
         <Layout>

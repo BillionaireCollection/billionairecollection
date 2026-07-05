@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
+import { useSEO } from "@/hooks/useSEO";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -25,6 +26,11 @@ const CHANNELS = [
 ];
 
 export default function Media() {
+  useSEO({
+    title: "Billionaire Media | Billionaire Collection",
+    description: "Billionaire Collection Media encompasses television, magazine, and radio channels dedicated to the ultra-luxury lifestyle, wealth creation, and the world of ultra-high-net-worth individuals.",
+    keywords: "Billionaire Media, luxury television, wealth magazine, luxury radio, UHNW media",
+  });
   return (
     <div style={{ background: "#000" }}>
       <PageHero

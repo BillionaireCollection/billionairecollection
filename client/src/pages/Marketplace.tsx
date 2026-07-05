@@ -7,6 +7,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
+import { useSEO } from "@/hooks/useSEO";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -44,6 +45,11 @@ const ALL_LISTINGS = [
 ];
 
 export default function Marketplace() {
+  useSEO({
+    title: "Luxury Marketplace | Billionaire Collection",
+    description: "Browse the Billionaire Collection marketplace — curating the finest luxury goods, rare collectibles, and bespoke products for ultra-high-net-worth individuals worldwide.",
+    keywords: "luxury marketplace, premium goods, rare collectibles, luxury shopping, bespoke products",
+  });
   const [activeCategory, setActiveCategory] = useState("All");
 
   const filtered = activeCategory === "All" ? ALL_LISTINGS : ALL_LISTINGS.filter(l => l.cat === activeCategory);

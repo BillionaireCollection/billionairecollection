@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
+import { useSEO } from "@/hooks/useSEO";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -18,6 +19,11 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 }
 
 export default function Golf() {
+  useSEO({
+    title: "Private Golf | Billionaire Collection",
+    description: "Access the world's most exclusive private golf clubs and bespoke golf experiences through Billionaire Collection. Tee times at Augusta, St Andrews, and the finest courses worldwide.",
+    keywords: "private golf clubs, luxury golf, exclusive golf, Augusta, St Andrews, golf membership",
+  });
   return (
     <div style={{ background: "#000" }}>
       <PageHero badge="Billionaire Golf" title="The World's Most" titleAccent="Exclusive Courses" subtitle="Private access to Augusta-calibre courses, elite tournaments, and bespoke golf travel experiences — curated for the world's most discerning players." image="https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-main-QJbNmDnsM8Jru6dBDixZQ8.webp" cta={{ label: "Book a Round", href: "/card-concierge" }} />

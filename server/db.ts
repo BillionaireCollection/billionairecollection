@@ -312,3 +312,20 @@ export async function updateContactNotes(
     .set({ notes })
     .where(eq(contactEnquiries.id, id));
 }
+
+// ─── Admin: Users List ────────────────────────────────────────────────────────
+export async function getUsers() {
+  const db = await getDb();
+  if (!db) return [];
+  return db
+    .select({
+      id: users.id,
+      name: users.name,
+      email: users.email,
+      role: users.role,
+      createdAt: users.createdAt,
+      lastSignedIn: users.lastSignedIn,
+    })
+    .from(users)
+    .orderBy(sql`${users.lastSignedIn} DESC`);
+}

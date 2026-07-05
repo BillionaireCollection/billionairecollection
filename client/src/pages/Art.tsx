@@ -1,6 +1,12 @@
 import DivisionPage from "@/components/DivisionPage";
+import { useSEO } from "@/hooks/useSEO";
 
 export default function Art() {
+  useSEO({
+    title: "Fine Art & Collectibles | Billionaire Collection",
+    description: "Acquire museum-quality fine art and rare collectibles through Billionaire Collection's curated brokerage. Investment-grade works from the world's most celebrated artists.",
+    keywords: "fine art investment, rare collectibles, art brokerage, luxury art, museum quality art",
+  });
   return (
     <DivisionPage
       badge="Billionaire Art"

@@ -1,6 +1,12 @@
 import DivisionPage from "@/components/DivisionPage";
+import { useSEO } from "@/hooks/useSEO";
 
 export default function Boat() {
+  useSEO({
+    title: "Superyachts | Billionaire Collection",
+    description: "Charter and acquire bespoke superyachts worldwide through Billionaire Collection's exclusive yacht brokerage. From sailing yachts to motor superyachts, we source the finest vessels.",
+    keywords: "superyacht charter, yacht brokerage, luxury yacht, motor yacht, sailing yacht",
+  });
   return (
     <DivisionPage
       badge="Billionaire Boat"

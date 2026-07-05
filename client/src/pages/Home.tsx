@@ -95,7 +95,8 @@ function AnimatedCounter({ target, suffix = "", prefix = "" }: { target: number;
 export default function Home() {
   useSEO({
     title: "The Place for Everything You Desire",
-    description: "Billionaire Collection is the world's premier luxury ecosystem — curating ultra-prime real estate, superyachts, private aviation, rare automobiles, fine art, and bespoke experiences for ultra-high-net-worth individuals.",
+    description: "Billionaire Collection — the world's premier luxury ecosystem curating ultra-prime real estate, superyachts, private aviation, and bespoke experiences for ultra-high-net-worth individuals.",
+    keywords: "Billionaire Collection, luxury lifestyle, ultra-prime real estate, superyacht, private aviation, UHNW, luxury brokerage",
   });
 
   return (

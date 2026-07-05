@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
+import { useSEO } from "@/hooks/useSEO";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -18,6 +19,11 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 }
 
 export default function Magazine() {
+  useSEO({
+    title: "Billionaire Magazine | Billionaire Collection",
+    description: "Billionaire Magazine — the definitive publication for ultra-high-net-worth individuals. Covering luxury lifestyle, investment, real estate, and the world of the ultra-wealthy.",
+    keywords: "Billionaire Magazine, luxury magazine, UHNW publication, wealth magazine, lifestyle magazine",
+  });
   return (
     <div style={{ background: "#000" }}>
       <PageHero badge="Billionaire Magazine" title="The Definitive" titleAccent="Luxury Publication" subtitle="The world's most prestigious print and digital magazine for ultra-high-net-worth individuals — featuring in-depth profiles, market intelligence, and the finest luxury editorial." image="https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-lifestyle-AH2eKQkWWtkQqo8wcxHVw2.webp" cta={{ label: "Subscribe", href: "/news" }} />

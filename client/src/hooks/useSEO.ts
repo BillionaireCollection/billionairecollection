@@ -1,6 +1,7 @@
 /* ============================================================
    BILLIONAIRE COLLECTION — useSEO
-   Sets per-page document title, meta description, and OG tags.
+   Sets per-page document title, meta description, OG tags,
+   Twitter card tags, and meta keywords.
    ============================================================ */
 
 import { useEffect } from "react";
@@ -8,6 +9,7 @@ import { useEffect } from "react";
 interface SEOProps {
   title: string;
   description?: string;
+  keywords?: string;
   image?: string;
   url?: string;
 }
@@ -25,9 +27,9 @@ function setMeta(name: string, content: string, attr: "name" | "property" = "nam
   el.setAttribute("content", content);
 }
 
-export function useSEO({ title, description, image, url }: SEOProps) {
+export function useSEO({ title, description, keywords, image, url }: SEOProps) {
   useEffect(() => {
-    const fullTitle = `${title} — ${BASE_TITLE}`;
+    const fullTitle = `${title} | ${BASE_TITLE}`;
     document.title = fullTitle;
 
     if (description) {
@@ -36,8 +38,16 @@ export function useSEO({ title, description, image, url }: SEOProps) {
       setMeta("twitter:description", description);
     }
 
+    if (keywords) {
+      setMeta("keywords", keywords);
+    }
+
     setMeta("og:title", fullTitle, "property");
+    setMeta("og:type", "website", "property");
+    setMeta("og:site_name", BASE_TITLE, "property");
     setMeta("twitter:title", fullTitle);
+    setMeta("twitter:card", "summary_large_image");
+    setMeta("twitter:site", "@billionmagazine");
 
     if (image) {
       setMeta("og:image", image, "property");
@@ -52,5 +62,5 @@ export function useSEO({ title, description, image, url }: SEOProps) {
       const canonical = document.querySelector("link[rel='canonical']") as HTMLLinkElement | null;
       if (canonical) canonical.href = url;
     }
-  }, [title, description, image, url]);
+  }, [title, description, keywords, image, url]);
 }

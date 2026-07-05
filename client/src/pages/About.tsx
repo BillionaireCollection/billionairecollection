@@ -6,6 +6,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
+import { useSEO } from "@/hooks/useSEO";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -42,6 +43,11 @@ const VALUES = [
 ];
 
 export default function About() {
+  useSEO({
+    title: "About Billionaire Collection",
+    description: "Discover the story behind Billionaire Collection — the world's premier luxury ecosystem curating ultra-prime real estate, superyachts, private aviation, and bespoke experiences for ultra-high-net-worth individuals.",
+    keywords: "Billionaire Collection, luxury brand, ultra-high-net-worth, premium lifestyle, London luxury",
+  });
   return (
     <div style={{ background: "#000" }}>
       <PageHero

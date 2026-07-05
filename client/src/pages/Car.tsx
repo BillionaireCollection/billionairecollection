@@ -1,6 +1,12 @@
 import DivisionPage from "@/components/DivisionPage";
+import { useSEO } from "@/hooks/useSEO";
 
 export default function Car() {
+  useSEO({
+    title: "Rare & Exotic Automobiles | Billionaire Collection",
+    description: "Acquire rare, exotic, and collector automobiles through Billionaire Collection's specialist automotive brokerage. Ferrari, Lamborghini, Bugatti, and the world's most coveted vehicles.",
+    keywords: "exotic cars, rare automobiles, luxury car brokerage, Ferrari, Lamborghini, collector cars",
+  });
   return (
     <DivisionPage
       badge="Billionaire Car"

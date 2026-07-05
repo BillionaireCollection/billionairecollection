@@ -170,7 +170,7 @@ function NotesCell({
   );
 }
 
-type Tab = "cards" | "golden" | "concierge" | "contact" | "newsletter";
+type Tab = "cards" | "golden" | "concierge" | "contact" | "newsletter" | "users";
 
 export default function Admin() {
   const { user, loading, isAuthenticated } = useAuth();
@@ -189,6 +189,7 @@ export default function Admin() {
   const conciergeReqs = trpc.concierge.list.useQuery(undefined, { enabled: activeTab === "concierge" && isAdmin });
   const contactEnqs = trpc.contact.list.useQuery(undefined, { enabled: activeTab === "contact" && isAdmin });
   const newsletterSubs = trpc.newsletter.list.useQuery(undefined, { enabled: activeTab === "newsletter" && isAdmin });
+  const usersList = trpc.admin.listUsers.useQuery(undefined, { enabled: activeTab === "users" && isAdmin });
 
   // Status update mutations
   const updateCard = trpc.card.updateStatus.useMutation({ onSuccess: () => cardApps.refetch() });
@@ -267,6 +268,7 @@ export default function Admin() {
     { id: "concierge", label: "Concierge", count: stats.data?.totalConciergeRequests },
     { id: "contact", label: "Contact", count: stats.data?.totalContactEnquiries },
     { id: "newsletter", label: "Newsletter", count: stats.data?.totalNewsletterSubscribers },
+    { id: "users", label: "Users" },
   ];
 
   return (
@@ -493,6 +495,26 @@ export default function Admin() {
           />
         )}
 
+        {/* Users Table */}
+        {activeTab === "users" && (
+          <SubmissionsTable
+            loading={usersList.isLoading}
+            data={usersList.data ?? []}
+            columns={["Name", "Email", "Role", "Joined", "Last Sign-in"]}
+            csvFilename="users.csv"
+            csvFields={USERS_CSV_FIELDS}
+            renderRow={(row: any) => (
+              <tr key={row.id} style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                <Td>{row.name ?? "—"}</Td>
+                <Td>{row.email ?? "—"}</Td>
+                <Td><StatusBadge status={row.role} /></Td>
+                <Td>{formatDate(row.createdAt)}</Td>
+                <Td>{formatDate(row.lastSignedIn)}</Td>
+              </tr>
+            )}
+          />
+        )}
+
         {/* Newsletter Table */}
         {activeTab === "newsletter" && (
           <SubmissionsTable
@@ -655,6 +677,15 @@ const CONTACT_CSV_FIELDS = [
   { key: "status", label: "Status" },
   { key: "notes", label: "Notes" },
   { key: "createdAt", label: "Date" },
+];
+
+const USERS_CSV_FIELDS = [
+  { key: "id", label: "ID" },
+  { key: "name", label: "Name" },
+  { key: "email", label: "Email" },
+  { key: "role", label: "Role" },
+  { key: "createdAt", label: "Joined" },
+  { key: "lastSignedIn", label: "Last Sign-in" },
 ];
 
 const NEWSLETTER_CSV_FIELDS = [
