@@ -105,6 +105,8 @@ export default function Home() {
         <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${HERO_IMG})`, backgroundSize: "cover", backgroundPosition: "center" }} />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.2) 100%)" }} />
         <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "35%", background: "linear-gradient(to top, #000 0%, transparent 100%)" }} />
+        {/* Right-edge gradient to cover background image text near sphere */}
+        <div style={{ position: "absolute", top: 0, right: 0, width: "40%", height: "100%", background: "linear-gradient(to left, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 40%, transparent 100%)", pointerEvents: "none" }} />
 
         <div className="container" style={{ position: "relative", zIndex: 1, paddingTop: "80px" }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
@@ -157,6 +159,8 @@ export default function Home() {
             height: "clamp(320px, 45vw, 680px)",
             pointerEvents: "none",
             zIndex: 2,
+            borderRadius: "50%",
+            overflow: "hidden",
           }}
           className="hidden lg:flex"
         >

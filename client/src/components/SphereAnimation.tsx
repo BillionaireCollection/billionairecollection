@@ -87,6 +87,7 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
     });
 
     const points = new THREE.Points(geometry, material);
+    points.renderOrder = 2; // render last so particles appear on top of dark fill
     scene.add(points);
 
     // ── Central Glow Orb ──────────────────────────────────────
@@ -94,6 +95,7 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
     const coreGeo = new THREE.SphereGeometry(0.35, 32, 32);
     const coreMat = new THREE.MeshBasicMaterial({ color: 0xfff8e7, transparent: true, opacity: 0.95 });
     const core = new THREE.Mesh(coreGeo, coreMat);
+    core.renderOrder = 3;
     scene.add(core);
 
     // Outer glow layers (additive blending sprites)
@@ -112,21 +114,24 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
         depthWrite: false,
         side: THREE.BackSide,
       });
-      scene.add(new THREE.Mesh(g, m));
+      const glowMesh = new THREE.Mesh(g, m);
+      glowMesh.renderOrder = 3;
+      scene.add(glowMesh);
     });
 
     // ── Dark background sphere to block hero image bleed-through ──
-    // Sits just inside the particle radius so the background image
-    // cannot show through the gaps between particles.
-    const bgSphereGeo = new THREE.SphereGeometry(RADIUS * 0.97, 48, 48);
+    // Camera is OUTSIDE the sphere (z=14), so we need FrontSide facing
+    // the camera. Radius slightly smaller than RADIUS so particles
+    // (at exactly RADIUS) render in front of this dark fill.
+    const bgSphereGeo = new THREE.SphereGeometry(RADIUS * 0.98, 48, 48);
     const bgSphereMat = new THREE.MeshBasicMaterial({
       color: 0x000000,
-      transparent: true,
-      opacity: 0.88,
-      side: THREE.BackSide,
+      transparent: false,
+      side: THREE.FrontSide,
       depthWrite: false,
     });
     const bgSphere = new THREE.Mesh(bgSphereGeo, bgSphereMat);
+    bgSphere.renderOrder = 1; // render after clear, before glow/particles
     scene.add(bgSphere);
 
     // ── Mouse interaction ─────────────────────────────────────
