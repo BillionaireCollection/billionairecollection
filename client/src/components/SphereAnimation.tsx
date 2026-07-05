@@ -115,7 +115,19 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
       scene.add(new THREE.Mesh(g, m));
     });
 
-    // Inner orbit ring removed — clean sphere only
+    // ── Dark background sphere to block hero image bleed-through ──
+    // Sits just inside the particle radius so the background image
+    // cannot show through the gaps between particles.
+    const bgSphereGeo = new THREE.SphereGeometry(RADIUS * 0.97, 48, 48);
+    const bgSphereMat = new THREE.MeshBasicMaterial({
+      color: 0x000000,
+      transparent: true,
+      opacity: 0.88,
+      side: THREE.BackSide,
+      depthWrite: false,
+    });
+    const bgSphere = new THREE.Mesh(bgSphereGeo, bgSphereMat);
+    scene.add(bgSphere);
 
     // ── Mouse interaction ─────────────────────────────────────
     let mouseX = 0;
@@ -209,6 +221,9 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
         dragRotY = points.rotation.y;
       }
 
+      // Keep background sphere aligned with particle cloud
+      bgSphere.rotation.copy(points.rotation);
+
       // Pulsing core
       const pulse = 1 + Math.sin(t * 2.5) * 0.08;
       core.scale.setScalar(pulse);
@@ -229,6 +244,8 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
       renderer.dispose();
       geometry.dispose();
       material.dispose();
+      bgSphereGeo.dispose();
+      bgSphereMat.dispose();
       if (mount.contains(renderer.domElement)) {
         mount.removeChild(renderer.domElement);
       }
