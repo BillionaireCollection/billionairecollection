@@ -1,0 +1,1 @@
+ALTER TABLE `golden_ticket_applications` ADD `notes` text;

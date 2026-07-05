@@ -292,11 +292,23 @@ export async function updateConciergeStatus(
 
 export async function updateContactStatus(
   id: number,
-  status: "new" | "read" | "replied" | "archived"
+  status: "new" | "read" | "replied" | "archived",
+  notes?: string
 ) {
   const db = await getDb();
   if (!db) throw new Error("Database not available");
   await db.update(contactEnquiries)
-    .set({ status })
+    .set({ status, ...(notes !== undefined ? { notes } : {}) })
+    .where(eq(contactEnquiries.id, id));
+}
+
+export async function updateContactNotes(
+  id: number,
+  notes: string
+) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db.update(contactEnquiries)
+    .set({ notes })
     .where(eq(contactEnquiries.id, id));
 }

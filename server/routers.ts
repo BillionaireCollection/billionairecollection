@@ -21,6 +21,7 @@ import {
   updateGoldenTicketStatus,
   updateConciergeStatus,
   updateContactStatus,
+  updateContactNotes,
 } from "./db";
 import { TRPCError } from "@trpc/server";
 import { notifyOwner } from "./_core/notification";
@@ -181,9 +182,19 @@ export const appRouter = router({
       .input(z.object({
         id: z.number(),
         status: z.enum(["new", "read", "replied", "archived"]),
+        notes: z.string().optional(),
       }))
       .mutation(async ({ input }) => {
-        await updateContactStatus(input.id, input.status);
+        await updateContactStatus(input.id, input.status, input.notes);
+        return { success: true };
+      }),
+    updateNotes: adminProcedure
+      .input(z.object({
+        id: z.number(),
+        notes: z.string(),
+      }))
+      .mutation(async ({ input }) => {
+        await updateContactNotes(input.id, input.notes);
         return { success: true };
       }),
   }),

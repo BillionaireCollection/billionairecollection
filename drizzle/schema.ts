@@ -94,6 +94,7 @@ export const contactEnquiries = mysqlTable("contact_enquiries", {
   message: text("message").notNull(),
   division: varchar("division", { length: 128 }),
   status: mysqlEnum("status", ["new", "read", "replied", "archived"]).default("new").notNull(),
+  notes: text("notes"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
 export type ContactEnquiry = typeof contactEnquiries.$inferSelect;
@@ -128,6 +129,7 @@ export const goldenTicketApplications = mysqlTable("golden_ticket_applications",
   message: text("message"),
   referredBy: varchar("referredBy", { length: 255 }),
   status: mysqlEnum("status", ["pending", "reviewing", "approved", "rejected"]).default("pending").notNull(),
+  notes: text("notes"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });

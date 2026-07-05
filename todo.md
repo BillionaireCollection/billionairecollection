@@ -52,3 +52,12 @@
 
 ## Tests
 - [x] 31 vitest tests passing (auth, newsletter, concierge, card, golden ticket, contact, marketplace, admin RBAC, status updates)
+
+## Inline Notes (Admin Dashboard)
+- [x] Add notes column to Card Applications admin table with inline edit/save
+- [x] Add notes column to Golden Ticket admin table with inline edit/save
+- [x] Add notes column to Concierge Requests admin table with inline edit/save
+- [x] Add notes column to Contact Enquiries admin table with inline edit/save (via contactAdmin.updateNotes)
+- [x] Add updateContactNotes procedure to server (contact table has no notes column — add to schema + migrate)
+- [x] Add notes field to contactEnquiries schema in drizzle/schema.ts
+- [x] Run pnpm db:push to migrate the notes column for contact_enquiries (also added notes to golden_ticket_applications)
