@@ -69,3 +69,8 @@
 - [x] Add Download CSV button to Concierge Requests tab header
 - [x] Add Download CSV button to Contact Enquiries tab header
 - [x] Add Download CSV button to Newsletter Subscribers tab header
+
+## Audit Fixes
+
+- [x] Fix Issue 1: Wire footer newsletter Subscribe button with trpc.newsletter.subscribe mutation
+- [x] Fix Issue 2: Change Card page hero CTA from /card-concierge to #apply

@@ -4,7 +4,9 @@
    column headings, BC ecosystem link in copyright bar.
    ============================================================ */
 
+import { useState } from "react";
 import { Link } from "wouter";
+import { trpc } from "@/lib/trpc";
 
 const GOLD = "#C9A84C";
 const FONT_UI = "'Raleway', sans-serif";
@@ -76,6 +78,14 @@ const FOOTER_COLS = [
 ];
 
 export default function Footer() {
+  const [email, setEmail] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
+  const [subError, setSubError] = useState("");
+  const subscribeMutation = trpc.newsletter.subscribe.useMutation({
+    onSuccess: () => { setSubscribed(true); setEmail(""); setSubError(""); },
+    onError: (err) => setSubError(err.message || "Something went wrong. Please try again."),
+  });
+
   return (
     <footer style={{ background: "#000", borderTop: `1px solid rgba(201,168,76,0.15)` }}>
       {/* Newsletter strip */}
@@ -90,26 +100,46 @@ export default function Footer() {
               Curated intelligence for ultra-high-net-worth individuals.
             </p>
           </div>
-          <div style={{ display: "flex", gap: "0", maxWidth: "460px", width: "100%" }}>
-            <input
-              type="email"
-              placeholder="Your email address"
-              style={{
-                flex: 1,
-                background: "rgba(255,255,255,0.05)",
-                border: `1px solid rgba(201,168,76,0.25)`,
-                borderRight: "none",
-                padding: "12px 16px",
-                fontFamily: FONT_UI,
-                fontSize: "0.875rem",
-                color: "#fff",
-                outline: "none",
-              }}
-            />
-            <button className="btn-gold" style={{ minWidth: "auto", padding: "12px 20px", fontSize: "0.75rem", whiteSpace: "nowrap" }}>
-              Subscribe
-            </button>
-          </div>
+          {subscribed ? (
+            <p style={{ fontFamily: FONT_UI, fontSize: "0.875rem", color: GOLD, maxWidth: "460px", width: "100%" }}>
+              ✓ You are now subscribed to the Billionaire Daily Brief.
+            </p>
+          ) : (
+            <form
+              onSubmit={(e) => { e.preventDefault(); setSubError(""); if (email) subscribeMutation.mutate({ email }); }}
+              style={{ display: "flex", flexDirection: "column", gap: "0.5rem", maxWidth: "460px", width: "100%" }}
+            >
+              <div style={{ display: "flex", gap: "0" }}>
+                <input
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Your email address"
+                  style={{
+                    flex: 1,
+                    background: "rgba(255,255,255,0.05)",
+                    border: `1px solid rgba(201,168,76,0.25)`,
+                    borderRight: "none",
+                    padding: "12px 16px",
+                    fontFamily: FONT_UI,
+                    fontSize: "0.875rem",
+                    color: "#fff",
+                    outline: "none",
+                  }}
+                />
+                <button
+                  type="submit"
+                  className="btn-gold"
+                  style={{ minWidth: "auto", padding: "12px 20px", fontSize: "0.75rem", whiteSpace: "nowrap" }}
+                  disabled={subscribeMutation.isPending}
+                >
+                  {subscribeMutation.isPending ? "…" : "Subscribe"}
+                </button>
+              </div>
+              {subError && <p style={{ fontFamily: FONT_UI, fontSize: "0.75rem", color: "#e57373", margin: 0 }}>{subError}</p>}
+            </form>
+          )}
         </div>
       </div>
 

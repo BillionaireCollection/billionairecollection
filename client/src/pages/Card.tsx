@@ -29,7 +29,7 @@ export default function Card() {
   ];
   return (
     <div style={{ background: "#000" }}>
-      <PageHero badge="Billionaire Card" title="The World's Most" titleAccent="Exclusive Card" subtitle="The Billionaire Card is not merely a payment instrument — it is a passport to a world of extraordinary privileges, bespoke services, and elite experiences." image="https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-lifestyle-AH2eKQkWWtkQqo8wcxHVw2.webp" cta={{ label: "Apply Now", href: "/card-concierge" }} />
+      <PageHero badge="Billionaire Card" title="The World's Most" titleAccent="Exclusive Card" subtitle="The Billionaire Card is not merely a payment instrument — it is a passport to a world of extraordinary privileges, bespoke services, and elite experiences." image="https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-lifestyle-AH2eKQkWWtkQqo8wcxHVw2.webp" cta={{ label: "Apply Now", href: "#apply" }} />
       <section style={{ padding: "8rem 0" }}>
         <div className="container">
           <FadeUp>
