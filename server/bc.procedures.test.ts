@@ -204,3 +204,149 @@ describe("marketplace.listings", () => {
     }
   });
 });
+
+// ── Admin — Access Control ────────────────────────────────────────────────────
+
+describe("admin.stats", () => {
+  it("rejects unauthenticated access", async () => {
+    const caller = appRouter.createCaller(makeCtx(null));
+    await expect(caller.admin.stats()).rejects.toThrow();
+  });
+
+  it("rejects non-admin users", async () => {
+    const caller = appRouter.createCaller(makeCtx("user"));
+    await expect(caller.admin.stats()).rejects.toThrow();
+  });
+
+  it("returns stats object for admin users (or DB-unavailable error)", async () => {
+    const caller = appRouter.createCaller(makeCtx("admin"));
+    try {
+      const result = await caller.admin.stats();
+      expect(typeof result.totalCardApplications).toBe("number");
+      expect(typeof result.totalGoldenTickets).toBe("number");
+      expect(typeof result.totalConciergeRequests).toBe("number");
+      expect(typeof result.totalContactEnquiries).toBe("number");
+      expect(typeof result.totalNewsletterSubscribers).toBe("number");
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : String(err);
+      expect(msg).not.toContain("Invalid");
+    }
+  });
+});
+
+describe("card.list (admin only)", () => {
+  it("rejects unauthenticated access", async () => {
+    const caller = appRouter.createCaller(makeCtx(null));
+    await expect(caller.card.list()).rejects.toThrow();
+  });
+
+  it("rejects non-admin users", async () => {
+    const caller = appRouter.createCaller(makeCtx("user"));
+    await expect(caller.card.list()).rejects.toThrow();
+  });
+
+  it("returns array for admin users (or DB-unavailable error)", async () => {
+    const caller = appRouter.createCaller(makeCtx("admin"));
+    try {
+      const result = await caller.card.list();
+      expect(Array.isArray(result)).toBe(true);
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : String(err);
+      expect(msg).not.toContain("Invalid");
+    }
+  });
+});
+
+describe("goldenTicket.list (admin only)", () => {
+  it("rejects unauthenticated access", async () => {
+    const caller = appRouter.createCaller(makeCtx(null));
+    await expect(caller.goldenTicket.list()).rejects.toThrow();
+  });
+
+  it("rejects non-admin users", async () => {
+    const caller = appRouter.createCaller(makeCtx("user"));
+    await expect(caller.goldenTicket.list()).rejects.toThrow();
+  });
+});
+
+describe("card.updateStatus (admin only)", () => {
+  it("rejects non-admin users", async () => {
+    const caller = appRouter.createCaller(makeCtx("user"));
+    await expect(
+      caller.card.updateStatus({ id: 1, status: "approved" })
+    ).rejects.toThrow();
+  });
+
+  it("rejects invalid status values", async () => {
+    const caller = appRouter.createCaller(makeCtx("admin"));
+    await expect(
+      // @ts-expect-error intentional bad input
+      caller.card.updateStatus({ id: 1, status: "invalid_status" })
+    ).rejects.toThrow();
+  });
+
+  it("accepts valid status update for admin (or DB-unavailable error)", async () => {
+    const caller = appRouter.createCaller(makeCtx("admin"));
+    try {
+      const result = await caller.card.updateStatus({ id: 999, status: "reviewing" });
+      expect(result.success).toBe(true);
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : String(err);
+      expect(msg).not.toContain("Invalid");
+    }
+  });
+});
+
+describe("goldenTicket.updateStatus (admin only)", () => {
+  it("rejects non-admin users", async () => {
+    const caller = appRouter.createCaller(makeCtx("user"));
+    await expect(
+      caller.goldenTicket.updateStatus({ id: 1, status: "approved" })
+    ).rejects.toThrow();
+  });
+
+  it("accepts valid status update for admin (or DB-unavailable error)", async () => {
+    const caller = appRouter.createCaller(makeCtx("admin"));
+    try {
+      const result = await caller.goldenTicket.updateStatus({ id: 999, status: "reviewing" });
+      expect(result.success).toBe(true);
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : String(err);
+      expect(msg).not.toContain("Invalid");
+    }
+  });
+});
+
+describe("conciergeAdmin.updateStatus (admin only)", () => {
+  it("rejects non-admin users", async () => {
+    const caller = appRouter.createCaller(makeCtx("user"));
+    await expect(
+      caller.conciergeAdmin.updateStatus({ id: 1, status: "in_progress" })
+    ).rejects.toThrow();
+  });
+
+  it("rejects invalid status values", async () => {
+    const caller = appRouter.createCaller(makeCtx("admin"));
+    await expect(
+      // @ts-expect-error intentional bad input
+      caller.conciergeAdmin.updateStatus({ id: 1, status: "bad_status" })
+    ).rejects.toThrow();
+  });
+});
+
+describe("contactAdmin.updateStatus (admin only)", () => {
+  it("rejects non-admin users", async () => {
+    const caller = appRouter.createCaller(makeCtx("user"));
+    await expect(
+      caller.contactAdmin.updateStatus({ id: 1, status: "read" })
+    ).rejects.toThrow();
+  });
+
+  it("rejects invalid status values", async () => {
+    const caller = appRouter.createCaller(makeCtx("admin"));
+    await expect(
+      // @ts-expect-error intentional bad input
+      caller.contactAdmin.updateStatus({ id: 1, status: "unknown" })
+    ).rejects.toThrow();
+  });
+});

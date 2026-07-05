@@ -16,8 +16,14 @@ import {
   getCardApplications,
   getContactEnquiries,
   getGoldenTicketApplications,
+  getAdminStats,
+  updateCardApplicationStatus,
+  updateGoldenTicketStatus,
+  updateConciergeStatus,
+  updateContactStatus,
 } from "./db";
 import { TRPCError } from "@trpc/server";
+import { notifyOwner } from "./_core/notification";
 
 const adminProcedure = protectedProcedure.use(({ ctx, next }) => {
   if (ctx.user.role !== "admin") {
@@ -81,9 +87,24 @@ export const appRouter = router({
       }))
       .mutation(async ({ input }) => {
         await createCardApplication(input);
+        // Notify owner
+        notifyOwner({
+          title: `New Billionaire Card Application — ${input.firstName} ${input.lastName}`,
+          content: `**Name:** ${input.firstName} ${input.lastName}\n**Email:** ${input.email}\n**Phone:** ${input.phone ?? "—"}\n**Country:** ${input.country ?? "—"}\n**Occupation:** ${input.occupation ?? "—"}\n**Net Worth:** ${input.netWorth ?? "—"}\n**Card Tier:** ${input.cardTier}\n**Referral Code:** ${input.referralCode ?? "—"}`,
+        }).catch(() => {/* non-blocking */});
         return { success: true };
       }),
     list: adminProcedure.query(async () => getCardApplications()),
+    updateStatus: adminProcedure
+      .input(z.object({
+        id: z.number(),
+        status: z.enum(["pending", "reviewing", "approved", "rejected"]),
+        notes: z.string().optional(),
+      }))
+      .mutation(async ({ input }) => {
+        await updateCardApplicationStatus(input.id, input.status, input.notes);
+        return { success: true };
+      }),
   }),
 
   contact: router({
@@ -122,9 +143,53 @@ export const appRouter = router({
       }))
       .mutation(async ({ input }) => {
         await createGoldenTicketApplication(input);
+        // Notify owner
+        notifyOwner({
+          title: `New Golden Ticket Application — ${input.name}`,
+          content: `**Name:** ${input.name}\n**Email:** ${input.email}\n**Phone:** ${input.phone ?? "—"}\n**Country:** ${input.country ?? "—"}\n**Referred By:** ${input.referredBy ?? "—"}\n**Message:** ${input.message ?? "—"}`,
+        }).catch(() => {/* non-blocking */});
         return { success: true };
       }),
     list: adminProcedure.query(async () => getGoldenTicketApplications()),
+    updateStatus: adminProcedure
+      .input(z.object({
+        id: z.number(),
+        status: z.enum(["pending", "reviewing", "approved", "rejected"]),
+        notes: z.string().optional(),
+      }))
+      .mutation(async ({ input }) => {
+        await updateGoldenTicketStatus(input.id, input.status, input.notes);
+        return { success: true };
+      }),
+  }),
+
+  conciergeAdmin: router({
+    updateStatus: adminProcedure
+      .input(z.object({
+        id: z.number(),
+        status: z.enum(["pending", "in_progress", "completed", "cancelled"]),
+        notes: z.string().optional(),
+      }))
+      .mutation(async ({ input }) => {
+        await updateConciergeStatus(input.id, input.status, input.notes);
+        return { success: true };
+      }),
+  }),
+
+  contactAdmin: router({
+    updateStatus: adminProcedure
+      .input(z.object({
+        id: z.number(),
+        status: z.enum(["new", "read", "replied", "archived"]),
+      }))
+      .mutation(async ({ input }) => {
+        await updateContactStatus(input.id, input.status);
+        return { success: true };
+      }),
+  }),
+
+  admin: router({
+    stats: adminProcedure.query(async () => getAdminStats()),
   }),
 });
 

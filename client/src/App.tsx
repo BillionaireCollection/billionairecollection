@@ -44,6 +44,7 @@ import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import About from "./pages/About";
 import GoldenTicket from "./pages/GoldenTicket";
+import Admin from "./pages/Admin";
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -61,40 +62,47 @@ function Layout({ children }: { children: React.ReactNode }) {
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
-    <Layout>
-      <Switch>
-        <Route path="/" component={Home} />
-        <Route path="/estates" component={Estates} />
-        <Route path="/boat" component={Boat} />
-        <Route path="/air" component={Air} />
-        <Route path="/car" component={Car} />
-        <Route path="/art" component={Art} />
-        <Route path="/crypto" component={Crypto} />
-        <Route path="/media" component={Media} />
-        <Route path="/television" component={Television} />
-        <Route path="/magazine" component={Magazine} />
-        <Route path="/radio" component={Radio} />
-        <Route path="/technology" component={Technology} />
-        <Route path="/services" component={Services} />
-        <Route path="/funding" component={Funding} />
-        <Route path="/golf" component={Golf} />
-        <Route path="/travel" component={Travel} />
-        <Route path="/card" component={Card} />
-        <Route path="/card-concierge" component={CardConcierge} />
-        <Route path="/champagne" component={Champagne} />
-        <Route path="/vodka" component={Vodka} />
-        <Route path="/cigar" component={Cigar} />
-        <Route path="/oud" component={Oud} />
-        <Route path="/marketplace" component={Marketplace} />
-        <Route path="/news" component={News} />
-        <Route path="/privacy" component={Privacy} />
-        <Route path="/terms" component={Terms} />
-        <Route path="/contact" component={Contact} />
-        <Route path="/about" component={About} />
-        <Route path="/golden-ticket" component={GoldenTicket} />
-        <Route component={NotFound} />
-      </Switch>
-    </Layout>
+    <Switch>
+      {/* Admin dashboard — outside public Layout (no Navbar/Footer) */}
+      <Route path="/admin" component={Admin} />
+      <Route>
+        {/* All public pages wrapped in the luxury Layout */}
+        <Layout>
+          <Switch>
+            <Route path="/" component={Home} />
+            <Route path="/estates" component={Estates} />
+            <Route path="/boat" component={Boat} />
+            <Route path="/air" component={Air} />
+            <Route path="/car" component={Car} />
+            <Route path="/art" component={Art} />
+            <Route path="/crypto" component={Crypto} />
+            <Route path="/media" component={Media} />
+            <Route path="/television" component={Television} />
+            <Route path="/magazine" component={Magazine} />
+            <Route path="/radio" component={Radio} />
+            <Route path="/technology" component={Technology} />
+            <Route path="/services" component={Services} />
+            <Route path="/funding" component={Funding} />
+            <Route path="/golf" component={Golf} />
+            <Route path="/travel" component={Travel} />
+            <Route path="/card" component={Card} />
+            <Route path="/card-concierge" component={CardConcierge} />
+            <Route path="/champagne" component={Champagne} />
+            <Route path="/vodka" component={Vodka} />
+            <Route path="/cigar" component={Cigar} />
+            <Route path="/oud" component={Oud} />
+            <Route path="/marketplace" component={Marketplace} />
+            <Route path="/news" component={News} />
+            <Route path="/privacy" component={Privacy} />
+            <Route path="/terms" component={Terms} />
+            <Route path="/contact" component={Contact} />
+            <Route path="/about" component={About} />
+            <Route path="/golden-ticket" component={GoldenTicket} />
+            <Route component={NotFound} />
+          </Switch>
+        </Layout>
+      </Route>
+    </Switch>
   );
 }
 

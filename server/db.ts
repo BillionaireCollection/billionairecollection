@@ -1,4 +1,4 @@
-import { eq, desc, and } from "drizzle-orm";
+import { eq, desc, and, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import {
   InsertUser,
@@ -201,4 +201,102 @@ export async function getGoldenTicketApplications() {
   const db = await getDb();
   if (!db) return [];
   return db.select().from(goldenTicketApplications).orderBy(desc(goldenTicketApplications.createdAt));
+}
+
+// ─── Admin Stats ──────────────────────────────────────────────────────────────
+export async function getAdminStats() {
+  const db = await getDb();
+  if (!db) return {
+    totalCardApplications: 0,
+    pendingCardApplications: 0,
+    totalGoldenTickets: 0,
+    pendingGoldenTickets: 0,
+    totalConciergeRequests: 0,
+    pendingConciergeRequests: 0,
+    totalContactEnquiries: 0,
+    newContactEnquiries: 0,
+    totalNewsletterSubscribers: 0,
+  };
+
+  const [
+    cardTotal,
+    cardPending,
+    gtTotal,
+    gtPending,
+    conciergeTotal,
+    conciergePending,
+    contactTotal,
+    contactNew,
+    newsletterTotal,
+  ] = await Promise.all([
+    db.select({ count: sql<number>`count(*)` }).from(cardApplications),
+    db.select({ count: sql<number>`count(*)` }).from(cardApplications).where(eq(cardApplications.status, "pending")),
+    db.select({ count: sql<number>`count(*)` }).from(goldenTicketApplications),
+    db.select({ count: sql<number>`count(*)` }).from(goldenTicketApplications).where(eq(goldenTicketApplications.status, "pending")),
+    db.select({ count: sql<number>`count(*)` }).from(conciergeRequests),
+    db.select({ count: sql<number>`count(*)` }).from(conciergeRequests).where(eq(conciergeRequests.status, "pending")),
+    db.select({ count: sql<number>`count(*)` }).from(contactEnquiries),
+    db.select({ count: sql<number>`count(*)` }).from(contactEnquiries).where(eq(contactEnquiries.status, "new")),
+    db.select({ count: sql<number>`count(*)` }).from(newsletterSubscribers).where(eq(newsletterSubscribers.isActive, true)),
+  ]);
+
+  return {
+    totalCardApplications: Number(cardTotal[0]?.count ?? 0),
+    pendingCardApplications: Number(cardPending[0]?.count ?? 0),
+    totalGoldenTickets: Number(gtTotal[0]?.count ?? 0),
+    pendingGoldenTickets: Number(gtPending[0]?.count ?? 0),
+    totalConciergeRequests: Number(conciergeTotal[0]?.count ?? 0),
+    pendingConciergeRequests: Number(conciergePending[0]?.count ?? 0),
+    totalContactEnquiries: Number(contactTotal[0]?.count ?? 0),
+    newContactEnquiries: Number(contactNew[0]?.count ?? 0),
+    totalNewsletterSubscribers: Number(newsletterTotal[0]?.count ?? 0),
+  };
+}
+
+// ─── Status Updates ───────────────────────────────────────────────────────────
+export async function updateCardApplicationStatus(
+  id: number,
+  status: "pending" | "reviewing" | "approved" | "rejected",
+  notes?: string
+) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db.update(cardApplications)
+    .set({ status, ...(notes !== undefined ? { notes } : {}) })
+    .where(eq(cardApplications.id, id));
+}
+
+export async function updateGoldenTicketStatus(
+  id: number,
+  status: "pending" | "reviewing" | "approved" | "rejected",
+  notes?: string
+) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db.update(goldenTicketApplications)
+    .set({ status, ...(notes !== undefined ? { notes: notes as string } : {}) })
+    .where(eq(goldenTicketApplications.id, id));
+}
+
+export async function updateConciergeStatus(
+  id: number,
+  status: "pending" | "in_progress" | "completed" | "cancelled",
+  notes?: string
+) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db.update(conciergeRequests)
+    .set({ status, ...(notes !== undefined ? { notes } : {}) })
+    .where(eq(conciergeRequests.id, id));
+}
+
+export async function updateContactStatus(
+  id: number,
+  status: "new" | "read" | "replied" | "archived"
+) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db.update(contactEnquiries)
+    .set({ status })
+    .where(eq(contactEnquiries.id, id));
 }
