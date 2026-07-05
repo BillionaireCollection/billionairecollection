@@ -7,7 +7,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { Link } from "wouter";
-import FlowerOfLife from "@/components/FlowerOfLife";
+import SphereAnimation from "@/components/SphereAnimation";
 import { useSEO } from "@/hooks/useSEO";
 
 const GOLD = "#C9A84C";
@@ -172,7 +172,7 @@ export default function Home() {
             zIndex: 0,
           }} />
           <div style={{ position: "relative", zIndex: 1 }}>
-            <FlowerOfLife size={520} />
+            <SphereAnimation />
           </div>
         </motion.div>
 

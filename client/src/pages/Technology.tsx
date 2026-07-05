@@ -7,7 +7,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
-import FlowerOfLife from "@/components/FlowerOfLife";
+import SphereAnimation from "@/components/SphereAnimation";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -60,7 +60,7 @@ export default function Technology() {
       <section style={{ position: "relative", padding: "8rem 0", overflow: "hidden" }}>
         {/* Sphere background */}
         <div style={{ position: "absolute", right: "-15%", top: "50%", transform: "translateY(-50%)", width: "700px", height: "700px", opacity: 0.35, pointerEvents: "none" }} className="hidden lg:block">
-          <FlowerOfLife size={600} />
+          <SphereAnimation />
         </div>
         <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at 70% 50%, rgba(201,168,76,0.04) 0%, #000 60%)" }} />
 
