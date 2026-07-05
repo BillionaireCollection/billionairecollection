@@ -61,3 +61,11 @@
 - [x] Add updateContactNotes procedure to server (contact table has no notes column — add to schema + migrate)
 - [x] Add notes field to contactEnquiries schema in drizzle/schema.ts
 - [x] Run pnpm db:push to migrate the notes column for contact_enquiries (also added notes to golden_ticket_applications)
+
+## CSV Export (Admin Dashboard)
+- [x] Add downloadCSV utility function to Admin.tsx (converts array of objects to CSV string and triggers browser download)
+- [x] Add Download CSV button to Card Applications tab header
+- [x] Add Download CSV button to Golden Ticket tab header
+- [x] Add Download CSV button to Concierge Requests tab header
+- [x] Add Download CSV button to Contact Enquiries tab header
+- [x] Add Download CSV button to Newsletter Subscribers tab header

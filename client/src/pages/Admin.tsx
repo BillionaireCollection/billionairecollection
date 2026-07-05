@@ -340,6 +340,8 @@ export default function Admin() {
             loading={cardApps.isLoading}
             data={cardApps.data ?? []}
             columns={["Name", "Email", "Phone", "Country", "Occupation", "Net Worth", "Tier", "Referral", "Status", "Notes", "Date", "Actions"]}
+            csvFilename="card-applications.csv"
+            csvFields={CARD_CSV_FIELDS}
             renderRow={(row: any) => (
               <tr key={row.id} style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
                 <Td>{row.firstName} {row.lastName}</Td>
@@ -379,6 +381,8 @@ export default function Admin() {
             loading={goldenApps.isLoading}
             data={goldenApps.data ?? []}
             columns={["Name", "Email", "Phone", "Country", "Referred By", "Message", "Status", "Notes", "Date", "Actions"]}
+            csvFilename="golden-ticket-applications.csv"
+            csvFields={GOLDEN_CSV_FIELDS}
             renderRow={(row: any) => (
               <tr key={row.id} style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
                 <Td>{row.name}</Td>
@@ -416,6 +420,8 @@ export default function Admin() {
             loading={conciergeReqs.isLoading}
             data={conciergeReqs.data ?? []}
             columns={["Name", "Email", "Phone", "Request Type", "Budget", "Preferred Date", "Description", "Status", "Notes", "Date", "Actions"]}
+            csvFilename="concierge-requests.csv"
+            csvFields={CONCIERGE_CSV_FIELDS}
             renderRow={(row: any) => (
               <tr key={row.id} style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
                 <Td>{row.name}</Td>
@@ -454,6 +460,8 @@ export default function Admin() {
             loading={contactEnqs.isLoading}
             data={contactEnqs.data ?? []}
             columns={["Name", "Email", "Phone", "Subject", "Division", "Message", "Status", "Notes", "Date", "Actions"]}
+            csvFilename="contact-enquiries.csv"
+            csvFields={CONTACT_CSV_FIELDS}
             renderRow={(row: any) => (
               <tr key={row.id} style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
                 <Td>{row.name}</Td>
@@ -491,6 +499,8 @@ export default function Admin() {
             loading={newsletterSubs.isLoading}
             data={newsletterSubs.data ?? []}
             columns={["Email", "Name", "Source", "Active", "Date"]}
+            csvFilename="newsletter-subscribers.csv"
+            csvFields={NEWSLETTER_CSV_FIELDS}
             renderRow={(row: any) => (
               <tr key={row.id} style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
                 <Td>{row.email}</Td>
@@ -568,16 +578,108 @@ function StatusSelect({ current, options, onChange }: { current: string; options
   );
 }
 
+// ─── CSV Export Utility ──────────────────────────────────────────────────────
+
+function downloadCSV(filename: string, rows: any[], fields: { key: string; label: string }[]) {
+  if (!rows.length) return;
+  const escape = (v: unknown) => {
+    const s = v == null ? "" : String(v).replace(/\r?\n/g, " ");
+    return s.includes(",") || s.includes('"') || s.includes("\n") ? `"${s.replace(/"/g, '""')}"` : s;
+  };
+  const header = fields.map(f => escape(f.label)).join(",");
+  const body = rows.map(row =>
+    fields.map(f => escape(row[f.key])).join(",")
+  ).join("\n");
+  const blob = new Blob([`${header}\n${body}`], { type: "text/csv;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// ─── CSV field maps per submission type ──────────────────────────────────────
+
+const CARD_CSV_FIELDS = [
+  { key: "id", label: "ID" },
+  { key: "firstName", label: "First Name" },
+  { key: "lastName", label: "Last Name" },
+  { key: "email", label: "Email" },
+  { key: "phone", label: "Phone" },
+  { key: "country", label: "Country" },
+  { key: "occupation", label: "Occupation" },
+  { key: "netWorth", label: "Net Worth" },
+  { key: "cardTier", label: "Card Tier" },
+  { key: "referralCode", label: "Referral Code" },
+  { key: "status", label: "Status" },
+  { key: "notes", label: "Notes" },
+  { key: "createdAt", label: "Date" },
+];
+
+const GOLDEN_CSV_FIELDS = [
+  { key: "id", label: "ID" },
+  { key: "name", label: "Name" },
+  { key: "email", label: "Email" },
+  { key: "phone", label: "Phone" },
+  { key: "country", label: "Country" },
+  { key: "referredBy", label: "Referred By" },
+  { key: "message", label: "Message" },
+  { key: "status", label: "Status" },
+  { key: "notes", label: "Notes" },
+  { key: "createdAt", label: "Date" },
+];
+
+const CONCIERGE_CSV_FIELDS = [
+  { key: "id", label: "ID" },
+  { key: "name", label: "Name" },
+  { key: "email", label: "Email" },
+  { key: "phone", label: "Phone" },
+  { key: "requestType", label: "Request Type" },
+  { key: "budget", label: "Budget" },
+  { key: "preferredDate", label: "Preferred Date" },
+  { key: "description", label: "Description" },
+  { key: "status", label: "Status" },
+  { key: "notes", label: "Notes" },
+  { key: "createdAt", label: "Date" },
+];
+
+const CONTACT_CSV_FIELDS = [
+  { key: "id", label: "ID" },
+  { key: "name", label: "Name" },
+  { key: "email", label: "Email" },
+  { key: "phone", label: "Phone" },
+  { key: "subject", label: "Subject" },
+  { key: "division", label: "Division" },
+  { key: "message", label: "Message" },
+  { key: "status", label: "Status" },
+  { key: "notes", label: "Notes" },
+  { key: "createdAt", label: "Date" },
+];
+
+const NEWSLETTER_CSV_FIELDS = [
+  { key: "id", label: "ID" },
+  { key: "email", label: "Email" },
+  { key: "name", label: "Name" },
+  { key: "source", label: "Source" },
+  { key: "isActive", label: "Active" },
+  { key: "createdAt", label: "Date" },
+];
+
 function SubmissionsTable({
   loading,
   data,
   columns,
   renderRow,
+  csvFilename,
+  csvFields,
 }: {
   loading: boolean;
   data: any[];
   columns: string[];
   renderRow: (row: any) => React.ReactNode;
+  csvFilename: string;
+  csvFields: { key: string; label: string }[];
 }) {
   if (loading) {
     return (
@@ -621,8 +723,39 @@ function SubmissionsTable({
           {data.map(renderRow)}
         </tbody>
       </table>
-      <div style={{ padding: "0.75rem 1rem", fontSize: "0.75rem", color: "rgba(255,255,255,0.25)", fontFamily: "'Raleway', sans-serif", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
-        {data.length} record{data.length !== 1 ? "s" : ""}
+      <div style={{ padding: "0.75rem 1rem", display: "flex", alignItems: "center", justifyContent: "space-between", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+        <span style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.25)", fontFamily: "'Raleway', sans-serif" }}>
+          {data.length} record{data.length !== 1 ? "s" : ""}
+        </span>
+        <button
+          onClick={() => downloadCSV(csvFilename, data, csvFields)}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "6px",
+            padding: "6px 14px",
+            background: "rgba(201,168,76,0.1)",
+            border: "1px solid rgba(201,168,76,0.35)",
+            borderRadius: "6px",
+            color: "#C9A84C",
+            fontFamily: "'Raleway', sans-serif",
+            fontSize: "0.75rem",
+            fontWeight: 600,
+            letterSpacing: "0.08em",
+            textTransform: "uppercase",
+            cursor: "pointer",
+            transition: "background 0.15s, border-color 0.15s",
+          }}
+          onMouseEnter={e => (e.currentTarget.style.background = "rgba(201,168,76,0.2)")}
+          onMouseLeave={e => (e.currentTarget.style.background = "rgba(201,168,76,0.1)")}
+        >
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+          Download CSV
+        </button>
       </div>
     </div>
   );
