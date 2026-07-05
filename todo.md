@@ -80,8 +80,8 @@
 - [x] SEO: Update useSEO hook to support keywords prop rendering <meta name="keywords">
 - [x] SEO: Optimise title (30-60 chars), meta description (50-160 chars), add keywords on all pages
 - [x] Header: Ensure brand name "BILLIONAIRE COLLECTION" visible on ALL screen sizes including mobile (already correct — no hidden classes used)
-- [ ] Images: Audit product card images to use object-fit: contain not cover
+- [x] Images: Product card images updated to object-fit: contain (Home.tsx PRODUCTS section); Marketplace uses cover as images are full-bleed lifestyle/property photos
 - [x] Admin: Enhance admin dashboard with user/subscriber list (roles, join dates, last sign-in)
-- [ ] Admin: Add revenue/stats overview section to admin dashboard
+- [x] Admin: Revenue/stats overview section added to admin dashboard with proper empty state, 3 KPI cards (Total Revenue, Orders, Avg. Order Value), and Stripe connect CTA
 - [x] X-Offer page: Create /x-offer landing page with 48-hour countdown timer, promo code display, and struck-through original price
 - [x] X-Offer page: Timer must persist across page refreshes using localStorage

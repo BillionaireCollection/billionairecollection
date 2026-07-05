@@ -304,6 +304,43 @@ export default function Admin() {
           </div>
         )}
 
+        {/* Revenue Overview — shows empty state until Stripe is connected */}
+        <div style={{ marginBottom: "2.5rem", border: "1px solid rgba(201,168,76,0.15)", borderRadius: "12px", overflow: "hidden" }}>
+          <div style={{ padding: "1.25rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.06)", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+            <div>
+              <div style={{ fontFamily: FONT_HEADING, fontSize: "1.1rem", color: "#fff", fontWeight: 400 }}>Revenue Overview</div>
+              <div style={{ fontFamily: FONT_UI, fontSize: "0.75rem", color: "rgba(255,255,255,0.35)", marginTop: "2px", letterSpacing: "0.08em", textTransform: "uppercase" }}>30-day summary</div>
+            </div>
+            <div style={{ display: "flex", gap: "2rem" }}>
+              {[
+                { label: "Total Revenue", value: "—", note: "Stripe not connected" },
+                { label: "Orders (30d)", value: "—", note: "Stripe not connected" },
+                { label: "Avg. Order Value", value: "—", note: "Stripe not connected" },
+              ].map(s => (
+                <div key={s.label} style={{ textAlign: "right" }}>
+                  <div style={{ fontFamily: FONT_HEADING, fontSize: "1.6rem", color: GOLD, fontWeight: 400 }}>{s.value}</div>
+                  <div style={{ fontFamily: FONT_UI, fontSize: "0.7rem", color: "rgba(255,255,255,0.35)", textTransform: "uppercase", letterSpacing: "0.08em" }}>{s.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div style={{ padding: "3rem 1.5rem", textAlign: "center", background: "rgba(255,255,255,0.01)" }}>
+            <div style={{ fontSize: "2rem", marginBottom: "0.75rem", opacity: 0.3 }}>📊</div>
+            <div style={{ fontFamily: FONT_HEADING, fontSize: "1rem", color: "rgba(255,255,255,0.5)", marginBottom: "0.5rem" }}>Revenue charts will appear here once Stripe is connected</div>
+            <div style={{ fontFamily: FONT_UI, fontSize: "0.8rem", color: "rgba(255,255,255,0.25)", maxWidth: "420px", margin: "0 auto 1.25rem", lineHeight: 1.6 }}>
+              Connect Stripe in <strong style={{ color: "rgba(255,255,255,0.4)" }}>Management UI → Settings → Integrations → Stripe</strong> to unlock the 30-day area chart, daily orders bar chart, and average order value tracking.
+            </div>
+            <a
+              href="https://help.manus.im"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ display: "inline-block", padding: "0.5rem 1.5rem", border: `1px solid ${GOLD}44`, color: GOLD, fontFamily: FONT_UI, fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.1em", textDecoration: "none", borderRadius: "4px" }}
+            >
+              Connect Stripe →
+            </a>
+          </div>
+        </div>
+
         {/* Tabs */}
         <div style={{ display: "flex", gap: "0", borderBottom: "1px solid rgba(255,255,255,0.08)", marginBottom: "2rem", overflowX: "auto" }}>
           {tabs.map(tab => (

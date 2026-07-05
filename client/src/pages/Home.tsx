@@ -354,7 +354,7 @@ export default function Home() {
                 <Link href={p.href}>
                   <div style={{ background: "#000", cursor: "pointer", overflow: "hidden" }}>
                     <div style={{ position: "relative", overflow: "hidden", aspectRatio: "3/4" }}>
-                      <img src={p.img} alt={p.label} style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.5s ease" }}
+                      <img src={p.img} alt={p.label} style={{ width: "100%", height: "100%", objectFit: "contain", transition: "transform 0.5s ease", background: "#0a0a0a" }}
                         onMouseEnter={(e) => { (e.target as HTMLElement).style.transform = "scale(1.05)"; }}
                         onMouseLeave={(e) => { (e.target as HTMLElement).style.transform = "scale(1)"; }}
                       />
