@@ -60,7 +60,7 @@ export default function Media() {
                 <Link href={ch.href}>
                   <div style={{ background: "#000", cursor: "pointer", overflow: "hidden" }}>
                     <div style={{ position: "relative", overflow: "hidden", aspectRatio: "16/9" }}>
-                      <img src={ch.img} alt={ch.label} style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.5s" }}
+                      <img src={ch.img} alt={ch.label} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.5s" }}
                         onMouseEnter={(e) => { (e.target as HTMLElement).style.transform = "scale(1.05)"; }}
                         onMouseLeave={(e) => { (e.target as HTMLElement).style.transform = "scale(1)"; }}
                       />

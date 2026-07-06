@@ -80,7 +80,7 @@ export default function About() {
             </FadeUp>
             <FadeUp delay={0.2}>
               <div style={{ position: "relative" }}>
-                <img src={LIFESTYLE_IMG} alt="Billionaire Collection" style={{ width: "100%", aspectRatio: "3/4", objectFit: "cover" }} />
+                <img src={LIFESTYLE_IMG} alt="Billionaire Collection" loading="lazy" style={{ width: "100%", aspectRatio: "3/4", objectFit: "cover" }} />
                 <div style={{ position: "absolute", inset: 0, border: "1px solid rgba(201,168,76,0.2)", pointerEvents: "none" }} />
                 <div style={{ position: "absolute", top: "-8px", left: "-8px", width: "24px", height: "24px", borderTop: `1px solid ${GOLD}`, borderLeft: `1px solid ${GOLD}` }} />
                 <div style={{ position: "absolute", bottom: "-8px", right: "-8px", width: "24px", height: "24px", borderBottom: `1px solid ${GOLD}`, borderRight: `1px solid ${GOLD}` }} />
@@ -108,6 +108,7 @@ export default function About() {
                 <img
                   src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80"
                   alt="Lawrence Colbert — Founder & CEO"
+                  loading="lazy"
                   style={{ width: "100%", aspectRatio: "3/4", objectFit: "cover", objectPosition: "top" }}
                 />
                 <div style={{ position: "absolute", inset: 0, border: "1px solid rgba(201,168,76,0.2)", pointerEvents: "none" }} />

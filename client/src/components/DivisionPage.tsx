@@ -122,7 +122,7 @@ export default function DivisionPage({
                     onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = "#000"; }}
                   >
                     <div style={{ position: "relative", overflow: "hidden", aspectRatio: "16/10" }}>
-                      <img src={item.img} alt={item.title} style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.5s ease" }}
+                      <img src={item.img} alt={item.title} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.5s ease" }}
                         onMouseEnter={(e) => { (e.target as HTMLElement).style.transform = "scale(1.05)"; }}
                         onMouseLeave={(e) => { (e.target as HTMLElement).style.transform = "scale(1)"; }}
                       />

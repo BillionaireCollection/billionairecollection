@@ -8,6 +8,7 @@ import { useRef, useState } from "react";
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
 import { useSEO } from "@/hooks/useSEO";
+import { toast } from "sonner";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -122,7 +123,7 @@ export default function Marketplace() {
                     onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = "#000"; }}
                   >
                     <div style={{ position: "relative", overflow: "hidden", aspectRatio: "16/10" }}>
-                      <img src={item.img} alt={item.title} style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.5s ease" }}
+                      <img src={item.img} alt={item.title} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.5s ease" }}
                         onMouseEnter={(e) => { (e.target as HTMLElement).style.transform = "scale(1.05)"; }}
                         onMouseLeave={(e) => { (e.target as HTMLElement).style.transform = "scale(1)"; }}
                       />
@@ -153,7 +154,7 @@ export default function Marketplace() {
           {/* Load more */}
           <FadeUp delay={0.3}>
             <div style={{ textAlign: "center", marginTop: "3rem" }}>
-              <button className="btn-ghost-gold">Load More Listings</button>
+              <button className="btn-ghost-gold" onClick={() => toast("All listings shown", { description: "You've reached the end of our current listings. Contact our advisors for off-market opportunities." })}>Load More Listings</button>
             </div>
           </FadeUp>
         </div>

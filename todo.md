@@ -85,3 +85,10 @@
 - [x] Admin: Revenue/stats overview section added to admin dashboard with proper empty state, 3 KPI cards (Total Revenue, Orders, Avg. Order Value), and Stripe connect CTA
 - [x] X-Offer page: Create /x-offer landing page with 48-hour countdown timer, promo code display, and struck-through original price
 - [x] X-Offer page: Timer must persist across page refreshes using localStorage
+
+## Grok Fixes (Issue 1–3)
+
+- [ ] Issue 1: Audit and fix all 404 archive links in magazine/media/news sections
+- [ ] Issue 2: Add lazy loading, responsive sizes, and loading="lazy" to all images site-wide
+- [ ] Issue 3: Audit all "Learn More" buttons — wire to useful destinations or remove if decorative
+- [ ] Full site check after all three fixes with screenshots

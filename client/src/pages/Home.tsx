@@ -230,7 +230,7 @@ export default function Home() {
             </FadeUp>
             <FadeUp delay={0.2}>
               <div style={{ position: "relative" }}>
-                <img src={LIFESTYLE_IMG} alt="Billionaire Collection lifestyle" style={{ width: "100%", aspectRatio: "4/3", objectFit: "cover" }} />
+                <img src={LIFESTYLE_IMG} alt="Billionaire Collection lifestyle" loading="lazy" style={{ width: "100%", aspectRatio: "4/3", objectFit: "cover" }} />
                 <div style={{ position: "absolute", inset: 0, border: `1px solid rgba(201,168,76,0.2)`, pointerEvents: "none" }} />
                 {/* Corner brackets */}
                 <div style={{ position: "absolute", top: "-8px", left: "-8px", width: "24px", height: "24px", borderTop: `1px solid ${GOLD}`, borderLeft: `1px solid ${GOLD}` }} />
@@ -354,7 +354,7 @@ export default function Home() {
                 <Link href={p.href}>
                   <div style={{ background: "#000", cursor: "pointer", overflow: "hidden" }}>
                     <div style={{ position: "relative", overflow: "hidden", aspectRatio: "3/4" }}>
-                      <img src={p.img} alt={p.label} style={{ width: "100%", height: "100%", objectFit: "contain", transition: "transform 0.5s ease", background: "#0a0a0a" }}
+                      <img src={p.img} alt={p.label} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "contain", transition: "transform 0.5s ease", background: "#0a0a0a" }}
                         onMouseEnter={(e) => { (e.target as HTMLElement).style.transform = "scale(1.05)"; }}
                         onMouseLeave={(e) => { (e.target as HTMLElement).style.transform = "scale(1)"; }}
                       />
