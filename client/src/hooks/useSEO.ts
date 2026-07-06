@@ -14,7 +14,7 @@ interface SEOProps {
   url?: string;
 }
 
-const DEFAULT_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-main-QJbNmDnsM8Jru6dBDixZQ8.webp";
+const DEFAULT_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-og-preview-M7pD3ZebBXDoyAR52uFPiQ.png";
 const BASE_TITLE = "Billionaire Collection";
 
 function setMeta(name: string, content: string, attr: "name" | "property" = "name") {
