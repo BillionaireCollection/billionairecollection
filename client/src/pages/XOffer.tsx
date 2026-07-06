@@ -14,8 +14,8 @@ const FONT_HEADING = "'Playfair Display', Georgia, serif";
 const FONT_UI = "'Raleway', sans-serif";
 
 const PROMO_CODE = "XFOLLOW20";
-const ORIGINAL_PRICE = "£2,500";
-const DISCOUNTED_PRICE = "£2,000";
+const ORIGINAL_PRICE = "$3,200";
+const DISCOUNTED_PRICE = "$2,500";
 const DISCOUNT_LABEL = "20% OFF — Exclusive X Follower Offer";
 const OFFER_DURATION_MS = 48 * 60 * 60 * 1000; // 48 hours
 

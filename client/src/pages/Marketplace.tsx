@@ -30,17 +30,17 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 const CATEGORIES = ["All", "Properties", "Vehicles", "Yachts", "Aviation", "Art"];
 
 const ALL_LISTINGS = [
-  { cat: "Properties", title: "Mayfair Grand Penthouse", loc: "London, United Kingdom", price: "£45,000,000", img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80", tag: "Off-Market", href: "/estates" },
-  { cat: "Yachts", title: "M/Y Aurora — 82m Lürssen", loc: "Mediterranean", price: "€95,000,000", img: YACHT_IMG, tag: "For Sale", href: "/boat" },
+  { cat: "Properties", title: "Mayfair Grand Penthouse", loc: "London, United Kingdom", price: "$57,000,000", img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80", tag: "Off-Market", href: "/estates" },
+  { cat: "Yachts", title: "M/Y Aurora — 82m Lürssen", loc: "Mediterranean", price: "$105,000,000", img: YACHT_IMG, tag: "For Sale", href: "/boat" },
   { cat: "Aviation", title: "Gulfstream G800", loc: "Ultra-Long Range", price: "POA", img: AIR_IMG, tag: "For Sale", href: "/air" },
-  { cat: "Properties", title: "Monaco Clifftop Villa", loc: "Monaco, Monte Carlo", price: "€85,000,000", img: ESTATES_IMG, tag: "Exclusive", href: "/estates" },
+  { cat: "Properties", title: "Monaco Clifftop Villa", loc: "Monaco, Monte Carlo", price: "$93,500,000", img: ESTATES_IMG, tag: "Exclusive", href: "/estates" },
   { cat: "Vehicles", title: "Ferrari LaFerrari Aperta", loc: "1 of 210, Rosso Corsa", price: "POA", img: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&q=80", tag: "Rare", href: "/car" },
   { cat: "Properties", title: "Malibu Ocean Estate", loc: "California, USA", price: "$120,000,000", img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80", tag: "New", href: "/estates" },
-  { cat: "Yachts", title: "M/Y Solaris — 65m Benetti", loc: "Caribbean Charter", price: "€450,000/week", img: "https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=800&q=80", tag: "Charter", href: "/boat" },
-  { cat: "Vehicles", title: "Bugatti Chiron Super Sport", loc: "2022, 1,600hp", price: "£3,200,000", img: "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80", tag: "For Sale", href: "/car" },
+  { cat: "Yachts", title: "M/Y Solaris — 65m Benetti", loc: "Caribbean Charter", price: "$490,000/week", img: "https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=800&q=80", tag: "Charter", href: "/boat" },
+  { cat: "Vehicles", title: "Bugatti Chiron Super Sport", loc: "2022, 1,600hp", price: "$4,100,000", img: "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80", tag: "For Sale", href: "/car" },
   { cat: "Art", title: "Jean-Michel Basquiat", loc: "Untitled, 1982", price: "POA", img: "https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=800&q=80", tag: "Private Sale", href: "/art" },
   { cat: "Aviation", title: "Bombardier Global 7500", loc: "London to Sydney Non-Stop", price: "POA", img: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=80", tag: "Charter", href: "/air" },
-  { cat: "Properties", title: "Dubai Palm Penthouse", loc: "Palm Jumeirah, Dubai", price: "AED 95,000,000", img: "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800&q=80", tag: "Exclusive", href: "/estates" },
+  { cat: "Properties", title: "Dubai Palm Penthouse", loc: "Palm Jumeirah, Dubai", price: "$25,900,000", img: "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800&q=80", tag: "Exclusive", href: "/estates" },
   { cat: "Vehicles", title: "Rolls-Royce Phantom Bespoke", loc: "Commission Available", price: "POA", img: "https://images.unsplash.com/photo-1563720223185-11003d516935?w=800&q=80", tag: "Commission", href: "/car" },
 ];
 
@@ -100,7 +100,7 @@ export default function Marketplace() {
             <div style={{ display: "flex", gap: "3rem", marginBottom: "3rem", flexWrap: "wrap" }}>
               {[
                 { num: "2,400+", label: "Active Listings" },
-                { num: "£48B+", label: "Total Portfolio Value" },
+                { num: "$60B+", label: "Total Portfolio Value" },
                 { num: "40+", label: "Countries" },
                 { num: "100%", label: "Verified Assets" },
               ].map((stat) => (

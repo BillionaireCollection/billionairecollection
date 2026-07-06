@@ -29,8 +29,8 @@ export default function Estates() {
     { icon: "⚡", title: "Dedicated Advisor", desc: "Personal property consultant" }
 ]}
       listings={[
-    { title: "Mayfair Grand Penthouse", sub: "London, United Kingdom", price: "£45,000,000", img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80", tag: "Off-Market" },
-    { title: "Monaco Clifftop Villa", sub: "Monaco, Monte Carlo", price: "€85,000,000", img: "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800&q=80", tag: "Exclusive" },
+    { title: "Mayfair Grand Penthouse", sub: "London, United Kingdom", price: "$57,000,000", img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80", tag: "Off-Market" },
+    { title: "Monaco Clifftop Villa", sub: "Monaco, Monte Carlo", price: "$93,500,000", img: "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800&q=80", tag: "Exclusive" },
     { title: "Malibu Ocean Estate", sub: "California, USA", price: "$120,000,000", img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80", tag: "New" }
 ]}
       listingsTitle="Featured Properties"
