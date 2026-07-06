@@ -1,11 +1,26 @@
 import DivisionPage from "@/components/DivisionPage";
 import { useSEO } from "@/hooks/useSEO";
+import { useJsonLd } from "@/hooks/useJsonLd";
 
 export default function Boat() {
   useSEO({
-    title: "Superyachts | Billionaire Collection",
-    description: "Charter and acquire bespoke superyachts worldwide through Billionaire Collection's exclusive yacht brokerage. From sailing yachts to motor superyachts, we source the finest vessels.",
-    keywords: "superyacht charter, yacht brokerage, luxury yacht, motor yacht, sailing yacht",
+    title: "Superyacht Brokerage & Charter | Billionaire Boat",
+    description: "Buy, sell, or charter the world's finest superyachts and mega yachts. Billionaire Boat connects discerning owners with bespoke vessels from 30m to 100m+ across every ocean.",
+    keywords: "superyacht brokerage, mega yacht charter, luxury yacht sales, yacht acquisition, private yacht, Lürssen, Feadship, Benetti",
+  });
+  useJsonLd({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Billionaire Boat — Superyacht Brokerage & Charter",
+    "description": "Buy, sell, or charter the world's finest superyachts and mega yachts — Lürssen, Feadship, Benetti, and beyond. Vessels from 30m to 100m+ across every ocean.",
+    "url": "https://billionairecollection.com/boat",
+    "serviceType": "Superyacht Brokerage",
+    "provider": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com"
+    },
+    "areaServed": "Worldwide"
   });
   return (
     <DivisionPage

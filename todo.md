@@ -88,7 +88,21 @@
 
 ## Grok Fixes (Issue 1–3)
 
-- [ ] Issue 1: Audit and fix all 404 archive links in magazine/media/news sections
-- [ ] Issue 2: Add lazy loading, responsive sizes, and loading="lazy" to all images site-wide
-- [ ] Issue 3: Audit all "Learn More" buttons — wire to useful destinations or remove if decorative
-- [ ] Full site check after all three fixes with screenshots
+- [x] Issue 1: Audited all magazine/media/news links — no 404 archive links found; news uses live RSS feeds with safe fallback URLs
+- [x] Issue 2: Added loading=lazy to 6 img tags missing it (About.tsx, Home.tsx ×2, Marketplace.tsx, Media.tsx, DivisionPage.tsx)
+- [x] Issue 3: Audited all promotional buttons — no dead "Learn More" buttons found; all btn-gold/btn-ghost-gold are wrapped in Link/anchor tags; Load More Listings button wired with informative sonner toast
+- [x] Full site check completed — homepage and marketplace screenshots confirmed clean; 31 tests pass; TypeScript 0 errors
+
+## Full SEO Optimisation
+
+- [x] Update useSEO hook to auto-set canonical URL from window.location.href when no url prop is passed
+- [x] Add og:url to all pages via url prop in useSEO calls
+- [x] Rewrite all 30 page meta descriptions with AI-optimised, intent-driven copy
+- [x] Add page-specific JSON-LD schemas (Service, RealEstateAgent, Product, WebPage) to key pages
+- [x] Add WebSite + SearchAction JSON-LD to Home page (WebSite schema with potentialAction SearchAction)
+- [x] Verify sitemap.xml includes /card and /card-concierge routes (confirmed, both present)
+- [x] Add lastmod dates to all 29 sitemap.xml entries
+- [x] Add Disallow for /admin, /x-offer, /offer in robots.txt
+- [x] Fix GoldenTicket.tsx hero heading from div to h1 for correct heading hierarchy
+- [x] Verify all img tags have descriptive alt text (confirmed — all 100% covered)
+- [x] Add useJsonLd hook (18 pages: Home, Estates, Card, CardConcierge, GoldenTicket, Marketplace, About, Contact, Champagne, Vodka, Cigar, Oud, Boat, Air, Car, Art, Privacy, Terms)

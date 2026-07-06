@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
 import { useSEO } from "@/hooks/useSEO";
+import { useJsonLd } from "@/hooks/useJsonLd";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -20,9 +21,23 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 export default function Oud() {
   useSEO({
-    title: "Bespoke Oud & Arabian Fragrances | Billionaire Collection",
-    description: "Discover bespoke Arabian oud fragrances of unparalleled rarity through Billionaire Collection. Hand-crafted perfumes and oud oils sourced from the finest distilleries in the Middle East.",
-    keywords: "oud fragrance, Arabian perfume, luxury oud, bespoke fragrance, rare perfume",
+    title: "Bespoke Arabian Oud & Luxury Fragrances | Billionaire Oud",
+    description: "Experience the rarest Arabian ouds and bespoke luxury fragrances through Billionaire Oud. Sourced from the world's finest agarwood estates — unparalleled in rarity, depth, and craftsmanship.",
+    keywords: "bespoke oud, Arabian fragrance, luxury oud, rare agarwood, Billionaire Oud, exclusive perfume, oud oil, luxury fragrance",
+  });
+  useJsonLd({
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Billionaire Oud — Bespoke Arabian Fragrances",
+    "description": "The rarest Arabian ouds and bespoke luxury fragrances — sourced from the world's finest agarwood estates, unparalleled in rarity, depth, and craftsmanship.",
+    "url": "https://billionairecollection.com/oud",
+    "brand": { "@type": "Brand", "name": "Billionaire Oud" },
+    "category": "Luxury Fragrance",
+    "offers": {
+      "@type": "Offer",
+      "availability": "https://schema.org/InStoreOnly",
+      "seller": { "@type": "Organization", "name": "Billionaire Collection", "url": "https://billionairecollection.com" }
+    }
   });
   return (
     <div style={{ background: "#000" }}>

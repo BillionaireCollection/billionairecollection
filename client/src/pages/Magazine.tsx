@@ -20,9 +20,9 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 export default function Magazine() {
   useSEO({
-    title: "Billionaire Magazine | Billionaire Collection",
-    description: "Billionaire Magazine — the definitive publication for ultra-high-net-worth individuals. Covering luxury lifestyle, investment, real estate, and the world of the ultra-wealthy.",
-    keywords: "Billionaire Magazine, luxury magazine, UHNW publication, wealth magazine, lifestyle magazine",
+    title: "Billionaire Collection Magazine — The Luxury Authority",
+    description: "Read Billionaire Collection Magazine — the definitive publication for ultra-high-net-worth individuals. Exclusive features on real estate, yachts, aviation, art, and the global luxury market.",
+    keywords: "Billionaire Collection Magazine, luxury magazine, UHNW publication, luxury lifestyle magazine, billionaire magazine, luxury editorial",
   });
   return (
     <div style={{ background: "#000" }}>

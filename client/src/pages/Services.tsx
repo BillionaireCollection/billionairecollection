@@ -20,9 +20,9 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 export default function Services() {
   useSEO({
-    title: "Premium Services | Billionaire Collection",
-    description: "Explore the full suite of premium services from Billionaire Collection — from funding and golf to travel and the exclusive Billionaire Card.",
-    keywords: "premium services, luxury services, UHNW services, Billionaire Collection services",
+    title: "Billionaire Services Division — Funding, Golf, Travel & Card",
+    description: "Billionaire Services provides elite funding solutions, private golf access, ultra-luxury travel, and the exclusive Billionaire Card — a complete suite of premium services for UHNW individuals.",
+    keywords: "Billionaire Services, elite funding, private golf, luxury travel, Billionaire Card, UHNW services, premium lifestyle services",
   });
   const services = [
     { label: "Funding & Investments", icon: "💰", desc: "Access to exclusive investment opportunities, private equity, and funding solutions for ultra-high-net-worth individuals and family offices.", href: "/funding" },

@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
 import { useSEO } from "@/hooks/useSEO";
+import { useJsonLd } from "@/hooks/useJsonLd";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -21,8 +22,20 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 export default function Terms() {
   useSEO({
     title: "Terms & Conditions | Billionaire Collection",
-    description: "Read the Billionaire Collection terms and conditions. By using our website and services you agree to these terms governing your relationship with Billionaire Collection.",
-    keywords: "terms and conditions, legal terms, website terms, Billionaire Collection legal",
+    description: "Read the Billionaire Collection terms and conditions governing your use of our website, services, brokerage, and membership products. Please read carefully before using our services.",
+    keywords: "terms and conditions, legal terms, website terms, Billionaire Collection legal, service terms, membership terms",
+  });
+  useJsonLd({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Terms & Conditions — Billionaire Collection",
+    "description": "Terms and conditions governing use of the Billionaire Collection website, services, brokerage, and membership products.",
+    "url": "https://billionairecollection.com/terms",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com"
+    }
   });
   return (
     <div style={{ background: "#000" }}>

@@ -20,9 +20,9 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 export default function Travel() {
   useSEO({
-    title: "Ultra-Luxury Travel | Billionaire Collection",
-    description: "Plan and book ultra-luxury travel experiences through Billionaire Collection. Private island escapes, bespoke itineraries, and exclusive access to the world's most extraordinary destinations.",
-    keywords: "luxury travel, private island, bespoke travel, ultra-luxury holidays, exclusive destinations",
+    title: "Ultra-Luxury Travel & Private Experiences | Billionaire Travel",
+    description: "Design and book ultra-luxury travel experiences through Billionaire Travel. Private island escapes, bespoke itineraries, exclusive villa rentals, and extraordinary destinations worldwide.",
+    keywords: "ultra-luxury travel, private island, bespoke travel, luxury holidays, exclusive destinations, private villa, luxury itinerary, UHNW travel",
   });
   return (
     <div style={{ background: "#000" }}>

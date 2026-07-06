@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
 import { useSEO } from "@/hooks/useSEO";
+import { useJsonLd } from "@/hooks/useJsonLd";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -20,9 +21,23 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 export default function Cigar() {
   useSEO({
-    title: "Rare Cigars | Billionaire Collection",
-    description: "Source rare hand-rolled cigars from the world's finest tobacco estates through Billionaire Collection. Limited editions and bespoke blends for the most discerning connoisseurs.",
-    keywords: "rare cigars, luxury cigars, hand-rolled cigars, premium tobacco, cigar collection",
+    title: "Rare Hand-Rolled Cigars | Billionaire Cigar",
+    description: "Source the world's rarest hand-rolled cigars from Cuba, Nicaragua, and the Dominican Republic through Billionaire Cigar. Exclusive blends, aged vintages, and bespoke cigar experiences.",
+    keywords: "rare cigars, hand-rolled cigars, Cuban cigars, luxury cigars, Billionaire Cigar, exclusive cigars, vintage cigars, premium tobacco",
+  });
+  useJsonLd({
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Billionaire Cigar — Rare Hand-Rolled Cigars",
+    "description": "The world's rarest hand-rolled cigars from Cuba, Nicaragua, and the Dominican Republic — exclusive blends, aged vintages, and bespoke cigar experiences.",
+    "url": "https://billionairecollection.com/cigar",
+    "brand": { "@type": "Brand", "name": "Billionaire Cigar" },
+    "category": "Luxury Cigars",
+    "offers": {
+      "@type": "Offer",
+      "availability": "https://schema.org/InStoreOnly",
+      "seller": { "@type": "Organization", "name": "Billionaire Collection", "url": "https://billionairecollection.com" }
+    }
   });
   return (
     <div style={{ background: "#000" }}>

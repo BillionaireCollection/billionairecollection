@@ -7,6 +7,7 @@ import { useRef } from "react";
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
 import { useSEO } from "@/hooks/useSEO";
+import { useJsonLd } from "@/hooks/useJsonLd";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -44,9 +45,37 @@ const VALUES = [
 
 export default function About() {
   useSEO({
-    title: "About Billionaire Collection",
-    description: "Discover the story behind Billionaire Collection — the world's premier luxury ecosystem curating ultra-prime real estate, superyachts, private aviation, and bespoke experiences for ultra-high-net-worth individuals.",
-    keywords: "Billionaire Collection, luxury brand, ultra-high-net-worth, premium lifestyle, London luxury",
+    title: "About Billionaire Collection — Est. London",
+    description: "Billionaire Collection is the world's premier luxury ecosystem, established in London. Discover our story, our ecosystem of 40+ brands, and our mission to serve ultra-high-net-worth individuals.",
+    keywords: "about Billionaire Collection, luxury brand, London luxury, UHNW ecosystem, luxury lifestyle brand, billionaire brand history",
+  });
+  useJsonLd({
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About Billionaire Collection",
+    "description": "Billionaire Collection is the world's premier luxury ecosystem, established in London. Discover our story, our ecosystem of 40+ brands, and our mission to serve ultra-high-net-worth individuals.",
+    "url": "https://billionairecollection.com/about",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com",
+      "foundingDate": "2005",
+      "foundingLocation": { "@type": "Place", "name": "London, United Kingdom" },
+      "founder": {
+        "@type": "Person",
+        "name": "Lawrence Colbert",
+        "jobTitle": "Founder & Chief Executive Officer",
+        "sameAs": "https://uk.linkedin.com/in/lawrencecolbert"
+      },
+      "description": "The world's premier luxury ecosystem for ultra-high-net-worth individuals — curating ultra-prime real estate, superyachts, private aviation, rare automobiles, fine art, and bespoke experiences.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "128 City Road",
+        "addressLocality": "London",
+        "postalCode": "EC1V 2NX",
+        "addressCountry": "GB"
+      }
+    }
   });
   return (
     <div style={{ background: "#000" }}>

@@ -1,11 +1,26 @@
 import DivisionPage from "@/components/DivisionPage";
 import { useSEO } from "@/hooks/useSEO";
+import { useJsonLd } from "@/hooks/useJsonLd";
 
 export default function Car() {
   useSEO({
-    title: "Rare & Exotic Automobiles | Billionaire Collection",
-    description: "Acquire rare, exotic, and collector automobiles through Billionaire Collection's specialist automotive brokerage. Ferrari, Lamborghini, Bugatti, and the world's most coveted vehicles.",
-    keywords: "exotic cars, rare automobiles, luxury car brokerage, Ferrari, Lamborghini, collector cars",
+    title: "Rare & Exotic Automobile Brokerage | Billionaire Car",
+    description: "Source, acquire, and sell the world's rarest automobiles — Ferrari, Bugatti, Pagani, and limited-edition collector cars — through Billionaire Car's specialist brokerage network.",
+    keywords: "rare cars, exotic automobiles, Ferrari brokerage, Bugatti, Pagani, collector cars, limited edition vehicles, luxury car acquisition",
+  });
+  useJsonLd({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Billionaire Car — Rare & Exotic Automobile Brokerage",
+    "description": "Source, acquire, and sell the world's rarest automobiles — Ferrari, Bugatti, Pagani, and limited-edition collector cars through Billionaire Car's specialist brokerage network.",
+    "url": "https://billionairecollection.com/car",
+    "serviceType": "Exotic Car Brokerage",
+    "provider": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com"
+    },
+    "areaServed": "Worldwide"
   });
   return (
     <DivisionPage

@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
 import { useSEO } from "@/hooks/useSEO";
+import { useJsonLd } from "@/hooks/useJsonLd";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -20,9 +21,23 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 export default function Champagne() {
   useSEO({
-    title: "Ultra-Premium Champagne | Billionaire Collection",
-    description: "Discover and acquire ultra-premium champagne cuvées from the world's most exclusive houses through Billionaire Collection. Rare vintages and prestige cuvées for the discerning palate.",
-    keywords: "premium champagne, rare champagne, luxury champagne, prestige cuvée, vintage champagne",
+    title: "Ultra-Premium Champagne | Billionaire Champagne",
+    description: "Discover and acquire ultra-premium and rare champagnes from the world's most exclusive houses. Limited cuvées, vintage collections, and bespoke champagne experiences for the discerning palate.",
+    keywords: "ultra-premium champagne, rare champagne, luxury champagne, limited cuvée, vintage champagne, exclusive champagne, Billionaire Champagne",
+  });
+  useJsonLd({
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Billionaire Champagne — Ultra-Premium Cuvées",
+    "description": "Ultra-premium and rare champagnes from the world's most exclusive houses — Cristal, Dom Pérignon, Krug Clos du Mesnil, and Salon Blanc de Blancs.",
+    "url": "https://billionairecollection.com/champagne",
+    "brand": { "@type": "Brand", "name": "Billionaire Champagne" },
+    "category": "Luxury Champagne",
+    "offers": {
+      "@type": "Offer",
+      "availability": "https://schema.org/InStoreOnly",
+      "seller": { "@type": "Organization", "name": "Billionaire Collection", "url": "https://billionairecollection.com" }
+    }
   });
   return (
     <div style={{ background: "#000" }}>

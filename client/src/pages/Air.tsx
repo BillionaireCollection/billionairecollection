@@ -1,11 +1,26 @@
 import DivisionPage from "@/components/DivisionPage";
 import { useSEO } from "@/hooks/useSEO";
+import { useJsonLd } from "@/hooks/useJsonLd";
 
 export default function Air() {
   useSEO({
-    title: "Private Aviation | Billionaire Collection",
-    description: "Charter and acquire the world's finest private jets and helicopters through Billionaire Collection's exclusive private aviation brokerage. Tailored travel for the ultra-discerning.",
-    keywords: "private aviation, private jet charter, helicopter hire, luxury aviation, aircraft acquisition",
+    title: "Private Aviation Charter & Aircraft Acquisition | Billionaire Air",
+    description: "Charter or acquire private jets, turboprops, and helicopters through Billionaire Air. From on-demand empty-leg flights to full aircraft ownership — seamless, discreet, and global.",
+    keywords: "private jet charter, aircraft acquisition, private aviation, empty leg flights, Gulfstream, Bombardier, Dassault Falcon, helicopter charter",
+  });
+  useJsonLd({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Billionaire Air — Private Aviation Charter & Acquisition",
+    "description": "Charter or acquire private jets, turboprops, and helicopters — from on-demand empty-leg flights to full aircraft ownership. Gulfstream, Bombardier, Dassault Falcon, and more.",
+    "url": "https://billionairecollection.com/air",
+    "serviceType": "Private Aviation",
+    "provider": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com"
+    },
+    "areaServed": "Worldwide"
   });
   return (
     <DivisionPage

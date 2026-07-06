@@ -50,9 +50,9 @@ const FALLBACK_IMGS = [
 
 export default function News() {
   useSEO({
-    title: "Luxury News & Insights | Billionaire Collection",
-    description: "Stay informed with the latest luxury news, market insights, and exclusive stories from the world of ultra-high-net-worth individuals through Billionaire Collection.",
-    keywords: "luxury news, wealth insights, UHNW news, luxury market, Billionaire Collection news",
+    title: "Luxury & Wealth News | Billionaire Collection",
+    description: "Stay informed with the latest luxury lifestyle, wealth management, and ultra-high-net-worth news curated from Forbes, Robb Report, Financial Times, and the world's leading publications.",
+    keywords: "luxury news, wealth news, UHNW news, billionaire lifestyle, luxury market, Forbes, Robb Report, Financial Times, luxury trends",
   });
   const [activeCategory, setActiveCategory] = useState("All");
   const [email, setEmail] = useState("");

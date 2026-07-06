@@ -8,6 +8,7 @@ import { useRef, useState } from "react";
 import PageHero from "@/components/PageHero";
 import { trpc } from "@/lib/trpc";
 import { useSEO } from "@/hooks/useSEO";
+import { useJsonLd } from "@/hooks/useJsonLd";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -43,9 +44,38 @@ const REQUEST_TYPES = [
 
 export default function CardConcierge() {
   useSEO({
-    title: "Concierge Request | Billionaire Collection",
-    description: "Submit a concierge request to the Billionaire Collection team. Our 24/7 global concierge service handles everything from private jet bookings to exclusive event access.",
-    keywords: "luxury concierge service, personal concierge, VIP service, bespoke requests, 24/7 concierge",
+    title: "24/7 Luxury Concierge Request | Billionaire Collection",
+    description: "Submit a bespoke concierge request to our 24/7 global team. Private jet bookings, exclusive restaurant reservations, VIP event access, and any request — no matter how extraordinary.",
+    keywords: "luxury concierge service, 24/7 concierge, personal concierge, VIP service, bespoke requests, private jet booking, exclusive reservations",
+  });
+  useJsonLd({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Billionaire Collection 24/7 Concierge",
+    "description": "24/7 luxury concierge service — private jet bookings, exclusive restaurant reservations, VIP event access, yacht charter, and any bespoke request worldwide.",
+    "url": "https://billionairecollection.com/card-concierge",
+    "serviceType": "Luxury Concierge Service",
+    "provider": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com",
+      "telephone": "+44-207-183-1700",
+      "email": "concierge@billionaireplc.com"
+    },
+    "areaServed": "Worldwide",
+    "availableChannel": {
+      "@type": "ServiceChannel",
+      "serviceUrl": "https://billionairecollection.com/card-concierge",
+      "servicePhone": "+44-207-183-1700",
+      "serviceEmail": "concierge@billionaireplc.com",
+      "availableLanguage": "English"
+    },
+    "hoursAvailable": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    }
   });
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", phone: "", type: "", message: "", budget: "" });

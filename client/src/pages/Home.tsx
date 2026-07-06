@@ -9,6 +9,7 @@ import { useRef, useState, useEffect } from "react";
 import { Link } from "wouter";
 import SphereAnimation from "@/components/SphereAnimation";
 import { useSEO } from "@/hooks/useSEO";
+import { useJsonLd } from "@/hooks/useJsonLd";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -94,9 +95,34 @@ function AnimatedCounter({ target, suffix = "", prefix = "" }: { target: number;
 
 export default function Home() {
   useSEO({
-    title: "The Place for Everything You Desire",
-    description: "Billionaire Collection — the world's premier luxury ecosystem curating ultra-prime real estate, superyachts, private aviation, and bespoke experiences for ultra-high-net-worth individuals.",
-    keywords: "Billionaire Collection, luxury lifestyle, ultra-prime real estate, superyacht, private aviation, UHNW, luxury brokerage",
+    title: "Billionaire Collection — The World's Premier Luxury Ecosystem",
+    description: "Discover ultra-prime real estate, superyachts, private jets, rare automobiles, and bespoke concierge services — curated exclusively for ultra-high-net-worth individuals worldwide.",
+    keywords: "luxury ecosystem, ultra-prime real estate, superyachts, private aviation, UHNW, billionaire lifestyle, exclusive membership, luxury brokerage",
+  });
+  useJsonLd({
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Billionaire Collection",
+    "alternateName": "Billionaire Collection — The World's Premier Luxury Ecosystem",
+    "url": "https://billionairecollection.com",
+    "description": "The world's premier luxury ecosystem for ultra-high-net-worth individuals — curating ultra-prime real estate, superyachts, private aviation, rare automobiles, fine art, and bespoke experiences.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://billionairecollection.com/marketplace?q={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://billionairecollection.com/favicon.svg"
+      }
+    }
   });
 
   return (

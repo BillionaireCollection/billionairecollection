@@ -1,11 +1,26 @@
 import DivisionPage from "@/components/DivisionPage";
 import { useSEO } from "@/hooks/useSEO";
+import { useJsonLd } from "@/hooks/useJsonLd";
 
 export default function Art() {
   useSEO({
-    title: "Fine Art & Collectibles | Billionaire Collection",
-    description: "Acquire museum-quality fine art and rare collectibles through Billionaire Collection's curated brokerage. Investment-grade works from the world's most celebrated artists.",
-    keywords: "fine art investment, rare collectibles, art brokerage, luxury art, museum quality art",
+    title: "Fine Art Investment & Collectibles | Billionaire Art",
+    description: "Acquire museum-quality fine art and investment-grade collectibles through Billionaire Art. Curated works from blue-chip artists, private sales, and exclusive auction access worldwide.",
+    keywords: "fine art investment, blue-chip art, rare collectibles, art brokerage, Sotheby's, Christie's, private art sales, investment art",
+  });
+  useJsonLd({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Billionaire Art — Fine Art Investment & Collectibles",
+    "description": "Acquire museum-quality fine art and investment-grade collectibles through Billionaire Art. Curated works from blue-chip artists, private sales, and exclusive auction access worldwide.",
+    "url": "https://billionairecollection.com/art",
+    "serviceType": "Fine Art Brokerage",
+    "provider": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com"
+    },
+    "areaServed": "Worldwide"
   });
   return (
     <DivisionPage

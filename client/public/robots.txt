@@ -1,6 +1,11 @@
 User-agent: *
 Allow: /
 
+# Private admin and promotional pages — exclude from indexing
+Disallow: /admin
+Disallow: /x-offer
+Disallow: /offer
+
 Sitemap: https://billionairecollection.com/sitemap.xml
 
 # Billionaire Collection — billionairecollection.com

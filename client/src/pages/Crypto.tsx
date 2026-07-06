@@ -3,9 +3,9 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function Crypto() {
   useSEO({
-    title: "Digital Asset Management | Billionaire Collection",
-    description: "Navigate the world of digital assets and cryptocurrency with Billionaire Collection's specialist digital wealth management service. Institutional-grade strategies for ultra-high-net-worth individuals.",
-    keywords: "crypto wealth management, digital assets, cryptocurrency investment, blockchain, digital wealth",
+    title: "Digital Asset & Crypto Wealth Management | Billionaire Collection",
+    description: "Institutional-grade digital asset strategies for ultra-high-net-worth individuals. Navigate Bitcoin, Ethereum, and alternative digital assets with Billionaire Collection's specialist advisors.",
+    keywords: "crypto wealth management, digital assets, Bitcoin investment, Ethereum, blockchain, institutional crypto, UHNW digital wealth, DeFi",
   });
   return (
     <DivisionPage

@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import PageHero from "@/components/PageHero";
 import { trpc } from "@/lib/trpc";
 import { useSEO } from "@/hooks/useSEO";
+import { useJsonLd } from "@/hooks/useJsonLd";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -31,9 +32,34 @@ const inputStyle: React.CSSProperties = {
 
 export default function Contact() {
   useSEO({
-    title: "Contact Billionaire Collection",
-    description: "Get in touch with the Billionaire Collection team. Whether you have an enquiry about our services, brokerage, or membership, our team is ready to assist.",
-    keywords: "contact Billionaire Collection, luxury enquiry, brokerage contact, membership enquiry",
+    title: "Contact Billionaire Collection — Enquire Now",
+    description: "Reach the Billionaire Collection team directly. Whether you are enquiring about brokerage, membership, partnerships, or media — our advisors are ready to assist you.",
+    keywords: "contact Billionaire Collection, luxury enquiry, brokerage contact, membership enquiry, partnership enquiry, media contact",
+  });
+  useJsonLd({
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact Billionaire Collection",
+    "description": "Reach the Billionaire Collection team directly for brokerage, membership, partnerships, or media enquiries.",
+    "url": "https://billionairecollection.com/contact",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com",
+      "telephone": "+44-207-183-1700",
+      "email": "info@billionaireplc.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "128 City Road",
+        "addressLocality": "London",
+        "postalCode": "EC1V 2NX",
+        "addressCountry": "GB"
+      },
+      "contactPoint": [
+        { "@type": "ContactPoint", "telephone": "+44-207-183-1700", "contactType": "customer service", "availableLanguage": "English" },
+        { "@type": "ContactPoint", "email": "info@billionaireplc.com", "contactType": "general enquiry", "availableLanguage": "English" }
+      ]
+    }
   });
   const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
   const [submitted, setSubmitted] = useState(false);

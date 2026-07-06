@@ -20,9 +20,9 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 export default function Funding() {
   useSEO({
-    title: "Funding & Capital | Billionaire Collection",
-    description: "Access exclusive funding and capital solutions through Billionaire Collection. Connecting ultra-high-net-worth individuals with bespoke financing, investment, and capital raising opportunities.",
-    keywords: "luxury funding, capital solutions, investment, UHNW financing, private capital",
+    title: "Elite Funding & Private Capital | Billionaire Funding",
+    description: "Access bespoke funding and private capital solutions through Billionaire Funding. Connecting ultra-high-net-worth individuals with exclusive financing, investment, and capital-raising opportunities.",
+    keywords: "elite funding, private capital, UHNW financing, luxury investment, capital raising, Billionaire Funding, private equity, wealth management",
   });
   return (
     <div style={{ background: "#000" }}>

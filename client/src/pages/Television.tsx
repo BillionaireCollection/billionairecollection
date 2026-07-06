@@ -20,9 +20,9 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 export default function Television() {
   useSEO({
-    title: "Billionaire Television | Billionaire Collection",
-    description: "Watch Billionaire Television — the premium channel dedicated to ultra-luxury lifestyle, wealth creation, and the world of ultra-high-net-worth individuals.",
-    keywords: "Billionaire Television, luxury TV, wealth TV, UHNW television, premium channel",
+    title: "Billionaire Television — Luxury Lifestyle TV",
+    description: "Watch Billionaire Television — the world's premier luxury lifestyle channel. Exclusive content on superyachts, private aviation, ultra-prime real estate, and the billionaire lifestyle.",
+    keywords: "Billionaire Television, luxury TV channel, lifestyle television, UHNW TV, superyacht TV, private jet TV, luxury lifestyle channel",
   });
   return (
     <div style={{ background: "#000" }}>

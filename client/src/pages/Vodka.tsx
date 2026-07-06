@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
 import { useSEO } from "@/hooks/useSEO";
+import { useJsonLd } from "@/hooks/useJsonLd";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -20,9 +21,23 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 export default function Vodka() {
   useSEO({
-    title: "Ultra-Premium Vodka | Billionaire Collection",
-    description: "Discover limited-edition ultra-premium vodka crafted for the most discerning palate through Billionaire Collection. Rare spirits and bespoke bottles for the connoisseur.",
-    keywords: "premium vodka, luxury vodka, rare spirits, limited edition vodka, ultra-premium spirits",
+    title: "Ultra-Premium Vodka | Billionaire Vodka",
+    description: "Explore Billionaire Vodka's collection of ultra-premium, limited-edition spirits. Crafted for the world's most discerning palates — rare distillations and bespoke bottles of extraordinary quality.",
+    keywords: "ultra-premium vodka, luxury vodka, limited edition vodka, rare spirits, Billionaire Vodka, exclusive vodka, premium spirits",
+  });
+  useJsonLd({
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Billionaire Vodka — Ultra-Premium Spirits",
+    "description": "Ultra-premium, limited-edition vodkas crafted for the world's most discerning palates — rare distillations and bespoke bottles of extraordinary quality.",
+    "url": "https://billionairecollection.com/vodka",
+    "brand": { "@type": "Brand", "name": "Billionaire Vodka" },
+    "category": "Luxury Spirits",
+    "offers": {
+      "@type": "Offer",
+      "availability": "https://schema.org/InStoreOnly",
+      "seller": { "@type": "Organization", "name": "Billionaire Collection", "url": "https://billionairecollection.com" }
+    }
   });
   return (
     <div style={{ background: "#000" }}>

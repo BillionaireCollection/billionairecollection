@@ -20,9 +20,9 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 export default function Golf() {
   useSEO({
-    title: "Private Golf | Billionaire Collection",
-    description: "Access the world's most exclusive private golf clubs and bespoke golf experiences through Billionaire Collection. Tee times at Augusta, St Andrews, and the finest courses worldwide.",
-    keywords: "private golf clubs, luxury golf, exclusive golf, Augusta, St Andrews, golf membership",
+    title: "Private Golf Club Access & Luxury Golf | Billionaire Golf",
+    description: "Secure tee times at Augusta, St Andrews, Pebble Beach, and the world's most exclusive private golf clubs through Billionaire Golf. Bespoke golf travel and membership access for UHNW individuals.",
+    keywords: "private golf clubs, Augusta National, St Andrews, Pebble Beach, luxury golf, exclusive golf membership, golf travel, UHNW golf",
   });
   return (
     <div style={{ background: "#000" }}>

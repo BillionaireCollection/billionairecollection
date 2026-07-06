@@ -20,9 +20,9 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 export default function Radio() {
   useSEO({
-    title: "Billionaire Radio | Billionaire Collection",
-    description: "Tune in to Billionaire Radio — the exclusive audio channel for ultra-high-net-worth individuals. Featuring wealth insights, luxury lifestyle content, and interviews with the world's most successful people.",
-    keywords: "Billionaire Radio, luxury radio, wealth radio, UHNW audio, premium podcast",
+    title: "Billionaire Radio — Luxury Lifestyle Audio",
+    description: "Listen to Billionaire Radio — curated audio content on wealth, luxury lifestyle, and exclusive insights for ultra-high-net-worth individuals. Available worldwide, anytime.",
+    keywords: "Billionaire Radio, luxury radio, wealth audio, UHNW podcast, luxury lifestyle radio, billionaire audio content",
   });
   return (
     <div style={{ background: "#000" }}>

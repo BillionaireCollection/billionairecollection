@@ -26,9 +26,9 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 export default function Technology() {
   useSEO({
-    title: "Billionaire Technology | Billionaire Collection",
-    description: "Billionaire Collection Technology encompasses cutting-edge digital platforms, university education, and vitality solutions for the ultra-high-net-worth community.",
-    keywords: "Billionaire Technology, luxury tech, UHNW technology, digital innovation, Billionaire University",
+    title: "Billionaire Technology Division — Digital & Vitality",
+    description: "Billionaire Technology encompasses Billionaire Digital, Billionaire University, and Billionaire Vitality — pioneering digital innovation and longevity science for ultra-high-net-worth individuals.",
+    keywords: "Billionaire Technology, Billionaire Digital, Billionaire University, Billionaire Vitality, luxury technology, UHNW tech, longevity science",
   });
   const divisions = [
     {

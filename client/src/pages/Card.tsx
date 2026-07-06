@@ -4,6 +4,7 @@ import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
 import { trpc } from "@/lib/trpc";
 import { useSEO } from "@/hooks/useSEO";
+import { useJsonLd } from "@/hooks/useJsonLd";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -21,9 +22,41 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 export default function Card() {
   useSEO({
-    title: "Billionaire Card — The World's Most Exclusive Card",
-    description: "Apply for the Billionaire Card — the world's most exclusive membership card offering 24/7 global concierge, private aviation access, elite hotel privileges, and bespoke experiences.",
-    keywords: "Billionaire Card, exclusive membership card, luxury concierge card, black card, elite membership",
+    title: "Billionaire Card — The World's Most Exclusive Membership",
+    description: "Apply for the Billionaire Card — 24/7 global concierge, private aviation access, elite hotel upgrades, and bespoke experiences reserved for the world's most discerning individuals.",
+    keywords: "Billionaire Card, exclusive membership card, luxury concierge, black card, elite membership, VIP card, 24/7 concierge, private jet access",
+  });
+  useJsonLd({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Billionaire Card",
+    "description": "The world's most exclusive membership card — 24/7 global concierge, private aviation access, elite hotel upgrades, and bespoke experiences for ultra-high-net-worth individuals.",
+    "url": "https://billionairecollection.com/card",
+    "serviceType": "Luxury Concierge Membership",
+    "provider": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com"
+    },
+    "areaServed": "Worldwide",
+    "availableChannel": {
+      "@type": "ServiceChannel",
+      "serviceUrl": "https://billionairecollection.com/card#apply",
+      "servicePhone": "+44-207-183-1700",
+      "availableLanguage": "English"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Billionaire Card Benefits",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "24/7 Global Concierge" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Private Aviation Access" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Elite Hotel Upgrades" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Michelin-Star Dining Reservations" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Exclusive Event Access" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Elite Partner Recognition" } }
+      ]
+    }
   });
   const benefits = [
     { icon: "🌐", title: "Global Concierge", desc: "24/7 dedicated concierge team available anywhere in the world" },

@@ -27,9 +27,9 @@ const CHANNELS = [
 
 export default function Media() {
   useSEO({
-    title: "Billionaire Media | Billionaire Collection",
-    description: "Billionaire Collection Media encompasses television, magazine, and radio channels dedicated to the ultra-luxury lifestyle, wealth creation, and the world of ultra-high-net-worth individuals.",
-    keywords: "Billionaire Media, luxury television, wealth magazine, luxury radio, UHNW media",
+    title: "Billionaire Media Group — Television, Magazine & Radio",
+    description: "Billionaire Media Group operates Billionaire Television, Billionaire Collection Magazine, and Billionaire Radio — the world's premier luxury media platforms for ultra-high-net-worth audiences.",
+    keywords: "Billionaire Media Group, luxury television, luxury magazine, luxury radio, UHNW media, billionaire TV, luxury content",
   });
   return (
     <div style={{ background: "#000" }}>

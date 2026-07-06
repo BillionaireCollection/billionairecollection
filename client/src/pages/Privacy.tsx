@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
 import { useSEO } from "@/hooks/useSEO";
+import { useJsonLd } from "@/hooks/useJsonLd";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -21,8 +22,20 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 export default function Privacy() {
   useSEO({
     title: "Privacy Policy | Billionaire Collection",
-    description: "Read the Billionaire Collection privacy policy. We are committed to protecting your personal information and maintaining the highest standards of data privacy and security.",
-    keywords: "privacy policy, data protection, GDPR, personal data, Billionaire Collection",
+    description: "Read the Billionaire Collection privacy policy. We are committed to protecting your personal data in accordance with GDPR and the highest standards of information security.",
+    keywords: "privacy policy, data protection, GDPR, personal data, Billionaire Collection privacy, information security",
+  });
+  useJsonLd({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Privacy Policy — Billionaire Collection",
+    "description": "Billionaire Collection privacy policy — data protection, GDPR compliance, and information security standards.",
+    "url": "https://billionairecollection.com/privacy",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com"
+    }
   });
   return (
     <div style={{ background: "#000" }}>

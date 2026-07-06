@@ -9,6 +9,7 @@ import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
 import { trpc } from "@/lib/trpc";
 import { useSEO } from "@/hooks/useSEO";
+import { useJsonLd } from "@/hooks/useJsonLd";
 
 const GOLD = "#C9A84C";
 const GOLD_LIGHT = "#E8C97A";
@@ -59,9 +60,36 @@ const TIERS = [
 
 export default function GoldenTicket() {
   useSEO({
-    title: "The Golden Ticket | Billionaire Collection",
-    description: "The Golden Ticket is the most exclusive membership tier in the Billionaire Collection ecosystem. Gain access to the inner circle of ultra-high-net-worth individuals, private events, and unprecedented privileges.",
-    keywords: "Golden Ticket, exclusive membership, VIP membership, ultra-exclusive, Billionaire Collection membership",
+    title: "The Golden Ticket — Billionaire Collection's Inner Circle",
+    description: "The Golden Ticket grants access to Billionaire Collection's most exclusive inner circle — private events, off-market deals, and privileges unavailable anywhere else in the world.",
+    keywords: "Golden Ticket, exclusive membership, VIP inner circle, ultra-exclusive access, private events, off-market deals, Billionaire Collection elite",
+  });
+  useJsonLd({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "The Golden Ticket — Billionaire Collection Inner Circle",
+    "description": "The Golden Ticket is Billionaire Collection's most exclusive membership tier — invitation only. Unlimited private aviation, superyacht fleet access, private island portfolio, dedicated family office, and impossible experiences.",
+    "url": "https://billionairecollection.com/golden-ticket",
+    "serviceType": "Ultra-Exclusive Membership",
+    "provider": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com"
+    },
+    "areaServed": "Worldwide",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Golden Ticket Privileges",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Unlimited Private Aviation" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Private Island Access" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Superyacht Fleet Access" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Dedicated Family Office" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Elite Medical Access" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Impossible Experiences" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Global Elite Network" } }
+      ]
+    }
   });
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", phone: "", country: "", message: "", referredBy: "" });
@@ -103,17 +131,15 @@ export default function GoldenTicket() {
             <span className="bc-badge">The Golden Ticket</span>
           </motion.div>
 
-          <motion.div
+          <motion.h1
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.1 }}
-            style={{ marginBottom: "2rem" }}
+            style={{ marginBottom: "2rem", fontFamily: FONT_HEADING, fontWeight: 400, lineHeight: 1 }}
           >
-            <div style={{
-              fontFamily: FONT_HEADING,
-              fontWeight: 400,
+            <span style={{
+              display: "block",
               fontSize: "clamp(3rem, 8vw, 7rem)",
-              lineHeight: 1,
               background: `linear-gradient(135deg, ${GOLD} 0%, ${GOLD_LIGHT} 50%, ${GOLD} 100%)`,
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
@@ -121,17 +147,15 @@ export default function GoldenTicket() {
               marginBottom: "0.5rem",
             }}>
               Golden
-            </div>
-            <div style={{
-              fontFamily: FONT_HEADING,
-              fontWeight: 400,
+            </span>
+            <span style={{
+              display: "block",
               fontSize: "clamp(3rem, 8vw, 7rem)",
-              lineHeight: 1,
               color: "#fff",
             }}>
               Ticket
-            </div>
-          </motion.div>
+            </span>
+          </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 16 }}

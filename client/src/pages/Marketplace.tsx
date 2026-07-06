@@ -8,6 +8,7 @@ import { useRef, useState } from "react";
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
 import { useSEO } from "@/hooks/useSEO";
+import { useJsonLd } from "@/hooks/useJsonLd";
 import { toast } from "sonner";
 
 const GOLD = "#C9A84C";
@@ -47,9 +48,25 @@ const ALL_LISTINGS = [
 
 export default function Marketplace() {
   useSEO({
-    title: "Luxury Marketplace | Billionaire Collection",
-    description: "Browse the Billionaire Collection marketplace — curating the finest luxury goods, rare collectibles, and bespoke products for ultra-high-net-worth individuals worldwide.",
-    keywords: "luxury marketplace, premium goods, rare collectibles, luxury shopping, bespoke products",
+    title: "Luxury Marketplace — Ultra-Prime Assets For Sale | Billionaire Store",
+    description: "Browse and acquire ultra-prime assets — real estate, superyachts, private jets, rare automobiles, and fine art — through the Billionaire Collection's exclusive luxury marketplace.",
+    keywords: "luxury marketplace, ultra-prime assets, real estate for sale, superyacht for sale, private jet for sale, rare cars, fine art, luxury store",
+  });
+  useJsonLd({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Billionaire Collection Luxury Marketplace",
+    "description": "Ultra-prime assets for sale — real estate, superyachts, private jets, rare automobiles, and fine art.",
+    "url": "https://billionairecollection.com/marketplace",
+    "numberOfItems": 12,
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "item": { "@type": "Product", "name": "Mayfair Grand Penthouse", "description": "London, United Kingdom — Off-Market", "offers": { "@type": "Offer", "price": "57000000", "priceCurrency": "USD" } } },
+      { "@type": "ListItem", "position": 2, "item": { "@type": "Product", "name": "M/Y Aurora — 82m Lürssen Superyacht", "description": "Mediterranean — For Sale", "offers": { "@type": "Offer", "price": "105000000", "priceCurrency": "USD" } } },
+      { "@type": "ListItem", "position": 3, "item": { "@type": "Product", "name": "Monaco Clifftop Villa", "description": "Monaco, Monte Carlo — Exclusive", "offers": { "@type": "Offer", "price": "93500000", "priceCurrency": "USD" } } },
+      { "@type": "ListItem", "position": 4, "item": { "@type": "Product", "name": "Malibu Ocean Estate", "description": "California, USA — New", "offers": { "@type": "Offer", "price": "120000000", "priceCurrency": "USD" } } },
+      { "@type": "ListItem", "position": 5, "item": { "@type": "Product", "name": "Bugatti Chiron Super Sport", "description": "2022, 1,600hp — For Sale", "offers": { "@type": "Offer", "price": "4100000", "priceCurrency": "USD" } } },
+      { "@type": "ListItem", "position": 6, "item": { "@type": "Product", "name": "Dubai Palm Penthouse", "description": "Palm Jumeirah, Dubai — Exclusive", "offers": { "@type": "Offer", "price": "25900000", "priceCurrency": "USD" } } }
+    ]
   });
   const [activeCategory, setActiveCategory] = useState("All");
 
