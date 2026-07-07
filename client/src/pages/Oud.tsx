@@ -21,24 +21,57 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 export default function Oud() {
   useSEO({
-    title: "Bespoke Arabian Oud & Luxury Fragrances | Billionaire Oud",
-    description: "Experience the rarest Arabian ouds and bespoke luxury fragrances through Billionaire Oud. Sourced from the world's finest agarwood estates — unparalleled in rarity, depth, and craftsmanship.",
-    keywords: "bespoke oud, Arabian fragrance, luxury oud, rare agarwood, Billionaire Oud, exclusive perfume, oud oil, luxury fragrance",
+    title: "Billionaire Oud — Bespoke Arabian Fragrances | A Billionaire Collection Company",
+    description: "Billionaire Oud is the bespoke Arabian fragrance brand within the Billionaire Collection ecosystem. The rarest ouds and luxury fragrances sourced from the world's finest agarwood estates — curated by Billionaire Collection, the parent company of the world's premier luxury brand portfolio.",
+    keywords: "Billionaire Oud, Billionaire Collection fragrance, Arabian oud, luxury fragrance, rare agarwood, bespoke perfume, Billionaire Collection products, UHNW fragrance, premium oud brand",
   });
-  useJsonLd({
+  useJsonLd([
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Billionaire Collection",
+        "item": "https://billionairecollection.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Billionaire Oud",
+        "item": "https://billionairecollection.com/oud"
+      }
+    ]
+  },
+  {
     "@context": "https://schema.org",
     "@type": "Product",
-    "name": "Billionaire Oud — Bespoke Arabian Fragrances",
-    "description": "The rarest Arabian ouds and bespoke luxury fragrances — sourced from the world's finest agarwood estates, unparalleled in rarity, depth, and craftsmanship.",
+    "name": "Billionaire Oud \u2014 Bespoke Arabian Fragrances",
+    "description": "Billionaire Oud is the bespoke Arabian fragrance brand within the Billionaire Collection ecosystem.",
     "url": "https://billionairecollection.com/oud",
-    "brand": { "@type": "Brand", "name": "Billionaire Oud" },
+    "brand": {
+      "@type": "Brand",
+      "name": "Billionaire Oud"
+    },
     "category": "Luxury Fragrance",
+    "manufacturer": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com"
+    },
     "offers": {
       "@type": "Offer",
       "availability": "https://schema.org/InStoreOnly",
-      "seller": { "@type": "Organization", "name": "Billionaire Collection", "url": "https://billionairecollection.com" }
-    }
-  });
+      "seller": {
+        "@type": "Organization",
+        "name": "Billionaire Collection",
+        "url": "https://billionairecollection.com"
+      }
+    },
+    "parentOrganization": {"@type": "Organization", "name": "Billionaire Collection", "url": "https://billionairecollection.com"}
+  }
+]);
   return (
     <div style={{ background: "#000" }}>
       <PageHero badge="Billionaire Oud" title="Bespoke" titleAccent="Arabian Fragrances" subtitle="The rarest oud oils and bespoke fragrances from the world's most prestigious Arabian perfumers — presented in hand-crafted crystal flacons of extraordinary beauty." image="https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-lifestyle-AH2eKQkWWtkQqo8wcxHVw2.webp" cta={{ label: "Enquire", href: "/card-concierge" }} />

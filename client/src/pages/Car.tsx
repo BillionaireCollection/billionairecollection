@@ -4,15 +4,34 @@ import { useJsonLd } from "@/hooks/useJsonLd";
 
 export default function Car() {
   useSEO({
-    title: "Rare & Exotic Automobile Brokerage | Billionaire Car",
-    description: "Source, acquire, and sell the world's rarest automobiles — Ferrari, Bugatti, Pagani, and limited-edition collector cars — through Billionaire Car's specialist brokerage network.",
-    keywords: "rare cars, exotic automobiles, Ferrari brokerage, Bugatti, Pagani, collector cars, limited edition vehicles, luxury car acquisition",
+    title: "Billionaire Car — Exotic Automobile Brokerage | A Billionaire Collection Company",
+    description: "Billionaire Car is the exotic automobile division of Billionaire Collection, the parent company of the world's premier luxury ecosystem. Source and acquire the world's rarest Ferraris, Bugattis, Paganis, and collector cars through Billionaire Collection's specialist automotive brokerage.",
+    keywords: "Billionaire Car, Billionaire Collection automobiles, exotic car brokerage, rare Ferrari, Bugatti acquisition, Pagani, collector cars, UHNW automotive, Billionaire Collection car division, luxury supercar broker",
   });
-  useJsonLd({
+  useJsonLd([
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Billionaire Collection",
+        "item": "https://billionairecollection.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Billionaire Car",
+        "item": "https://billionairecollection.com/car"
+      }
+    ]
+  },
+  {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "Billionaire Car — Rare & Exotic Automobile Brokerage",
-    "description": "Source, acquire, and sell the world's rarest automobiles — Ferrari, Bugatti, Pagani, and limited-edition collector cars through Billionaire Car's specialist brokerage network.",
+    "name": "Billionaire Car \u2014 Exotic Automobile Brokerage",
+    "description": "Billionaire Car is the exotic automobile division of Billionaire Collection, the parent company of the world's premier luxury ecosystem.",
     "url": "https://billionairecollection.com/car",
     "serviceType": "Exotic Car Brokerage",
     "provider": {
@@ -20,8 +39,14 @@ export default function Car() {
       "name": "Billionaire Collection",
       "url": "https://billionairecollection.com"
     },
-    "areaServed": "Worldwide"
-  });
+    "areaServed": "Worldwide",
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com"
+    }
+  }
+]);
   return (
     <DivisionPage
       badge="Billionaire Car"

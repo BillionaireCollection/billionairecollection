@@ -21,24 +21,57 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 export default function Cigar() {
   useSEO({
-    title: "Rare Hand-Rolled Cigars | Billionaire Cigar",
-    description: "Source the world's rarest hand-rolled cigars from Cuba, Nicaragua, and the Dominican Republic through Billionaire Cigar. Exclusive blends, aged vintages, and bespoke cigar experiences.",
-    keywords: "rare cigars, hand-rolled cigars, Cuban cigars, luxury cigars, Billionaire Cigar, exclusive cigars, vintage cigars, premium tobacco",
+    title: "Billionaire Cigar — Rare Hand-Rolled Cigars | A Billionaire Collection Company",
+    description: "Billionaire Cigar is the rare cigar brand within the Billionaire Collection ecosystem. The world's finest hand-rolled cigars from Cuba, Nicaragua, and the Dominican Republic — curated by Billionaire Collection, the parent company of the world's premier luxury brand portfolio.",
+    keywords: "Billionaire Cigar, Billionaire Collection cigars, rare hand-rolled cigars, Cuban cigars, luxury cigars, limited edition cigars, Billionaire Collection products, UHNW cigars, premium cigar brand",
   });
-  useJsonLd({
+  useJsonLd([
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Billionaire Collection",
+        "item": "https://billionairecollection.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Billionaire Cigar",
+        "item": "https://billionairecollection.com/cigar"
+      }
+    ]
+  },
+  {
     "@context": "https://schema.org",
     "@type": "Product",
-    "name": "Billionaire Cigar — Rare Hand-Rolled Cigars",
-    "description": "The world's rarest hand-rolled cigars from Cuba, Nicaragua, and the Dominican Republic — exclusive blends, aged vintages, and bespoke cigar experiences.",
+    "name": "Billionaire Cigar \u2014 Rare Hand-Rolled Cigars",
+    "description": "Billionaire Cigar is the rare cigar brand within the Billionaire Collection ecosystem.",
     "url": "https://billionairecollection.com/cigar",
-    "brand": { "@type": "Brand", "name": "Billionaire Cigar" },
+    "brand": {
+      "@type": "Brand",
+      "name": "Billionaire Cigar"
+    },
     "category": "Luxury Cigars",
+    "manufacturer": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com"
+    },
     "offers": {
       "@type": "Offer",
       "availability": "https://schema.org/InStoreOnly",
-      "seller": { "@type": "Organization", "name": "Billionaire Collection", "url": "https://billionairecollection.com" }
-    }
-  });
+      "seller": {
+        "@type": "Organization",
+        "name": "Billionaire Collection",
+        "url": "https://billionairecollection.com"
+      }
+    },
+    "parentOrganization": {"@type": "Organization", "name": "Billionaire Collection", "url": "https://billionairecollection.com"}
+  }
+]);
   return (
     <div style={{ background: "#000" }}>
       <PageHero badge="Billionaire Cigars" title="Rare" titleAccent="Hand-Rolled Cigars" subtitle="The world's finest hand-rolled cigars — from aged Cuban Cohibas to rare Nicaraguan limited editions — presented in bespoke humidors of exceptional craftsmanship." image="https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-lifestyle-AH2eKQkWWtkQqo8wcxHVw2.webp" cta={{ label: "Enquire", href: "/card-concierge" }} />

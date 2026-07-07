@@ -60,15 +60,34 @@ const TIERS = [
 
 export default function GoldenTicket() {
   useSEO({
-    title: "The Golden Ticket — Billionaire Collection's Inner Circle",
-    description: "The Golden Ticket grants access to Billionaire Collection's most exclusive inner circle — private events, off-market deals, and privileges unavailable anywhere else in the world.",
-    keywords: "Golden Ticket, exclusive membership, VIP inner circle, ultra-exclusive access, private events, off-market deals, Billionaire Collection elite",
+    title: "The Golden Ticket — Billionaire Collection's Most Exclusive Inner Circle",
+    description: "The Golden Ticket is the most exclusive tier within Billionaire Collection, the parent company of the world's premier luxury ecosystem. By invitation only — unlimited private aviation, superyacht fleet access, private island portfolio, dedicated family office, and impossible experiences reserved for the world's elite.",
+    keywords: "Golden Ticket Billionaire Collection, most exclusive membership, invitation only luxury, unlimited private aviation, superyacht access, private island, family office, Billionaire Collection inner circle, UHNW elite membership",
   });
-  useJsonLd({
+  useJsonLd([
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Billionaire Collection",
+        "item": "https://billionairecollection.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "The Golden Ticket",
+        "item": "https://billionairecollection.com/golden-ticket"
+      }
+    ]
+  },
+  {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "The Golden Ticket — Billionaire Collection Inner Circle",
-    "description": "The Golden Ticket is Billionaire Collection's most exclusive membership tier — invitation only. Unlimited private aviation, superyacht fleet access, private island portfolio, dedicated family office, and impossible experiences.",
+    "name": "The Golden Ticket \u2014 Billionaire Collection's Most Exclusive Inner Circle",
+    "description": "The Golden Ticket is the most exclusive tier within Billionaire Collection, the parent company of the world's premier luxury ecosystem. By invitation only.",
     "url": "https://billionairecollection.com/golden-ticket",
     "serviceType": "Ultra-Exclusive Membership",
     "provider": {
@@ -77,20 +96,13 @@ export default function GoldenTicket() {
       "url": "https://billionairecollection.com"
     },
     "areaServed": "Worldwide",
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Golden Ticket Privileges",
-      "itemListElement": [
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Unlimited Private Aviation" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Private Island Access" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Superyacht Fleet Access" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Dedicated Family Office" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Elite Medical Access" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Impossible Experiences" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Global Elite Network" } }
-      ]
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com"
     }
-  });
+  }
+]);
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", phone: "", country: "", message: "", referredBy: "" });
   const [formError, setFormError] = useState("");

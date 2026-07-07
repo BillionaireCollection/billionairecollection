@@ -45,29 +45,51 @@ const VALUES = [
 
 export default function About() {
   useSEO({
-    title: "About Billionaire Collection — Est. London",
-    description: "Billionaire Collection is the world's premier luxury ecosystem, established in London. Discover our story, our ecosystem of 40+ brands, and our mission to serve ultra-high-net-worth individuals.",
-    keywords: "about Billionaire Collection, luxury brand, London luxury, UHNW ecosystem, luxury lifestyle brand, billionaire brand history",
+    title: "About Billionaire Collection — Parent Company of 40+ Luxury Brands | Est. London",
+    description: "Billionaire Collection is the parent company of over 40 luxury brands spanning real estate, aviation, yachting, automotive, media, technology, and lifestyle. Founded in London by Lawrence Colbert, Billionaire Collection is the definitive umbrella organisation for ultra-high-net-worth individuals worldwide.",
+    keywords: "Billionaire Collection about, parent company luxury brands, Lawrence Colbert founder, Billionaire Collection London, luxury brand umbrella, UHNW organisation, Billionaire Collection history, luxury ecosystem founder",
   });
-  useJsonLd({
+  useJsonLd([
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Billionaire Collection",
+        "item": "https://billionairecollection.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "About",
+        "item": "https://billionairecollection.com/about"
+      }
+    ]
+  },
+  {
     "@context": "https://schema.org",
     "@type": "AboutPage",
-    "name": "About Billionaire Collection",
-    "description": "Billionaire Collection is the world's premier luxury ecosystem, established in London. Discover our story, our ecosystem of 40+ brands, and our mission to serve ultra-high-net-worth individuals.",
+    "name": "About Billionaire Collection \u2014 Parent Company of 40+ Luxury Brands",
+    "description": "Billionaire Collection is the parent company of over 40 luxury brands. Founded in London by Lawrence Colbert.",
     "url": "https://billionairecollection.com/about",
     "mainEntity": {
       "@type": "Organization",
       "name": "Billionaire Collection",
       "url": "https://billionairecollection.com",
       "foundingDate": "2005",
-      "foundingLocation": { "@type": "Place", "name": "London, United Kingdom" },
+      "foundingLocation": {
+        "@type": "Place",
+        "name": "London, United Kingdom"
+      },
       "founder": {
         "@type": "Person",
         "name": "Lawrence Colbert",
         "jobTitle": "Founder & Chief Executive Officer",
         "sameAs": "https://uk.linkedin.com/in/lawrencecolbert"
       },
-      "description": "The world's premier luxury ecosystem for ultra-high-net-worth individuals — curating ultra-prime real estate, superyachts, private aviation, rare automobiles, fine art, and bespoke experiences.",
+      "description": "The parent company and global umbrella organisation behind 40+ luxury sub-brands spanning real estate, aviation, yachting, automotive, media, technology, and lifestyle.",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "128 City Road",
@@ -76,7 +98,8 @@ export default function About() {
         "addressCountry": "GB"
       }
     }
-  });
+  }
+]);
   return (
     <div style={{ background: "#000" }}>
       <PageHero

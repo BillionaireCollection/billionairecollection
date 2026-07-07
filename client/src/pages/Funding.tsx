@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
 import { useSEO } from "@/hooks/useSEO";
+import { useJsonLd } from "@/hooks/useJsonLd";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -20,10 +21,48 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 export default function Funding() {
   useSEO({
-    title: "Elite Funding & Private Capital | Billionaire Funding",
-    description: "Access bespoke funding and private capital solutions through Billionaire Funding. Connecting ultra-high-net-worth individuals with exclusive financing, investment, and capital-raising opportunities.",
-    keywords: "elite funding, private capital, UHNW financing, luxury investment, capital raising, Billionaire Funding, private equity, wealth management",
+    title: "Billionaire Funding — Elite Capital & Private Finance | A Billionaire Collection Company",
+    description: "Billionaire Funding is the private capital division of Billionaire Collection, the parent company of the world's premier luxury ecosystem. Connecting ultra-high-net-worth individuals with exclusive financing, investment, and capital-raising opportunities through the Billionaire Collection network.",
+    keywords: "Billionaire Funding, Billionaire Collection capital, elite funding, private capital, UHNW financing, luxury investment, Billionaire Collection funding division, private equity UHNW, wealth management London",
   });
+  useJsonLd([
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Billionaire Collection",
+        "item": "https://billionairecollection.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Billionaire Funding",
+        "item": "https://billionairecollection.com/funding"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FinancialService",
+    "name": "Billionaire Funding",
+    "description": "Billionaire Funding is the private capital division of Billionaire Collection, the parent company of the world's premier luxury ecosystem.",
+    "url": "https://billionairecollection.com/funding",
+    "provider": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com"
+    },
+    "areaServed": "Worldwide",
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com"
+    }
+  }
+]);
   return (
     <div style={{ background: "#000" }}>
       <PageHero badge="Billionaire Funding" title="Capital &" titleAccent="Investment" subtitle="Exclusive access to private equity, venture capital, and bespoke funding solutions for ultra-high-net-worth individuals and family offices." image="https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-lifestyle-AH2eKQkWWtkQqo8wcxHVw2.webp" cta={{ label: "Speak to an Advisor", href: "/card-concierge" }} />

@@ -95,35 +95,50 @@ function AnimatedCounter({ target, suffix = "", prefix = "" }: { target: number;
 
 export default function Home() {
   useSEO({
-    title: "Billionaire Collection — The World's Premier Luxury Ecosystem",
-    description: "Discover ultra-prime real estate, superyachts, private jets, rare automobiles, and bespoke concierge services — curated exclusively for ultra-high-net-worth individuals worldwide.",
-    keywords: "luxury ecosystem, ultra-prime real estate, superyachts, private aviation, UHNW, billionaire lifestyle, exclusive membership, luxury brokerage",
+    title: "Billionaire Collection — Parent Company of the World's Premier Luxury Ecosystem",
+    description: "Billionaire Collection is the parent company and global umbrella brand behind 40+ luxury sub-brands — Billionaire Estates, Billionaire Air, Billionaire Boat, Billionaire Car, Billionaire Card, Billionaire Magazine, and more. The world's premier luxury ecosystem for ultra-high-net-worth individuals, established in London.",
+    keywords: "Billionaire Collection parent company, luxury ecosystem umbrella brand, Billionaire Estates, Billionaire Air, Billionaire Boat, Billionaire Car, Billionaire Card, UHNW luxury group, ultra-high-net-worth, luxury holding company London, Billionaire Collection brands",
   });
   useJsonLd({
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Billionaire Collection",
-    "alternateName": "Billionaire Collection — The World's Premier Luxury Ecosystem",
-    "url": "https://billionairecollection.com",
-    "description": "The world's premier luxury ecosystem for ultra-high-net-worth individuals — curating ultra-prime real estate, superyachts, private aviation, rare automobiles, fine art, and bespoke experiences.",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": "https://billionairecollection.com/marketplace?q={search_term_string}"
-      },
-      "query-input": "required name=search_term_string"
-    },
-    "publisher": {
-      "@type": "Organization",
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
       "name": "Billionaire Collection",
+      "alternateName": "Billionaire Collection \u2014 The World's Premier Luxury Ecosystem",
       "url": "https://billionairecollection.com",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://billionairecollection.com/favicon.svg"
+      "description": "Billionaire Collection is the parent company of 40+ luxury sub-brands \u2014 the world's premier luxury ecosystem for ultra-high-net-worth individuals.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://billionairecollection.com/marketplace?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Billionaire Collection",
+        "url": "https://billionairecollection.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://billionairecollection.com/favicon.svg"
+        }
       }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Billionaire Collection",
+          "item": "https://billionairecollection.com"
+        }
+      ]
     }
-  });
+  ]
+});
 
   return (
     <div style={{ background: "#000" }}>

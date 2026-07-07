@@ -32,15 +32,34 @@ const inputStyle: React.CSSProperties = {
 
 export default function Contact() {
   useSEO({
-    title: "Contact Billionaire Collection — Enquire Now",
-    description: "Reach the Billionaire Collection team directly. Whether you are enquiring about brokerage, membership, partnerships, or media — our advisors are ready to assist you.",
-    keywords: "contact Billionaire Collection, luxury enquiry, brokerage contact, membership enquiry, partnership enquiry, media contact",
+    title: "Contact Billionaire Collection — Parent Company Headquarters | London",
+    description: "Contact the Billionaire Collection parent company headquarters in London. Reach our team for brokerage enquiries, membership applications, partnership opportunities, media requests, or general information about any brand within the Billionaire Collection ecosystem.",
+    keywords: "contact Billionaire Collection, Billionaire Collection headquarters, London luxury company contact, Billionaire Collection phone, Billionaire Collection email, luxury brand enquiry, UHNW contact",
   });
-  useJsonLd({
+  useJsonLd([
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Billionaire Collection",
+        "item": "https://billionairecollection.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Contact",
+        "item": "https://billionairecollection.com/contact"
+      }
+    ]
+  },
+  {
     "@context": "https://schema.org",
     "@type": "ContactPage",
-    "name": "Contact Billionaire Collection",
-    "description": "Reach the Billionaire Collection team directly for brokerage, membership, partnerships, or media enquiries.",
+    "name": "Contact Billionaire Collection \u2014 Parent Company Headquarters",
+    "description": "Contact the Billionaire Collection parent company headquarters in London.",
     "url": "https://billionairecollection.com/contact",
     "mainEntity": {
       "@type": "Organization",
@@ -56,11 +75,22 @@ export default function Contact() {
         "addressCountry": "GB"
       },
       "contactPoint": [
-        { "@type": "ContactPoint", "telephone": "+44-207-183-1700", "contactType": "customer service", "availableLanguage": "English" },
-        { "@type": "ContactPoint", "email": "info@billionaireplc.com", "contactType": "general enquiry", "availableLanguage": "English" }
+        {
+          "@type": "ContactPoint",
+          "telephone": "+44-207-183-1700",
+          "contactType": "customer service",
+          "availableLanguage": "English"
+        },
+        {
+          "@type": "ContactPoint",
+          "email": "info@billionaireplc.com",
+          "contactType": "general enquiry",
+          "availableLanguage": "English"
+        }
       ]
     }
-  });
+  }
+]);
   const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");

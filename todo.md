@@ -106,3 +106,20 @@
 - [x] Fix GoldenTicket.tsx hero heading from div to h1 for correct heading hierarchy
 - [x] Verify all img tags have descriptive alt text (confirmed — all 100% covered)
 - [x] Add useJsonLd hook (18 pages: Home, Estates, Card, CardConcierge, GoldenTicket, Marketplace, About, Contact, Champagne, Vodka, Cigar, Oud, Boat, Air, Car, Art, Privacy, Terms)
+
+## Parent-Company SEO & AI Optimisation
+
+- [x] Rewrite all 30 page meta titles with parent-company positioning ("A Billionaire Collection Company" suffix on all sub-brand pages)
+- [x] Rewrite all 30 page meta descriptions explicitly naming BC as parent company of each sub-brand
+- [x] Add parent-company keywords to all pages (billionaire collection parent company, luxury ecosystem, umbrella brand)
+- [x] Implement global Organisation JSON-LD in index.html with full sub-brand hierarchy (hasOfferCatalog, brand, subOrganization, founder, address, contactPoint, sameAs)
+- [x] Add BreadcrumbList JSON-LD to all 29 sub-brand pages (Billionaire Collection → sub-brand)
+- [x] Add SiteLinksSearchBox + WebSite JSON-LD to homepage
+- [x] Create /public/llms.txt — AI-readable brand authority document for LLM crawlers (ChatGPT, Perplexity, Claude, Gemini)
+- [x] Create /public/ai-plugin.json — OpenAI/AI plugin manifest for AI search discovery
+- [x] Create /public/openapi.yaml — OpenAPI stub for AI plugin
+- [x] Update index.html global OG tags, Twitter Card, and meta description for parent-company positioning
+- [x] Add <meta name="application-name">, <meta name="author">, <meta name="ai-description"> and <link rel="ai-plugin"> tags globally
+- [x] Add "parentOrganization" field to all sub-brand page JSON-LD schemas
+- [x] Update robots.txt with explicit AI crawler permissions (GPTBot, ChatGPT-User, PerplexityBot, ClaudeBot, anthropic-ai)
+- [x] Upgrade useJsonLd hook to support arrays of schemas (BreadcrumbList + page schema simultaneously)

@@ -21,22 +21,42 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 export default function Privacy() {
   useSEO({
-    title: "Privacy Policy | Billionaire Collection",
-    description: "Read the Billionaire Collection privacy policy. We are committed to protecting your personal data in accordance with GDPR and the highest standards of information security.",
-    keywords: "privacy policy, data protection, GDPR, personal data, Billionaire Collection privacy, information security",
+    title: "Privacy Policy | Billionaire Collection — Parent Company of 40+ Luxury Brands",
+    description: "Privacy policy for Billionaire Collection, the parent company and global umbrella organisation behind 40+ luxury sub-brands. Data protection, GDPR compliance, and information security standards for all Billionaire Collection brands and services.",
+    keywords: "Billionaire Collection privacy policy, luxury brand data protection, GDPR compliance, Billionaire Collection legal, privacy notice",
   });
-  useJsonLd({
+  useJsonLd([
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Billionaire Collection",
+        "item": "https://billionairecollection.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Privacy Policy",
+        "item": "https://billionairecollection.com/privacy"
+      }
+    ]
+  },
+  {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "Privacy Policy — Billionaire Collection",
-    "description": "Billionaire Collection privacy policy — data protection, GDPR compliance, and information security standards.",
+    "name": "Privacy Policy \u2014 Billionaire Collection",
+    "description": "Privacy policy for Billionaire Collection, the parent company of 40+ luxury brands.",
     "url": "https://billionairecollection.com/privacy",
     "publisher": {
       "@type": "Organization",
       "name": "Billionaire Collection",
       "url": "https://billionairecollection.com"
     }
-  });
+  }
+]);
   return (
     <div style={{ background: "#000" }}>
       <PageHero badge="Legal" title="Privacy" titleAccent="Policy" subtitle="How Billionaire Collection collects, uses, and protects your personal information." image="https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-main-QJbNmDnsM8Jru6dBDixZQ8.webp" height="50vh" />

@@ -4,15 +4,34 @@ import { useJsonLd } from "@/hooks/useJsonLd";
 
 export default function Art() {
   useSEO({
-    title: "Fine Art Investment & Collectibles | Billionaire Art",
-    description: "Acquire museum-quality fine art and investment-grade collectibles through Billionaire Art. Curated works from blue-chip artists, private sales, and exclusive auction access worldwide.",
-    keywords: "fine art investment, blue-chip art, rare collectibles, art brokerage, Sotheby's, Christie's, private art sales, investment art",
+    title: "Billionaire Art — Fine Art Investment | A Billionaire Collection Company",
+    description: "Billionaire Art is the fine art and collectibles division of Billionaire Collection, the parent company of the world's premier luxury ecosystem. Acquire museum-quality works and investment-grade art through Billionaire Collection's curated brokerage and private sale network.",
+    keywords: "Billionaire Art, Billionaire Collection fine art, art investment, luxury art brokerage, blue-chip art, private art sale, UHNW art collection, Billionaire Collection art division, investment art London",
   });
-  useJsonLd({
+  useJsonLd([
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Billionaire Collection",
+        "item": "https://billionairecollection.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Billionaire Art",
+        "item": "https://billionairecollection.com/art"
+      }
+    ]
+  },
+  {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "Billionaire Art — Fine Art Investment & Collectibles",
-    "description": "Acquire museum-quality fine art and investment-grade collectibles through Billionaire Art. Curated works from blue-chip artists, private sales, and exclusive auction access worldwide.",
+    "name": "Billionaire Art \u2014 Fine Art Investment",
+    "description": "Billionaire Art is the fine art division of Billionaire Collection, the parent company of the world's premier luxury ecosystem.",
     "url": "https://billionairecollection.com/art",
     "serviceType": "Fine Art Brokerage",
     "provider": {
@@ -20,8 +39,14 @@ export default function Art() {
       "name": "Billionaire Collection",
       "url": "https://billionairecollection.com"
     },
-    "areaServed": "Worldwide"
-  });
+    "areaServed": "Worldwide",
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com"
+    }
+  }
+]);
   return (
     <DivisionPage
       badge="Billionaire Art"

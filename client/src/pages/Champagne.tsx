@@ -21,24 +21,57 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 export default function Champagne() {
   useSEO({
-    title: "Ultra-Premium Champagne | Billionaire Champagne",
-    description: "Discover and acquire ultra-premium and rare champagnes from the world's most exclusive houses. Limited cuvées, vintage collections, and bespoke champagne experiences for the discerning palate.",
-    keywords: "ultra-premium champagne, rare champagne, luxury champagne, limited cuvée, vintage champagne, exclusive champagne, Billionaire Champagne",
+    title: "Billionaire Champagne — Premier Millésimé Cuvée | A Billionaire Collection Company",
+    description: "Billionaire Champagne is the premier millésimé cuvée champagne house within the Billionaire Collection ecosystem. Ultra-premium and rare champagnes — Cristal, Dom Pérignon, Krug, and exclusive private cuvées — curated by Billionaire Collection, the parent company of the world's premier luxury brand portfolio.",
+    keywords: "Billionaire Champagne, Billionaire Collection champagne, premier cuvée champagne, ultra-premium champagne, rare champagne, Cristal, Dom Pérignon, Krug, luxury champagne house, Billionaire Collection products",
   });
-  useJsonLd({
+  useJsonLd([
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Billionaire Collection",
+        "item": "https://billionairecollection.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Billionaire Champagne",
+        "item": "https://billionairecollection.com/champagne"
+      }
+    ]
+  },
+  {
     "@context": "https://schema.org",
     "@type": "Product",
-    "name": "Billionaire Champagne — Ultra-Premium Cuvées",
-    "description": "Ultra-premium and rare champagnes from the world's most exclusive houses — Cristal, Dom Pérignon, Krug Clos du Mesnil, and Salon Blanc de Blancs.",
+    "name": "Billionaire Champagne \u2014 Premier Mill\u00e9sim\u00e9 Cuv\u00e9e",
+    "description": "Billionaire Champagne is the premier mill\u00e9sim\u00e9 cuv\u00e9e champagne house within the Billionaire Collection ecosystem.",
     "url": "https://billionairecollection.com/champagne",
-    "brand": { "@type": "Brand", "name": "Billionaire Champagne" },
+    "brand": {
+      "@type": "Brand",
+      "name": "Billionaire Champagne"
+    },
     "category": "Luxury Champagne",
+    "manufacturer": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com"
+    },
     "offers": {
       "@type": "Offer",
       "availability": "https://schema.org/InStoreOnly",
-      "seller": { "@type": "Organization", "name": "Billionaire Collection", "url": "https://billionairecollection.com" }
-    }
-  });
+      "seller": {
+        "@type": "Organization",
+        "name": "Billionaire Collection",
+        "url": "https://billionairecollection.com"
+      }
+    },
+    "parentOrganization": {"@type": "Organization", "name": "Billionaire Collection", "url": "https://billionairecollection.com"}
+  }
+]);
   return (
     <div style={{ background: "#000" }}>
       <PageHero badge="Billionaire Champagne" title="Ultra-Premium" titleAccent="Cuvées" subtitle="The world's most exclusive champagnes — from legendary Prestige Cuvées to rare single-vineyard expressions and bespoke private label creations." image="https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-lifestyle-AH2eKQkWWtkQqo8wcxHVw2.webp" cta={{ label: "Enquire", href: "/card-concierge" }} />

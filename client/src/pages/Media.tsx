@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
 import { useSEO } from "@/hooks/useSEO";
+import { useJsonLd } from "@/hooks/useJsonLd";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -27,10 +28,42 @@ const CHANNELS = [
 
 export default function Media() {
   useSEO({
-    title: "Billionaire Media Group — Television, Magazine & Radio",
-    description: "Billionaire Media Group operates Billionaire Television, Billionaire Collection Magazine, and Billionaire Radio — the world's premier luxury media platforms for ultra-high-net-worth audiences.",
-    keywords: "Billionaire Media Group, luxury television, luxury magazine, luxury radio, UHNW media, billionaire TV, luxury content",
+    title: "Billionaire Media — Television, Magazine & Radio | A Billionaire Collection Division",
+    description: "Billionaire Media is the media division of Billionaire Collection, the parent company of the world's premier luxury ecosystem. Encompassing Billionaire Television, Billionaire Collection Magazine, and Billionaire Radio — the definitive media network for ultra-high-net-worth individuals.",
+    keywords: "Billionaire Media, Billionaire Collection media division, Billionaire Television, Billionaire Magazine, Billionaire Radio, UHNW media, luxury media network, Billionaire Collection broadcast, luxury lifestyle media",
   });
+  useJsonLd([
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Billionaire Collection",
+        "item": "https://billionairecollection.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Billionaire Media",
+        "item": "https://billionairecollection.com/media"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Billionaire Media",
+    "description": "Billionaire Media is the media division of Billionaire Collection, the parent company of the world's premier luxury ecosystem.",
+    "url": "https://billionairecollection.com/media",
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com"
+    }
+  }
+]);
   return (
     <div style={{ background: "#000" }}>
       <PageHero

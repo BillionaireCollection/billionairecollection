@@ -1,12 +1,52 @@
 import DivisionPage from "@/components/DivisionPage";
 import { useSEO } from "@/hooks/useSEO";
+import { useJsonLd } from "@/hooks/useJsonLd";
 
 export default function Crypto() {
   useSEO({
-    title: "Digital Asset & Crypto Wealth Management | Billionaire Collection",
-    description: "Institutional-grade digital asset strategies for ultra-high-net-worth individuals. Navigate Bitcoin, Ethereum, and alternative digital assets with Billionaire Collection's specialist advisors.",
-    keywords: "crypto wealth management, digital assets, Bitcoin investment, Ethereum, blockchain, institutional crypto, UHNW digital wealth, DeFi",
+    title: "Billionaire Crypto — Digital Asset Management | A Billionaire Collection Company",
+    description: "Billionaire Crypto is the digital wealth management division of Billionaire Collection, the parent company of the world's premier luxury ecosystem. Manage, acquire, and grow digital assets through Billionaire Collection's specialist crypto advisory and portfolio services.",
+    keywords: "Billionaire Crypto, Billionaire Collection digital assets, crypto wealth management, UHNW cryptocurrency, digital asset advisory, luxury crypto portfolio, Billionaire Collection crypto division, blockchain wealth",
   });
+  useJsonLd([
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Billionaire Collection",
+        "item": "https://billionairecollection.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Billionaire Crypto",
+        "item": "https://billionairecollection.com/crypto"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Billionaire Crypto \u2014 Digital Asset Management",
+    "description": "Billionaire Crypto is the digital wealth management division of Billionaire Collection, the parent company of the world's premier luxury ecosystem.",
+    "url": "https://billionairecollection.com/crypto",
+    "serviceType": "Digital Asset Management",
+    "provider": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com"
+    },
+    "areaServed": "Worldwide",
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com"
+    }
+  }
+]);
   return (
     <DivisionPage
       badge="Billionaire Crypto"

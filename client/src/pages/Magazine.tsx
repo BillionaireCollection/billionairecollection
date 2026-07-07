@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
 import { useSEO } from "@/hooks/useSEO";
+import { useJsonLd } from "@/hooks/useJsonLd";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -20,10 +21,47 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 export default function Magazine() {
   useSEO({
-    title: "Billionaire Collection Magazine — The Luxury Authority",
-    description: "Read Billionaire Collection Magazine — the definitive publication for ultra-high-net-worth individuals. Exclusive features on real estate, yachts, aviation, art, and the global luxury market.",
-    keywords: "Billionaire Collection Magazine, luxury magazine, UHNW publication, luxury lifestyle magazine, billionaire magazine, luxury editorial",
+    title: "Billionaire Collection Magazine — The Luxury Authority | A Billionaire Collection Publication",
+    description: "Billionaire Collection Magazine is the flagship publication of Billionaire Collection, the parent company of the world's premier luxury ecosystem. The definitive magazine for ultra-high-net-worth individuals — covering real estate, yachts, aviation, art, and the global luxury market since 2005.",
+    keywords: "Billionaire Collection Magazine, luxury magazine, UHNW publication, billionaire magazine London, luxury lifestyle editorial, Billionaire Collection publication, ultra-luxury magazine, luxury media group",
   });
+  useJsonLd([
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Billionaire Collection",
+        "item": "https://billionairecollection.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Billionaire Collection Magazine",
+        "item": "https://billionairecollection.com/magazine"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Periodical",
+    "name": "Billionaire Collection Magazine",
+    "description": "The flagship publication of Billionaire Collection, the parent company of the world's premier luxury ecosystem. The definitive luxury magazine since 2005.",
+    "url": "https://billionairecollection.com/magazine",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com"
+    },
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com"
+    }
+  }
+]);
   return (
     <div style={{ background: "#000" }}>
       <PageHero badge="Billionaire Magazine" title="The Definitive" titleAccent="Luxury Publication" subtitle="The world's most prestigious print and digital magazine for ultra-high-net-worth individuals — featuring in-depth profiles, market intelligence, and the finest luxury editorial." image="https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-lifestyle-AH2eKQkWWtkQqo8wcxHVw2.webp" cta={{ label: "Subscribe", href: "/news" }} />

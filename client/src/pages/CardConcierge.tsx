@@ -44,39 +44,63 @@ const REQUEST_TYPES = [
 
 export default function CardConcierge() {
   useSEO({
-    title: "24/7 Luxury Concierge Request | Billionaire Collection",
-    description: "Submit a bespoke concierge request to our 24/7 global team. Private jet bookings, exclusive restaurant reservations, VIP event access, and any request — no matter how extraordinary.",
-    keywords: "luxury concierge service, 24/7 concierge, personal concierge, VIP service, bespoke requests, private jet booking, exclusive reservations",
+    title: "Billionaire Collection 24/7 Concierge — Bespoke Requests Worldwide",
+    description: "Submit a bespoke concierge request to Billionaire Collection, the parent company behind the world's premier luxury ecosystem. Our 24/7 global team handles private jet bookings, Michelin-star reservations, yacht charters, VIP event access, and any request — no matter how extraordinary.",
+    keywords: "Billionaire Collection concierge, 24/7 luxury concierge, bespoke concierge service, private jet booking concierge, Michelin star reservation, VIP event access, UHNW concierge, Billionaire Collection request, luxury lifestyle service",
   });
-  useJsonLd({
+  useJsonLd([
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Billionaire Collection",
+        "item": "https://billionairecollection.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Concierge Request",
+        "item": "https://billionairecollection.com/card-concierge"
+      }
+    ]
+  },
+  {
     "@context": "https://schema.org",
     "@type": "Service",
     "name": "Billionaire Collection 24/7 Concierge",
-    "description": "24/7 luxury concierge service — private jet bookings, exclusive restaurant reservations, VIP event access, yacht charter, and any bespoke request worldwide.",
+    "description": "24/7 luxury concierge service operated by Billionaire Collection, the parent company of the world's premier luxury ecosystem.",
     "url": "https://billionairecollection.com/card-concierge",
     "serviceType": "Luxury Concierge Service",
     "provider": {
       "@type": "Organization",
       "name": "Billionaire Collection",
-      "url": "https://billionairecollection.com",
-      "telephone": "+44-207-183-1700",
-      "email": "concierge@billionaireplc.com"
+      "url": "https://billionairecollection.com"
     },
     "areaServed": "Worldwide",
-    "availableChannel": {
-      "@type": "ServiceChannel",
-      "serviceUrl": "https://billionairecollection.com/card-concierge",
-      "servicePhone": "+44-207-183-1700",
-      "serviceEmail": "concierge@billionaireplc.com",
-      "availableLanguage": "English"
-    },
     "hoursAvailable": {
       "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
       "opens": "00:00",
       "closes": "23:59"
+    },
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com"
     }
-  });
+  }
+]);
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", phone: "", type: "", message: "", budget: "" });
   const [formError, setFormError] = useState("");

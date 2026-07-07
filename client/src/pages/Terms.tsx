@@ -21,22 +21,42 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 export default function Terms() {
   useSEO({
-    title: "Terms & Conditions | Billionaire Collection",
-    description: "Read the Billionaire Collection terms and conditions governing your use of our website, services, brokerage, and membership products. Please read carefully before using our services.",
-    keywords: "terms and conditions, legal terms, website terms, Billionaire Collection legal, service terms, membership terms",
+    title: "Terms & Conditions | Billionaire Collection — Parent Company of 40+ Luxury Brands",
+    description: "Terms and conditions governing use of Billionaire Collection, the parent company and global umbrella organisation behind 40+ luxury sub-brands. Legal terms for the Billionaire Collection website, brokerage services, membership products, and all associated brands.",
+    keywords: "Billionaire Collection terms, luxury brand terms and conditions, Billionaire Collection legal, terms of service, Billionaire Collection website terms",
   });
-  useJsonLd({
+  useJsonLd([
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Billionaire Collection",
+        "item": "https://billionairecollection.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Terms & Conditions",
+        "item": "https://billionairecollection.com/terms"
+      }
+    ]
+  },
+  {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "Terms & Conditions — Billionaire Collection",
-    "description": "Terms and conditions governing use of the Billionaire Collection website, services, brokerage, and membership products.",
+    "name": "Terms & Conditions \u2014 Billionaire Collection",
+    "description": "Terms and conditions for Billionaire Collection, the parent company of 40+ luxury brands.",
     "url": "https://billionairecollection.com/terms",
     "publisher": {
       "@type": "Organization",
       "name": "Billionaire Collection",
       "url": "https://billionairecollection.com"
     }
-  });
+  }
+]);
   return (
     <div style={{ background: "#000" }}>
       <PageHero badge="Legal" title="Terms of" titleAccent="Service" subtitle="The terms and conditions governing your use of Billionaire Collection services." image="https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-main-QJbNmDnsM8Jru6dBDixZQ8.webp" height="50vh" />

@@ -4,15 +4,34 @@ import { useJsonLd } from "@/hooks/useJsonLd";
 
 export default function Boat() {
   useSEO({
-    title: "Superyacht Brokerage & Charter | Billionaire Boat",
-    description: "Buy, sell, or charter the world's finest superyachts and mega yachts. Billionaire Boat connects discerning owners with bespoke vessels from 30m to 100m+ across every ocean.",
-    keywords: "superyacht brokerage, mega yacht charter, luxury yacht sales, yacht acquisition, private yacht, Lürssen, Feadship, Benetti",
+    title: "Billionaire Boat — Superyacht Brokerage | A Billionaire Collection Company",
+    description: "Billionaire Boat is the superyacht division of Billionaire Collection, the parent company of the world's premier luxury ecosystem. Buy, sell, or charter the finest superyachts and mega yachts — Lürssen, Feadship, Benetti, and beyond — through Billionaire Collection's dedicated marine brokerage.",
+    keywords: "Billionaire Boat, Billionaire Collection yachts, superyacht brokerage, mega yacht charter, luxury yacht sale, Lürssen yachts, Feadship, Benetti, UHNW yachting, Billionaire Collection marine division",
   });
-  useJsonLd({
+  useJsonLd([
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Billionaire Collection",
+        "item": "https://billionairecollection.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Billionaire Boat",
+        "item": "https://billionairecollection.com/boat"
+      }
+    ]
+  },
+  {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "Billionaire Boat — Superyacht Brokerage & Charter",
-    "description": "Buy, sell, or charter the world's finest superyachts and mega yachts — Lürssen, Feadship, Benetti, and beyond. Vessels from 30m to 100m+ across every ocean.",
+    "name": "Billionaire Boat \u2014 Superyacht Brokerage",
+    "description": "Billionaire Boat is the superyacht division of Billionaire Collection, the parent company of the world's premier luxury ecosystem.",
     "url": "https://billionairecollection.com/boat",
     "serviceType": "Superyacht Brokerage",
     "provider": {
@@ -20,8 +39,14 @@ export default function Boat() {
       "name": "Billionaire Collection",
       "url": "https://billionairecollection.com"
     },
-    "areaServed": "Worldwide"
-  });
+    "areaServed": "Worldwide",
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com"
+    }
+  }
+]);
   return (
     <DivisionPage
       badge="Billionaire Boat"

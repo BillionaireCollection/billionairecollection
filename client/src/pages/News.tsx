@@ -10,6 +10,7 @@ import PageHero from "@/components/PageHero";
 import { useNewsFeeds } from "@/hooks/useNewsFeeds";
 import { trpc } from "@/lib/trpc";
 import { useSEO } from "@/hooks/useSEO";
+import { useJsonLd } from "@/hooks/useJsonLd";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -50,10 +51,47 @@ const FALLBACK_IMGS = [
 
 export default function News() {
   useSEO({
-    title: "Luxury & Wealth News | Billionaire Collection",
-    description: "Stay informed with the latest luxury lifestyle, wealth management, and ultra-high-net-worth news curated from Forbes, Robb Report, Financial Times, and the world's leading publications.",
-    keywords: "luxury news, wealth news, UHNW news, billionaire lifestyle, luxury market, Forbes, Robb Report, Financial Times, luxury trends",
+    title: "Billionaire Collection News — Luxury, Business & Lifestyle Intelligence",
+    description: "Stay informed with Billionaire Collection News — the official news channel of Billionaire Collection, the parent company of the world's premier luxury ecosystem. Covering luxury real estate, superyachts, private aviation, fine art, and the global UHNW lifestyle.",
+    keywords: "Billionaire Collection news, luxury news, UHNW news, billionaire lifestyle news, luxury real estate news, superyacht news, private aviation news, Billionaire Collection media, luxury intelligence",
   });
+  useJsonLd([
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Billionaire Collection",
+        "item": "https://billionairecollection.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "News",
+        "item": "https://billionairecollection.com/news"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "NewsMediaOrganization",
+    "name": "Billionaire Collection News",
+    "description": "The official news channel of Billionaire Collection, the parent company of the world's premier luxury ecosystem.",
+    "url": "https://billionairecollection.com/news",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com"
+    },
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com"
+    }
+  }
+]);
   const [activeCategory, setActiveCategory] = useState("All");
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);

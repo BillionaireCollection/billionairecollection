@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
 import { useSEO } from "@/hooks/useSEO";
+import { useJsonLd } from "@/hooks/useJsonLd";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -20,10 +21,47 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 export default function Television() {
   useSEO({
-    title: "Billionaire Television — Luxury Lifestyle TV",
-    description: "Watch Billionaire Television — the world's premier luxury lifestyle channel. Exclusive content on superyachts, private aviation, ultra-prime real estate, and the billionaire lifestyle.",
-    keywords: "Billionaire Television, luxury TV channel, lifestyle television, UHNW TV, superyacht TV, private jet TV, luxury lifestyle channel",
+    title: "Billionaire Television — Luxury Lifestyle TV | A Billionaire Collection Company",
+    description: "Billionaire Television is the broadcast division of Billionaire Collection, the parent company of the world's premier luxury ecosystem. Exclusive television programming covering the ultra-luxury lifestyle, real estate, yachting, aviation, and the world of the ultra-high-net-worth.",
+    keywords: "Billionaire Television, Billionaire Collection TV, luxury lifestyle television, UHNW television, luxury broadcast, Billionaire Collection media, ultra-luxury TV channel, billionaire lifestyle TV",
   });
+  useJsonLd([
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Billionaire Collection",
+        "item": "https://billionairecollection.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Billionaire Television",
+        "item": "https://billionairecollection.com/television"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BroadcastService",
+    "name": "Billionaire Television",
+    "description": "Billionaire Television is the broadcast division of Billionaire Collection, the parent company of the world's premier luxury ecosystem.",
+    "url": "https://billionairecollection.com/television",
+    "broadcaster": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com"
+    },
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com"
+    }
+  }
+]);
   return (
     <div style={{ background: "#000" }}>
       <PageHero badge="Billionaire Television" title="Luxury" titleAccent="Television" subtitle="Exclusive programming for the world's most discerning viewers — documentary series, lifestyle content, and live events from the pinnacle of luxury culture." image="https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-main-QJbNmDnsM8Jru6dBDixZQ8.webp" cta={{ label: "Watch Now", href: "/media" }} />

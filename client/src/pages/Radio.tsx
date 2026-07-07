@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
 import { useSEO } from "@/hooks/useSEO";
+import { useJsonLd } from "@/hooks/useJsonLd";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -20,10 +21,47 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 export default function Radio() {
   useSEO({
-    title: "Billionaire Radio — Luxury Lifestyle Audio",
-    description: "Listen to Billionaire Radio — curated audio content on wealth, luxury lifestyle, and exclusive insights for ultra-high-net-worth individuals. Available worldwide, anytime.",
-    keywords: "Billionaire Radio, luxury radio, wealth audio, UHNW podcast, luxury lifestyle radio, billionaire audio content",
+    title: "Billionaire Radio — Luxury Lifestyle Audio | A Billionaire Collection Company",
+    description: "Billionaire Radio is the audio broadcast division of Billionaire Collection, the parent company of the world's premier luxury ecosystem. Exclusive radio programming and podcasts for ultra-high-net-worth individuals covering luxury, business, and lifestyle.",
+    keywords: "Billionaire Radio, Billionaire Collection radio, luxury lifestyle radio, UHNW podcast, luxury audio, Billionaire Collection broadcast, ultra-luxury radio, billionaire podcast",
   });
+  useJsonLd([
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Billionaire Collection",
+        "item": "https://billionairecollection.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Billionaire Radio",
+        "item": "https://billionairecollection.com/radio"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "RadioStation",
+    "name": "Billionaire Radio",
+    "description": "Billionaire Radio is the audio broadcast division of Billionaire Collection, the parent company of the world's premier luxury ecosystem.",
+    "url": "https://billionairecollection.com/radio",
+    "broadcaster": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com"
+    },
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com"
+    }
+  }
+]);
   return (
     <div style={{ background: "#000" }}>
       <PageHero badge="Billionaire Radio" title="Elite" titleAccent="Audio" subtitle="Curated audio content for the global elite — expert conversations on wealth, investment, lifestyle, and the forces shaping the world of ultra-high-net-worth individuals." image="https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-main-QJbNmDnsM8Jru6dBDixZQ8.webp" cta={{ label: "Listen Now", href: "/media" }} />

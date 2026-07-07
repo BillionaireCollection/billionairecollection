@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
 import { useSEO } from "@/hooks/useSEO";
+import { useJsonLd } from "@/hooks/useJsonLd";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -20,10 +21,48 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 export default function Travel() {
   useSEO({
-    title: "Ultra-Luxury Travel & Private Experiences | Billionaire Travel",
-    description: "Design and book ultra-luxury travel experiences through Billionaire Travel. Private island escapes, bespoke itineraries, exclusive villa rentals, and extraordinary destinations worldwide.",
-    keywords: "ultra-luxury travel, private island, bespoke travel, luxury holidays, exclusive destinations, private villa, luxury itinerary, UHNW travel",
+    title: "Billionaire Travel — Ultra-Luxury Travel Experiences | A Billionaire Collection Company",
+    description: "Billionaire Travel is the travel division of Billionaire Collection, the parent company of the world's premier luxury ecosystem. Bespoke ultra-luxury travel experiences — private island retreats, expedition voyages, and exclusive destinations curated for ultra-high-net-worth individuals.",
+    keywords: "Billionaire Travel, Billionaire Collection travel, ultra-luxury travel, private island retreat, bespoke travel experience, UHNW travel, luxury expedition, Billionaire Collection travel division, exclusive destination",
   });
+  useJsonLd([
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Billionaire Collection",
+        "item": "https://billionairecollection.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Billionaire Travel",
+        "item": "https://billionairecollection.com/travel"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "TravelAgency",
+    "name": "Billionaire Travel",
+    "description": "Billionaire Travel is the ultra-luxury travel division of Billionaire Collection, the parent company of the world's premier luxury ecosystem.",
+    "url": "https://billionairecollection.com/travel",
+    "provider": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com"
+    },
+    "areaServed": "Worldwide",
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com"
+    }
+  }
+]);
   return (
     <div style={{ background: "#000" }}>
       <PageHero badge="Billionaire Travel" title="The World" titleAccent="Awaits" subtitle="Bespoke travel experiences curated for the world's most discerning travellers — private islands, expedition yachts, and exclusive resort access through Virtuoso and beyond." image="https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-yacht-hFeRjh9nRnBaKqx8rPSF24.webp" cta={{ label: "Plan Your Journey", href: "/card-concierge" }} />

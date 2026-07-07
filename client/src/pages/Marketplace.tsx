@@ -48,26 +48,43 @@ const ALL_LISTINGS = [
 
 export default function Marketplace() {
   useSEO({
-    title: "Luxury Marketplace — Ultra-Prime Assets For Sale | Billionaire Store",
-    description: "Browse and acquire ultra-prime assets — real estate, superyachts, private jets, rare automobiles, and fine art — through the Billionaire Collection's exclusive luxury marketplace.",
-    keywords: "luxury marketplace, ultra-prime assets, real estate for sale, superyacht for sale, private jet for sale, rare cars, fine art, luxury store",
+    title: "Billionaire Collection Store — Ultra-Prime Assets For Sale",
+    description: "The Billionaire Collection Store is the official marketplace of Billionaire Collection, the parent company of the world's premier luxury ecosystem. Browse ultra-prime real estate, superyachts, private jets, rare automobiles, and fine art — all curated and verified by the Billionaire Collection brokerage network.",
+    keywords: "Billionaire Collection store, luxury marketplace, ultra-prime assets for sale, luxury real estate for sale, superyacht for sale, private jet for sale, rare car for sale, UHNW marketplace, Billionaire Collection listings",
   });
-  useJsonLd({
+  useJsonLd([
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Billionaire Collection",
+        "item": "https://billionairecollection.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Billionaire Store",
+        "item": "https://billionairecollection.com/marketplace"
+      }
+    ]
+  },
+  {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "name": "Billionaire Collection Luxury Marketplace",
-    "description": "Ultra-prime assets for sale — real estate, superyachts, private jets, rare automobiles, and fine art.",
+    "name": "Billionaire Collection Store \u2014 Ultra-Prime Assets",
+    "description": "The official marketplace of Billionaire Collection, the parent company of the world's premier luxury ecosystem.",
     "url": "https://billionairecollection.com/marketplace",
     "numberOfItems": 12,
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "item": { "@type": "Product", "name": "Mayfair Grand Penthouse", "description": "London, United Kingdom — Off-Market", "offers": { "@type": "Offer", "price": "57000000", "priceCurrency": "USD" } } },
-      { "@type": "ListItem", "position": 2, "item": { "@type": "Product", "name": "M/Y Aurora — 82m Lürssen Superyacht", "description": "Mediterranean — For Sale", "offers": { "@type": "Offer", "price": "105000000", "priceCurrency": "USD" } } },
-      { "@type": "ListItem", "position": 3, "item": { "@type": "Product", "name": "Monaco Clifftop Villa", "description": "Monaco, Monte Carlo — Exclusive", "offers": { "@type": "Offer", "price": "93500000", "priceCurrency": "USD" } } },
-      { "@type": "ListItem", "position": 4, "item": { "@type": "Product", "name": "Malibu Ocean Estate", "description": "California, USA — New", "offers": { "@type": "Offer", "price": "120000000", "priceCurrency": "USD" } } },
-      { "@type": "ListItem", "position": 5, "item": { "@type": "Product", "name": "Bugatti Chiron Super Sport", "description": "2022, 1,600hp — For Sale", "offers": { "@type": "Offer", "price": "4100000", "priceCurrency": "USD" } } },
-      { "@type": "ListItem", "position": 6, "item": { "@type": "Product", "name": "Dubai Palm Penthouse", "description": "Palm Jumeirah, Dubai — Exclusive", "offers": { "@type": "Offer", "price": "25900000", "priceCurrency": "USD" } } }
-    ]
-  });
+    "publisher": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com"
+    }
+  }
+]);
   const [activeCategory, setActiveCategory] = useState("All");
 
   const filtered = activeCategory === "All" ? ALL_LISTINGS : ALL_LISTINGS.filter(l => l.cat === activeCategory);

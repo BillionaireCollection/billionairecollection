@@ -9,6 +9,7 @@ import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
 import SphereAnimation from "@/components/SphereAnimation";
 import { useSEO } from "@/hooks/useSEO";
+import { useJsonLd } from "@/hooks/useJsonLd";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -26,10 +27,42 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 export default function Technology() {
   useSEO({
-    title: "Billionaire Technology Division — Digital & Vitality",
-    description: "Billionaire Technology encompasses Billionaire Digital, Billionaire University, and Billionaire Vitality — pioneering digital innovation and longevity science for ultra-high-net-worth individuals.",
-    keywords: "Billionaire Technology, Billionaire Digital, Billionaire University, Billionaire Vitality, luxury technology, UHNW tech, longevity science",
+    title: "Billionaire Technology — University, Digital & Vitality | A Billionaire Collection Division",
+    description: "Billionaire Technology is the technology and education division of Billionaire Collection, the parent company of the world's premier luxury ecosystem. Encompassing Billionaire University, Billionaire Digital, Billionaire Vitality, and Billionaire Peptide — innovation for the ultra-high-net-worth.",
+    keywords: "Billionaire Technology, Billionaire Collection technology, Billionaire University, Billionaire Digital, Billionaire Vitality, Billionaire Peptide, UHNW technology, luxury tech division, Billionaire Collection innovation",
   });
+  useJsonLd([
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Billionaire Collection",
+        "item": "https://billionairecollection.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Billionaire Technology",
+        "item": "https://billionairecollection.com/technology"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Billionaire Technology",
+    "description": "Billionaire Technology is the technology and education division of Billionaire Collection, the parent company of the world's premier luxury ecosystem.",
+    "url": "https://billionairecollection.com/technology",
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com"
+    }
+  }
+]);
   const divisions = [
     {
       label: "Billionaire University",

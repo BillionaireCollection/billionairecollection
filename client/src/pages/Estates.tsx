@@ -4,15 +4,34 @@ import { useJsonLd } from "@/hooks/useJsonLd";
 
 export default function Estates() {
   useSEO({
-    title: "Ultra-Prime Real Estate | Billionaire Estates",
-    description: "Access off-market ultra-prime properties in London, Monaco, Dubai, and New York. Billionaire Estates brokers the world's most extraordinary residential and commercial real estate.",
-    keywords: "ultra-prime real estate, off-market properties, luxury homes, London mansions, Monaco villas, Dubai penthouses, UHNW real estate brokerage",
+    title: "Billionaire Estates — Ultra-Prime Real Estate | A Billionaire Collection Company",
+    description: "Billionaire Estates is the ultra-prime real estate division of Billionaire Collection, the world's premier luxury ecosystem. Buy and sell off-market properties in London, Monaco, Dubai, New York, and worldwide through the parent company's dedicated brokerage arm.",
+    keywords: "Billionaire Estates, Billionaire Collection real estate, ultra-prime property, off-market real estate, luxury homes London, Monaco villas, Dubai penthouses, UHNW real estate, Billionaire Collection brokerage, luxury property group",
   });
-  useJsonLd({
+  useJsonLd([
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Billionaire Collection",
+        "item": "https://billionairecollection.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Billionaire Estates",
+        "item": "https://billionairecollection.com/estates"
+      }
+    ]
+  },
+  {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
     "name": "Billionaire Estates",
-    "description": "Ultra-prime real estate brokerage specialising in off-market properties in London, Monaco, Dubai, New York, and worldwide.",
+    "description": "Billionaire Estates is the ultra-prime real estate division of Billionaire Collection, the parent company of the world's premier luxury ecosystem. Brokering off-market properties in London, Monaco, Dubai, New York, and worldwide.",
     "url": "https://billionairecollection.com/estates",
     "telephone": "+44-207-183-1700",
     "email": "info@billionaireplc.com",
@@ -23,23 +42,21 @@ export default function Estates() {
       "postalCode": "EC1V 2NX",
       "addressCountry": "GB"
     },
-    "areaServed": ["London", "Monaco", "Dubai", "New York", "Malibu", "Caribbean"],
-    "knowsAbout": ["Ultra-prime real estate", "Off-market properties", "Luxury residential brokerage", "Commercial property"],
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Featured Properties",
-      "itemListElement": [
-        { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Mayfair Grand Penthouse", "description": "London, United Kingdom", "offers": { "@type": "Offer", "price": "57000000", "priceCurrency": "USD" } } },
-        { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Monaco Clifftop Villa", "description": "Monaco, Monte Carlo", "offers": { "@type": "Offer", "price": "93500000", "priceCurrency": "USD" } } },
-        { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Malibu Ocean Estate", "description": "California, USA", "offers": { "@type": "Offer", "price": "120000000", "priceCurrency": "USD" } } }
-      ]
-    },
+    "areaServed": [
+      "London",
+      "Monaco",
+      "Dubai",
+      "New York",
+      "Malibu",
+      "Caribbean"
+    ],
     "parentOrganization": {
       "@type": "Organization",
       "name": "Billionaire Collection",
       "url": "https://billionairecollection.com"
     }
-  });
+  }
+]);
   return (
     <DivisionPage
       badge="Billionaire Estates"

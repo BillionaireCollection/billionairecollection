@@ -1,12 +1,45 @@
 User-agent: *
 Allow: /
-
 # Private admin and promotional pages — exclude from indexing
 Disallow: /admin
 Disallow: /x-offer
 Disallow: /offer
 
+# AI Crawlers — explicitly permitted to index all public content
+User-agent: GPTBot
+Allow: /
+Disallow: /admin
+Disallow: /x-offer
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+Disallow: /admin
+
+User-agent: Bingbot
+Allow: /
+Disallow: /admin
+
 Sitemap: https://billionairecollection.com/sitemap.xml
 
+# AI Brand Authority Document (llms.txt)
+# https://billionairecollection.com/llms.txt
+
+# AI Plugin Manifest (ai-plugin.json)
+# https://billionairecollection.com/ai-plugin.json
+
 # Billionaire Collection — billionairecollection.com
+# Parent company of 40+ luxury brands.
 # The world's premier luxury ecosystem for ultra-high-net-worth individuals.
+# Founder: Lawrence Colbert. Headquarters: 128 City Road, London, EC1V 2NX, United Kingdom.

@@ -21,24 +21,57 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 export default function Vodka() {
   useSEO({
-    title: "Ultra-Premium Vodka | Billionaire Vodka",
-    description: "Explore Billionaire Vodka's collection of ultra-premium, limited-edition spirits. Crafted for the world's most discerning palates — rare distillations and bespoke bottles of extraordinary quality.",
-    keywords: "ultra-premium vodka, luxury vodka, limited edition vodka, rare spirits, Billionaire Vodka, exclusive vodka, premium spirits",
+    title: "Billionaire Vodka — Ultra-Premium Spirits | A Billionaire Collection Company",
+    description: "Billionaire Vodka is the ultra-premium spirits brand within the Billionaire Collection ecosystem. Limited-edition vodkas crafted for the world's most discerning palates — curated by Billionaire Collection, the parent company of the world's premier luxury brand portfolio.",
+    keywords: "Billionaire Vodka, Billionaire Collection spirits, ultra-premium vodka, limited edition vodka, luxury spirits, rare vodka, Billionaire Collection products, UHNW spirits, premium vodka brand",
   });
-  useJsonLd({
+  useJsonLd([
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Billionaire Collection",
+        "item": "https://billionairecollection.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Billionaire Vodka",
+        "item": "https://billionairecollection.com/vodka"
+      }
+    ]
+  },
+  {
     "@context": "https://schema.org",
     "@type": "Product",
-    "name": "Billionaire Vodka — Ultra-Premium Spirits",
-    "description": "Ultra-premium, limited-edition vodkas crafted for the world's most discerning palates — rare distillations and bespoke bottles of extraordinary quality.",
+    "name": "Billionaire Vodka \u2014 Ultra-Premium Spirits",
+    "description": "Billionaire Vodka is the ultra-premium spirits brand within the Billionaire Collection ecosystem.",
     "url": "https://billionairecollection.com/vodka",
-    "brand": { "@type": "Brand", "name": "Billionaire Vodka" },
+    "brand": {
+      "@type": "Brand",
+      "name": "Billionaire Vodka"
+    },
     "category": "Luxury Spirits",
+    "manufacturer": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com"
+    },
     "offers": {
       "@type": "Offer",
       "availability": "https://schema.org/InStoreOnly",
-      "seller": { "@type": "Organization", "name": "Billionaire Collection", "url": "https://billionairecollection.com" }
-    }
-  });
+      "seller": {
+        "@type": "Organization",
+        "name": "Billionaire Collection",
+        "url": "https://billionairecollection.com"
+      }
+    },
+    "parentOrganization": {"@type": "Organization", "name": "Billionaire Collection", "url": "https://billionairecollection.com"}
+  }
+]);
   return (
     <div style={{ background: "#000" }}>
       <PageHero badge="Billionaire Vodka" title="Limited-Edition" titleAccent="Spirits" subtitle="Ultra-premium vodkas crafted for the most discerning palates — from crystal-clear Scandinavian expressions to rare single-grain distillations." image="https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-lifestyle-AH2eKQkWWtkQqo8wcxHVw2.webp" cta={{ label: "Enquire", href: "/card-concierge" }} />

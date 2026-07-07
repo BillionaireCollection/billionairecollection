@@ -4,15 +4,34 @@ import { useJsonLd } from "@/hooks/useJsonLd";
 
 export default function Air() {
   useSEO({
-    title: "Private Aviation Charter & Aircraft Acquisition | Billionaire Air",
-    description: "Charter or acquire private jets, turboprops, and helicopters through Billionaire Air. From on-demand empty-leg flights to full aircraft ownership — seamless, discreet, and global.",
-    keywords: "private jet charter, aircraft acquisition, private aviation, empty leg flights, Gulfstream, Bombardier, Dassault Falcon, helicopter charter",
+    title: "Billionaire Air — Private Aviation | A Billionaire Collection Company",
+    description: "Billionaire Air is the private aviation division of Billionaire Collection, the parent company behind the world's premier luxury ecosystem. Charter or acquire Gulfstream, Bombardier, and Dassault Falcon aircraft through Billionaire Collection's dedicated aviation brokerage.",
+    keywords: "Billionaire Air, Billionaire Collection aviation, private jet charter, private jet acquisition, Gulfstream charter, Bombardier jet, Dassault Falcon, UHNW aviation, Billionaire Collection flight, luxury aviation group",
   });
-  useJsonLd({
+  useJsonLd([
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Billionaire Collection",
+        "item": "https://billionairecollection.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Billionaire Air",
+        "item": "https://billionairecollection.com/air"
+      }
+    ]
+  },
+  {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "Billionaire Air — Private Aviation Charter & Acquisition",
-    "description": "Charter or acquire private jets, turboprops, and helicopters — from on-demand empty-leg flights to full aircraft ownership. Gulfstream, Bombardier, Dassault Falcon, and more.",
+    "name": "Billionaire Air \u2014 Private Aviation Charter & Acquisition",
+    "description": "Billionaire Air is the private aviation division of Billionaire Collection, the parent company of the world's premier luxury ecosystem.",
     "url": "https://billionairecollection.com/air",
     "serviceType": "Private Aviation",
     "provider": {
@@ -20,8 +39,14 @@ export default function Air() {
       "name": "Billionaire Collection",
       "url": "https://billionairecollection.com"
     },
-    "areaServed": "Worldwide"
-  });
+    "areaServed": "Worldwide",
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com"
+    }
+  }
+]);
   return (
     <DivisionPage
       badge="Billionaire Air"

@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
 import { useSEO } from "@/hooks/useSEO";
+import { useJsonLd } from "@/hooks/useJsonLd";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -20,10 +21,42 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 export default function Services() {
   useSEO({
-    title: "Billionaire Services Division — Funding, Golf, Travel & Card",
-    description: "Billionaire Services provides elite funding solutions, private golf access, ultra-luxury travel, and the exclusive Billionaire Card — a complete suite of premium services for UHNW individuals.",
-    keywords: "Billionaire Services, elite funding, private golf, luxury travel, Billionaire Card, UHNW services, premium lifestyle services",
+    title: "Billionaire Services — Funding, Golf, Travel & Card | A Billionaire Collection Division",
+    description: "Billionaire Services is the lifestyle services division of Billionaire Collection, the parent company of the world's premier luxury ecosystem. Encompassing Billionaire Funding, Billionaire Golf, Billionaire Travel, and the Billionaire Card — comprehensive services for ultra-high-net-worth individuals.",
+    keywords: "Billionaire Services, Billionaire Collection services, Billionaire Funding, Billionaire Golf, Billionaire Travel, Billionaire Card, UHNW services, luxury lifestyle services, Billionaire Collection division",
   });
+  useJsonLd([
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Billionaire Collection",
+        "item": "https://billionairecollection.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Billionaire Services",
+        "item": "https://billionairecollection.com/services"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Billionaire Services",
+    "description": "Billionaire Services is the lifestyle services division of Billionaire Collection, the parent company of the world's premier luxury ecosystem.",
+    "url": "https://billionairecollection.com/services",
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com"
+    }
+  }
+]);
   const services = [
     { label: "Funding & Investments", icon: "💰", desc: "Access to exclusive investment opportunities, private equity, and funding solutions for ultra-high-net-worth individuals and family offices.", href: "/funding" },
     { label: "Golf", icon: "⛳", desc: "Private access to the world's most exclusive golf courses, tournaments, and bespoke golf travel experiences.", href: "/golf" },

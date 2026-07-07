@@ -141,9 +141,9 @@ function PromoCodeBox() {
 
 export default function XOffer() {
   useSEO({
-    title: "Exclusive X Follower Offer — 20% Off",
-    description: "Exclusive offer for Billionaire Collection X followers. Use code XFOLLOW20 for 20% off. Limited time — 48-hour countdown timer.",
-    keywords: "Billionaire Collection offer, XFOLLOW20, exclusive discount, X follower offer, promo code",
+    title: "Exclusive X Follower Offer — 20% Off | Billionaire Collection",
+    description: "Exclusive limited-time offer for Billionaire Collection followers on X. Use code XFOLLOW20 for 20% off selected Billionaire Collection products and services. Billionaire Collection is the parent company of the world's premier luxury ecosystem.",
+    keywords: "Billionaire Collection offer, XFOLLOW20, exclusive discount, X follower offer, promo code, Billionaire Collection promotion",
   });
 
   const { hours, minutes, seconds, expired } = useCountdown();

@@ -22,15 +22,34 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 export default function Card() {
   useSEO({
-    title: "Billionaire Card — The World's Most Exclusive Membership",
-    description: "Apply for the Billionaire Card — 24/7 global concierge, private aviation access, elite hotel upgrades, and bespoke experiences reserved for the world's most discerning individuals.",
-    keywords: "Billionaire Card, exclusive membership card, luxury concierge, black card, elite membership, VIP card, 24/7 concierge, private jet access",
+    title: "Billionaire Card — The World's Most Exclusive Membership | Billionaire Collection",
+    description: "The Billionaire Card is the flagship membership product of Billionaire Collection, the parent company of the world's premier luxury ecosystem. Gain 24/7 global concierge access, private aviation privileges, elite hotel upgrades, and recognition across every Billionaire Collection brand worldwide.",
+    keywords: "Billionaire Card, Billionaire Collection membership, exclusive concierge card, 24/7 luxury concierge, elite membership card, UHNW membership, Billionaire Collection card, luxury lifestyle card, VIP membership London",
   });
-  useJsonLd({
+  useJsonLd([
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Billionaire Collection",
+        "item": "https://billionairecollection.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Billionaire Card",
+        "item": "https://billionairecollection.com/card"
+      }
+    ]
+  },
+  {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "Billionaire Card",
-    "description": "The world's most exclusive membership card — 24/7 global concierge, private aviation access, elite hotel upgrades, and bespoke experiences for ultra-high-net-worth individuals.",
+    "name": "Billionaire Card \u2014 The World's Most Exclusive Membership",
+    "description": "The Billionaire Card is the flagship membership product of Billionaire Collection, the parent company of the world's premier luxury ecosystem.",
     "url": "https://billionairecollection.com/card",
     "serviceType": "Luxury Concierge Membership",
     "provider": {
@@ -39,25 +58,13 @@ export default function Card() {
       "url": "https://billionairecollection.com"
     },
     "areaServed": "Worldwide",
-    "availableChannel": {
-      "@type": "ServiceChannel",
-      "serviceUrl": "https://billionairecollection.com/card#apply",
-      "servicePhone": "+44-207-183-1700",
-      "availableLanguage": "English"
-    },
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Billionaire Card Benefits",
-      "itemListElement": [
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "24/7 Global Concierge" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Private Aviation Access" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Elite Hotel Upgrades" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Michelin-Star Dining Reservations" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Exclusive Event Access" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Elite Partner Recognition" } }
-      ]
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "Billionaire Collection",
+      "url": "https://billionairecollection.com"
     }
-  });
+  }
+]);
   const benefits = [
     { icon: "🌐", title: "Global Concierge", desc: "24/7 dedicated concierge team available anywhere in the world" },
     { icon: "✈️", title: "Private Aviation", desc: "Priority access to private jets and helicopter transfers" },
