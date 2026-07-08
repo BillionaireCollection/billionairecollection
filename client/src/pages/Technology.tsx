@@ -67,7 +67,7 @@ export default function Technology() {
     {
       label: "Billionaire University",
       icon: null,
-      logo: "/manus-storage/billionaire-university-logo_6bb39c00.jpg",
+      logo: "/manus-storage/billionaire-university-logo-v2_4e7806f1.png",
       href: "https://www.billionaireuniversity.com/",
       desc: "The world's most exclusive educational platform for ultra-high-net-worth individuals — masterclasses, mentorship, and knowledge from the world's greatest minds.",
       detail: "Curated curricula spanning wealth preservation, geopolitical intelligence, alternative investments, and the art of living — delivered by Nobel laureates, heads of state, and industry titans.",
@@ -150,10 +150,13 @@ export default function Technology() {
                         style={{
                           width: "100%",
                           height: "140px",
-                          objectFit: "cover",
+                          objectFit: d.logo.endsWith(".png") && d.logo.includes("university-logo") ? "contain" : "cover",
+                          objectPosition: "center",
                           borderRadius: "6px",
                           marginBottom: "0.5rem",
                           display: "block",
+                          background: d.logo.includes("university-logo") ? "#0a0a1a" : "transparent",
+                          padding: d.logo.includes("university-logo") ? "12px" : "0",
                         }}
                       />
                     ) : (
