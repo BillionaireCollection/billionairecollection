@@ -54,7 +54,7 @@ const PRODUCTS = [
 ];
 
 const DIVISIONS = [
-  { label: "Media", desc: "Television, Magazine & Radio", href: "/media", img: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-division-media-bALbUg3C9xwdFdhSCnvhAk.webp" },
+  { label: "Media", desc: "Television, Magazine & Radio", href: "/media", img: "/manus-storage/bc-division-media-v2_267f27ae.png" },
   { label: "Technology", desc: "University, Digital & Vitality", href: "/technology", img: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-division-technology-nWtUGuzYcwAKr9AmPRXHQt.webp" },
   { label: "Services", desc: "Funding, Golf, Travel & Card", href: "/services", img: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-division-services-em9tFW6VuRLTSTwzJ4RNkf.webp" },
 ];
@@ -349,7 +349,7 @@ export default function Home() {
             <div style={{ marginBottom: "4rem" }}>
               <span className="bc-badge" style={{ marginBottom: "1.5rem" }}>Divisions</span>
               <h2 style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "clamp(1.75rem, 3vw, 2.75rem)", color: "#fff" }}>
-                The Billionaire <span style={{ color: GOLD }}>Empire</span>
+                Billionaire <span style={{ color: GOLD }}>Ecosystem</span>
               </h2>
             </div>
           </FadeUp>
