@@ -54,9 +54,9 @@ const PRODUCTS = [
 ];
 
 const DIVISIONS = [
-  { label: "Media", desc: "Television, Magazine & Radio", href: "/media", icon: "📺" },
-  { label: "Technology", desc: "University, Digital & Vitality", href: "/technology", icon: "⚡" },
-  { label: "Services", desc: "Funding, Golf, Travel & Card", href: "/services", icon: "♦" },
+  { label: "Media", desc: "Television, Magazine & Radio", href: "/media", img: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-division-media-bALbUg3C9xwdFdhSCnvhAk.webp" },
+  { label: "Technology", desc: "University, Digital & Vitality", href: "/technology", img: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-division-technology-nWtUGuzYcwAKr9AmPRXHQt.webp" },
+  { label: "Services", desc: "Funding, Golf, Travel & Card", href: "/services", img: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-division-services-em9tFW6VuRLTSTwzJ4RNkf.webp" },
 ];
 
 const BRANDS = [
@@ -358,8 +358,12 @@ export default function Home() {
             {DIVISIONS.map((div, i) => (
               <FadeUp key={div.label} delay={i * 0.1}>
                 <Link href={div.href}>
-                  <div className="bc-glass-card" style={{ padding: "3rem 2.5rem", cursor: "pointer", height: "100%", transition: "all 0.3s" }}>
-                    <div style={{ fontSize: "2rem", marginBottom: "1.5rem" }}>{div.icon}</div>
+                  <div className="bc-glass-card" style={{ padding: "0", cursor: "pointer", height: "100%", transition: "all 0.3s", overflow: "hidden", display: "flex", flexDirection: "column" }}>
+                    <div style={{ position: "relative", width: "100%", aspectRatio: "3/2", overflow: "hidden" }}>
+                      <img src={div.img} alt={div.label} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.6s ease" }} />
+                      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%)" }} />
+                    </div>
+                    <div style={{ padding: "2rem 2.5rem", flex: 1, display: "flex", flexDirection: "column" }}>
                     <div style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "1.5rem", color: "#fff", marginBottom: "0.75rem" }}>
                       {div.label}
                     </div>
@@ -368,6 +372,7 @@ export default function Home() {
                     </div>
                     <div style={{ marginTop: "2rem", fontFamily: FONT_UI, fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.1em", color: GOLD }}>
                       Explore →
+                    </div>
                     </div>
                   </div>
                 </Link>
