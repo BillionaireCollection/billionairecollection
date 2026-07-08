@@ -73,12 +73,12 @@ export default function Technology() {
       detail: "Curated curricula spanning wealth preservation, geopolitical intelligence, alternative investments, and the art of living — delivered by Nobel laureates, heads of state, and industry titans.",
     },
     {
-      label: "Billionaire Digital",
-      icon: "💻",
-      logo: null,
-      href: null,
-      desc: "Cutting-edge digital solutions for UHNW individuals and family offices — from bespoke technology infrastructure to AI-powered wealth management tools.",
-      detail: "Proprietary AI platforms, cybersecurity architecture, digital asset custody, and bespoke software engineering — engineered for the demands of the ultra-wealthy.",
+      label: "Billionaire Counsel",
+      icon: null,
+      logo: "/manus-storage/billionaire-counsel-signing-room_56044cd8.webp",
+      href: "https://www.billionairecounsel.com/",
+      desc: "The world's most exclusive private wealth counsel for ultra-high-net-worth individuals and family offices — protecting, preserving, and transferring wealth across generations.",
+      detail: "Asset protection, estate planning, tax advisory, family governance, and international structuring — delivered by elite advisors across 47 jurisdictions with absolute discretion.",
     },
     {
       label: "Billionaire Vitality",
@@ -144,7 +144,18 @@ export default function Technology() {
                 <div className="bc-glass-card" style={{ padding: "3rem 2.5rem", height: "100%" }}>
                   <div style={{ marginBottom: "1.5rem" }}>
                     {d.logo ? (
-                      <img src={d.logo} alt={d.label + " logo"} style={{ width: "72px", height: "72px", objectFit: "contain", borderRadius: "8px" }} />
+                      <img
+                        src={d.logo}
+                        alt={d.label + " image"}
+                        style={{
+                          width: "100%",
+                          height: "140px",
+                          objectFit: "cover",
+                          borderRadius: "6px",
+                          marginBottom: "0.5rem",
+                          display: "block",
+                        }}
+                      />
                     ) : (
                       <div style={{ fontSize: "2.5rem" }}>{d.icon}</div>
                     )}
@@ -153,7 +164,7 @@ export default function Technology() {
                   <p style={{ fontFamily: FONT_UI, fontSize: "0.875rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.7, marginBottom: "1.25rem" }}>{d.desc}</p>
                   <p style={{ fontFamily: FONT_UI, fontSize: "0.8125rem", color: "rgba(255,255,255,0.35)", lineHeight: 1.7, marginBottom: "2rem" }}>{d.detail}</p>
                   {d.href ? (
-                    <a href={d.href} target="_blank" rel="noopener noreferrer" style={{ fontFamily: FONT_UI, fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.1em", color: GOLD, textDecoration: "none", borderBottom: `1px solid ${GOLD}`, paddingBottom: "2px" }}>Visit Billionaire University →</a>
+                    <a href={d.href} target="_blank" rel="noopener noreferrer" style={{ fontFamily: FONT_UI, fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.1em", color: GOLD, textDecoration: "none", borderBottom: `1px solid ${GOLD}`, paddingBottom: "2px" }}>Visit {d.label} →</a>
                   ) : (
                     <div style={{ fontFamily: FONT_UI, fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.1em", color: GOLD }}>Coming Soon</div>
                   )}
