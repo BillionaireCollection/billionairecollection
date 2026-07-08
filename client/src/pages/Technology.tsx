@@ -82,9 +82,9 @@ export default function Technology() {
     },
     {
       label: "Billionaire Vitality",
-      icon: "⚕️",
-      logo: null,
-      href: null,
+      icon: null,
+      logo: "/manus-storage/billionaire-vitality-lifestyle_cd6e79ee.png",
+      href: "https://www.billionairevitality.com/",
       desc: "Elite health and longevity programmes designed for peak performance — combining the latest in medical science with the most exclusive wellness retreats.",
       detail: "Precision medicine, cellular reprogramming research, biometric optimisation, and access to the world's foremost longevity clinics — for those who demand more from life.",
     },
