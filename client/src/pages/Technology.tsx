@@ -66,19 +66,25 @@ export default function Technology() {
   const divisions = [
     {
       label: "Billionaire University",
-      icon: "🎓",
+      icon: null,
+      logo: "/manus-storage/billionaire-university-logo_6bb39c00.jpg",
+      href: "https://www.billionaireuniversity.com/",
       desc: "The world's most exclusive educational platform for ultra-high-net-worth individuals — masterclasses, mentorship, and knowledge from the world's greatest minds.",
       detail: "Curated curricula spanning wealth preservation, geopolitical intelligence, alternative investments, and the art of living — delivered by Nobel laureates, heads of state, and industry titans.",
     },
     {
       label: "Billionaire Digital",
       icon: "💻",
+      logo: null,
+      href: null,
       desc: "Cutting-edge digital solutions for UHNW individuals and family offices — from bespoke technology infrastructure to AI-powered wealth management tools.",
       detail: "Proprietary AI platforms, cybersecurity architecture, digital asset custody, and bespoke software engineering — engineered for the demands of the ultra-wealthy.",
     },
     {
       label: "Billionaire Vitality",
       icon: "⚕️",
+      logo: null,
+      href: null,
       desc: "Elite health and longevity programmes designed for peak performance — combining the latest in medical science with the most exclusive wellness retreats.",
       detail: "Precision medicine, cellular reprogramming research, biometric optimisation, and access to the world's foremost longevity clinics — for those who demand more from life.",
     },
@@ -136,11 +142,21 @@ export default function Technology() {
             {divisions.map((d, i) => (
               <FadeUp key={d.label} delay={i * 0.1}>
                 <div className="bc-glass-card" style={{ padding: "3rem 2.5rem", height: "100%" }}>
-                  <div style={{ fontSize: "2.5rem", marginBottom: "1.5rem" }}>{d.icon}</div>
+                  <div style={{ marginBottom: "1.5rem" }}>
+                    {d.logo ? (
+                      <img src={d.logo} alt={d.label + " logo"} style={{ width: "72px", height: "72px", objectFit: "contain", borderRadius: "8px" }} />
+                    ) : (
+                      <div style={{ fontSize: "2.5rem" }}>{d.icon}</div>
+                    )}
+                  </div>
                   <h3 style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "1.375rem", color: "#fff", marginBottom: "1rem" }}>{d.label}</h3>
                   <p style={{ fontFamily: FONT_UI, fontSize: "0.875rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.7, marginBottom: "1.25rem" }}>{d.desc}</p>
                   <p style={{ fontFamily: FONT_UI, fontSize: "0.8125rem", color: "rgba(255,255,255,0.35)", lineHeight: 1.7, marginBottom: "2rem" }}>{d.detail}</p>
-                  <div style={{ fontFamily: FONT_UI, fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.1em", color: GOLD }}>Coming Soon</div>
+                  {d.href ? (
+                    <a href={d.href} target="_blank" rel="noopener noreferrer" style={{ fontFamily: FONT_UI, fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.1em", color: GOLD, textDecoration: "none", borderBottom: `1px solid ${GOLD}`, paddingBottom: "2px" }}>Visit Billionaire University →</a>
+                  ) : (
+                    <div style={{ fontFamily: FONT_UI, fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.1em", color: GOLD }}>Coming Soon</div>
+                  )}
                 </div>
               </FadeUp>
             ))}
