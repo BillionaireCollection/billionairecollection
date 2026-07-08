@@ -47,7 +47,7 @@ const ECOSYSTEM_ITEMS = [
 ];
 
 const PRODUCTS = [
-  { label: "Champagne", desc: "Ultra-premium cuvées from the world's most exclusive houses.", href: "/champagne", img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" },
+  { label: "Champagne", desc: "Ultra-premium cuvées from the world's most exclusive houses.", href: "/champagne", img: "/manus-storage/billionaire-champagne-bottle_9021fd5a.png" },
   { label: "Vodka", desc: "Limited-edition spirits crafted for the discerning palate.", href: "/vodka", img: "https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=600&q=80" },
   { label: "Cigars", desc: "Rare hand-rolled cigars from the world's finest tobacco estates.", href: "/cigar", img: "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?w=600&q=80" },
   { label: "Oud", desc: "Bespoke Arabian fragrances of unparalleled rarity.", href: "/oud", img: "https://images.unsplash.com/photo-1563170351-be82bc888aa4?w=600&q=80" },
