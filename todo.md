@@ -126,16 +126,16 @@
 
 ## Billionaire Wisdom Page (/billionaire-wisdom)
 
-- [ ] Create BillionaireWisdom.tsx with all 6 sections
-- [ ] Hero: full-viewport, gold glow, badge, H1, 2 CTAs, 3 trust stats
-- [ ] Inspiration Trap section with gold divider and 3 paragraphs
-- [ ] 8 video cards with inline YouTube playback (click thumbnail → iframe autoplay)
-- [ ] Mid-section CTA box between video grid and BU Difference section
-- [ ] Billionaire University Difference: 2-col layout, 5 bullet points, 3 feature cards
-- [ ] Social Proof: 4 stat boxes, 3 testimonials, CTA button
-- [ ] Countdown timer (localStorage deadline, 14 days from first visit)
-- [ ] Final CTA section with 3 stacked buttons linking to billionaireuniversity.com
-- [ ] Register /billionaire-wisdom route in App.tsx
-- [ ] Add "Free Billionaire Insights" nav link to Navbar
-- [ ] Verify no horizontal overflow on mobile
-- [ ] TypeScript 0 errors
+- [x] Create BillionaireWisdom.tsx with all 6 sections
+- [x] Hero: full-viewport, gold glow, badge, H1, 2 CTAs, 3 trust stats
+- [x] Inspiration Trap section with gold divider and 3 paragraphs
+- [x] 8 video cards with inline YouTube playback (click thumbnail → iframe autoplay)
+- [x] Mid-section CTA box between video grid and BU Difference section
+- [x] Billionaire University Difference: 2-col layout, 5 bullet points, 3 feature cards
+- [x] Social Proof: 4 stat boxes, 3 testimonials, CTA button
+- [x] Countdown timer (localStorage deadline, 14 days from first visit)
+- [x] Final CTA section with 3 stacked buttons linking to billionaireuniversity.com
+- [x] Register /billionaire-wisdom route in App.tsx
+- [x] Add "Free Insights" nav link to Navbar
+- [x] overflow-x: hidden on page wrapper (confirmed)
+- [x] TypeScript 0 errors

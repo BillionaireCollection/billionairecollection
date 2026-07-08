@@ -50,6 +50,7 @@ const NAV_ITEMS: NavItem[] = [
   { label: "Store", href: "/marketplace" },
   { label: "News", href: "/news" },
   { label: "Concierge", href: "/card-concierge" },
+  { label: "Free Insights", href: "/billionaire-wisdom" },
   { label: "✦ Golden Ticket", href: "/golden-ticket" },
 ];
 
