@@ -416,3 +416,35 @@ describe("facultyApplication.updateStatus (admin only)", () => {
     ).rejects.toThrow();
   });
 });
+
+describe("NewsAPI key validation", () => {
+  it("NEWS_API_KEY env var is set and non-empty", () => {
+    const key = process.env.NEWS_API_KEY;
+    expect(key).toBeTruthy();
+    expect(typeof key).toBe("string");
+    expect((key as string).length).toBeGreaterThan(10);
+  });
+
+  it("NewsAPI.org responds with status ok for billionaire query", async () => {
+    const key = process.env.NEWS_API_KEY;
+    if (!key) return; // skip if not set in CI
+    const url = `https://newsapi.org/v2/everything?q=billionaire&language=en&pageSize=1&apiKey=${key}`;
+    const resp = await fetch(url);
+    expect(resp.ok).toBe(true);
+    const data = await resp.json() as { status: string };
+    expect(data.status).toBe("ok");
+  }, 15000); // allow 15s for network call
+});
+
+describe("news.list (public)", () => {
+  it("returns an array", async () => {
+    const caller = appRouter.createCaller(makeCtx(null));
+    const result = await caller.news.list({ limit: 5 });
+    expect(Array.isArray(result)).toBe(true);
+  });
+  it("respects limit parameter", async () => {
+    const caller = appRouter.createCaller(makeCtx(null));
+    const result = await caller.news.list({ limit: 3 });
+    expect(result.length).toBeLessThanOrEqual(3);
+  });
+});
