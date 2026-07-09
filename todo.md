@@ -162,11 +162,11 @@
 - [x] Update vitest tests for new procedure names
 
 ## News Page — Daily Auto-Update
-- [ ] Add news_articles table to drizzle/schema.ts and push migration
-- [ ] Add DB helpers in server/db.ts for news CRUD
-- [ ] Add tRPC procedures: news.list (public), news.upsert (cron-only)
-- [ ] Add /api/scheduled/news-refresh Express handler in server/_core/index.ts
-- [ ] Update News.tsx to read from DB via tRPC instead of static hook
-- [ ] Seed DB with current articles updated to July 2026 dates
-- [ ] Checkpoint and deploy
-- [ ] Create AGENT cron for daily news refresh at 07:00 UTC
+- [x] Add news_articles table to drizzle/schema.ts and push migration
+- [x] Add DB helpers in server/db.ts for news CRUD
+- [x] Add tRPC procedures: news.list (public), news.upsert (cron-only)
+- [x] Add /api/scheduled/news-refresh Express handler in server/_core/index.ts
+- [x] Update News.tsx to read from DB via tRPC instead of static hook
+- [x] Seed DB with current articles updated to July 2026 dates
+- [x] Checkpoint and deploy
+- [x] Create AGENT cron for daily news refresh at 07:00 UTC

@@ -4,7 +4,7 @@
    staggered reveals, Raleway uppercase navigation.
    ============================================================ */
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -72,6 +72,14 @@ export default function Navbar() {
     setActiveMenu(null);
   }, [location]);
 
+  // Live date — computed once per mount; updates automatically on each page navigation
+  const todayLabel = useMemo(() => new Date().toLocaleDateString("en-GB", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }), []);
+
   return (
     <>
       <nav
@@ -88,6 +96,28 @@ export default function Navbar() {
         }}
         onMouseLeave={() => setActiveMenu(null)}
       >
+        {/* Date bar — sits above the nav row, right-aligned */}
+        <div style={{
+          display: "flex",
+          justifyContent: "flex-end",
+          padding: "4px 0",
+          borderBottom: `1px solid rgba(201,168,76,0.07)`,
+          background: scrolled ? "rgba(0,0,0,0.96)" : "rgba(0,0,0,0.35)",
+        }}>
+          <div className="container" style={{ display: "flex", justifyContent: "flex-end" }}>
+            <span style={{
+              fontFamily: FONT_UI,
+              fontSize: "0.5625rem",
+              fontWeight: 500,
+              textTransform: "uppercase",
+              letterSpacing: "0.16em",
+              color: GOLD,
+              opacity: 0.9,
+            }}>
+              {todayLabel}
+            </span>
+          </div>
+        </div>
         {/* Top gold accent line */}
         <div style={{ height: "1px", background: `linear-gradient(90deg, transparent, ${GOLD}, transparent)`, opacity: 0.6 }} />
 
