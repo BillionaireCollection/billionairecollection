@@ -74,7 +74,6 @@ export default function Navbar() {
 
   // Live date — computed once per mount; updates automatically on each page navigation
   const todayLabel = useMemo(() => new Date().toLocaleDateString("en-GB", {
-    day: "numeric",
     month: "long",
     year: "numeric",
   }), []);
