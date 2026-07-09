@@ -74,7 +74,6 @@ export default function Navbar() {
 
   // Live date — computed once per mount; updates automatically on each page navigation
   const todayLabel = useMemo(() => new Date().toLocaleDateString("en-GB", {
-    weekday: "long",
     day: "numeric",
     month: "long",
     year: "numeric",
@@ -107,7 +106,7 @@ export default function Navbar() {
           <div className="container" style={{ display: "flex", justifyContent: "flex-end" }}>
             <span style={{
               fontFamily: FONT_UI,
-              fontSize: "0.5625rem",
+              fontSize: "0.5rem",
               fontWeight: 500,
               textTransform: "uppercase",
               letterSpacing: "0.16em",
