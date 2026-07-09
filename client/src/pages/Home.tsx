@@ -61,8 +61,8 @@ const DIVISIONS = [
 
 const BRANDS = [
   "Louis Vuitton", "Hermès", "Chanel", "Gucci", "Cartier", "Dior",
-  "Rolex", "Tiffany & Co.", "Ferrari", "Porsche", "Lamborghini",
-  "Sotheby's", "Christie's", "Virtuoso", "Lürssen", "Graff",
+  "Rolex", "Tiffany & Co.", "Bugatti", "Porsche", "Lamborghini",
+  "Sotheby's", "Loro Piana", "Lomond Yachts", "Lürssen", "Graff",
 ];
 
 function AnimatedCounter({ target, suffix = "", prefix = "" }: { target: number; suffix?: string; prefix?: string }) {
