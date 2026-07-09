@@ -250,7 +250,7 @@ export default function Footer() {
               { name: "Billionaire Classifieds", href: "https://billionaireclassifieds.com" },
               { name: "Billionaire Store", href: "https://thebillionairestore.com" },
               { name: "Billionaire Giving", href: "https://billionairegiving.com" },
-              { name: "Pregolert", href: "https://pregolert.com" },
+              { name: "Smarter Mama", href: "https://smartmama.com" },
             ].map((brand) => (
               <a
                 key={brand.href}

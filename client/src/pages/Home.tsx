@@ -600,7 +600,7 @@ export default function Home() {
               category: "Legacy & Special",
               brands: [
                 { name: "Billionaire Giving", domain: "billionairegiving.com" },
-                { name: "Pregolert", domain: "pregolert.com" },
+                { name: "Smarter Mama", domain: "smartmama.com" },
               ],
             },
           ].map((group, gi) => (
