@@ -274,7 +274,7 @@ export default function BillionaireTutor() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.5 }}
-            style={{ display: "flex", flexWrap: "wrap", gap: "3rem" }}
+            style={{ display: "flex", flexWrap: "wrap", gap: "2rem 3rem" }}
           >
             {[
               { stat: "Tier 1", label: "Self-made coaches only" },
@@ -295,7 +295,7 @@ export default function BillionaireTutor() {
       ══════════════════════════════════════════════════════ */}
       <section style={{ padding: "8rem 0", background: "#000" }}>
         <div className="container" style={{ maxWidth: "1100px" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5rem", alignItems: "center" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 420px), 1fr))", gap: "3rem 5rem", alignItems: "center" }}>
             {/* Image */}
             <FadeUp>
               <div style={{ position: "relative", aspectRatio: "4/5", overflow: "hidden" }}>
@@ -348,7 +348,7 @@ export default function BillionaireTutor() {
           </div>
           </FadeUp>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(480px, 1fr))", gap: "1px", background: "rgba(201,168,76,0.08)" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 420px), 1fr))", gap: "1px", background: "rgba(201,168,76,0.08)" }}>
             {CRITERIA.map((item, i) => (
               <FadeUp key={item.title} delay={i * 0.1}>
                 <div style={{
@@ -391,7 +391,7 @@ export default function BillionaireTutor() {
           </div>
           </FadeUp>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: "2rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 240px), 1fr))", gap: "2rem" }}>
             {BENEFITS.map((item, i) => (
               <FadeUp key={item.num} delay={i * 0.1}>
                 <div style={{ padding: "2.5rem 2rem", border: `1px solid rgba(201,168,76,0.1)`, transition: "border-color 0.3s" }}
@@ -423,7 +423,7 @@ export default function BillionaireTutor() {
           </div>
           </FadeUp>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: "0" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 200px), 1fr))", gap: "0" }}>
             {HOW_STEPS.map((step, i) => (
               <FadeUp key={step.num} delay={i * 0.12}>
                 <div style={{ position: "relative", padding: "2.5rem 2rem" }}>
@@ -507,7 +507,7 @@ export default function BillionaireTutor() {
           ) : (
             <FadeUp delay={0.1}>
               <form onSubmit={handleSubmit}>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.5rem", marginBottom: "1.5rem" }}>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 260px), 1fr))", gap: "1.5rem", marginBottom: "1.5rem" }}>
                   <div>
                     <label style={labelStyle}>Full Name *</label>
                     <input
@@ -532,7 +532,7 @@ export default function BillionaireTutor() {
                   </div>
                 </div>
 
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.5rem", marginBottom: "1.5rem" }}>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 260px), 1fr))", gap: "1.5rem", marginBottom: "1.5rem" }}>
                   <div>
                     <label style={labelStyle}>Phone Number</label>
                     <input
