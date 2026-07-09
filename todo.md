@@ -151,3 +151,12 @@
 - [x] Add "Billionaire Tutor" link to Navbar under Divisions
 - [x] Add /billionaire-tutor to sitemap.xml
 - [x] Write vitest test for tutorLead.submit procedure
+
+## Billionaire Tutor Page — REBUILD (Faculty Recruitment Direction)
+- [x] Update DB: rename/repurpose tutorLeads table to facultyApplications with correct fields (name, email, phone, ventures, journey, linkedin, source)
+- [x] Update tRPC procedures: facultyApplication.submit (public), facultyApplication.list (admin), facultyApplication.updateStatus (admin)
+- [x] Rebuild BillionaireTutor.tsx: 7 sections — hero (Join the Faculty), The Opportunity, Who We're Looking For, Why Join as Faculty, How It Works, Lead Capture Form (Apply to Join), Footer Ecosystem
+- [x] Update SEO: title/description/keywords targeting coach/mentor recruitment
+- [x] Update JSON-LD: Service schema reflecting faculty recruitment
+- [x] Update admin panel to show facultyApplications instead of tutorLeads
+- [x] Update vitest tests for new procedure names

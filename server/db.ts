@@ -330,36 +330,37 @@ export async function getUsers() {
     .orderBy(sql`${users.lastSignedIn} DESC`);
 }
 
-// ─── Billionaire Tutor Leads ──────────────────────────────────────────────────
-import { tutorLeads, InsertTutorLead } from "../drizzle/schema";
+// ─── Billionaire University Faculty Applications ─────────────────────────────
+import { facultyApplications, InsertFacultyApplication } from "../drizzle/schema";
 
-export async function createTutorLead(data: InsertTutorLead) {
+export async function createFacultyApplication(data: InsertFacultyApplication) {
   const db = await getDb();
   if (!db) throw new Error("Database not available");
-  await db.insert(tutorLeads).values({
+  await db.insert(facultyApplications).values({
     name: data.name,
     email: data.email,
     phone: data.phone,
-    wealthStage: data.wealthStage,
-    mentorGoal: data.mentorGoal,
+    ventures: data.ventures,
+    journey: data.journey,
+    linkedin: data.linkedin,
     source: data.source ?? "billionairecollection.com/billionaire-tutor",
   });
 }
 
-export async function getTutorLeads() {
+export async function getFacultyApplications() {
   const db = await getDb();
   if (!db) return [];
-  return db.select().from(tutorLeads).orderBy(sql`${tutorLeads.createdAt} DESC`);
+  return db.select().from(facultyApplications).orderBy(sql`${facultyApplications.createdAt} DESC`);
 }
 
-export async function updateTutorLeadStatus(
+export async function updateFacultyApplicationStatus(
   id: number,
-  status: "new" | "contacted" | "matched" | "closed",
+  status: "new" | "reviewing" | "invited" | "rejected",
   notes?: string
 ) {
   const db = await getDb();
   if (!db) throw new Error("Database not available");
-  await db.update(tutorLeads)
+  await db.update(facultyApplications)
     .set({ status, ...(notes !== undefined ? { notes } : {}) })
-    .where(eq(tutorLeads.id, id));
+    .where(eq(facultyApplications.id, id));
 }

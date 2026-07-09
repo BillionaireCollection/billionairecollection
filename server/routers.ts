@@ -23,9 +23,9 @@ import {
   updateConciergeStatus,
   updateContactStatus,
   updateContactNotes,
-  createTutorLead,
-  getTutorLeads,
-  updateTutorLeadStatus,
+  createFacultyApplication,
+  getFacultyApplications,
+  updateFacultyApplicationStatus,
 } from "./db";
 import { TRPCError } from "@trpc/server";
 import { notifyOwner } from "./_core/notification";
@@ -203,33 +203,34 @@ export const appRouter = router({
       }),
   }),
 
-  tutorLead: router({
+  facultyApplication: router({
     submit: publicProcedure
       .input(z.object({
         name: z.string().min(1),
         email: z.string().email(),
         phone: z.string().optional(),
-        wealthStage: z.string().optional(),
-        mentorGoal: z.string().optional(),
+        ventures: z.string().optional(),
+        journey: z.string().optional(),
+        linkedin: z.string().optional(),
         source: z.string().optional(),
       }))
       .mutation(async ({ input }) => {
-        await createTutorLead(input);
+        await createFacultyApplication(input);
         notifyOwner({
-          title: `New Billionaire Tutor Lead — ${input.name}`,
-          content: `**Name:** ${input.name}\n**Email:** ${input.email}\n**Phone:** ${input.phone ?? "—"}\n**Wealth Stage:** ${input.wealthStage ?? "—"}\n**Mentor Goal:** ${input.mentorGoal ?? "—"}`,
+          title: `New Faculty Application — ${input.name}`,
+          content: `**Name:** ${input.name}\n**Email:** ${input.email}\n**Phone:** ${input.phone ?? "—"}\n**Ventures:** ${input.ventures ?? "—"}\n**Journey:** ${input.journey ?? "—"}\n**LinkedIn:** ${input.linkedin ?? "—"}`,
         }).catch(() => {/* non-blocking */});
         return { success: true };
       }),
-    list: adminProcedure.query(async () => getTutorLeads()),
+    list: adminProcedure.query(async () => getFacultyApplications()),
     updateStatus: adminProcedure
       .input(z.object({
         id: z.number(),
-        status: z.enum(["new", "contacted", "matched", "closed"]),
+        status: z.enum(["new", "reviewing", "invited", "rejected"]),
         notes: z.string().optional(),
       }))
       .mutation(async ({ input }) => {
-        await updateTutorLeadStatus(input.id, input.status, input.notes);
+        await updateFacultyApplicationStatus(input.id, input.status, input.notes);
         return { success: true };
       }),
   }),
