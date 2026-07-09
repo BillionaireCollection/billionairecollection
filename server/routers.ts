@@ -23,6 +23,9 @@ import {
   updateConciergeStatus,
   updateContactStatus,
   updateContactNotes,
+  createTutorLead,
+  getTutorLeads,
+  updateTutorLeadStatus,
 } from "./db";
 import { TRPCError } from "@trpc/server";
 import { notifyOwner } from "./_core/notification";
@@ -196,6 +199,37 @@ export const appRouter = router({
       }))
       .mutation(async ({ input }) => {
         await updateContactNotes(input.id, input.notes);
+        return { success: true };
+      }),
+  }),
+
+  tutorLead: router({
+    submit: publicProcedure
+      .input(z.object({
+        name: z.string().min(1),
+        email: z.string().email(),
+        phone: z.string().optional(),
+        wealthStage: z.string().optional(),
+        mentorGoal: z.string().optional(),
+        source: z.string().optional(),
+      }))
+      .mutation(async ({ input }) => {
+        await createTutorLead(input);
+        notifyOwner({
+          title: `New Billionaire Tutor Lead — ${input.name}`,
+          content: `**Name:** ${input.name}\n**Email:** ${input.email}\n**Phone:** ${input.phone ?? "—"}\n**Wealth Stage:** ${input.wealthStage ?? "—"}\n**Mentor Goal:** ${input.mentorGoal ?? "—"}`,
+        }).catch(() => {/* non-blocking */});
+        return { success: true };
+      }),
+    list: adminProcedure.query(async () => getTutorLeads()),
+    updateStatus: adminProcedure
+      .input(z.object({
+        id: z.number(),
+        status: z.enum(["new", "contacted", "matched", "closed"]),
+        notes: z.string().optional(),
+      }))
+      .mutation(async ({ input }) => {
+        await updateTutorLeadStatus(input.id, input.status, input.notes);
         return { success: true };
       }),
   }),

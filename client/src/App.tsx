@@ -47,6 +47,7 @@ import GoldenTicket from "./pages/GoldenTicket";
 import Admin from "./pages/Admin";
 import XOffer from "./pages/XOffer";
 import BillionaireWisdom from "./pages/BillionaireWisdom";
+import BillionaireTutor from "./pages/BillionaireTutor";
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -104,6 +105,7 @@ function Router() {
             <Route path="/about" component={About} />
             <Route path="/golden-ticket" component={GoldenTicket} />
             <Route path="/billionaire-wisdom" component={BillionaireWisdom} />
+            <Route path="/billionaire-tutor" component={BillionaireTutor} />
             <Route component={NotFound} />
           </Switch>
         </Layout>

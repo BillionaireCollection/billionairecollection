@@ -139,3 +139,15 @@
 - [x] Add "Free Insights" nav link to Navbar
 - [x] overflow-x: hidden on page wrapper (confirmed)
 - [x] TypeScript 0 errors
+
+## Billionaire Tutor Page (/billionaire-tutor)
+- [x] Add tutorLeads table to drizzle/schema.ts and push DB migration
+- [x] Add tutorLead.submit tRPC procedure in server/routers.ts
+- [x] Add tutorLead.getAll admin procedure in server/routers.ts
+- [x] Build BillionaireTutor.tsx with 8 sections: hero, lived experience, BT difference, how it works, coach archetypes, testimonials, lead form, footer ecosystem ties
+- [x] Wire lead form to tRPC backend with success/error states
+- [x] Add SEO (useSEO + useJsonLd) with Service + Organization JSON-LD
+- [x] Register /billionaire-tutor route in App.tsx
+- [x] Add "Billionaire Tutor" link to Navbar under Divisions
+- [x] Add /billionaire-tutor to sitemap.xml
+- [x] Write vitest test for tutorLead.submit procedure

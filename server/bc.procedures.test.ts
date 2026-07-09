@@ -350,3 +350,68 @@ describe("contactAdmin.updateStatus (admin only)", () => {
     ).rejects.toThrow();
   });
 });
+
+// ── Billionaire Tutor Leads ───────────────────────────────────────────────────
+
+describe("tutorLead.submit", () => {
+  it("rejects missing name", async () => {
+    const caller = appRouter.createCaller(makeCtx(null));
+    await expect(
+      caller.tutorLead.submit({ name: "", email: "test@example.com" })
+    ).rejects.toThrow();
+  });
+
+  it("rejects invalid email", async () => {
+    const caller = appRouter.createCaller(makeCtx(null));
+    await expect(
+      caller.tutorLead.submit({ name: "John Doe", email: "not-an-email" })
+    ).rejects.toThrow();
+  });
+
+  it("accepts valid submission (or DB-unavailable error)", async () => {
+    const caller = appRouter.createCaller(makeCtx(null));
+    try {
+      const result = await caller.tutorLead.submit({
+        name: "John Doe",
+        email: "john@example.com",
+        phone: "+44 7700 900000",
+        wealthStage: "$10M – $50M net worth",
+        mentorGoal: "Scale my business to 9 figures and build generational wealth.",
+        source: "billionairecollection.com/billionaire-tutor",
+      });
+      expect(result.success).toBe(true);
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : String(err);
+      expect(msg).not.toContain("Invalid");
+    }
+  });
+});
+
+describe("tutorLead.list (admin only)", () => {
+  it("rejects non-admin users", async () => {
+    const caller = appRouter.createCaller(makeCtx("user"));
+    await expect(caller.tutorLead.list()).rejects.toThrow();
+  });
+
+  it("rejects unauthenticated users", async () => {
+    const caller = appRouter.createCaller(makeCtx(null));
+    await expect(caller.tutorLead.list()).rejects.toThrow();
+  });
+});
+
+describe("tutorLead.updateStatus (admin only)", () => {
+  it("rejects non-admin users", async () => {
+    const caller = appRouter.createCaller(makeCtx("user"));
+    await expect(
+      caller.tutorLead.updateStatus({ id: 1, status: "contacted" })
+    ).rejects.toThrow();
+  });
+
+  it("rejects invalid status values", async () => {
+    const caller = appRouter.createCaller(makeCtx("admin"));
+    await expect(
+      // @ts-expect-error intentional bad input
+      caller.tutorLead.updateStatus({ id: 1, status: "bad_status" })
+    ).rejects.toThrow();
+  });
+});

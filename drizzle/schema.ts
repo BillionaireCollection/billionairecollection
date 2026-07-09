@@ -135,3 +135,20 @@ export const goldenTicketApplications = mysqlTable("golden_ticket_applications",
 });
 export type GoldenTicketApplication = typeof goldenTicketApplications.$inferSelect;
 export type InsertGoldenTicketApplication = typeof goldenTicketApplications.$inferInsert;
+
+// ─── Billionaire Tutor Leads ──────────────────────────────────────────────────
+export const tutorLeads = mysqlTable("tutor_leads", {
+  id: int("id").autoincrement().primaryKey(),
+  name: varchar("name", { length: 255 }).notNull(),
+  email: varchar("email", { length: 320 }).notNull(),
+  phone: varchar("phone", { length: 64 }),
+  wealthStage: varchar("wealthStage", { length: 255 }),
+  mentorGoal: text("mentorGoal"),
+  source: varchar("source", { length: 128 }).default("billionairecollection.com/billionaire-tutor"),
+  status: mysqlEnum("status", ["new", "contacted", "matched", "closed"]).default("new").notNull(),
+  notes: text("notes"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+export type TutorLead = typeof tutorLeads.$inferSelect;
+export type InsertTutorLead = typeof tutorLeads.$inferInsert;

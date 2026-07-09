@@ -329,3 +329,37 @@ export async function getUsers() {
     .from(users)
     .orderBy(sql`${users.lastSignedIn} DESC`);
 }
+
+// ─── Billionaire Tutor Leads ──────────────────────────────────────────────────
+import { tutorLeads, InsertTutorLead } from "../drizzle/schema";
+
+export async function createTutorLead(data: InsertTutorLead) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db.insert(tutorLeads).values({
+    name: data.name,
+    email: data.email,
+    phone: data.phone,
+    wealthStage: data.wealthStage,
+    mentorGoal: data.mentorGoal,
+    source: data.source ?? "billionairecollection.com/billionaire-tutor",
+  });
+}
+
+export async function getTutorLeads() {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(tutorLeads).orderBy(sql`${tutorLeads.createdAt} DESC`);
+}
+
+export async function updateTutorLeadStatus(
+  id: number,
+  status: "new" | "contacted" | "matched" | "closed",
+  notes?: string
+) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db.update(tutorLeads)
+    .set({ status, ...(notes !== undefined ? { notes } : {}) })
+    .where(eq(tutorLeads.id, id));
+}
