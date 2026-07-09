@@ -10,6 +10,7 @@ import { Link } from "wouter";
 import SphereAnimation from "@/components/SphereAnimation";
 import { useSEO } from "@/hooks/useSEO";
 import { useJsonLd } from "@/hooks/useJsonLd";
+import { trpc } from "@/lib/trpc";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -90,6 +91,46 @@ function AnimatedCounter({ target, suffix = "", prefix = "" }: { target: number;
     <span ref={ref}>
       {prefix}{display.toLocaleString()}{suffix}
     </span>
+  );
+}
+
+function HomepageNewsTeaser() {
+  const { data } = trpc.news.list.useQuery({ limit: 4 });
+  const articles = data ?? [];
+
+  // Fallback while loading
+  const fallback = [
+    { category: "Superyachts", title: "The World's 10 Largest Superyachts Delivered in 2026", source: "Robb Report", publishedAt: new Date() },
+    { category: "Real Estate", title: "Ultra-Prime London Properties Break Record at £200M", source: "Financial Times", publishedAt: new Date() },
+    { category: "Private Aviation", title: "Gulfstream G800 Sets New Transatlantic Speed Record", source: "Forbes", publishedAt: new Date() },
+    { category: "Wealth", title: "Global UHNW Population Surges to 395,000 Individuals", source: "Barron's", publishedAt: new Date() },
+  ];
+
+  const items = articles.length > 0 ? articles : fallback;
+
+  return (
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "1px", background: "rgba(201,168,76,0.1)" }}>
+      {items.slice(0, 4).map((article, i) => (
+        <FadeUp key={article.title} delay={i * 0.07}>
+          <Link href="/news">
+            <div className="bc-glass-card" style={{ padding: "2rem", cursor: "pointer", height: "100%" }}>
+              <div style={{ fontFamily: FONT_UI, fontSize: "0.6875rem", textTransform: "uppercase", letterSpacing: "0.12em", color: GOLD, marginBottom: "1rem" }}>
+                {article.category}
+              </div>
+              <h3 style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "1.0625rem", color: "#fff", lineHeight: 1.4, marginBottom: "1.5rem" }}>
+                {article.title}
+              </h3>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <span style={{ fontFamily: FONT_UI, fontSize: "0.75rem", color: "rgba(255,255,255,0.3)" }}>{article.source}</span>
+                <span style={{ fontFamily: FONT_UI, fontSize: "0.75rem", color: "rgba(255,255,255,0.3)" }}>
+                  {new Date(article.publishedAt).toLocaleDateString("en-GB", { month: "short", year: "numeric" })}
+                </span>
+              </div>
+            </div>
+          </Link>
+        </FadeUp>
+      ))}
+    </div>
   );
 }
 
@@ -487,31 +528,7 @@ export default function Home() {
             </div>
           </FadeUp>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "1px", background: "rgba(201,168,76,0.1)" }}>
-            {[
-              { cat: "Superyachts", title: "The World's 10 Largest Superyachts Delivered in 2025", source: "Robb Report", date: "Mar 2026" },
-              { cat: "Real Estate", title: "Ultra-Prime London Properties Break Record at £200M", source: "Financial Times", date: "Mar 2026" },
-              { cat: "Private Aviation", title: "Gulfstream G800 Sets New Transatlantic Speed Record", source: "Forbes", date: "Mar 2026" },
-              { cat: "Wealth", title: "Global UHNW Population Surges to 395,000 Individuals", source: "Barron's", date: "Feb 2026" },
-            ].map((article, i) => (
-              <FadeUp key={article.title} delay={i * 0.07}>
-                <Link href="/news">
-                  <div className="bc-glass-card" style={{ padding: "2rem", cursor: "pointer", height: "100%" }}>
-                    <div style={{ fontFamily: FONT_UI, fontSize: "0.6875rem", textTransform: "uppercase", letterSpacing: "0.12em", color: GOLD, marginBottom: "1rem" }}>
-                      {article.cat}
-                    </div>
-                    <h3 style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "1.0625rem", color: "#fff", lineHeight: 1.4, marginBottom: "1.5rem" }}>
-                      {article.title}
-                    </h3>
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                      <span style={{ fontFamily: FONT_UI, fontSize: "0.75rem", color: "rgba(255,255,255,0.3)" }}>{article.source}</span>
-                      <span style={{ fontFamily: FONT_UI, fontSize: "0.75rem", color: "rgba(255,255,255,0.3)" }}>{article.date}</span>
-                    </div>
-                  </div>
-                </Link>
-              </FadeUp>
-            ))}
-          </div>
+          <HomepageNewsTeaser />
         </div>
       </section>
 
