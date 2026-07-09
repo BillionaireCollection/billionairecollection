@@ -274,6 +274,7 @@ export default function Footer() {
               {
                 category: "Services",
                 brands: [
+                  { name: "Billionaire Card", href: "https://thebillionairecard.com" },
                   { name: "Billionaire Forex", href: "https://billionaireforex.com" },
                   { name: "Billionaire Funding", href: "https://billionairefunding.com" },
                   { name: "Billionaire Classifieds", href: "https://billionaireclassifieds.com" },
