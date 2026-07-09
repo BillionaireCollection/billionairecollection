@@ -153,3 +153,22 @@ export const facultyApplications = mysqlTable("faculty_applications", {
 });
 export type FacultyApplication = typeof facultyApplications.$inferSelect;
 export type InsertFacultyApplication = typeof facultyApplications.$inferInsert;
+
+// ─── News Articles (auto-refreshed daily by AGENT cron) ──────────────────────
+export const newsArticles = mysqlTable("news_articles", {
+  id: int("id").autoincrement().primaryKey(),
+  /** Stable dedup key — slug derived from title, used for upsert */
+  slug: varchar("slug", { length: 512 }).notNull().unique(),
+  title: varchar("title", { length: 512 }).notNull(),
+  summary: text("summary").notNull(),
+  category: varchar("category", { length: 64 }).notNull().default("Wealth"),
+  source: varchar("source", { length: 128 }).notNull().default("Billionaire Collection"),
+  imageUrl: text("imageUrl"),
+  articleUrl: text("articleUrl"),
+  isFeatured: boolean("isFeatured").default(false).notNull(),
+  publishedAt: timestamp("publishedAt").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+export type NewsArticle = typeof newsArticles.$inferSelect;
+export type InsertNewsArticle = typeof newsArticles.$inferInsert;

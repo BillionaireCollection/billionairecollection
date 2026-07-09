@@ -14,6 +14,8 @@ import {
   marketplaceListings,
   goldenTicketApplications,
   InsertGoldenTicketApplication,
+  newsArticles,
+  InsertNewsArticle,
 } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
@@ -328,6 +330,43 @@ export async function getUsers() {
     })
     .from(users)
     .orderBy(sql`${users.lastSignedIn} DESC`);
+}
+
+// ─── News Articles (daily auto-refresh) ──────────────────────────────────────
+export async function getNewsArticles(limit = 30) {
+  const db = await getDb();
+  if (!db) return [];
+  return db
+    .select()
+    .from(newsArticles)
+    .orderBy(sql`${newsArticles.publishedAt} DESC`)
+    .limit(limit);
+}
+
+export async function upsertNewsArticle(data: InsertNewsArticle) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db
+    .insert(newsArticles)
+    .values(data)
+    .onDuplicateKeyUpdate({
+      set: {
+        title: data.title,
+        summary: data.summary,
+        category: data.category,
+        source: data.source,
+        imageUrl: data.imageUrl ?? null,
+        articleUrl: data.articleUrl ?? null,
+        isFeatured: data.isFeatured ?? false,
+        publishedAt: data.publishedAt,
+      },
+    });
+}
+
+export async function upsertManyNewsArticles(articles: InsertNewsArticle[]) {
+  for (const article of articles) {
+    await upsertNewsArticle(article);
+  }
 }
 
 // ─── Billionaire University Faculty Applications ─────────────────────────────

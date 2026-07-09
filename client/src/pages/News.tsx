@@ -7,7 +7,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import PageHero from "@/components/PageHero";
-import { useNewsFeeds } from "@/hooks/useNewsFeeds";
+// Data now served from DB via tRPC (daily AGENT cron refresh)
 import { trpc } from "@/lib/trpc";
 import { useSEO } from "@/hooks/useSEO";
 import { useJsonLd } from "@/hooks/useJsonLd";
@@ -101,12 +101,27 @@ export default function News() {
     onSuccess: () => setSubscribed(true),
     onError: (err) => setSubscribeError(err.message || "Something went wrong. Please try again."),
   });
-  const { articles, loading, liveCount, lastUpdated, refresh } = useNewsFeeds();
-
+  const { data: dbArticles, isLoading: loading, dataUpdatedAt, refetch } = trpc.news.list.useQuery(
+    { limit: 30 },
+    { refetchInterval: 30 * 60 * 1000 }
+  );
+  const articles = (dbArticles ?? []).map(a => ({
+    id: String(a.id),
+    title: a.title,
+    summary: a.summary,
+    category: a.category,
+    source: a.source,
+    img: a.imageUrl ?? FALLBACK_IMGS[a.id % FALLBACK_IMGS.length],
+    url: a.articleUrl ?? "#",
+    featured: a.isFeatured,
+    date: new Date(a.publishedAt).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }),
+  }));
+  const lastUpdatedTime = dataUpdatedAt ? new Date(dataUpdatedAt).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" }) : "";
+  const refresh = () => { void refetch(); };
+  const liveCount = articles.length;
   const filtered = activeCategory === "All"
     ? articles
     : articles.filter(a => a.category === activeCategory);
-
   const featured = filtered.filter(a => a.featured).slice(0, 2);
   const regular = filtered.filter(a => !a.featured);
 
@@ -151,9 +166,9 @@ export default function News() {
               ))}
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-              {lastUpdated && (
+              {lastUpdatedTime && (
                 <span style={{ fontFamily: FONT_UI, fontSize: "0.6875rem", color: "rgba(255,255,255,0.25)" }}>
-                  Updated {lastUpdated.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })}
+                  Updated {lastUpdatedTime}
                 </span>
               )}
               <button

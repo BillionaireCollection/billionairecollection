@@ -26,6 +26,8 @@ import {
   createFacultyApplication,
   getFacultyApplications,
   updateFacultyApplicationStatus,
+  getNewsArticles,
+  upsertManyNewsArticles,
 } from "./db";
 import { TRPCError } from "@trpc/server";
 import { notifyOwner } from "./_core/notification";
@@ -232,6 +234,30 @@ export const appRouter = router({
       .mutation(async ({ input }) => {
         await updateFacultyApplicationStatus(input.id, input.status, input.notes);
         return { success: true };
+      }),
+  }),
+
+  news: router({
+    list: publicProcedure
+      .input(z.object({ limit: z.number().min(1).max(50).default(30) }))
+      .query(async ({ input }) => getNewsArticles(input.limit)),
+    // Called by the AGENT cron via /api/scheduled/news-refresh
+    // Also available to admin for manual refresh
+    upsertMany: adminProcedure
+      .input(z.array(z.object({
+        slug: z.string(),
+        title: z.string(),
+        summary: z.string(),
+        category: z.string().default("Wealth"),
+        source: z.string().default("Billionaire Collection"),
+        imageUrl: z.string().optional(),
+        articleUrl: z.string().optional(),
+        isFeatured: z.boolean().default(false),
+        publishedAt: z.date(),
+      })))
+      .mutation(async ({ input }) => {
+        await upsertManyNewsArticles(input);
+        return { success: true, count: input.length };
       }),
   }),
 
