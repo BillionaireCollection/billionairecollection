@@ -36,7 +36,7 @@ const ALL_LISTINGS = [
   { cat: "Yachts", title: "M/Y Aurora — 82m Lürssen", loc: "Mediterranean", price: "$105,000,000", img: YACHT_IMG, tag: "For Sale", href: "/boat" },
   { cat: "Aviation", title: "Gulfstream G800", loc: "Ultra-Long Range", price: "POA", img: AIR_IMG, tag: "For Sale", href: "/air" },
   { cat: "Properties", title: "Monaco Clifftop Villa", loc: "Monaco, Monte Carlo", price: "$93,500,000", img: ESTATES_IMG, tag: "Exclusive", href: "/estates" },
-  { cat: "Vehicles", title: "Ferrari LaFerrari Aperta", loc: "1 of 210, Rosso Corsa", price: "POA", img: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&q=80", tag: "Rare", href: "/car" },
+  { cat: "Vehicles", title: "Ferrari LaFerrari Aperta", loc: "1 of 210, Rosso Corsa", price: "POA", img: "/manus-storage/ferrari-laferrari-aperta_644ecf63.webp", tag: "Rare", href: "/car" },
   { cat: "Properties", title: "Malibu Ocean Estate", loc: "California, USA", price: "$120,000,000", img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80", tag: "New", href: "/estates" },
   { cat: "Yachts", title: "M/Y Solaris — 65m Benetti", loc: "Caribbean Charter", price: "$490,000/week", img: "https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=800&q=80", tag: "Charter", href: "/boat" },
   { cat: "Vehicles", title: "Bugatti Chiron Super Sport", loc: "2022, 1,600hp", price: "$4,100,000", img: "/manus-storage/bugatti-chiron-super-sport_1dfd1c9b.jpg", tag: "For Sale", href: "/car" },

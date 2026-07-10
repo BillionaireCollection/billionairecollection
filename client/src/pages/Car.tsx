@@ -69,7 +69,7 @@ export default function Car() {
     { icon: "🌍", title: "Global Sourcing", desc: "Worldwide network" }
 ]}
       listings={[
-    { title: "Ferrari LaFerrari Aperta", sub: "1 of 210, Rosso Corsa", price: "POA", img: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&q=80", tag: "Rare" },
+    { title: "Ferrari LaFerrari Aperta", sub: "1 of 210, Rosso Corsa", price: "POA", img: "/manus-storage/ferrari-laferrari-aperta_644ecf63.webp", tag: "Rare" },
     { title: "Bugatti Chiron Super Sport", sub: "2022, 1,600hp", price: "$4,100,000", img: "/manus-storage/bugatti-chiron-super-sport_1dfd1c9b.jpg", tag: "For Sale" },
     { title: "Rolls-Royce Phantom Bespoke", sub: "Commission Available", price: "POA", img: "/manus-storage/rolls-royce-phantom-bespoke_ed6cc70a.webp", tag: "Commission" }
 ]}
