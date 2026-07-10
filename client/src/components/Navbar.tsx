@@ -295,8 +295,27 @@ export default function Navbar() {
               <X size={24} />
             </button>
 
+            {/* Mobile: prominent Store CTA at top */}
+            <Link href="/marketplace" onClick={() => setMobileOpen(false)}>
+              <div style={{
+                background: GOLD,
+                color: "#0a0e1a",
+                fontFamily: FONT_UI,
+                fontWeight: 700,
+                fontSize: "0.8rem",
+                textTransform: "uppercase",
+                letterSpacing: "0.15em",
+                padding: "14px 20px",
+                textAlign: "center",
+                marginBottom: "20px",
+                cursor: "pointer",
+              }}>
+                ✦ Official Store
+              </div>
+            </Link>
+
             <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
-              {NAV_ITEMS.map((item) => (
+              {NAV_ITEMS.filter(i => i.label !== "Store").map((item) => (
                 <div key={item.label}>
                   {item.href ? (
                     <Link href={item.href}>
@@ -320,7 +339,7 @@ export default function Navbar() {
                   )}
                 </div>
               ))}
-              <div style={{ marginTop: "2rem" }}>
+              <div style={{ marginTop: "2rem", display: "flex", flexDirection: "column", gap: "12px" }}>
                 <Link href="/card-concierge">
                   <button className="btn-gold" style={{ width: "100%" }}>Billionaire Card</button>
                 </Link>
