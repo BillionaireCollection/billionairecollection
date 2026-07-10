@@ -40,8 +40,8 @@ const ALL_LISTINGS = [
   { cat: "Properties", title: "Malibu Ocean Estate", loc: "California, USA", price: "$120,000,000", img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80", tag: "New", href: "/estates" },
   { cat: "Yachts", title: "M/Y Solaris — 65m Benetti", loc: "Caribbean Charter", price: "$490,000/week", img: "https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=800&q=80", tag: "Charter", href: "/boat" },
   { cat: "Vehicles", title: "Bugatti Chiron Super Sport", loc: "2022, 1,600hp", price: "$4,100,000", img: "/manus-storage/bugatti-chiron-super-sport_1dfd1c9b.jpg", tag: "For Sale", href: "/car" },
-  { cat: "Art", title: "Jean-Michel Basquiat", loc: "Untitled, 1982", price: "POA", img: "https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=800&q=80", tag: "Private Sale", href: "/art" },
-  { cat: "Aviation", title: "Bombardier Global 7500", loc: "London to Sydney Non-Stop", price: "POA", img: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=80", tag: "Charter", href: "/air" },
+  { cat: "Art", title: "Jean-Michel Basquiat", loc: "Untitled, 1982", price: "POA", img: "/manus-storage/basquiat-artwork_4ca08043.jpg", tag: "Private Sale", href: "/art" },
+  { cat: "Aviation", title: "Bombardier Global 7500", loc: "London to Sydney Non-Stop", price: "POA", img: "/manus-storage/bombardier-global-7500_695fc715.png", tag: "Charter", href: "/air" },
   { cat: "Properties", title: "Dubai Palm Penthouse", loc: "Palm Jumeirah, Dubai", price: "$25,900,000", img: "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800&q=80", tag: "Exclusive", href: "/estates" },
   { cat: "Vehicles", title: "Rolls-Royce Phantom Bespoke", loc: "Commission Available", price: "POA", img: "/manus-storage/rolls-royce-phantom-bespoke_ed6cc70a.webp", tag: "Commission", href: "/car" },
 ];

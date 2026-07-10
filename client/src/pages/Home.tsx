@@ -43,7 +43,7 @@ const ECOSYSTEM_ITEMS = [
   { label: "Superyachts", sub: "Bespoke vessels worldwide", href: "/boat", img: YACHT_IMG },
   { label: "Private Aviation", sub: "Charter & acquisition", href: "/air", img: AIR_IMG },
   { label: "Automotive", sub: "Rare & exotic automobiles", href: "/car", img: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&q=80" },
-  { label: "Fine Art", sub: "Curated collectibles", href: "/art", img: "https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=800&q=80" },
+  { label: "Fine Art", sub: "Curated collectibles", href: "/art", img: "/manus-storage/basquiat-artwork_4ca08043.jpg" },
   { label: "Crypto Assets", sub: "Digital wealth management", href: "/crypto", img: "https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=800&q=80" },
 ];
 

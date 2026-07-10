@@ -21,8 +21,8 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 }
 
 const CHANNELS = [
-  { label: "Television", href: "/television", icon: "📺", desc: "Exclusive programming for the world's most discerning viewers — documentary series, lifestyle content, and live events from the pinnacle of luxury culture.", img: "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=800&q=80" },
-  { label: "Magazine", href: "/magazine", icon: "📖", desc: "The definitive print and digital publication for ultra-high-net-worth individuals — featuring in-depth profiles, market intelligence, and the finest luxury editorial.", img: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&q=80" },
+  { label: "Television", href: "/television", icon: "📺", desc: "Exclusive programming for the world's most discerning viewers — documentary series, lifestyle content, and live events from the pinnacle of luxury culture.", img: "/manus-storage/luxury-tv-studio_0563dc0c.jpg" },
+  { label: "Magazine", href: "/magazine", icon: "📖", desc: "The definitive print and digital publication for ultra-high-net-worth individuals — featuring in-depth profiles, market intelligence, and the finest luxury editorial.", img: "/manus-storage/luxury-magazine_8347e227.jpg" },
   { label: "Radio & Podcast", href: "/radio", icon: "🎙", desc: "Curated audio content for the global elite — expert conversations on wealth, investment, lifestyle, and the forces shaping the world of ultra-high-net-worth individuals.", img: "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=800&q=80" },
 ];
 
