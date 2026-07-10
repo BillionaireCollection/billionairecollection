@@ -180,7 +180,7 @@ const PRODUCTS: Product[] = [
     colors: ["Black", "Navy"],
     tagline: "Billionaire mindset. Every morning.",
     description: "11oz ceramic mug with Billionaire Collection mindset print. Start every day with intention.",
-    image: "/manus-storage/gold-monogram-mug_447d1042.png",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/mindset-mug-v2-8Ev2KGtYzk88wG6XEkBoCK.webp",
   },
   // Posters
   {
