@@ -30,6 +30,7 @@ interface Product {
   tagline: string;
   description: string;
   sizes?: string[];
+  image: string;
 }
 
 const PRODUCTS: Product[] = [
@@ -44,6 +45,7 @@ const PRODUCTS: Product[] = [
     tagline: "Heritage crest. Premium cotton.",
     description: "The definitive BC statement piece. Heavyweight premium cotton with embroidered heritage crest.",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+    image: "/manus-storage/crest-signature-tee_72f00938.png",
   },
   {
     id: "tee-crest-classic",
@@ -55,6 +57,7 @@ const PRODUCTS: Product[] = [
     tagline: "Timeless. Effortless. Billionaire.",
     description: "Our best-selling classic fit tee. Relaxed silhouette, refined finish.",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+    image: "/manus-storage/crest-tee-classic-fit_576c3df0.png",
   },
   {
     id: "tee-arch-logo",
@@ -65,6 +68,7 @@ const PRODUCTS: Product[] = [
     tagline: "Arch print. Gold on dark.",
     description: "Bold arch typography in gold on premium dark fabric. A collector's essential.",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+    image: "/manus-storage/arch-logo-tee_f557ef32.png",
   },
   {
     id: "tee-crest-standard",
@@ -75,6 +79,7 @@ const PRODUCTS: Product[] = [
     tagline: "The crest. The standard.",
     description: "Clean crest print on premium fabric. Understated luxury for the discerning collector.",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+    image: "/manus-storage/crest-tee-classic-fit_576c3df0.png",
   },
   {
     id: "tee-mindset",
@@ -85,6 +90,7 @@ const PRODUCTS: Product[] = [
     tagline: "Mindset before millions.",
     description: "A declaration of intent. Wear the philosophy that separates the exceptional from the ordinary.",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+    image: "/manus-storage/mindset-tee_89a992e5.png",
   },
   {
     id: "tee-build-empire",
@@ -95,6 +101,7 @@ const PRODUCTS: Product[] = [
     tagline: "Build. Scale. Dominate.",
     description: "For those who build legacies. Premium cotton, legacy print.",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+    image: "/manus-storage/build-empire-tee_f295945a.png",
   },
   // Hoodies
   {
@@ -107,6 +114,7 @@ const PRODUCTS: Product[] = [
     tagline: "Heavyweight luxury. Crest embroidered.",
     description: "400gsm heavyweight fleece with embroidered crest. The pinnacle of casual luxury.",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+    image: "/manus-storage/crest-pullover-hoodie_d1866b2e.png",
   },
   {
     id: "hoodie-crest-embroidered",
@@ -118,6 +126,7 @@ const PRODUCTS: Product[] = [
     tagline: "Full embroidery. Heirloom quality.",
     description: "Full embroidered crest on premium fleece. Limited production. Collector's edition.",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+    image: "/manus-storage/crest-hoodie-embroidered_529f6e46.png",
   },
   {
     id: "hoodie-wealth-creation",
@@ -128,6 +137,7 @@ const PRODUCTS: Product[] = [
     tagline: "Create. Preserve. Transcend.",
     description: "Our most exclusive hoodie. Gold foil print on premium fleece. For those who understand the game.",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+    image: "/manus-storage/wealth-preservation-hoodie_d16ea859.png",
   },
   // Hats
   {
@@ -139,6 +149,7 @@ const PRODUCTS: Product[] = [
     badge: "Best Seller",
     tagline: "Six-panel. Embroidered crest.",
     description: "Structured six-panel cap with embroidered BC crest. Adjustable strap. One size fits most.",
+    image: "/manus-storage/crest-cap_40cc1792.png",
   },
   {
     id: "hat-crown-snapback",
@@ -148,6 +159,7 @@ const PRODUCTS: Product[] = [
     colors: ["Black/Gold", "Navy/Gold"],
     tagline: "Crown the collection.",
     description: "Flat-brim snapback with gold crown logo embroidery. Adjustable snap closure.",
+    image: "/manus-storage/crown-snapback_4eccbd23.png",
   },
   // Mugs
   {
@@ -158,6 +170,7 @@ const PRODUCTS: Product[] = [
     colors: ["White/Navy", "Black/Gold"],
     tagline: "Morning ritual. Elevated.",
     description: "11oz ceramic mug with BC crest. Dishwasher safe. The luxury morning ritual.",
+    image: "/manus-storage/bc-crest-mug_d241ca73.png",
   },
   {
     id: "mug-mindset",
@@ -167,6 +180,7 @@ const PRODUCTS: Product[] = [
     colors: ["Black", "Navy"],
     tagline: "Billionaire mindset. Every morning.",
     description: "11oz ceramic mug with Billionaire Collection mindset print. Start every day with intention.",
+    image: "/manus-storage/gold-monogram-mug_447d1042.png",
   },
   // Posters
   {
@@ -178,6 +192,7 @@ const PRODUCTS: Product[] = [
     badge: "Popular",
     tagline: "Gallery-quality. Frameable.",
     description: "A2 premium matte print. Gallery-quality paper. The BC crest rendered in gold on dark.",
+    image: "/manus-storage/bc-crest-poster_4c6e5238.png",
   },
   {
     id: "poster-manifesto",
@@ -187,6 +202,7 @@ const PRODUCTS: Product[] = [
     colors: ["Black/Gold", "Navy/Gold"],
     tagline: "The Billionaire manifesto. Framed.",
     description: "A2 premium matte print featuring the Billionaire Collection manifesto in gold typography.",
+    image: "/manus-storage/wealth-mindset-poster_09de1e2c.png",
   },
   // Tote Bags
   {
@@ -197,6 +213,7 @@ const PRODUCTS: Product[] = [
     colors: ["Natural/Navy", "Black/Gold"],
     tagline: "Carry the crest.",
     description: "Heavy-duty canvas tote with BC crest print. Reinforced handles. 15L capacity.",
+    image: "/manus-storage/bc-signature-tote_76305794.png",
   },
   {
     id: "tote-build-empire",
@@ -206,6 +223,7 @@ const PRODUCTS: Product[] = [
     colors: ["Natural/Black", "Black/Gold"],
     tagline: "Build empires. Carry essentials.",
     description: "Premium canvas tote with Build Empire print. The everyday carry for the ambitious.",
+    image: "/manus-storage/arch-logo-tote_a926aa13.png",
   },
 ];
 
@@ -282,55 +300,19 @@ function ProductCard({
       }}
     >
       {/* Image area */}
-      <div style={{ position: "relative", height: "288px", background: "#f8f8f8", overflow: "hidden" }}>
-        {/* Placeholder gradient image */}
-        <div
+      <div style={{ position: "relative", height: "288px", background: "#000", overflow: "hidden" }}>
+        <img
+          src={product.image}
+          alt={product.name}
           style={{
-            position: "absolute",
-            inset: 0,
-            background: `linear-gradient(135deg, ${NAVY} 0%, #1a2744 50%, #0d1630 100%)`,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            flexDirection: "column",
-            gap: "12px",
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            display: "block",
+            transform: hovered ? "scale(1.04)" : "scale(1)",
+            transition: "transform 0.4s ease",
           }}
-        >
-          {/* BC Crest placeholder */}
-          <div style={{ textAlign: "center" }}>
-            <div
-              style={{
-                width: "80px",
-                height: "80px",
-                border: `2px solid ${GOLD}`,
-                borderRadius: "50%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                margin: "0 auto 8px",
-                transform: hovered ? "scale(1.08)" : "scale(1)",
-                transition: "transform 0.3s ease",
-              }}
-            >
-              <span style={{ color: GOLD, fontSize: "1.5rem", fontFamily: "'Playfair Display', serif", fontWeight: 700 }}>BC</span>
-            </div>
-            <div style={{ color: GOLD, fontSize: "0.65rem", letterSpacing: "0.25em", fontFamily: "Inter, sans-serif", opacity: 0.7 }}>
-              BILLIONAIRE COLLECTION
-            </div>
-          </div>
-          <div
-            style={{
-              color: IVORY,
-              fontSize: "0.7rem",
-              letterSpacing: "0.15em",
-              fontFamily: "Inter, sans-serif",
-              opacity: 0.5,
-              textTransform: "uppercase",
-            }}
-          >
-            {product.category}
-          </div>
-        </div>
+        />
 
         {/* Badge */}
         {badge && (
