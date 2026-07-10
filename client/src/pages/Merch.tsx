@@ -79,7 +79,7 @@ const PRODUCTS: Product[] = [
     tagline: "The crest. The standard.",
     description: "Clean crest print on premium fabric. Understated luxury for the discerning collector.",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/crest-tee-standard-v3-nZRMADK6RgkBS8ZqSwDsFY.webp",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/crest-tee-navy-v3-4z2YEcT8TJNTn5EVApHXoq.webp",
   },
   {
     id: "tee-mindset",
