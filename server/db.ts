@@ -369,6 +369,26 @@ export async function upsertManyNewsArticles(articles: InsertNewsArticle[]) {
   }
 }
 
+// ─── Merch Orders ─────────────────────────────────────────────────────────────
+import { merchOrders, InsertMerchOrder } from "../drizzle/schema";
+export async function createMerchOrder(data: Pick<InsertMerchOrder, "email" | "items" | "shippingAddress" | "totalAmount" | "status">) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const [result] = await db.insert(merchOrders).values({
+    email: data.email,
+    items: data.items,
+    shippingAddress: data.shippingAddress,
+    totalAmount: data.totalAmount,
+    status: data.status ?? "pending",
+  });
+  return { id: (result as any).insertId as number };
+}
+export async function getMerchOrders() {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(merchOrders).orderBy(sql`${merchOrders.createdAt} DESC`);
+}
+
 // ─── Billionaire University Faculty Applications ─────────────────────────────
 import { facultyApplications, InsertFacultyApplication } from "../drizzle/schema";
 

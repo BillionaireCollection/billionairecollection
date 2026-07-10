@@ -172,3 +172,19 @@ export const newsArticles = mysqlTable("news_articles", {
 });
 export type NewsArticle = typeof newsArticles.$inferSelect;
 export type InsertNewsArticle = typeof newsArticles.$inferInsert;
+
+// ─── Merch Orders (Printful fulfilment — key wired in later) ─────────────────
+export const merchOrders = mysqlTable("merch_orders", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId"),                          // nullable — guest checkout allowed
+  printfulOrderId: varchar("printfulOrderId", { length: 64 }),
+  status: mysqlEnum("status", ["pending", "processing", "shipped", "delivered", "cancelled"]).default("pending").notNull(),
+  totalAmount: int("totalAmount").notNull(),       // in cents (USD)
+  items: text("items").notNull(),                  // JSON: [{productId, name, color, size, qty, unitPrice}]
+  shippingAddress: text("shippingAddress").notNull(), // JSON: {name, address1, city, zip, country_code, email}
+  email: varchar("email", { length: 320 }).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+export type MerchOrder = typeof merchOrders.$inferSelect;
+export type InsertMerchOrder = typeof merchOrders.$inferInsert;

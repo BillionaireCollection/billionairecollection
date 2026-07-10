@@ -48,6 +48,7 @@ import Admin from "./pages/Admin";
 import XOffer from "./pages/XOffer";
 import BillionaireWisdom from "./pages/BillionaireWisdom";
 import BillionaireTutor from "./pages/BillionaireTutor";
+import Merch from "./pages/Merch";
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -97,7 +98,7 @@ function Router() {
             <Route path="/vodka" component={Vodka} />
             <Route path="/cigar" component={Cigar} />
             <Route path="/oud" component={Oud} />
-            <Route path="/marketplace" component={Marketplace} />
+            <Route path="/marketplace" component={Merch} />
             <Route path="/news" component={News} />
             <Route path="/privacy" component={Privacy} />
             <Route path="/terms" component={Terms} />

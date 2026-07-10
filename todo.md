@@ -170,3 +170,16 @@
 - [x] Seed DB with current articles updated to July 2026 dates
 - [x] Checkpoint and deploy
 - [x] Create AGENT cron for daily news refresh at 07:00 UTC
+
+## Billionaire Collection Merch Page (/marketplace)
+
+- [x] Add merch_orders table to drizzle/schema.ts and push migration
+- [x] Add merch tRPC router: merch.placeOrder (Printful-ready stub), merch.listOrders (admin)
+- [x] Add createMerchOrder and getMerchOrders DB helpers to server/db.ts
+- [x] Build Merch.tsx: 5 sections — hero, category filter bar, 17-product grid, brand promise strip, footer CTA
+- [x] All 17 products with correct BC prices (BU × 2), colour variants, badges
+- [x] Cart drawer modal with quantity controls, subtotal, checkout form, success state
+- [x] Checkout wired to trpc.merch.placeOrder mutation with owner notification
+- [x] Add SEO (useSEO + useJsonLd Store schema) for the store page
+- [x] Register /marketplace route in App.tsx pointing to Merch component
+- [x] TypeScript: 0 errors. Tests: 42/42 passing.

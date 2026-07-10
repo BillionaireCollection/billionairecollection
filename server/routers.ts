@@ -28,6 +28,8 @@ import {
   updateFacultyApplicationStatus,
   getNewsArticles,
   upsertManyNewsArticles,
+  createMerchOrder,
+  getMerchOrders,
 } from "./db";
 import { TRPCError } from "@trpc/server";
 import { notifyOwner } from "./_core/notification";
@@ -259,6 +261,47 @@ export const appRouter = router({
         await upsertManyNewsArticles(input);
         return { success: true, count: input.length };
       }),
+  }),
+
+  merch: router({
+    placeOrder: publicProcedure
+      .input(z.object({
+        email: z.string().email(),
+        items: z.array(z.object({
+          productId: z.string(),
+          name: z.string(),
+          color: z.string(),
+          size: z.string().optional(),
+          qty: z.number().min(1),
+          unitPrice: z.number(),
+        })),
+        shippingAddress: z.object({
+          name: z.string(),
+          address1: z.string(),
+          city: z.string(),
+          zip: z.string(),
+          country_code: z.string(),
+        }),
+      }))
+      .mutation(async ({ input }) => {
+        const totalAmount = input.items.reduce((sum, item) => sum + item.unitPrice * item.qty, 0);
+        const order = await createMerchOrder({
+          email: input.email,
+          items: JSON.stringify(input.items),
+          shippingAddress: JSON.stringify(input.shippingAddress),
+          totalAmount,
+          status: "pending",
+        });
+        // TODO: When PRINTFUL_API_KEY is available, call Printful API here
+        // const printfulOrderId = await submitToPrintful(input);
+        // await updateMerchOrderPrintfulId(order.id, printfulOrderId);
+        notifyOwner({
+          title: `New Merch Order — ${input.email}`,
+          content: `**Email:** ${input.email}\n**Items:** ${input.items.map(i => `${i.qty}x ${i.name} (${i.color})`).join(", ")}\n**Total:** $${(totalAmount / 100).toFixed(2)}`,
+        }).catch(() => {/* non-blocking */});
+        return { success: true, orderId: order.id };
+      }),
+    listOrders: adminProcedure.query(async () => getMerchOrders()),
   }),
 
   admin: router({
