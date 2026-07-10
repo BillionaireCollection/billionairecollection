@@ -45,7 +45,7 @@ const PRODUCTS: Product[] = [
     tagline: "Heritage crest. Premium cotton.",
     description: "The definitive BC statement piece. Heavyweight premium cotton with embroidered heritage crest.",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
-    image: "/manus-storage/crest-signature-tee_72f00938.png",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/crest-signature-tee-v2-9QBKtrSwbhdQ6etGbD2PA4.webp",
   },
   {
     id: "tee-crest-classic",
