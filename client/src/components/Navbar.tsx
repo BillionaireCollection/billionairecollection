@@ -233,30 +233,13 @@ export default function Navbar() {
 
           {/* Mobile: Store shortcut + hamburger */}
           {!isDesktop && (
-            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-              <Link href="/marketplace">
-                <span style={{
-                  fontFamily: FONT_UI,
-                  fontWeight: 700,
-                  fontSize: "0.65rem",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.12em",
-                  color: GOLD,
-                  border: `1px solid ${GOLD}`,
-                  padding: "5px 10px",
-                  whiteSpace: "nowrap",
-                }}>
-                  Store
-                </span>
-              </Link>
-              <button
-                onClick={() => setMobileOpen(!mobileOpen)}
-                style={{ color: GOLD, background: "none", border: "none", padding: "8px", cursor: "pointer" }}
-                aria-label="Open menu"
-              >
-                {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
-            </div>
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              style={{ color: GOLD, background: "none", border: "none", padding: "8px", cursor: "pointer" }}
+              aria-label="Open menu"
+            >
+              {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           )}
         </div>
 
