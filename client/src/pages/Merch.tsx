@@ -57,7 +57,7 @@ const PRODUCTS: Product[] = [
     tagline: "Timeless. Effortless. Billionaire.",
     description: "Our best-selling classic fit tee. Relaxed silhouette, refined finish.",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
-    image: "/manus-storage/crest-tee-classic-fit_576c3df0.png",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/crest-tee-classic-v3-3PkByaKVD9oKSe6NCngKXQ.webp",
   },
   {
     id: "tee-arch-logo",
@@ -79,7 +79,7 @@ const PRODUCTS: Product[] = [
     tagline: "The crest. The standard.",
     description: "Clean crest print on premium fabric. Understated luxury for the discerning collector.",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
-    image: "/manus-storage/crest-tee-classic-fit_576c3df0.png",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/crest-tee-standard-v3-nZRMADK6RgkBS8ZqSwDsFY.webp",
   },
   {
     id: "tee-mindset",
@@ -90,7 +90,7 @@ const PRODUCTS: Product[] = [
     tagline: "Mindset before millions.",
     description: "A declaration of intent. Wear the philosophy that separates the exceptional from the ordinary.",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
-    image: "/manus-storage/mindset-tee_89a992e5.png",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/mindset-tee-v3-gmmhmJohWFEEcdU69L9GEE.webp",
   },
   {
     id: "tee-build-empire",
@@ -101,7 +101,7 @@ const PRODUCTS: Product[] = [
     tagline: "Build. Scale. Dominate.",
     description: "For those who build legacies. Premium cotton, legacy print.",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
-    image: "/manus-storage/build-empire-tee_f295945a.png",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/build-empire-tee-v3-C5Bh9VhYqEGjuvshhZsQTJ.webp",
   },
   // Hoodies
   {
@@ -149,7 +149,7 @@ const PRODUCTS: Product[] = [
     badge: "Best Seller",
     tagline: "Six-panel. Embroidered crest.",
     description: "Structured six-panel cap with embroidered BC crest. Adjustable strap. One size fits most.",
-    image: "/manus-storage/crest-cap_40cc1792.png",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/crest-cap-v3-SGk6CF7AhXT7yjYkUrzYD3.webp",
   },
   {
     id: "hat-crown-snapback",
@@ -170,7 +170,7 @@ const PRODUCTS: Product[] = [
     colors: ["White/Navy", "Black/Gold"],
     tagline: "Morning ritual. Elevated.",
     description: "11oz ceramic mug with BC crest. Dishwasher safe. The luxury morning ritual.",
-    image: "/manus-storage/bc-crest-mug_d241ca73.png",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-crest-mug-v3-5JWvTBkBzSrJaLrd3iBHew.webp",
   },
   {
     id: "mug-mindset",
