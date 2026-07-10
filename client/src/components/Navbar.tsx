@@ -2,6 +2,9 @@
    BILLIONAIRE COLLECTION — Navbar
    Neo-Deco Maximalism: Thin gold thread at top, mega-menu with
    staggered reveals, Raleway uppercase navigation.
+   Mobile: hamburger toggle via JS (Tailwind responsive classes
+   are NOT used here — Tailwind 4 does not generate them unless
+   explicitly safelisted; we use useIsDesktop instead).
    ============================================================ */
 
 import { useState, useEffect, useMemo } from "react";
@@ -11,6 +14,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const GOLD = "#C9A84C";
 const FONT_UI = "'Raleway', sans-serif";
+const DESKTOP_BREAKPOINT = 1024;
 
 interface NavItem {
   label: string;
@@ -55,11 +59,26 @@ const NAV_ITEMS: NavItem[] = [
   { label: "✦ Golden Ticket", href: "/golden-ticket" },
 ];
 
+function useIsDesktop() {
+  const [isDesktop, setIsDesktop] = useState(
+    typeof window !== "undefined" ? window.innerWidth >= DESKTOP_BREAKPOINT : true
+  );
+  useEffect(() => {
+    const mql = window.matchMedia(`(min-width: ${DESKTOP_BREAKPOINT}px)`);
+    const onChange = () => setIsDesktop(mql.matches);
+    mql.addEventListener("change", onChange);
+    setIsDesktop(mql.matches);
+    return () => mql.removeEventListener("change", onChange);
+  }, []);
+  return isDesktop;
+}
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [location] = useLocation();
+  const isDesktop = useIsDesktop();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -72,7 +91,12 @@ export default function Navbar() {
     setActiveMenu(null);
   }, [location]);
 
-  // Live date — computed once per mount; updates automatically on each page navigation
+  // Close mobile menu when switching to desktop
+  useEffect(() => {
+    if (isDesktop) setMobileOpen(false);
+  }, [isDesktop]);
+
+  // Live date — computed once per mount
   const todayLabel = useMemo(() => new Date().toLocaleDateString("en-GB", {
     month: "long",
     year: "numeric",
@@ -94,7 +118,7 @@ export default function Navbar() {
         }}
         onMouseLeave={() => setActiveMenu(null)}
       >
-        {/* Date bar — sits above the nav row, right-aligned */}
+        {/* Date bar */}
         <div style={{
           display: "flex",
           justifyContent: "flex-end",
@@ -116,6 +140,7 @@ export default function Navbar() {
             </span>
           </div>
         </div>
+
         {/* Top gold accent line */}
         <div style={{ height: "1px", background: `linear-gradient(90deg, transparent, ${GOLD}, transparent)`, opacity: 0.6 }} />
 
@@ -148,75 +173,96 @@ export default function Navbar() {
             </div>
           </Link>
 
-          {/* Desktop Nav */}
-          <div style={{ display: "flex", alignItems: "center", gap: "2rem" }} className="hidden lg:flex">
-            {NAV_ITEMS.map((item) => (
-              <div
-                key={item.label}
-                style={{ position: "relative" }}
-                onMouseEnter={() => item.children ? setActiveMenu(item.label) : setActiveMenu(null)}
-              >
-                {item.href ? (
-                  <Link href={item.href}>
-                  <span style={{
-                    fontFamily: FONT_UI,
-                    fontWeight: item.href?.includes('golden') ? 600 : 400,
-                    fontSize: "0.875rem",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.05em",
-                    color: item.href?.includes('golden') ? GOLD : (location === item.href ? GOLD : "rgba(255,255,255,0.7)"),
-                    cursor: "pointer",
-                    transition: "color 0.2s ease",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "4px",
-                  }}
-                    onMouseEnter={(e) => { if (!item.href?.includes('golden') && location !== item.href) (e.target as HTMLElement).style.color = "#fff"; }}
-                    onMouseLeave={(e) => { if (!item.href?.includes('golden') && location !== item.href) (e.target as HTMLElement).style.color = "rgba(255,255,255,0.7)"; }}
-                  >
+          {/* Desktop Nav — only rendered on large screens */}
+          {isDesktop && (
+            <div style={{ display: "flex", alignItems: "center", gap: "2rem" }}>
+              {NAV_ITEMS.map((item) => (
+                <div
+                  key={item.label}
+                  style={{ position: "relative" }}
+                  onMouseEnter={() => item.children ? setActiveMenu(item.label) : setActiveMenu(null)}
+                >
+                  {item.href ? (
+                    <Link href={item.href}>
+                      <span style={{
+                        fontFamily: FONT_UI,
+                        fontWeight: item.href?.includes('golden') ? 600 : 400,
+                        fontSize: "0.875rem",
+                        textTransform: "uppercase",
+                        letterSpacing: "0.05em",
+                        color: item.href?.includes('golden') ? GOLD : (location === item.href ? GOLD : "rgba(255,255,255,0.7)"),
+                        cursor: "pointer",
+                        transition: "color 0.2s ease",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "4px",
+                      }}
+                        onMouseEnter={(e) => { if (!item.href?.includes('golden') && location !== item.href) (e.target as HTMLElement).style.color = "#fff"; }}
+                        onMouseLeave={(e) => { if (!item.href?.includes('golden') && location !== item.href) (e.target as HTMLElement).style.color = "rgba(255,255,255,0.7)"; }}
+                      >
+                        {item.label}
+                      </span>
+                    </Link>
+                  ) : (
+                    <span style={{
+                      fontFamily: FONT_UI,
+                      fontWeight: 400,
+                      fontSize: "0.875rem",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.05em",
+                      color: activeMenu === item.label ? GOLD : "rgba(255,255,255,0.7)",
+                      cursor: "pointer",
+                      transition: "color 0.2s ease",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "4px",
+                    }}>
                       {item.label}
+                      <ChevronDown size={12} style={{ transition: "transform 0.2s", transform: activeMenu === item.label ? "rotate(180deg)" : "rotate(0deg)" }} />
                     </span>
-                  </Link>
-                ) : (
-                  <span style={{
-                    fontFamily: FONT_UI,
-                    fontWeight: 400,
-                    fontSize: "0.875rem",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.05em",
-                    color: activeMenu === item.label ? GOLD : "rgba(255,255,255,0.7)",
-                    cursor: "pointer",
-                    transition: "color 0.2s ease",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "4px",
-                  }}>
-                    {item.label}
-                    <ChevronDown size={12} style={{ transition: "transform 0.2s", transform: activeMenu === item.label ? "rotate(180deg)" : "rotate(0deg)" }} />
-                  </span>
-                )}
-              </div>
-            ))}
-            <Link href="/card-concierge">
-              <button className="btn-gold" style={{ minWidth: "auto", padding: "10px 20px", fontSize: "0.75rem" }}>
-                Billionaire Card
-              </button>
-            </Link>
-          </div>
+                  )}
+                </div>
+              ))}
+              <Link href="/card-concierge">
+                <button className="btn-gold" style={{ minWidth: "auto", padding: "10px 20px", fontSize: "0.75rem" }}>
+                  Billionaire Card
+                </button>
+              </Link>
+            </div>
+          )}
 
-          {/* Mobile menu toggle */}
-          <button
-            className="lg:hidden"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            style={{ color: GOLD, background: "none", border: "none", padding: "8px" }}
-          >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* Mobile: Store shortcut + hamburger */}
+          {!isDesktop && (
+            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              <Link href="/marketplace">
+                <span style={{
+                  fontFamily: FONT_UI,
+                  fontWeight: 700,
+                  fontSize: "0.65rem",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.12em",
+                  color: GOLD,
+                  border: `1px solid ${GOLD}`,
+                  padding: "5px 10px",
+                  whiteSpace: "nowrap",
+                }}>
+                  Store
+                </span>
+              </Link>
+              <button
+                onClick={() => setMobileOpen(!mobileOpen)}
+                style={{ color: GOLD, background: "none", border: "none", padding: "8px", cursor: "pointer" }}
+                aria-label="Open menu"
+              >
+                {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
+          )}
         </div>
 
-        {/* Mega Menu Dropdown */}
+        {/* Desktop Mega Menu Dropdown */}
         <AnimatePresence>
-          {activeMenu && (
+          {isDesktop && activeMenu && (
             <motion.div
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
@@ -267,9 +313,9 @@ export default function Navbar() {
         </AnimatePresence>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile Slide-out Menu */}
       <AnimatePresence>
-        {mobileOpen && (
+        {!isDesktop && mobileOpen && (
           <motion.div
             initial={{ opacity: 0, x: "100%" }}
             animate={{ opacity: 1, x: 0 }}
@@ -282,7 +328,7 @@ export default function Navbar() {
               bottom: 0,
               width: "min(320px, 100vw)",
               background: "#000",
-              zIndex: 999,
+              zIndex: 1100,
               borderLeft: `1px solid rgba(201,168,76,0.2)`,
               overflowY: "auto",
               padding: "5rem 2rem 2rem",
@@ -290,12 +336,13 @@ export default function Navbar() {
           >
             <button
               onClick={() => setMobileOpen(false)}
-              style={{ position: "absolute", top: "1.5rem", right: "1.5rem", color: GOLD, background: "none", border: "none" }}
+              style={{ position: "absolute", top: "1.5rem", right: "1.5rem", color: GOLD, background: "none", border: "none", cursor: "pointer" }}
+              aria-label="Close menu"
             >
               <X size={24} />
             </button>
 
-            {/* Mobile: prominent Store CTA at top */}
+            {/* Prominent Store CTA at top of mobile menu */}
             <Link href="/marketplace" onClick={() => setMobileOpen(false)}>
               <div style={{
                 background: GOLD,
@@ -318,7 +365,7 @@ export default function Navbar() {
               {NAV_ITEMS.filter(i => i.label !== "Store").map((item) => (
                 <div key={item.label}>
                   {item.href ? (
-                    <Link href={item.href}>
+                    <Link href={item.href} onClick={() => setMobileOpen(false)}>
                       <div style={{ fontFamily: FONT_UI, fontWeight: 600, fontSize: "0.875rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "#fff", padding: "14px 0", borderBottom: "1px solid rgba(201,168,76,0.1)", cursor: "pointer" }}>
                         {item.label}
                       </div>
@@ -329,7 +376,7 @@ export default function Navbar() {
                         {item.label}
                       </div>
                       {item.children?.map((child) => (
-                        <Link key={child.href} href={child.href}>
+                        <Link key={child.href} href={child.href} onClick={() => setMobileOpen(false)}>
                           <div style={{ fontFamily: FONT_UI, fontWeight: 400, fontSize: "0.8125rem", textTransform: "uppercase", letterSpacing: "0.05em", color: "rgba(255,255,255,0.6)", padding: "10px 0 10px 1rem", borderBottom: "1px solid rgba(201,168,76,0.05)", cursor: "pointer" }}>
                             {child.label}
                           </div>
@@ -339,8 +386,8 @@ export default function Navbar() {
                   )}
                 </div>
               ))}
-              <div style={{ marginTop: "2rem", display: "flex", flexDirection: "column", gap: "12px" }}>
-                <Link href="/card-concierge">
+              <div style={{ marginTop: "2rem" }}>
+                <Link href="/card-concierge" onClick={() => setMobileOpen(false)}>
                   <button className="btn-gold" style={{ width: "100%" }}>Billionaire Card</button>
                 </Link>
               </div>
