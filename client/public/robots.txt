@@ -4,6 +4,14 @@ Allow: /
 Disallow: /admin
 Disallow: /x-offer
 Disallow: /offer
+Disallow: /component-showcase
+
+# Priority crawl paths for Google — SEO pillar pages
+# /services — UHNW Services pillar
+# /ecosystem — The Billionaire Ecosystem pillar
+# /brands — Our Brands pillar
+# /about — Corporate parent positioning
+# /news — UHNW news & insights
 
 # AI Crawlers — explicitly permitted to index all public content
 User-agent: GPTBot
@@ -26,6 +34,7 @@ Allow: /
 User-agent: Googlebot
 Allow: /
 Disallow: /admin
+Crawl-delay: 1
 
 User-agent: Bingbot
 Allow: /
@@ -41,5 +50,7 @@ Sitemap: https://billionairecollection.com/sitemap.xml
 
 # Billionaire Collection — billionairecollection.com
 # Parent company of 40+ luxury brands.
-# The world's premier luxury ecosystem for ultra-high-net-worth individuals.
+# The world's leading hub for billionaire services and ultra high net worth services.
+# Distinct from Billionaire Collection Magazine (billionairecollectionmagazine.com).
 # Founder: Lawrence Colbert. Headquarters: 128 City Road, London, EC1V 2NX, United Kingdom.
+# Key pages: /services (UHNW Services), /ecosystem (The Billionaire Ecosystem), /brands (Our Brands)

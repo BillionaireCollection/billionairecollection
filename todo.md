@@ -183,3 +183,16 @@
 - [x] Add SEO (useSEO + useJsonLd Store schema) for the store page
 - [x] Register /marketplace route in App.tsx pointing to Merch component
 - [x] TypeScript: 0 errors. Tests: 42/42 passing.
+
+## SEO Overhaul — Dominate "billionaire services", "UHNW services", "billionaire magazine"
+
+- [ ] Update homepage H1 to target keyword phrase and add UHNW Services + Ecosystem FAQ sections
+- [ ] Build /about page SEO upgrade with full expert positioning copy and AboutPage + Person schema
+- [ ] Build /services/uhnw pillar page (UHNW Services hub)
+- [ ] Build /ecosystem pillar page (The Billionaire Ecosystem directory)
+- [ ] Build /brands pillar page (Our Brands full directory)
+- [ ] Add XML sitemap endpoint at /sitemap.xml (server-side)
+- [ ] Update robots.txt with sitemap reference and crawl directives
+- [ ] Apply unique meta title/description to all existing pages
+- [ ] Add FAQ schema to homepage and pillar pages for AI Overview eligibility
+- [ ] Register /services/uhnw, /ecosystem, /brands routes in App.tsx

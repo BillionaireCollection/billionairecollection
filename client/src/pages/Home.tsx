@@ -136,9 +136,10 @@ function HomepageNewsTeaser() {
 
 export default function Home() {
   useSEO({
-    title: "Billionaire Collection — Parent Company of the World's Premier Luxury Ecosystem",
-    description: "Billionaire Collection is the parent company and global umbrella brand behind 40+ luxury sub-brands — Billionaire Estates, Billionaire Air, Billionaire Boat, Billionaire Car, Billionaire Card, Billionaire Magazine, and more. The world's premier luxury ecosystem for ultra-high-net-worth individuals, established in London.",
-    keywords: "Billionaire Collection parent company, luxury ecosystem umbrella brand, Billionaire Estates, Billionaire Air, Billionaire Boat, Billionaire Car, Billionaire Card, UHNW luxury group, ultra-high-net-worth, luxury holding company London, Billionaire Collection brands",
+    title: "Billionaire Collection | UHNW Services & Luxury Ecosystem",
+    description: "Billionaire Collection is the global parent company and premier hub for ultra high net worth services, luxury lifestyle brands, and billionaire ecosystem companies. Access exclusive services across aviation, real estate, media, education, and more.",
+    keywords: "billionaire collection, billionaire services, ultra high net worth services, UHNW services, billionaire magazine, billionaire ecosystem, luxury ecosystem, billionaire estates, billionaire air, billionaire university, wealth management for billionaires, UHNW lifestyle solutions, billionaire concierge services, exclusive billionaire brands, UHNW aviation services, billionaire collection parent company",
+    url: "https://billionairecollection.com",
   });
   useJsonLd({
   "@context": "https://schema.org",
@@ -201,9 +202,10 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.1 }}
             style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "clamp(2.5rem, 6vw, 5rem)", lineHeight: 1.1, color: "#fff", maxWidth: "800px", marginBottom: "1.5rem" }}
           >
-            The Place for{" "}
-            <span style={{ color: GOLD }}>Everything</span>
-            <br />You Desire
+            Billionaire Collection:{" "}
+            <span style={{ color: GOLD }}>The Global Umbrella</span>
+            <br />for Billionaire Services, UHNW Solutions{" "}
+            <span style={{ color: GOLD }}>&amp; Luxury Ecosystem Brands</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -211,7 +213,7 @@ export default function Home() {
             transition={{ duration: 0.7, delay: 0.2 }}
             style={{ fontFamily: FONT_UI, fontWeight: 300, fontSize: "clamp(1rem, 1.8vw, 1.25rem)", color: "rgba(255,255,255,0.65)", maxWidth: "560px", lineHeight: 1.7, marginBottom: "3rem" }}
           >
-            The world's premier luxury ecosystem — curating the finest estates, superyachts, private aviation, bespoke services, and exclusive experiences for ultra-high-net-worth individuals.
+            Billionaire Collection is the world's leading parent organization and central hub for all things billionaire, ultra high net worth services, and luxury ecosystems — connecting visionary leaders to bespoke UHNW wealth services, lifestyle management, and exclusive brand partnerships designed for generational impact.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -670,6 +672,100 @@ export default function Home() {
               </div>
             </FadeUp>
           ))}
+        </div>
+      </section>
+
+      {/* ── UHNW SERVICES ── */}
+      <section style={{ padding: "8rem 0", background: "rgba(201,168,76,0.02)", borderTop: "1px solid rgba(201,168,76,0.12)" }}>
+        <div className="container">
+          <FadeUp>
+            <div style={{ textAlign: "center", marginBottom: "4rem" }}>
+              <span className="bc-badge" style={{ marginBottom: "1.25rem" }}>UHNW Services</span>
+              <h2 style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "clamp(2rem, 4vw, 3rem)", color: "#fff", marginBottom: "1rem" }}>
+                Ultra High Net Worth <span style={{ color: GOLD }}>Services</span>
+              </h2>
+              <p style={{ fontFamily: FONT_UI, fontSize: "1rem", color: "rgba(255,255,255,0.45)", maxWidth: "600px", margin: "0 auto", lineHeight: 1.7 }}>
+                Billionaire Collection delivers a comprehensive suite of bespoke services designed exclusively for ultra-high-net-worth individuals, family offices, and visionary leaders seeking unparalleled access and expertise.
+              </p>
+            </div>
+          </FadeUp>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "1px", background: "rgba(201,168,76,0.1)" }}>
+            {[
+              { icon: "✦", title: "Wealth Preservation", desc: "Strategic asset allocation, family office structuring, and generational wealth planning through our global network of elite advisors." },
+              { icon: "✦", title: "Lifestyle Management", desc: "24/7 concierge services managing every facet of your life — travel, residences, events, and bespoke experiences worldwide." },
+              { icon: "✦", title: "Private Aviation", desc: "Charter, acquisition, and management of private jets and helicopters through Billionaire Air, our dedicated aviation division." },
+              { icon: "✦", title: "Ultra-Prime Real Estate", desc: "Off-market acquisition and disposition of the world's most exclusive residential and commercial properties via Billionaire Estates." },
+              { icon: "✦", title: "Superyacht Services", desc: "Charter, purchase, and management of superyachts and mega-yachts through Billionaire Boat, our maritime division." },
+              { icon: "✦", title: "Education & Legacy", desc: "Billionaire University and Billionaire Counsel provide transformational education and legal counsel for the next generation of leaders." },
+            ].map((service, i) => (
+              <FadeUp key={service.title} delay={i * 0.07}>
+                <div className="bc-glass-card" style={{ padding: "2.5rem", height: "100%" }}>
+                  <div style={{ fontFamily: FONT_UI, fontSize: "1.25rem", color: GOLD, marginBottom: "1rem" }}>{service.icon}</div>
+                  <h3 style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "1.25rem", color: "#fff", marginBottom: "0.75rem" }}>{service.title}</h3>
+                  <p style={{ fontFamily: FONT_UI, fontSize: "0.875rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.7 }}>{service.desc}</p>
+                </div>
+              </FadeUp>
+            ))}
+          </div>
+
+          <FadeUp delay={0.3}>
+            <div style={{ textAlign: "center", marginTop: "3rem" }}>
+              <Link href="/services">
+                <button className="btn-ghost-gold">Explore All UHNW Services</button>
+              </Link>
+            </div>
+          </FadeUp>
+        </div>
+      </section>
+
+      {/* ── FAQ (AI Overview / Featured Snippet target) ── */}
+      <section style={{ padding: "8rem 0", borderTop: "1px solid rgba(201,168,76,0.12)" }}>
+        <div className="container">
+          <FadeUp>
+            <div style={{ marginBottom: "3rem" }}>
+              <span className="bc-badge" style={{ marginBottom: "1.25rem" }}>FAQ</span>
+              <h2 style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "clamp(1.75rem, 3vw, 2.5rem)", color: "#fff" }}>
+                Frequently Asked <span style={{ color: GOLD }}>Questions</span>
+              </h2>
+            </div>
+          </FadeUp>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 520px), 1fr))", gap: "1px", background: "rgba(201,168,76,0.1)" }}>
+            {[
+              {
+                q: "What is Billionaire Collection?",
+                a: "Billionaire Collection is the world's leading parent organization and central hub for all things billionaire, ultra high net worth services, and luxury ecosystems. It serves as the umbrella company for 40+ sub-brands spanning aviation, real estate, superyachts, automotive, media, education, and luxury products."
+              },
+              {
+                q: "What UHNW services does Billionaire Collection offer?",
+                a: "Billionaire Collection offers a comprehensive suite of ultra high net worth services including private aviation through Billionaire Air, ultra-prime real estate through Billionaire Estates, superyacht services through Billionaire Boat, lifestyle management through the Billionaire Card concierge, wealth education through Billionaire University, and legal counsel through Billionaire Counsel."
+              },
+              {
+                q: "How is Billionaire Collection different from Billionaire Collection Magazine?",
+                a: "Billionaire Collection (billionairecollection.com) is the corporate parent hub — the strategic foundation connecting clients to bespoke UHNW wealth services, lifestyle management, and exclusive brand partnerships. Billionaire Collection Magazine (billionairecollectionmagazine.com) is the flagship publication focused on content, storytelling, and insights for the billionaire community."
+              },
+              {
+                q: "Who is Billionaire Collection for?",
+                a: "Billionaire Collection is designed for ultra-high-net-worth individuals, family offices, visionary entrepreneurs, and leaders who demand access to the world's most exclusive services, assets, and experiences. Our ecosystem serves clients across 40+ countries with assets and opportunities unavailable anywhere else."
+              },
+              {
+                q: "What is the Billionaire Card?",
+                a: "The Billionaire Card is the gateway to Billionaire Collection's 24/7 concierge service. Cardholders receive dedicated personal concierge support for private jet bookings, Michelin-starred reservations, exclusive event access, off-market property acquisition, and bespoke experiences tailored to their exact specifications."
+              },
+              {
+                q: "Where is Billionaire Collection based?",
+                a: "Billionaire Collection is established in London, United Kingdom, and operates globally across 40+ countries through its network of elite partners, sub-brands, and affiliate companies."
+              },
+            ].map((faq, i) => (
+              <FadeUp key={faq.q} delay={i * 0.06}>
+                <div className="bc-glass-card" style={{ padding: "2rem 2.5rem" }}>
+                  <h3 style={{ fontFamily: FONT_UI, fontWeight: 600, fontSize: "0.9375rem", color: GOLD, marginBottom: "0.75rem", lineHeight: 1.4 }}>{faq.q}</h3>
+                  <p style={{ fontFamily: FONT_UI, fontWeight: 300, fontSize: "0.875rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.75 }}>{faq.a}</p>
+                </div>
+              </FadeUp>
+            ))}
+          </div>
         </div>
       </section>
     </div>
