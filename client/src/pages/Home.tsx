@@ -184,70 +184,105 @@ export default function Home() {
 
   return (
     <div style={{ background: "#000" }}>
-      {/* ── HERO ── */}
-      <section style={{ position: "relative", height: "100vh", minHeight: "700px", overflow: "hidden", display: "flex", alignItems: "center" }}>
-        <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${HERO_IMG})`, backgroundSize: "cover", backgroundPosition: "center" }} />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.2) 100%)" }} />
-        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "35%", background: "linear-gradient(to top, #000 0%, transparent 100%)" }} />
-        {/* Right-edge gradient to cover background image text near sphere */}
-        <div style={{ position: "absolute", top: 0, right: 0, width: "40%", height: "100%", background: "linear-gradient(to left, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 40%, transparent 100%)", pointerEvents: "none" }} />
+      {/* ── HERO — Cinematic Minimalist ── */}
+      <section
+        aria-label="Billionaire Collection — The Curated Umbrella for Bespoke UHNW Experiences"
+        style={{ position: "relative", height: "100vh", minHeight: "680px", overflow: "hidden", display: "flex", alignItems: "flex-end" }}
+      >
+        {/* Cinematic background with deep vignette */}
+        <img
+          src={HERO_IMG}
+          alt="Ultra-luxury coastal estate — Billionaire Collection, London"
+          loading="eager"
+          fetchPriority="high"
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 30%", filter: "brightness(0.55) contrast(1.08) saturate(0.9)" }}
+        />
+        {/* Radial vignette */}
+        <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at 60% 40%, transparent 20%, rgba(0,0,0,0.55) 70%, rgba(0,0,0,0.88) 100%)" }} />
+        {/* Bottom fade to black */}
+        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "55%", background: "linear-gradient(to top, #000 0%, rgba(0,0,0,0.7) 40%, transparent 100%)" }} />
+        {/* Left fade for text legibility */}
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.3) 55%, transparent 100%)" }} />
 
-        <div className="container" style={{ position: "relative", zIndex: 1, paddingTop: "80px" }}>
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <span className="bc-badge" style={{ marginBottom: "2rem" }}>Est. London</span>
-          </motion.div>
-          <motion.h1
-            initial={{ opacity: 0, y: 32 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "clamp(2.5rem, 6vw, 5rem)", lineHeight: 1.1, color: "#fff", maxWidth: "800px", marginBottom: "1.5rem" }}
-          >
-            Billionaire Collection:{" "}
-            <span style={{ color: GOLD }}>The Global Umbrella</span>
-            <br />for Billionaire Services, UHNW Solutions{" "}
-            <span style={{ color: GOLD }}>&amp; Luxury Ecosystem Brands</span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            style={{ fontFamily: FONT_UI, fontWeight: 300, fontSize: "clamp(1rem, 1.8vw, 1.25rem)", color: "rgba(255,255,255,0.65)", maxWidth: "560px", lineHeight: 1.7, marginBottom: "3rem" }}
-          >
-            Billionaire Collection is the world's leading parent organization and central hub for all things billionaire, ultra high net worth services, and luxury ecosystems — connecting visionary leaders to bespoke UHNW wealth services, lifestyle management, and exclusive brand partnerships designed for generational impact.
-          </motion.p>
+        {/* Content — bottom-anchored editorial layout */}
+        <div className="container" style={{ position: "relative", zIndex: 1, paddingBottom: "clamp(4rem, 8vh, 7rem)", width: "100%" }}>
+
+          {/* Eyebrow — thin gold rule + label */}
           <motion.div
+            initial={{ opacity: 0, x: -12 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.9, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
+            style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "2rem" }}
+          >
+            <div style={{ width: "32px", height: "1px", background: GOLD, flexShrink: 0 }} />
+            <span style={{ fontFamily: FONT_UI, fontWeight: 400, fontSize: "0.625rem", textTransform: "uppercase", letterSpacing: "0.28em", color: GOLD }}>Est. London &nbsp;·&nbsp; Bespoke UHNW Experiences</span>
+          </motion.div>
+
+          {/* H1 — concise, editorial */}
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.95, delay: 0.35, ease: [0.23, 1, 0.32, 1] }}
+            style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "clamp(2.25rem, 5.5vw, 4.5rem)", lineHeight: 1.08, color: "#fff", maxWidth: "680px", marginBottom: "1.75rem", letterSpacing: "-0.01em" }}
+          >
+            The Curated Umbrella<br />
+            <span style={{ color: GOLD, fontStyle: "italic" }}>for Bespoke UHNW</span><br />
+            <span style={{ color: GOLD, fontStyle: "italic" }}>Experiences</span>
+          </motion.h1>
+
+          {/* Sub-description — single refined sentence */}
+          <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}
+            transition={{ duration: 0.85, delay: 0.5, ease: [0.23, 1, 0.32, 1] }}
+            style={{ fontFamily: FONT_UI, fontWeight: 300, fontSize: "clamp(0.875rem, 1.5vw, 1.0625rem)", color: "rgba(255,255,255,0.5)", maxWidth: "440px", lineHeight: 1.8, marginBottom: "3rem", letterSpacing: "0.01em" }}
           >
-            <Link href="/marketplace">
-              <button className="btn-gold">Explore the Store</button>
+            An exclusive ecosystem of distinguished brands — curating ultra-prime real estate, superyachts, private aviation, and bespoke services for visionary leaders and legacy builders worldwide.
+          </motion.p>
+
+          {/* Single refined CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.65, ease: [0.23, 1, 0.32, 1] }}
+            style={{ display: "flex", alignItems: "center", gap: "2rem", flexWrap: "wrap" }}
+          >
+            <Link href="/ecosystem">
+              <button
+                className="btn-gold"
+                style={{ letterSpacing: "0.18em", fontSize: "0.6875rem", padding: "1rem 2.25rem" }}
+              >
+                Discover Private Access
+              </button>
             </Link>
             <Link href="/card-concierge">
-              <button className="btn-ghost-gold">Billionaire Concierge</button>
+              <span style={{ fontFamily: FONT_UI, fontWeight: 400, fontSize: "0.6875rem", textTransform: "uppercase", letterSpacing: "0.18em", color: "rgba(255,255,255,0.4)", cursor: "pointer", borderBottom: `1px solid rgba(201,168,76,0.3)`, paddingBottom: "2px", transition: "color 0.2s, border-color 0.2s" }}
+                onMouseEnter={e => { (e.target as HTMLElement).style.color = GOLD; (e.target as HTMLElement).style.borderColor = GOLD; }}
+                onMouseLeave={e => { (e.target as HTMLElement).style.color = "rgba(255,255,255,0.4)"; (e.target as HTMLElement).style.borderColor = "rgba(201,168,76,0.3)"; }}
+              >Concierge</span>
             </Link>
           </motion.div>
         </div>
 
-        {/* ── Sphere Animation ── */}
+        {/* Sphere — desktop only */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.85 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.4, delay: 0.4, ease: "easeOut" }}
+          initial={{ opacity: 0, scale: 0.88 }}
+          animate={{ opacity: 0.7, scale: 1 }}
+          transition={{ duration: 1.6, delay: 0.5, ease: "easeOut" }}
           style={{
             position: "absolute",
-            right: "-5%",
+            right: "-4%",
             top: "50%",
             transform: "translateY(-50%)",
-            width: "clamp(320px, 45vw, 680px)",
-            height: "clamp(320px, 45vw, 680px)",
+            width: "clamp(300px, 42vw, 620px)",
+            height: "clamp(300px, 42vw, 620px)",
             pointerEvents: "none",
             zIndex: 2,
             borderRadius: "50%",
             overflow: "hidden",
+            display: "none",
           }}
-          className="hidden lg:flex"
+          id="hero-sphere"
         >
           <SphereAnimation style={{ width: "100%", height: "100%" }} />
         </motion.div>
@@ -256,16 +291,18 @@ export default function Home() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.2 }}
-          style={{ position: "absolute", bottom: "2rem", left: "50%", transform: "translateX(-50%)", display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}
+          transition={{ delay: 1.4 }}
+          style={{ position: "absolute", bottom: "2rem", right: "2rem", display: "flex", flexDirection: "column", alignItems: "center", gap: "6px" }}
         >
-          <span style={{ fontFamily: FONT_UI, fontSize: "0.625rem", textTransform: "uppercase", letterSpacing: "0.2em", color: "rgba(255,255,255,0.3)" }}>Scroll</span>
           <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 1.5 }}
-            style={{ width: "1px", height: "32px", background: `linear-gradient(to bottom, ${GOLD}, transparent)` }}
+            animate={{ y: [0, 7, 0] }}
+            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+            style={{ width: "1px", height: "40px", background: `linear-gradient(to bottom, transparent, ${GOLD}, transparent)` }}
           />
         </motion.div>
+
+        {/* Desktop sphere show via CSS */}
+        <style>{`@media (min-width: 1024px) { #hero-sphere { display: block !important; } }`}</style>
       </section>
 
       {/* ── STATS COUNTER ── */}

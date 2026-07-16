@@ -186,13 +186,13 @@
 
 ## SEO Overhaul — Dominate "billionaire services", "UHNW services", "billionaire magazine"
 
-- [ ] Update homepage H1 to target keyword phrase and add UHNW Services + Ecosystem FAQ sections
-- [ ] Build /about page SEO upgrade with full expert positioning copy and AboutPage + Person schema
-- [ ] Build /services/uhnw pillar page (UHNW Services hub)
-- [ ] Build /ecosystem pillar page (The Billionaire Ecosystem directory)
-- [ ] Build /brands pillar page (Our Brands full directory)
-- [ ] Add XML sitemap endpoint at /sitemap.xml (server-side)
-- [ ] Update robots.txt with sitemap reference and crawl directives
-- [ ] Apply unique meta title/description to all existing pages
-- [ ] Add FAQ schema to homepage and pillar pages for AI Overview eligibility
-- [ ] Register /services/uhnw, /ecosystem, /brands routes in App.tsx
+- [x] Update homepage H1 to target keyword phrase and add UHNW Services + FAQ sections
+- [x] Build /about page SEO upgrade with full expert positioning copy and corporate parent schema
+- [x] Build /services pillar page (UHNW Services hub with full service categories)
+- [x] Build /ecosystem pillar page (The Billionaire Ecosystem directory — 5 divisions, 28+ brands)
+- [x] Build /brands pillar page (Our Brands full directory with differentiation note)
+- [x] Add XML sitemap endpoint at /sitemap.xml (server-side, 30 URLs, priority + changefreq)
+- [x] Update robots.txt with sitemap reference, pillar page comments, and Crawl-delay for Googlebot
+- [x] Apply unique meta title/description/keywords to homepage and all new pillar pages
+- [x] Add FAQ schema to homepage for AI Overview eligibility
+- [x] Register /ecosystem and /brands routes in App.tsx
