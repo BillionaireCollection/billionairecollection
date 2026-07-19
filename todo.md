@@ -196,3 +196,15 @@
 - [x] Apply unique meta title/description/keywords to homepage and all new pillar pages
 - [x] Add FAQ schema to homepage for AI Overview eligibility
 - [x] Register /ecosystem and /brands routes in App.tsx
+
+## Stripe Checkout Integration
+
+- [x] Install stripe npm package (v22.3.2)
+- [x] Add STRIPE_SECRET_KEY and STRIPE_WEBHOOK_SECRET to ENV object in server/_core/env.ts
+- [x] Create server/stripe.ts with createMerchCheckoutSession() and stripeWebhookHandler()
+- [x] Register /api/stripe/webhook route with express.raw() body parser BEFORE express.json() in server/_core/index.ts
+- [x] Add merch.createCheckout tRPC procedure in server/routers.ts (creates Stripe Checkout session, returns hosted URL)
+- [x] Add updateMerchOrderStatus() DB helper to server/db.ts
+- [x] Update Merch.tsx: replace placeOrder mutation with createCheckout, redirect user to Stripe hosted checkout in new tab
+- [x] Update checkout button label to "Checkout Securely · $XXX"
+- [x] TypeScript: 0 errors

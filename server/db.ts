@@ -389,6 +389,18 @@ export async function getMerchOrders() {
   return db.select().from(merchOrders).orderBy(sql`${merchOrders.createdAt} DESC`);
 }
 
+export async function updateMerchOrderStatus(
+  orderId: number,
+  status: "pending" | "processing" | "shipped" | "delivered" | "cancelled"
+) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db
+    .update(merchOrders)
+    .set({ status, updatedAt: new Date() })
+    .where(sql`${merchOrders.id} = ${orderId}`);
+}
+
 // ─── Billionaire University Faculty Applications ─────────────────────────────
 import { facultyApplications, InsertFacultyApplication } from "../drizzle/schema";
 

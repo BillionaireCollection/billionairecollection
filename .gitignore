@@ -109,3 +109,11 @@ temp/
 # Webdev artifacts (checkpoint zips, migrations, etc.)
 .webdev/
 .project-config.json
+
+# Manus dev logs
+.manus-logs/
+
+# Temp scripts
+insert_news*.mjs
+insert_news*.js
+ideas.md
