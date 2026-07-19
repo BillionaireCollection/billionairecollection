@@ -1,116 +1,89 @@
-# Billionaire Collection — Hostinger Cloud Startup Deployment Guide
+# Hostinger Deployment Guide — Billionaire Collection
 
-## Prerequisites
+## Overview
 
-- Hostinger **Cloud Startup** plan (or Business / higher Cloud plan)
-- A MySQL database created in hPanel → Databases → MySQL Databases
-- Your Stripe API keys (from dashboard.stripe.com)
-- Your NewsAPI key (from newsapi.org)
+This project is pre-built. The `dist/` folder is committed to the repository and contains the production-ready server bundle (`dist/index.js`) and the compiled React frontend (`dist/public/`). Hostinger does **not** need to run a build step.
 
 ---
 
-## Method 1: GitHub Deployment (Recommended for ongoing updates)
-
-### Step 1 — Push to GitHub
-
-```bash
-git init
-git add .
-git commit -m "Initial deploy"
-git remote add origin https://github.com/YOUR_USERNAME/billionaire-collection.git
-git push -u origin main
-```
-
-### Step 2 — Connect GitHub in hPanel
-
-In hPanel → **Node.js Web Apps** → **Deploy Web App** → **Import Git Repository**.
-Authorise Hostinger to access your GitHub account, then select the repository.
-
-### Step 3 — Configure build settings
+## Hostinger Build & Output Settings
 
 | Setting | Value |
 |---|---|
-| **Framework** | Other |
-| **Node.js version** | 20.x |
-| **Build command** | `pnpm install && pnpm build` |
+| **Package manager** | `npm` |
+| **Build command** | `None` |
 | **Output directory** | `dist` |
 | **Entry file** | `dist/index.js` |
 
-### Step 4 — Set environment variables
+> **Important:** Set Build command to **None**. The `dist/` folder is already built and committed to the repo. Hostinger only needs to run `node dist/index.js`.
 
-Add these in the **Environment Variables** section before deploying:
+---
 
+## Environment Variables
+
+Set the following in Hostinger → Deployments → Settings → Environment Variables:
+
+| Key | Value |
+|---|---|
+| `NODE_ENV` | `production` |
+| `DATABASE_URL` | `mysql://u802634764_bcuser:<password>@127.0.0.1:3306/u802634764_bcdb` |
+| `JWT_SECRET` | Any long random string (min 32 chars) |
+| `VITE_APP_ID` | Manus OAuth App ID |
+| `STRIPE_SECRET_KEY` | `sk_live_...` |
+| `VITE_STRIPE_PUBLISHABLE_KEY` | `pk_live_...` |
+| `STRIPE_WEBHOOK_SECRET` | `whsec_...` |
+
+---
+
+## Database Migration
+
+After the first successful deployment, run the database migrations to create all tables in the Hostinger MySQL database.
+
+**Option A — Via SSH:**
+```bash
+cd /path/to/app
+npm run db:push
 ```
-NODE_ENV=production
-DATABASE_URL=mysql://USERNAME:PASSWORD@localhost:3306/DATABASE_NAME
-JWT_SECRET=replace_with_64_plus_random_characters
-STRIPE_SECRET_KEY=sk_live_...
-VITE_STRIPE_PUBLISHABLE_KEY=pk_live_...
-STRIPE_WEBHOOK_SECRET=whsec_...
-NEWS_API_KEY=your_newsapi_key
-VITE_APP_TITLE=Billionaire Collection
-VITE_APP_ID=billionaire-collection
+
+**Option B — Via phpMyAdmin:**
+Run the SQL migration scripts from the `drizzle/migrations/` folder in the Hostinger phpMyAdmin panel.
+
+---
+
+## Deployment Steps
+
+1. In Hostinger, go to **Websites → Your Site → Git** and connect the GitHub repository: `https://github.com/BillionaireCollection/billionairecollection`
+2. Set the branch to `main`
+3. In **Build and output settings**, configure as shown in the table above
+4. Add all required environment variables
+5. Click **Deploy** (or **Save and redeploy**)
+6. After successful deployment, run database migrations (see above)
+
+---
+
+## Stripe Webhook
+
+After deployment, update the Stripe webhook endpoint in the Stripe Dashboard to:
+```
+https://yourdomain.com/api/stripe/webhook
 ```
 
-> **Important:** `VITE_*` variables are baked into the frontend at build time. They MUST be set before the build runs.
+---
 
-### Step 5 — Deploy
-
-Click **Deploy**. Hostinger runs `pnpm install && pnpm build` and starts `dist/index.js`.
-
-### Step 6 — Run database migrations (first deploy only)
-
-Via SSH (available on Cloud Startup):
+## Local Development
 
 ```bash
-ssh your-user@your-server-ip
-cd ~/path/to/app
-pnpm db:push
+npm install
+npm run dev
 ```
 
-Or import the schema via **phpMyAdmin** in hPanel.
+## Production Build (if needed to regenerate dist/)
 
-### Step 7 — Point domain + enable SSL
+```bash
+npm run build
+```
 
-In hPanel → **Domains**, assign `billionairecollection.com` to the Node.js app.
-SSL is provisioned automatically by Hostinger (Let's Encrypt).
-
-### Step 8 — Configure Stripe Webhook
-
-In Stripe Dashboard → Developers → Webhooks, add:
-- **URL:** `https://billionairecollection.com/api/stripe/webhook`
-- **Events:** `checkout.session.completed`
-
-Copy the signing secret into `STRIPE_WEBHOOK_SECRET` in Hostinger's env vars.
-
----
-
-## Method 2: ZIP Upload
-
-1. Upload `billionaire-collection-hostinger.zip` via hPanel → **Node.js Web Apps** → **Upload your website files**
-2. Use the same build settings and environment variables as Method 1 (Steps 3–4 above)
-3. Click **Deploy**
-4. Run `pnpm db:push` via SSH after first deploy
-
----
-
-## Key Configuration Files
-
-| File | Purpose |
-|---|---|
-| `.npmrc` | Enables build scripts, hoisting — required for Hostinger |
-| `package.json` → `packageManager` | Pinned to `pnpm@11.15.0` |
-| `package.json` → `pnpm.ignoredBuiltDependencies` | Empty array — allows all build scripts to run |
-| `dist/index.js` | Compiled server entry point (auto-generated by `pnpm build`) |
-| `dist/public/` | Compiled React frontend (auto-served by the server) |
-
----
-
-## Redeploying After Code Changes
-
-**GitHub method:** Push to `main` — Hostinger auto-rebuilds and redeploys.
-
-**ZIP method:** Rebuild locally with `pnpm build`, repackage ZIP, re-upload in hPanel.
+This regenerates `dist/index.js` (server bundle) and `dist/public/` (React frontend).
 
 ---
 
@@ -118,8 +91,17 @@ Copy the signing secret into `STRIPE_WEBHOOK_SECRET` in Hostinger's env vars.
 
 | Problem | Solution |
 |---|---|
-| `pnpm install` fails on Hostinger | Verify `.npmrc` contains `ignore-scripts=false` and `shamefully-hoist=true` |
-| White screen / 404 on page refresh | Entry file must be `dist/index.js` (not `server/index.ts`) |
+| White screen / 404 on page refresh | Entry file must be `dist/index.js` — confirm in Hostinger settings |
 | Stripe webhook 400 errors | Check `STRIPE_WEBHOOK_SECRET` matches the Stripe dashboard value exactly |
-| Database connection refused | Use `localhost` as host for Hostinger MySQL (not an external IP) |
-| `VITE_*` vars not working | These must be set BEFORE the build runs — add them in env vars, then redeploy |
+| Database connection refused | Use `127.0.0.1` as host for Hostinger MySQL (not `localhost`) |
+| App crashes on start | Check all environment variables are set correctly |
+
+---
+
+## Package Manager
+
+This project uses **npm**. The lockfile is `package-lock.json`. Do not use pnpm or yarn.
+
+---
+
+*Last updated: July 19, 2026*
