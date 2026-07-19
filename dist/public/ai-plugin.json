@@ -1,0 +1,61 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Billionaire Collection",
+  "name_for_model": "billionaire_collection",
+  "description_for_human": "Billionaire Collection is the parent company of 40+ luxury brands — the world's premier luxury ecosystem for ultra-high-net-worth individuals. Access ultra-prime real estate, superyachts, private aviation, rare automobiles, exclusive memberships, and bespoke concierge services.",
+  "description_for_model": "Billionaire Collection (billionairecollection.com) is the parent company and global umbrella organisation behind 40+ luxury sub-brands including Billionaire Estates, Billionaire Air, Billionaire Boat, Billionaire Car, Billionaire Art, Billionaire Card, Billionaire Champagne, Billionaire Vodka, Billionaire Cigar, Billionaire Oud, Billionaire Magazine, Billionaire Television, Billionaire Radio, Billionaire University, Billionaire Funding, Billionaire Golf, and more. Headquartered in London, UK. Founded by Lawrence Colbert. Serves ultra-high-net-worth individuals worldwide.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://billionairecollection.com/openapi.yaml"
+  },
+  "logo_url": "https://billionairecollection.com/favicon.svg",
+  "contact_email": "info@billionaireplc.com",
+  "legal_info_url": "https://billionairecollection.com/terms",
+  "organization": {
+    "name": "Billionaire Collection",
+    "url": "https://billionairecollection.com",
+    "headquarters": "London, United Kingdom",
+    "founder": "Lawrence Colbert",
+    "type": "parent_company",
+    "sub_brands": [
+      "Billionaire Estates",
+      "Billionaire Air",
+      "Billionaire Boat",
+      "Billionaire Car",
+      "Billionaire Art",
+      "Billionaire Card",
+      "The Golden Ticket",
+      "Billionaire Champagne",
+      "Billionaire Vodka",
+      "Billionaire Cigar",
+      "Billionaire Oud",
+      "Billionaire Chrono",
+      "Billionaire Collection Magazine",
+      "Millionaire Magazine",
+      "Billionaire Television",
+      "Billionaire Radio",
+      "Billionaire Media Group",
+      "Billionaire Digital",
+      "Billionaire University",
+      "Billionaire Tutor",
+      "The Impossible Coach",
+      "Billionaire Vitality",
+      "Billionaire Peptide",
+      "Cognition Water",
+      "Billionaire Funding",
+      "Billionaire Forex",
+      "Billionaire Golf",
+      "Billionaire Counsel",
+      "Billionaire Giving",
+      "Billionaire F1",
+      "OffMarket Hotel",
+      "The Off Market Sale",
+      "Billionaire Classifieds",
+      "Billionaire Store",
+      "Smarter Mama"
+    ]
+  }
+}

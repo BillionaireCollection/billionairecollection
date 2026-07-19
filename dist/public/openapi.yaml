@@ -1,0 +1,92 @@
+openapi: "3.0.0"
+info:
+  title: Billionaire Collection API
+  description: |
+    Billionaire Collection is the parent company of 40+ luxury brands.
+    This API provides information about the Billionaire Collection ecosystem,
+    its sub-brands, services, and contact information.
+  version: "1.0.0"
+  contact:
+    name: Billionaire Collection
+    url: https://billionairecollection.com/contact
+    email: info@billionaireplc.com
+  x-organization:
+    name: Billionaire Collection
+    type: parent_company
+    headquarters: London, United Kingdom
+    founder: Lawrence Colbert
+    website: https://billionairecollection.com
+servers:
+  - url: https://billionairecollection.com
+    description: Billionaire Collection — Parent Company Website
+paths:
+  /:
+    get:
+      summary: Billionaire Collection Homepage
+      description: The parent company homepage for the entire Billionaire Collection ecosystem.
+      responses:
+        "200":
+          description: Homepage of Billionaire Collection parent company
+  /about:
+    get:
+      summary: About Billionaire Collection
+      description: Information about Billionaire Collection as the parent company of 40+ luxury brands.
+      responses:
+        "200":
+          description: About page
+  /estates:
+    get:
+      summary: Billionaire Estates — Ultra-Prime Real Estate
+      description: Ultra-prime real estate brokerage division of Billionaire Collection.
+      responses:
+        "200":
+          description: Billionaire Estates page
+  /boat:
+    get:
+      summary: Billionaire Boat — Superyacht Brokerage
+      description: Superyacht brokerage division of Billionaire Collection.
+      responses:
+        "200":
+          description: Billionaire Boat page
+  /air:
+    get:
+      summary: Billionaire Air — Private Aviation
+      description: Private aviation division of Billionaire Collection.
+      responses:
+        "200":
+          description: Billionaire Air page
+  /car:
+    get:
+      summary: Billionaire Car — Exotic Automobiles
+      description: Exotic automobile brokerage division of Billionaire Collection.
+      responses:
+        "200":
+          description: Billionaire Car page
+  /card:
+    get:
+      summary: Billionaire Card — Exclusive Membership
+      description: The flagship membership product of Billionaire Collection.
+      responses:
+        "200":
+          description: Billionaire Card page
+  /golden-ticket:
+    get:
+      summary: The Golden Ticket — Most Exclusive Tier
+      description: By invitation only — the most exclusive tier within Billionaire Collection.
+      responses:
+        "200":
+          description: Golden Ticket page
+  /marketplace:
+    get:
+      summary: Billionaire Collection Store
+      description: Official marketplace for ultra-prime assets curated by Billionaire Collection.
+      responses:
+        "200":
+          description: Marketplace page
+  /contact:
+    get:
+      summary: Contact Billionaire Collection
+      description: Contact the Billionaire Collection parent company headquarters in London.
+      responses:
+        "200":
+          description: Contact page
