@@ -109,6 +109,7 @@
   "packageManager": "pnpm@11.15.0",
   "pnpm": {
     "ignoredBuiltDependencies": [],
+    "onlyBuiltDependencies": ["@tailwindcss/oxide", "esbuild", "@esbuild/linux-x64", "@esbuild/linux-arm64"],
     "patchedDependencies": {
       "wouter@3.7.1": "patches/wouter@3.7.1.patch"
     },
