@@ -74,7 +74,7 @@ export default function Oud() {
 ]);
   return (
     <div style={{ background: "#000" }}>
-      <PageHero badge="Billionaire Oud" title="Bespoke" titleAccent="Arabian Fragrances" subtitle="The rarest oud oils and bespoke fragrances from the world's most prestigious Arabian perfumers — presented in hand-crafted crystal flacons of extraordinary beauty." image="/manus-storage/billionaire-oud-bottle_46db77de.png" cta={{ label: "Enquire", href: "/card-concierge" }} />
+      <PageHero badge="Billionaire Oud" title="Bespoke" titleAccent="Arabian Fragrances" subtitle="The rarest oud oils and bespoke fragrances from the world's most prestigious Arabian perfumers — presented in hand-crafted crystal flacons of extraordinary beauty." image="https://d36hbw14aib5lz.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/billionaire-oud-bottle_46db77de.png" cta={{ label: "Enquire", href: "/card-concierge" }} />
       <section style={{ padding: "8rem 0" }}>
         <div className="container">
           <FadeUp>

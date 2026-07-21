@@ -79,9 +79,9 @@ export default function Estates() {
     { icon: "⚡", title: "Dedicated Advisor", desc: "Personal property consultant" }
 ]}
       listings={[
-    { title: "Mayfair Grand Penthouse", sub: "London, United Kingdom", price: "$57,000,000", img: "/manus-storage/mayfair-penthouse_486d2a47.webp", tag: "Off-Market" },
-    { title: "Monaco Clifftop Villa", sub: "Monaco, Monte Carlo", price: "$93,500,000", img: "/manus-storage/monaco-clifftop-villa_a8c03bf4.jpg", tag: "Exclusive" },
-    { title: "Malibu Ocean Estate", sub: "California, USA", price: "$120,000,000", img: "/manus-storage/malibu-ocean-estate_d137b630.jpg", tag: "New" }
+    { title: "Mayfair Grand Penthouse", sub: "London, United Kingdom", price: "$57,000,000", img: "https://d36hbw14aib5lz.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/mayfair-penthouse_486d2a47.webp", tag: "Off-Market" },
+    { title: "Monaco Clifftop Villa", sub: "Monaco, Monte Carlo", price: "$93,500,000", img: "https://d36hbw14aib5lz.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/monaco-clifftop-villa_a8c03bf4.jpg", tag: "Exclusive" },
+    { title: "Malibu Ocean Estate", sub: "California, USA", price: "$120,000,000", img: "https://d36hbw14aib5lz.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/malibu-ocean-estate_d137b630.jpg", tag: "New" }
 ]}
       listingsTitle="Featured Properties"
       ctaBanner={{ title: "Begin Your Property Journey", sub: "Our advisors are ready to present the world's finest properties, tailored to your exact specifications.", btnLabel: "Speak to an Advisor", btnHref: "/card-concierge" }}

@@ -46,7 +46,7 @@ const FALLBACK_IMGS = [
   "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
   "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80",
   "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&q=80",
-  "/manus-storage/basquiat-artwork_4ca08043.jpg",
+  "https://d36hbw14aib5lz.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/basquiat-artwork_4ca08043.jpg",
 ];
 
 export default function News() {

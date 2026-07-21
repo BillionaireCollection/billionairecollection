@@ -71,7 +71,7 @@ export default function Boat() {
       listings={[
     { title: "M/Y Aurora — 82m Lürssen", sub: "Mediterranean, Available Now", price: "$105,000,000", img: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-yacht-hFeRjh9nRnBaKqx8rPSF24.webp", tag: "For Sale" },
     { title: "M/Y Solaris — 65m Benetti", sub: "Caribbean Charter", price: "$490,000/week", img: "https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=800&q=80", tag: "Charter" },
-    { title: "M/Y Eclipse — 55m Feadship", sub: "Pacific Crossing", price: "$75,000,000", img: "/manus-storage/feadship-eclipse_cf6337a3.jpg", tag: "New Listing" }
+    { title: "M/Y Eclipse — 55m Feadship", sub: "Pacific Crossing", price: "$75,000,000", img: "https://d36hbw14aib5lz.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/feadship-eclipse_cf6337a3.jpg", tag: "New Listing" }
 ]}
       listingsTitle="Featured Yachts"
       ctaBanner={{ title: "Your Dream Yacht Awaits", sub: "From charter to acquisition, our team will find or build the perfect vessel for your lifestyle.", btnLabel: "Speak to a Yacht Broker", btnHref: "/card-concierge" }}

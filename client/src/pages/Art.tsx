@@ -69,7 +69,7 @@ export default function Art() {
     { icon: "🔒", title: "Private Sales", desc: "Discreet transactions" }
 ]}
       listings={[
-    { title: "Jean-Michel Basquiat", sub: "Untitled, 1982 — Estimate on Request", price: "POA", img: "/manus-storage/basquiat-artwork_4ca08043.jpg", tag: "Private Sale" },
+    { title: "Jean-Michel Basquiat", sub: "Untitled, 1982 — Estimate on Request", price: "POA", img: "https://d36hbw14aib5lz.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/basquiat-artwork_4ca08043.jpg", tag: "Private Sale" },
     { title: "Yayoi Kusama", sub: "Infinity Nets, 2019", price: "$3,050,000", img: "https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=800&q=80", tag: "Available" },
     { title: "Damien Hirst", sub: "Spot Painting — Unique", price: "POA", img: "https://images.unsplash.com/photo-1541367777708-7905fe3296c0?w=800&q=80", tag: "Exclusive" }
 ]}
