@@ -43,19 +43,19 @@ const ECOSYSTEM_ITEMS = [
   { label: "Superyachts", sub: "Bespoke vessels worldwide", href: "/boat", img: YACHT_IMG },
   { label: "Private Aviation", sub: "Charter & acquisition", href: "/air", img: AIR_IMG },
   { label: "Automotive", sub: "Rare & exotic automobiles", href: "/car", img: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&q=80" },
-  { label: "Fine Art", sub: "Curated collectibles", href: "/art", img: "/manus-storage/basquiat-artwork_4ca08043.jpg" },
+  { label: "Fine Art", sub: "Curated collectibles", href: "/art", img: "/manus-storage/billionaire-art-new_713113fe.png" },
   { label: "Crypto Assets", sub: "Digital wealth management", href: "/crypto", img: "https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=800&q=80" },
 ];
 
 const PRODUCTS = [
-  { label: "Champagne", desc: "Ultra-premium cuvées from the world's most exclusive houses.", href: "/champagne", img: "/manus-storage/billionaire-champagne-bottle_9021fd5a.png" },
-  { label: "Vodka", desc: "Limited-edition spirits crafted for the discerning palate.", href: "/vodka", img: "/manus-storage/billionaire-vodka-bottle_cb8d04b6.png" },
-  { label: "Cigars", desc: "Rare hand-rolled cigars from the world's finest tobacco estates.", href: "/cigar", img: "/manus-storage/billionaire-cigar_d9dd8444.webp" },
-  { label: "Oud", desc: "Bespoke Arabian fragrances of unparalleled rarity.", href: "/oud", img: "/manus-storage/billionaire-oud-bottle_46db77de.png" },
+  { label: "Champagne", desc: "Ultra-premium cuvées from the world's most exclusive houses.", href: "/champagne", img: "/manus-storage/billionaire-champagne-new_49a0b2fd.png" },
+  { label: "Vodka", desc: "Limited-edition spirits crafted for the discerning palate.", href: "/vodka", img: "/manus-storage/billionaire-vodka-new_70e19392.png" },
+  { label: "Cigars", desc: "Rare hand-rolled cigars from the world's finest tobacco estates.", href: "/cigar", img: "/manus-storage/billionaire-cigar-new_07266a90.png" },
+  { label: "Oud", desc: "Bespoke Arabian fragrances of unparalleled rarity.", href: "/oud", img: "/manus-storage/billionaire-oud-new_d30a6072.png" },
 ];
 
 const DIVISIONS = [
-  { label: "Media", desc: "Television, Magazine & Radio", href: "/media", img: "/manus-storage/bc-division-media-v2_267f27ae.png" },
+  { label: "Media", desc: "Television, Magazine & Radio", href: "/media", img: "/manus-storage/bc-division-media-new_07061a3d.png" },
   { label: "Technology", desc: "University, Digital & Vitality", href: "/technology", img: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-division-technology-nWtUGuzYcwAKr9AmPRXHQt.webp" },
   { label: "Services", desc: "Funding, Golf, Travel & Card", href: "/services", img: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-division-services-em9tFW6VuRLTSTwzJ4RNkf.webp" },
 ];

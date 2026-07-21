@@ -92,7 +92,7 @@ const FALLBACK_ARTICLES: NewsArticle[] = [
     category: "Art",
     date: "March 9, 2026",
     url: "https://www.christies.com",
-    img: "/manus-storage/basquiat-artwork_4ca08043.jpg",
+    img: "/manus-storage/billionaire-art-new_713113fe.png",
   },
   {
     id: "f6",
