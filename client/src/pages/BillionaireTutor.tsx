@@ -304,7 +304,7 @@ export default function BillionaireTutor() {
                   <img
                     src="/images/billionaire-university-logo.png"
                     alt="Billionaire University"
-                    style={{ height: "90px", width: "auto" }}
+                    style={{ height: "140px", width: "auto" }}
                   />
                 </div>
                 <img
@@ -344,7 +344,7 @@ export default function BillionaireTutor() {
           <img
             src="/images/billionaire-university-logo.png"
             alt="Billionaire University"
-            style={{ height: "80px", width: "auto", opacity: 0.7 }}
+            style={{ height: "120px", width: "auto", opacity: 0.7 }}
           />
         </FadeUp>
       </div>
@@ -394,7 +394,7 @@ export default function BillionaireTutor() {
           <img
             src="/images/billionaire-university-logo.png"
             alt="Billionaire University"
-            style={{ height: "80px", width: "auto", opacity: 0.7 }}
+            style={{ height: "120px", width: "auto", opacity: 0.7 }}
           />
         </FadeUp>
       </div>
@@ -641,7 +641,7 @@ export default function BillionaireTutor() {
               <img
                 src="/images/billionaire-university-logo.png"
                 alt="Billionaire University"
-                style={{ height: "90px", width: "auto", opacity: 0.85 }}
+                style={{ height: "140px", width: "auto", opacity: 0.85 }}
               />
             </div>
             <SectionBadge>Part of the Billionaire Collection</SectionBadge>
