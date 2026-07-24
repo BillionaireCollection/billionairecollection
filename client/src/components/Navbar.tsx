@@ -309,71 +309,118 @@ export default function Navbar() {
               top: 0,
               right: 0,
               bottom: 0,
-              width: "min(320px, 100vw)",
+              width: "min(300px, 100vw)",
               background: "#000",
               zIndex: 1100,
-              borderLeft: `1px solid rgba(201,168,76,0.2)`,
+              borderLeft: `1px solid rgba(201,168,76,0.18)`,
               overflowY: "auto",
-              padding: "5rem 2rem 2rem",
+              display: "flex",
+              flexDirection: "column",
             }}
           >
-            <button
-              onClick={() => setMobileOpen(false)}
-              style={{ position: "absolute", top: "1.5rem", right: "1.5rem", color: GOLD, background: "none", border: "none", cursor: "pointer" }}
-              aria-label="Close menu"
-            >
-              <X size={24} />
-            </button>
+            {/* Header */}
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "1.5rem 1.5rem 1rem", borderBottom: `1px solid rgba(201,168,76,0.12)`, flexShrink: 0 }}>
+              <span style={{ fontFamily: FONT_UI, fontWeight: 600, fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "0.2em", color: GOLD }}>Menu</span>
+              <button
+                onClick={() => setMobileOpen(false)}
+                style={{ color: "rgba(255,255,255,0.5)", background: "none", border: "none", cursor: "pointer", padding: "4px" }}
+                aria-label="Close menu"
+              >
+                <X size={18} />
+              </button>
+            </div>
 
-            {/* Prominent Store CTA at top of mobile menu */}
-            <Link href="/marketplace" onClick={() => setMobileOpen(false)}>
-              <div style={{
-                background: GOLD,
-                color: "#0a0e1a",
-                fontFamily: FONT_UI,
-                fontWeight: 700,
-                fontSize: "0.8rem",
-                textTransform: "uppercase",
-                letterSpacing: "0.15em",
-                padding: "14px 20px",
-                textAlign: "center",
-                marginBottom: "20px",
-                cursor: "pointer",
-              }}>
-                ✦ Official Store
-              </div>
-            </Link>
+            {/* Scrollable content */}
+            <div style={{ flex: 1, overflowY: "auto", padding: "1.25rem 1.5rem" }}>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
-              {NAV_ITEMS.filter(i => i.label !== "Store").map((item) => (
-                <div key={item.label}>
-                  {item.href ? (
-                    <Link href={item.href} onClick={() => setMobileOpen(false)}>
-                      <div style={{ fontFamily: FONT_UI, fontWeight: 600, fontSize: "0.875rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "#fff", padding: "14px 0", borderBottom: "1px solid rgba(201,168,76,0.1)", cursor: "pointer" }}>
-                        {item.label}
+              {/* Brokerage — first, most premium */}
+              <div style={{ marginBottom: "1.5rem" }}>
+                <div style={{ fontFamily: FONT_UI, fontWeight: 700, fontSize: "0.55rem", textTransform: "uppercase", letterSpacing: "0.22em", color: GOLD, marginBottom: "0.75rem", opacity: 0.9 }}>Brokerage</div>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2px" }}>
+                  {NAV_ITEMS.find(i => i.label === "Brokerage")?.children?.map((child) => (
+                    <Link key={child.href} href={child.href} onClick={() => setMobileOpen(false)}>
+                      <div style={{ fontFamily: FONT_UI, fontWeight: 500, fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.06em", color: "rgba(255,255,255,0.75)", padding: "9px 10px", background: "rgba(201,168,76,0.04)", border: "1px solid rgba(201,168,76,0.08)", cursor: "pointer", transition: "background 0.2s" }}
+                        onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = "rgba(201,168,76,0.1)"}
+                        onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = "rgba(201,168,76,0.04)"}
+                      >
+                        {child.label}
                       </div>
                     </Link>
-                  ) : (
-                    <>
-                      <div style={{ fontFamily: FONT_UI, fontWeight: 600, fontSize: "0.875rem", textTransform: "uppercase", letterSpacing: "0.08em", color: GOLD, padding: "14px 0", borderBottom: "1px solid rgba(201,168,76,0.1)" }}>
-                        {item.label}
-                      </div>
-                      {item.children?.map((child) => (
-                        <Link key={child.href} href={child.href} onClick={() => setMobileOpen(false)}>
-                          <div style={{ fontFamily: FONT_UI, fontWeight: 400, fontSize: "0.8125rem", textTransform: "uppercase", letterSpacing: "0.05em", color: "rgba(255,255,255,0.6)", padding: "10px 0 10px 1rem", borderBottom: "1px solid rgba(201,168,76,0.05)", cursor: "pointer" }}>
-                            {child.label}
-                          </div>
-                        </Link>
-                      ))}
-                    </>
-                  )}
+                  ))}
                 </div>
-              ))}
-              <div style={{ marginTop: "2rem" }}>
-                <Link href="/card-concierge" onClick={() => setMobileOpen(false)}>
-                  <button className="btn-gold" style={{ width: "100%" }}>Billionaire Card</button>
-                </Link>
               </div>
+
+              {/* Thin divider */}
+              <div style={{ height: "1px", background: "rgba(201,168,76,0.1)", marginBottom: "1.5rem" }} />
+
+              {/* Divisions */}
+              <div style={{ marginBottom: "1.5rem" }}>
+                <div style={{ fontFamily: FONT_UI, fontWeight: 700, fontSize: "0.55rem", textTransform: "uppercase", letterSpacing: "0.22em", color: GOLD, marginBottom: "0.75rem", opacity: 0.9 }}>Divisions</div>
+                <div style={{ display: "flex", flexDirection: "column", gap: "1px" }}>
+                  {NAV_ITEMS.find(i => i.label === "Divisions")?.children?.map((child) => (
+                    <Link key={child.href} href={child.href} onClick={() => setMobileOpen(false)}>
+                      <div style={{ fontFamily: FONT_UI, fontWeight: 500, fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.06em", color: "rgba(255,255,255,0.75)", padding: "9px 0", borderBottom: "1px solid rgba(201,168,76,0.06)", cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center" }}
+                        onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "#fff"}
+                        onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.75)"}
+                      >
+                        {child.label}
+                        <span style={{ color: GOLD, opacity: 0.5, fontSize: "0.6rem" }}>›</span>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Thin divider */}
+              <div style={{ height: "1px", background: "rgba(201,168,76,0.1)", marginBottom: "1.5rem" }} />
+
+              {/* Products */}
+              <div style={{ marginBottom: "1.5rem" }}>
+                <div style={{ fontFamily: FONT_UI, fontWeight: 700, fontSize: "0.55rem", textTransform: "uppercase", letterSpacing: "0.22em", color: GOLD, marginBottom: "0.75rem", opacity: 0.9 }}>Products</div>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2px" }}>
+                  {NAV_ITEMS.find(i => i.label === "Products")?.children?.map((child) => (
+                    <Link key={child.href} href={child.href} onClick={() => setMobileOpen(false)}>
+                      <div style={{ fontFamily: FONT_UI, fontWeight: 500, fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.06em", color: "rgba(255,255,255,0.75)", padding: "9px 10px", background: "rgba(201,168,76,0.04)", border: "1px solid rgba(201,168,76,0.08)", cursor: "pointer", transition: "background 0.2s" }}
+                        onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = "rgba(201,168,76,0.1)"}
+                        onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = "rgba(201,168,76,0.04)"}
+                      >
+                        {child.label}
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Thin divider */}
+              <div style={{ height: "1px", background: "rgba(201,168,76,0.1)", marginBottom: "1.5rem" }} />
+
+              {/* Standalone links */}
+              <div style={{ display: "flex", flexDirection: "column", gap: "1px", marginBottom: "1.5rem" }}>
+                {[{ label: "News", href: "/news" }, { label: "Free Insights", href: "/billionaire-wisdom" }].map(item => (
+                  <Link key={item.href} href={item.href} onClick={() => setMobileOpen(false)}>
+                    <div style={{ fontFamily: FONT_UI, fontWeight: 500, fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.06em", color: "rgba(255,255,255,0.75)", padding: "9px 0", borderBottom: "1px solid rgba(201,168,76,0.06)", cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center" }}
+                      onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "#fff"}
+                      onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.75)"}
+                    >
+                      {item.label}
+                      <span style={{ color: GOLD, opacity: 0.5, fontSize: "0.6rem" }}>›</span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Footer CTAs — fixed at bottom */}
+            <div style={{ padding: "1rem 1.5rem 1.5rem", borderTop: `1px solid rgba(201,168,76,0.12)`, display: "flex", flexDirection: "column", gap: "8px", flexShrink: 0 }}>
+              <Link href="/golden-ticket" onClick={() => setMobileOpen(false)}>
+                <div style={{ fontFamily: FONT_UI, fontWeight: 700, fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "0.15em", color: GOLD, padding: "11px 16px", border: `1px solid rgba(201,168,76,0.4)`, textAlign: "center", cursor: "pointer" }}>✦ Golden Ticket</div>
+              </Link>
+              <Link href="/marketplace" onClick={() => setMobileOpen(false)}>
+                <div style={{ fontFamily: FONT_UI, fontWeight: 700, fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "0.15em", color: "#0a0e1a", background: GOLD, padding: "11px 16px", textAlign: "center", cursor: "pointer" }}>✦ Official Store</div>
+              </Link>
+              <Link href="/card-concierge" onClick={() => setMobileOpen(false)}>
+                <div style={{ fontFamily: FONT_UI, fontWeight: 600, fontSize: "0.65rem", textTransform: "uppercase", letterSpacing: "0.12em", color: "rgba(255,255,255,0.4)", textAlign: "center", padding: "6px", cursor: "pointer" }}>Billionaire Card & Concierge</div>
+              </Link>
             </div>
           </motion.div>
         )}
