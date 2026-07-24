@@ -26,14 +26,14 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 }
 
 const SERVICES = [
-  { icon: "✈️", title: "Private Aviation", desc: "Arrange private jets, helicopter transfers, and bespoke flight experiences worldwide." },
-  { icon: "🏨", title: "Hotel & Accommodation", desc: "Secure suites at the world's finest hotels, private villas, and exclusive resort access." },
-  { icon: "🍽️", title: "Fine Dining", desc: "Priority reservations at Michelin-starred restaurants and exclusive private dining experiences." },
-  { icon: "🎭", title: "Events & Entertainment", desc: "Access to sold-out events, private concerts, galas, and exclusive cultural experiences." },
-  { icon: "⛵", title: "Yacht Charter", desc: "Arrange superyacht charters, sailing experiences, and private island retreats." },
-  { icon: "🛍️", title: "Personal Shopping", desc: "Bespoke personal shopping services from the world's most prestigious luxury houses." },
-  { icon: "🏥", title: "Medical & Wellness", desc: "Access to elite medical specialists, longevity clinics, and exclusive wellness retreats." },
-  { icon: "🔒", title: "Security & Privacy", desc: "Discreet personal security arrangements and privacy protection services." },
+  { img: "/images/concierge-aviation.jpg", title: "Private Aviation", desc: "Arrange private jets, helicopter transfers, and bespoke flight experiences worldwide." },
+  { img: "/images/concierge-hotel.jpg", title: "Hotel & Accommodation", desc: "Secure suites at the world's finest hotels, private villas, and exclusive resort access." },
+  { img: "/images/concierge-dining.jpg", title: "Fine Dining", desc: "Priority reservations at Michelin-starred restaurants and exclusive private dining experiences." },
+  { img: "/images/concierge-events.jpg", title: "Events & Entertainment", desc: "Access to sold-out events, private concerts, galas, and exclusive cultural experiences." },
+  { img: "/images/concierge-yacht.jpg", title: "Yacht Charter", desc: "Arrange superyacht charters, sailing experiences, and private island retreats." },
+  { img: "/images/concierge-shopping.jpg", title: "Personal Shopping", desc: "Bespoke personal shopping services from the world's most prestigious luxury houses." },
+  { img: "/images/concierge-medical.jpg", title: "Medical & Wellness", desc: "Access to elite medical specialists, longevity clinics, and exclusive wellness retreats." },
+  { img: "/images/concierge-security.jpg", title: "Security & Privacy", desc: "Discreet personal security arrangements and privacy protection services." },
 ];
 
 const REQUEST_TYPES = [
@@ -147,17 +147,30 @@ export default function CardConcierge() {
             </div>
           </FadeUp>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: "1px", background: "rgba(201,168,76,0.1)" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "1px", background: "rgba(201,168,76,0.1)" }}>
             {SERVICES.map((s, i) => (
               <FadeUp key={s.title} delay={i * 0.06}>
-                <div className="bc-glass-card" style={{ padding: "2.5rem 2rem", height: "100%" }}>
-                  <div style={{ fontSize: "2rem", marginBottom: "1rem" }}>{s.icon}</div>
-                  <h3 style={{ fontFamily: FONT_UI, fontWeight: 600, fontSize: "0.875rem", textTransform: "uppercase", letterSpacing: "0.08em", color: GOLD, marginBottom: "0.75rem" }}>
-                    {s.title}
-                  </h3>
-                  <p style={{ fontFamily: FONT_UI, fontSize: "0.875rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.6 }}>
-                    {s.desc}
-                  </p>
+                <div className="bc-glass-card" style={{ padding: "0", height: "100%", overflow: "hidden" }}>
+                  {/* Photorealistic image header */}
+                  <div style={{ position: "relative", height: "180px", overflow: "hidden" }}>
+                    <img
+                      src={s.img}
+                      alt={s.title}
+                      style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.6s ease" }}
+                      onMouseOver={e => (e.currentTarget.style.transform = "scale(1.05)")}
+                      onMouseOut={e => (e.currentTarget.style.transform = "scale(1)")}
+                    />
+                    {/* Gold gradient overlay at bottom */}
+                    <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "60%", background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%)" }} />
+                  </div>
+                  <div style={{ padding: "1.5rem 2rem 2rem" }}>
+                    <h3 style={{ fontFamily: FONT_UI, fontWeight: 600, fontSize: "0.875rem", textTransform: "uppercase", letterSpacing: "0.08em", color: GOLD, marginBottom: "0.75rem" }}>
+                      {s.title}
+                    </h3>
+                    <p style={{ fontFamily: FONT_UI, fontSize: "0.875rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.6 }}>
+                      {s.desc}
+                    </p>
+                  </div>
                 </div>
               </FadeUp>
             ))}
