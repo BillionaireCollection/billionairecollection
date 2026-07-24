@@ -37,6 +37,7 @@ const DIVISIONS = [
       { label: "Billionaire Car", href: "/car", sub: "Rare & exotic automobiles" },
       { label: "Billionaire Art", href: "/art", sub: "Fine art & collectibles" },
       { label: "Billionaire Chrono", href: "/chrono", sub: "Ultra-rare timepieces" },
+      { label: "Billionaire Crypto", href: "/crypto", sub: "Digital asset management" },
       { label: "The Off Market Sale", href: "/estates", sub: "Off-market property" },
       { label: "OffMarket Hotel", href: "/estates", sub: "Private hospitality assets" },
       { label: "Billionaire University", href: "/technology", sub: "Transformational education" },
