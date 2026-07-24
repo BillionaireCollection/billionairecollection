@@ -223,10 +223,10 @@ export default function Home() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.95, delay: 0.35, ease: [0.23, 1, 0.32, 1] }}
-            style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "clamp(2.25rem, 5.5vw, 4.5rem)", lineHeight: 1.08, color: "#fff", maxWidth: "680px", marginBottom: "1.75rem", letterSpacing: "-0.01em" }}
+            style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "clamp(1.5rem, 3.8vw, 3.25rem)", lineHeight: 1.1, color: "#fff", maxWidth: "780px", marginBottom: "1.75rem", letterSpacing: "-0.01em" }}
           >
-            The Place for <span style={{ color: GOLD, fontStyle: "italic" }}>Everything</span><br />
-            <span style={{ color: GOLD, fontStyle: "italic" }}>You Desire</span>
+            <span style={{ whiteSpace: "nowrap" }}>The Place for <span style={{ color: GOLD, fontStyle: "italic" }}>Everything</span></span><br />
+            <span style={{ color: GOLD, fontStyle: "italic", whiteSpace: "nowrap" }}>You Desire</span>
           </motion.h1>
 
           {/* Sub-description — single refined sentence */}
