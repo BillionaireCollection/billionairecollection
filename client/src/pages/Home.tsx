@@ -264,7 +264,7 @@ export default function Home() {
           </motion.div>
         </div>
 
-        {/* Sphere — desktop only */}
+        {/* Sphere — desktop: absolute right-side; mobile: inline below CTAs */}
         <motion.div
           initial={{ opacity: 0, scale: 0.88 }}
           animate={{ opacity: 0.7, scale: 1 }}
@@ -282,7 +282,30 @@ export default function Home() {
             overflow: "hidden",
             display: "none",
           }}
-          id="hero-sphere"
+          id="hero-sphere-desktop"
+        >
+          <SphereAnimation style={{ width: "100%", height: "100%" }} />
+        </motion.div>
+
+        {/* Sphere — mobile only, shown below CTAs */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.88 }}
+          animate={{ opacity: 0.65, scale: 1 }}
+          transition={{ duration: 1.6, delay: 0.7, ease: "easeOut" }}
+          style={{
+            position: "absolute",
+            bottom: "2rem",
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: "min(72vw, 320px)",
+            height: "min(72vw, 320px)",
+            pointerEvents: "none",
+            zIndex: 2,
+            borderRadius: "50%",
+            overflow: "hidden",
+            display: "block",
+          }}
+          id="hero-sphere-mobile"
         >
           <SphereAnimation style={{ width: "100%", height: "100%" }} />
         </motion.div>
@@ -293,6 +316,7 @@ export default function Home() {
           animate={{ opacity: 1 }}
           transition={{ delay: 1.4 }}
           style={{ position: "absolute", bottom: "2rem", right: "2rem", display: "flex", flexDirection: "column", alignItems: "center", gap: "6px" }}
+          id="hero-scroll-indicator"
         >
           <motion.div
             animate={{ y: [0, 7, 0] }}
@@ -301,8 +325,16 @@ export default function Home() {
           />
         </motion.div>
 
-        {/* Desktop sphere show via CSS */}
-        <style>{`@media (min-width: 1024px) { #hero-sphere { display: block !important; } }`}</style>
+        {/* Responsive sphere visibility */}
+        <style>{`
+          @media (min-width: 1024px) {
+            #hero-sphere-desktop { display: block !important; }
+            #hero-sphere-mobile { display: none !important; }
+          }
+          @media (max-width: 1023px) {
+            #hero-scroll-indicator { display: none !important; }
+          }
+        `}</style>
       </section>
 
       {/* ── STATS COUNTER ── */}
