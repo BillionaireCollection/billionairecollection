@@ -34,9 +34,9 @@ const PRODUCTS_IMAGES: Record<string, string> = {
 };
 
 const MEDIA_IMAGES: Record<string, string> = {
-  "Billionaire Television": "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=400&q=70",
-  "Billionaire Magazine": "https://images.unsplash.com/photo-1586339949916-3e9457bef6d3?w=400&q=70",
-  "Billionaire Radio": "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=400&q=70",
+  "Billionaire Television": "/images/bc-television.png",
+  "Billionaire Magazine": "/images/bc-magazine.png",
+  "Billionaire Radio": "/images/bc-radio.png",
   "Billionaire News": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&q=70",
 };
 
