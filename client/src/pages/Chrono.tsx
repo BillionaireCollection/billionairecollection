@@ -69,7 +69,7 @@ export default function Chrono() {
     { icon: "✅", title: "Authentication", desc: "Verified by the world's top experts" }
 ]}
       listings={[
-    { title: "Patek Philippe Grandmaster Chime", sub: "Ref. 6300A-010 — World Auction Record · 20 Complications", price: "$31M+", img: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=800&q=80", tag: "Private Sale" },
+    { title: "Patek Philippe Grandmaster Chime", sub: "Ref. 6300A-010 — World Auction Record · 20 Complications", price: "$31M+", img: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/chrono-grandmaster-chime-7kBFBn4qMFkw6tDXxyuLUU.webp", tag: "Private Sale" },
     { title: "Jacob & Co. Billionaire Series", sub: "Diamond Tourbillon — 260ct · 18k White Gold", price: "$18M–$20M+", img: "https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=800&q=80", tag: "Available" },
     { title: "Richard Mille RM 53-02", sub: "Sapphire Tourbillon — Ultra-Rare", price: "$4M–$5M+", img: "https://images.unsplash.com/photo-1612817159949-195b6eb9e31a?w=800&q=80", tag: "Exclusive" }
 ]}
