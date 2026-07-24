@@ -214,7 +214,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.95, delay: 0.35, ease: [0.23, 1, 0.32, 1] }}
-            style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "clamp(1.1rem, 2.8vw, 2.5rem)", lineHeight: 1.15, color: GOLD, maxWidth: "900px", marginBottom: "3.5rem", letterSpacing: "-0.01em", whiteSpace: "nowrap", fontStyle: "italic" }}
+            style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "clamp(1.1rem, 2.8vw, 2.5rem)", lineHeight: 1.15, color: GOLD, maxWidth: "900px", marginBottom: "5.5rem", letterSpacing: "-0.01em", whiteSpace: "nowrap", fontStyle: "italic" }}
           >
             The Place for <span style={{ color: "#fff" }}>Everything You Desire</span>
           </motion.h1>
