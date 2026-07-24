@@ -44,7 +44,7 @@ const ECOSYSTEM_ITEMS = [
   { label: "Private Aviation", sub: "Charter & acquisition", href: "/air", img: AIR_IMG },
   { label: "Automotive", sub: "Rare & exotic automobiles", href: "/car", img: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&q=80" },
   { label: "Fine Art", sub: "Curated collectibles", href: "/art", img: "https://billionairecollection.com/images/billionaire-art-new.png" },
-  { label: "Crypto Assets", sub: "Digital wealth management", href: "/crypto", img: "https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=800&q=80" },
+  { label: "Chrono", sub: "Ultra-rare timepieces $1M+", href: "/chrono", img: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/chrono-patek-tile-bkFdcdrvM2eDowB7LXgYyf.webp" },
 ];
 
 const PRODUCTS = [
