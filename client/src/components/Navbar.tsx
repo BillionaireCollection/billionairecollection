@@ -40,7 +40,7 @@ const NAV_ITEMS: NavItem[] = [
       { label: "Aviation", href: "/air", description: "Private jets & charter" },
       { label: "Automotive", href: "/car", description: "Rare & exotic automobiles" },
       { label: "Art", href: "/art", description: "Fine art & collectibles" },
-      { label: "Crypto", href: "/crypto", description: "Digital asset investments" },
+      { label: "Chrono", href: "/chrono", description: "Ultra-rare timepieces $1M+" },
     ],
   },
   {

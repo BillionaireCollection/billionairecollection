@@ -54,7 +54,7 @@ export default function Car() {
       heroAccent="Automobiles"
       heroSubtitle="Acquire the world's most coveted automobiles — from one-off Ferrari hypercars to bespoke Rolls-Royce commissions — through our exclusive automotive brokerage."
       heroImage="https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-main-QJbNmDnsM8Jru6dBDixZQ8.webp"
-      heroCta={{ label: "Enquire Now", href: "/card-concierge" }}
+      heroCta={{ label: "Enquire Now", href: "https://billionairecar.com" }}
       heroCtaSecondary={{ label: "View Listings", href: "/marketplace" }}
       aboutTitle="Automotive Excellence Without Compromise"
       aboutBody={[
@@ -69,12 +69,13 @@ export default function Car() {
     { icon: "🌍", title: "Global Sourcing", desc: "Worldwide network" }
 ]}
       listings={[
-    { title: "Ferrari LaFerrari Aperta", sub: "1 of 210, Rosso Corsa", price: "POA", img: "/manus-storage/ferrari-laferrari-aperta_644ecf63.webp", tag: "Rare" },
-    { title: "Bugatti Chiron Super Sport", sub: "2022, 1,600hp", price: "$4,100,000", img: "/manus-storage/bugatti-chiron-super-sport_1dfd1c9b.jpg", tag: "For Sale" },
-    { title: "Rolls-Royce Phantom Bespoke", sub: "Commission Available", price: "POA", img: "/manus-storage/rolls-royce-phantom-bespoke_ed6cc70a.webp", tag: "Commission" }
+    { title: "Ferrari LaFerrari Aperta", sub: "1 of 210, Rosso Corsa", price: "POA", img: "/images/ferrari-laferrari-aperta.webp", tag: "Rare" },
+    { title: "Bugatti Chiron Super Sport", sub: "2022, 1,600hp", price: "$4,100,000", img: "/images/bugatti-chiron-super-sport.jpg", tag: "For Sale" },
+    { title: "Rolls-Royce Phantom Bespoke", sub: "Commission Available", price: "POA", img: "/images/rolls-royce-phantom-bespoke.webp", tag: "Commission" }
 ]}
       listingsTitle="Featured Vehicles"
       ctaBanner={{ title: "Find Your Perfect Machine", sub: "Our automotive advisors will source, acquire, or commission the exact vehicle you desire.", btnLabel: "Speak to an Advisor", btnHref: "/card-concierge" }}
+      externalWebsite={{ label: "Visit billionairecar.com", href: "https://billionairecar.com" }}
       partnerLogos={["Ferrari", "Bugatti", "Rolls-Royce", "Lamborghini", "Porsche", "Pagani", "Koenigsegg"]}
     />
   );

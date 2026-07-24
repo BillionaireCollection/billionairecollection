@@ -54,7 +54,7 @@ export default function Air() {
       heroAccent="Redefined"
       heroSubtitle="Charter, acquire, or manage the world's finest private jets — from Gulfstream G800 to Airbus ACJ — with complete discretion and unrivalled service."
       heroImage="https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-aviation-K37Bb2CGs26HxxPg9N8RhR.webp"
-      heroCta={{ label: "Enquire Now", href: "/card-concierge" }}
+      heroCta={{ label: "Enquire Now", href: "https://billionaireair.com" }}
       heroCtaSecondary={{ label: "View Listings", href: "/marketplace" }}
       aboutTitle="The Sky Is Not the Limit"
       aboutBody={[
@@ -70,11 +70,12 @@ export default function Air() {
 ]}
       listings={[
     { title: "Gulfstream G800", sub: "Ultra-Long Range, 8,000nm", price: "POA", img: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-aviation-K37Bb2CGs26HxxPg9N8RhR.webp", tag: "For Sale" },
-    { title: "Bombardier Global 7500", sub: "London to Sydney Non-Stop", price: "POA", img: "/manus-storage/bombardier-global-7500_695fc715.png", tag: "Charter" },
-    { title: "Airbus ACJ320neo", sub: "VIP Airliner Conversion", price: "POA", img: "/manus-storage/acj320neo_8c266873.webp", tag: "New" }
+    { title: "Bombardier Global 7500", sub: "London to Sydney Non-Stop", price: "POA", img: "/images/bombardier-global-7500.png", tag: "Charter" },
+    { title: "Airbus ACJ320neo", sub: "VIP Airliner Conversion", price: "POA", img: "/images/acj320neo.webp", tag: "New" }
 ]}
       listingsTitle="Featured Aircraft"
-      ctaBanner={{ title: "Fly Without Compromise", sub: "Our aviation advisors are available 24/7 to arrange your next flight or guide your aircraft acquisition.", btnLabel: "Request a Flight", btnHref: "/card-concierge" }}
+      ctaBanner={{ title: "Fly Without Compromise", sub: "Our aviation advisors are available 24/7 to arrange your next flight or guide your aircraft acquisition.", btnLabel: "Request a Flight", btnHref: "https://billionaireair.com" }}
+      externalWebsite={{ label: "Visit billionaireair.com", href: "https://billionaireair.com" }}
       partnerLogos={["Gulfstream", "Bombardier", "Dassault", "Airbus Corporate Jets", "Embraer"]}
     />
   );

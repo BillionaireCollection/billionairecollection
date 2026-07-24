@@ -119,12 +119,12 @@ export default function PageHero({
               style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}
             >
               {cta && (
-                <a href={cta.href}>
+                <a href={cta.href} target={cta.href.startsWith('http') ? '_blank' : undefined} rel={cta.href.startsWith('http') ? 'noopener noreferrer' : undefined}>
                   <button className="btn-gold">{cta.label}</button>
                 </a>
               )}
               {ctaSecondary && (
-                <a href={ctaSecondary.href}>
+                <a href={ctaSecondary.href} target={ctaSecondary.href.startsWith('http') ? '_blank' : undefined} rel={ctaSecondary.href.startsWith('http') ? 'noopener noreferrer' : undefined}>
                   <button className="btn-ghost-gold">{ctaSecondary.label}</button>
                 </a>
               )}

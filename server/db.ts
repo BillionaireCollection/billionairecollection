@@ -1,5 +1,7 @@
 import { eq, desc, and, sql } from "drizzle-orm";
-import { drizzle } from "drizzle-orm/mysql2";
+import { drizzle, type MySql2Database } from "drizzle-orm/mysql2";
+import type { Pool } from "mysql2/promise";
+import mysql from "mysql2/promise";
 import {
   InsertUser,
   users,
@@ -19,13 +21,33 @@ import {
 } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
-let _db: ReturnType<typeof drizzle> | null = null;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let _db: any = null;
 
 // Lazily create the drizzle instance so local tooling can run without a DB.
 export async function getDb() {
   if (!_db && process.env.DATABASE_URL) {
     try {
-      _db = drizzle(process.env.DATABASE_URL);
+      const rawUrl = process.env.DATABASE_URL;
+      // Parse socketPath from URL query string if present
+      // e.g. mysql://user:pass@localhost/db?socketPath=/tmp/mysql.sock
+      const urlObj = new URL(rawUrl);
+      const socketPath = urlObj.searchParams.get('socketPath');
+      if (socketPath) {
+        // Build connection config with socketPath
+        const pool = mysql.createPool({
+          user: urlObj.username,
+          password: decodeURIComponent(urlObj.password),
+          database: urlObj.pathname.replace('/', ''),
+          socketPath,
+          waitForConnections: true,
+          connectionLimit: 10,
+        });
+        _db = drizzle(pool);
+        console.log('[Database] Connected via socket:', socketPath);
+      } else {
+        _db = drizzle(rawUrl);
+      }
     } catch (error) {
       console.warn("[Database] Failed to connect:", error);
       _db = null;
@@ -335,12 +357,20 @@ export async function getUsers() {
 // ─── News Articles (daily auto-refresh) ──────────────────────────────────────
 export async function getNewsArticles(limit = 30) {
   const db = await getDb();
-  if (!db) return [];
-  return db
-    .select()
-    .from(newsArticles)
-    .orderBy(sql`${newsArticles.publishedAt} DESC`)
-    .limit(limit);
+  if (!db) {
+    console.error('[News] getDb() returned null. DATABASE_URL:', process.env.DATABASE_URL ? 'SET' : 'NOT SET');
+    return [];
+  }
+  try {
+    return await db
+      .select()
+      .from(newsArticles)
+      .orderBy(sql`${newsArticles.publishedAt} DESC`)
+      .limit(limit);
+  } catch (error: any) {
+    console.error('[News] Query failed. Cause:', error?.cause?.message ?? error?.message ?? error);
+    throw error;
+  }
 }
 
 export async function upsertNewsArticle(data: InsertNewsArticle) {

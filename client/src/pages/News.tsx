@@ -27,6 +27,8 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
   );
 }
 
+type Article = { id: string; title: string; summary: string; category: string; source: string; img: string; url: string; featured: boolean; date: string; };
+
 const CATEGORIES_NEWS = ["All", "Wealth", "Real Estate", "Superyachts", "Aviation", "Automotive", "Art", "Family Offices", "Longevity", "Luxury", "Technology", "Markets"];
 
 const SOURCES = [
@@ -46,7 +48,7 @@ const FALLBACK_IMGS = [
   "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
   "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80",
   "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&q=80",
-  "/manus-storage/billionaire-art-new_713113fe.png",
+  "https://billionairecollection.com/images/billionaire-art-new.png",
 ];
 
 export default function News() {
@@ -105,7 +107,7 @@ export default function News() {
     { limit: 30 },
     { refetchInterval: 30 * 60 * 1000 }
   );
-  const articles = (dbArticles ?? []).map(a => ({
+  const articles: Article[] = (dbArticles ?? []).map((a: { id: number; title: string; summary: string; category: string; source: string; imageUrl: string | null; articleUrl: string | null; isFeatured: boolean; publishedAt: Date; }) => ({
     id: String(a.id),
     title: a.title,
     summary: a.summary,
@@ -121,9 +123,9 @@ export default function News() {
   const liveCount = articles.length;
   const filtered = activeCategory === "All"
     ? articles
-    : articles.filter(a => a.category === activeCategory);
-  const featured = filtered.filter(a => a.featured).slice(0, 2);
-  const regular = filtered.filter(a => !a.featured);
+    : articles.filter((a: Article) => a.category === activeCategory);
+  const featured = filtered.filter((a: Article) => a.featured).slice(0, 2);
+  const regular = filtered.filter((a: Article) => !a.featured);
 
   return (
     <div style={{ background: "#000" }}>
@@ -230,7 +232,7 @@ export default function News() {
           {/* Featured articles */}
           {featured.length > 0 && (
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 400px), 1fr))", gap: "1px", background: "rgba(201,168,76,0.1)", marginBottom: "1px" }}>
-              {featured.map((article, i) => (
+              {featured.map((article: Article, i: number) => (
                 <FadeUp key={article.id} delay={i * 0.1}>
                   <a href={article.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", display: "block" }}>
                     <div style={{ background: "#000", overflow: "hidden", cursor: "pointer" }}
@@ -280,7 +282,7 @@ export default function News() {
 
           {/* Regular articles grid */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "1px", background: "rgba(201,168,76,0.1)" }}>
-            {regular.map((article, i) => (
+            {regular.map((article: Article, i: number) => (
               <FadeUp key={article.id} delay={i * 0.05}>
                 <a href={article.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", display: "block", height: "100%" }}>
                   <div className="bc-glass-card" style={{ padding: "2rem", cursor: "pointer", height: "100%", display: "flex", flexDirection: "column" }}>

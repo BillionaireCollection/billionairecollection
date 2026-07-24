@@ -20,6 +20,7 @@ import Boat from "./pages/Boat";
 import Air from "./pages/Air";
 import Car from "./pages/Car";
 import Art from "./pages/Art";
+import Chrono from "./pages/Chrono";
 import Crypto from "./pages/Crypto";
 import Media from "./pages/Media";
 import Technology from "./pages/Technology";
@@ -84,6 +85,7 @@ function Router() {
             <Route path="/air" component={Air} />
             <Route path="/car" component={Car} />
             <Route path="/art" component={Art} />
+            <Route path="/chrono" component={Chrono} />
             <Route path="/crypto" component={Crypto} />
             <Route path="/media" component={Media} />
             <Route path="/television" component={Television} />
@@ -101,6 +103,7 @@ function Router() {
             <Route path="/cigar" component={Cigar} />
             <Route path="/oud" component={Oud} />
             <Route path="/marketplace" component={Merch} />
+            <Route path="/store" component={Marketplace} />
             <Route path="/news" component={News} />
             <Route path="/privacy" component={Privacy} />
             <Route path="/terms" component={Terms} />

@@ -33,6 +33,7 @@ import {
 } from "./db";
 import { TRPCError } from "@trpc/server";
 import { notifyOwner } from "./_core/notification";
+import { sendOwnerEmail } from "./_core/email";
 
 const adminProcedure = protectedProcedure.use(({ ctx, next }) => {
   if (ctx.user.role !== "admin") {
@@ -97,10 +98,10 @@ export const appRouter = router({
       .mutation(async ({ input }) => {
         await createCardApplication(input);
         // Notify owner
-        notifyOwner({
-          title: `New Billionaire Card Application — ${input.firstName} ${input.lastName}`,
-          content: `**Name:** ${input.firstName} ${input.lastName}\n**Email:** ${input.email}\n**Phone:** ${input.phone ?? "—"}\n**Country:** ${input.country ?? "—"}\n**Occupation:** ${input.occupation ?? "—"}\n**Net Worth:** ${input.netWorth ?? "—"}\n**Card Tier:** ${input.cardTier}\n**Referral Code:** ${input.referralCode ?? "—"}`,
-        }).catch(() => {/* non-blocking */});
+        sendOwnerEmail(
+          `New Billionaire Card Application — ${input.firstName} ${input.lastName}`,
+          `**Name:** ${input.firstName} ${input.lastName}\n**Email:** ${input.email}\n**Phone:** ${input.phone ?? "—"}\n**Country:** ${input.country ?? "—"}\n**Occupation:** ${input.occupation ?? "—"}\n**Net Worth:** ${input.netWorth ?? "—"}\n**Card Tier:** ${input.cardTier}\n**Referral Code:** ${input.referralCode ?? "—"}`,
+        ).catch(() => {/* non-blocking */});
         return { success: true };
       }),
     list: adminProcedure.query(async () => getCardApplications()),
@@ -153,10 +154,10 @@ export const appRouter = router({
       .mutation(async ({ input }) => {
         await createGoldenTicketApplication(input);
         // Notify owner
-        notifyOwner({
-          title: `New Golden Ticket Application — ${input.name}`,
-          content: `**Name:** ${input.name}\n**Email:** ${input.email}\n**Phone:** ${input.phone ?? "—"}\n**Country:** ${input.country ?? "—"}\n**Referred By:** ${input.referredBy ?? "—"}\n**Message:** ${input.message ?? "—"}`,
-        }).catch(() => {/* non-blocking */});
+        sendOwnerEmail(
+          `New Golden Ticket Application — ${input.name}`,
+          `**Name:** ${input.name}\n**Email:** ${input.email}\n**Phone:** ${input.phone ?? "—"}\n**Country:** ${input.country ?? "—"}\n**Referred By:** ${input.referredBy ?? "—"}\n**Message:** ${input.message ?? "—"}`,
+        ).catch(() => {/* non-blocking */});
         return { success: true };
       }),
     list: adminProcedure.query(async () => getGoldenTicketApplications()),
@@ -220,10 +221,10 @@ export const appRouter = router({
       }))
       .mutation(async ({ input }) => {
         await createFacultyApplication(input);
-        notifyOwner({
-          title: `New Faculty Application — ${input.name}`,
-          content: `**Name:** ${input.name}\n**Email:** ${input.email}\n**Phone:** ${input.phone ?? "—"}\n**Ventures:** ${input.ventures ?? "—"}\n**Journey:** ${input.journey ?? "—"}\n**LinkedIn:** ${input.linkedin ?? "—"}`,
-        }).catch(() => {/* non-blocking */});
+        sendOwnerEmail(
+          `New Faculty Application — ${input.name}`,
+          `**Name:** ${input.name}\n**Email:** ${input.email}\n**Phone:** ${input.phone ?? "—"}\n**Ventures:** ${input.ventures ?? "—"}\n**Journey:** ${input.journey ?? "—"}\n**LinkedIn:** ${input.linkedin ?? "—"}`,
+        ).catch(() => {/* non-blocking */});
         return { success: true };
       }),
     list: adminProcedure.query(async () => getFacultyApplications()),
@@ -295,10 +296,10 @@ export const appRouter = router({
         // TODO: When PRINTFUL_API_KEY is available, call Printful API here
         // const printfulOrderId = await submitToPrintful(input);
         // await updateMerchOrderPrintfulId(order.id, printfulOrderId);
-        notifyOwner({
-          title: `New Merch Order — ${input.email}`,
-          content: `**Email:** ${input.email}\n**Items:** ${input.items.map(i => `${i.qty}x ${i.name} (${i.color})`).join(", ")}\n**Total:** $${(totalAmount / 100).toFixed(2)}`,
-        }).catch(() => {/* non-blocking */});
+        sendOwnerEmail(
+          `New Merch Order — ${input.email}`,
+          `**Email:** ${input.email}\n**Items:** ${input.items.map(i => `${i.qty}x ${i.name} (${i.color})`).join(", ")}\n**Total:** $${(totalAmount / 100).toFixed(2)}`,
+        ).catch(() => {/* non-blocking */});
         return { success: true, orderId: order.id };
       }),
     listOrders: adminProcedure.query(async () => getMerchOrders()),

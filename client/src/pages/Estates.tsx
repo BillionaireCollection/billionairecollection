@@ -64,7 +64,7 @@ export default function Estates() {
       heroAccent="Worldwide"
       heroSubtitle="Access the world's most exclusive properties — from Mayfair penthouses and Monaco villas to Malibu clifftop estates and private Caribbean islands."
       heroImage="https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-estates-5tXLsMCEXgogpiaShTiVMe.webp"
-      heroCta={{ label: "Enquire Now", href: "/card-concierge" }}
+      heroCta={{ label: "Enquire Now", href: "https://billionaireestates.com" }}
       heroCtaSecondary={{ label: "View Listings", href: "/marketplace" }}
       aboutTitle="Where Architecture Meets Aspiration"
       aboutBody={[
@@ -79,12 +79,13 @@ export default function Estates() {
     { icon: "⚡", title: "Dedicated Advisor", desc: "Personal property consultant" }
 ]}
       listings={[
-    { title: "Mayfair Grand Penthouse", sub: "London, United Kingdom", price: "$57,000,000", img: "/manus-storage/mayfair-penthouse_486d2a47.webp", tag: "Off-Market" },
-    { title: "Monaco Clifftop Villa", sub: "Monaco, Monte Carlo", price: "$93,500,000", img: "/manus-storage/monaco-clifftop-villa_a8c03bf4.jpg", tag: "Exclusive" },
-    { title: "Malibu Ocean Estate", sub: "California, USA", price: "$120,000,000", img: "/manus-storage/malibu-ocean-estate_d137b630.jpg", tag: "New" }
+    { title: "Mayfair Grand Penthouse", sub: "London, United Kingdom", price: "$57,000,000", img: "/images/mayfair-penthouse.webp", tag: "Off-Market" },
+    { title: "Monaco Clifftop Villa", sub: "Monaco, Monte Carlo", price: "$93,500,000", img: "/images/monaco-clifftop-villa.jpg", tag: "Exclusive" },
+    { title: "Malibu Ocean Estate", sub: "California, USA", price: "$120,000,000", img: "/images/malibu-ocean-estate.jpg", tag: "New" }
 ]}
       listingsTitle="Featured Properties"
-      ctaBanner={{ title: "Begin Your Property Journey", sub: "Our advisors are ready to present the world's finest properties, tailored to your exact specifications.", btnLabel: "Speak to an Advisor", btnHref: "/card-concierge" }}
+      ctaBanner={{ title: "Begin Your Property Journey", sub: "Our advisors are ready to present the world's finest properties, tailored to your exact specifications.", btnLabel: "Speak to an Advisor", btnHref: "https://billionaireestates.com" }}
+      externalWebsite={{ label: "Visit billionaireestates.com", href: "https://billionaireestates.com" }}
       partnerLogos={["Sotheby's International Realty", "Knight Frank", "Savills", "Christie's Real Estate"]}
     />
   );

@@ -54,7 +54,7 @@ export default function Art() {
       heroAccent="Collectibles"
       heroSubtitle="Acquire, sell, and invest in the world's most significant works of art through our curated advisory service — in partnership with Christie's and leading private dealers."
       heroImage="https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-lifestyle-AH2eKQkWWtkQqo8wcxHVw2.webp"
-      heroCta={{ label: "Enquire Now", href: "/card-concierge" }}
+      heroCta={{ label: "Enquire Now", href: "https://billionaireart.com" }}
       heroCtaSecondary={{ label: "View Listings", href: "/marketplace" }}
       aboutTitle="Art as the Ultimate Investment"
       aboutBody={[
@@ -69,12 +69,13 @@ export default function Art() {
     { icon: "🔒", title: "Private Sales", desc: "Discreet transactions" }
 ]}
       listings={[
-    { title: "Jean-Michel Basquiat", sub: "Untitled, 1982 — Estimate on Request", price: "POA", img: "/manus-storage/billionaire-art-new_713113fe.png", tag: "Private Sale" },
+    { title: "Jean-Michel Basquiat", sub: "Untitled, 1982 — Estimate on Request", price: "POA", img: "https://billionairecollection.com/images/billionaire-art-new.png", tag: "Private Sale" },
     { title: "Yayoi Kusama", sub: "Infinity Nets, 2019", price: "$3,050,000", img: "https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=800&q=80", tag: "Available" },
     { title: "Damien Hirst", sub: "Spot Painting — Unique", price: "POA", img: "https://images.unsplash.com/photo-1541367777708-7905fe3296c0?w=800&q=80", tag: "Exclusive" }
 ]}
       listingsTitle="Featured Works"
-      ctaBanner={{ title: "Build a World-Class Collection", sub: "Our art advisors will guide you through every aspect of collecting, from acquisition to legacy planning.", btnLabel: "Speak to an Art Advisor", btnHref: "/card-concierge" }}
+      ctaBanner={{ title: "Build a World-Class Collection", sub: "Our art advisors will guide you through every aspect of collecting, from acquisition to legacy planning.", btnLabel: "Speak to an Art Advisor", btnHref: "https://billionaireart.com" }}
+      externalWebsite={{ label: "Visit billionaireart.com", href: "https://billionaireart.com" }}
       partnerLogos={["Christie's", "Sotheby's", "Phillips", "Gagosian", "Hauser & Wirth"]}
     />
   );

@@ -39,6 +39,7 @@ export interface DivisionPageProps {
   listingsTitle?: string;
   ctaBanner?: { title: string; sub: string; btnLabel: string; btnHref: string };
   partnerLogos?: string[];
+  externalWebsite?: { label: string; href: string };
 }
 
 export default function DivisionPage({
@@ -46,7 +47,7 @@ export default function DivisionPage({
   heroCta, heroCtaSecondary,
   aboutTitle, aboutBody, features,
   listings, listingsTitle,
-  ctaBanner, partnerLogos,
+  ctaBanner, partnerLogos, externalWebsite,
 }: DivisionPageProps) {
   return (
     <div style={{ background: "#000" }}>
@@ -191,6 +192,16 @@ export default function DivisionPage({
               <a href={ctaBanner.btnHref}>
                 <button className="btn-gold">{ctaBanner.btnLabel}</button>
               </a>
+              {externalWebsite && (
+                <div style={{ marginTop: "1.5rem" }}>
+                  <a href={externalWebsite.href} target="_blank" rel="noopener noreferrer" style={{ fontFamily: "'Raleway', sans-serif", fontSize: "0.8125rem", textTransform: "uppercase", letterSpacing: "0.12em", color: "rgba(201,168,76,0.7)", textDecoration: "none", borderBottom: "1px solid rgba(201,168,76,0.3)", paddingBottom: "2px", transition: "color 0.2s, border-color 0.2s" }}
+                    onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "#C9A84C"; (e.currentTarget as HTMLAnchorElement).style.borderBottomColor = "#C9A84C"; }}
+                    onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "rgba(201,168,76,0.7)"; (e.currentTarget as HTMLAnchorElement).style.borderBottomColor = "rgba(201,168,76,0.3)"; }}
+                  >
+                    {externalWebsite.label} ↗
+                  </a>
+                </div>
+              )}
             </FadeUp>
           </div>
         </section>
