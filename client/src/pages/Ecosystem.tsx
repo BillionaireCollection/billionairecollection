@@ -25,6 +25,19 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
   );
 }
 
+const BROKERAGE_IMAGES: Record<string, string> = {
+  "Billionaire Estates": "/images/malibu-ocean-estate.jpg",
+  "Billionaire Boat": "/images/feadship-eclipse.jpg",
+  "Billionaire Air": "/images/bombardier-global-7500.png",
+  "Billionaire Car": "/images/bugatti-chiron-super-sport.jpg",
+  "Billionaire Art": "https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=400&q=70",
+  "Billionaire Chrono": "/images/chrono-richard-mille-rm53.webp",
+  "Billionaire Crypto": "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/eco-tile-crypto-8UXcm66qLZSjLsGEikQGHG.webp",
+  "The Off Market Sale": "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/eco-tile-offmarket-ctz7kbS5xoAPit3ZMNT275.webp",
+  "OffMarket Hotel": "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/eco-tile-hotel-5kQ465sUvqesef5X5hxLpA.webp",
+  "Billionaire University": "/images/billionaire-university-logo.png",
+};
+
 const DIVISIONS = [
   {
     name: "Brokerage",
@@ -167,14 +180,51 @@ export default function Ecosystem() {
                   <p style={{ fontFamily: FONT_UI, fontWeight: 300, fontSize: "1rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.8 }}>{div.desc}</p>
                 </div>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1px", background: "rgba(201,168,76,0.1)" }}>
-                  {div.brands.map((brand) => (
-                    <Link key={brand.label} href={brand.href}>
-                      <div className="bc-glass-card" style={{ padding: "1.75rem", cursor: "pointer", height: "100%" }}>
-                        <div style={{ fontFamily: FONT_UI, fontWeight: 600, fontSize: "0.8125rem", color: "#fff", marginBottom: "0.375rem" }}>{brand.label}</div>
-                        <div style={{ fontFamily: FONT_UI, fontWeight: 300, fontSize: "0.6875rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "rgba(255,255,255,0.35)" }}>{brand.sub}</div>
-                      </div>
-                    </Link>
-                  ))}
+                  {div.brands.map((brand) => {
+                    const img = div.name === "Brokerage" ? BROKERAGE_IMAGES[brand.label] : undefined;
+                    return (
+                      <Link key={brand.label} href={brand.href}>
+                        <div
+                          className="bc-glass-card"
+                          style={{
+                            padding: "1.75rem",
+                            cursor: "pointer",
+                            height: "100%",
+                            position: "relative",
+                            overflow: "hidden",
+                            minHeight: img ? "120px" : undefined,
+                          }}
+                        >
+                          {img && (
+                            <div
+                              style={{
+                                position: "absolute",
+                                inset: 0,
+                                backgroundImage: `url(${img})`,
+                                backgroundSize: "cover",
+                                backgroundPosition: "center",
+                                opacity: 0.22,
+                                transition: "opacity 0.3s ease",
+                              }}
+                            />
+                          )}
+                          {img && (
+                            <div
+                              style={{
+                                position: "absolute",
+                                inset: 0,
+                                background: "linear-gradient(135deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.2) 100%)",
+                              }}
+                            />
+                          )}
+                          <div style={{ position: "relative", zIndex: 1 }}>
+                            <div style={{ fontFamily: FONT_UI, fontWeight: 600, fontSize: "0.8125rem", color: "#fff", marginBottom: "0.375rem" }}>{brand.label}</div>
+                            <div style={{ fontFamily: FONT_UI, fontWeight: 300, fontSize: "0.6875rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "rgba(255,255,255,0.35)" }}>{brand.sub}</div>
+                          </div>
+                        </div>
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
             </FadeUp>
