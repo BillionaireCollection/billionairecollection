@@ -26,10 +26,10 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 }
 
 const PRODUCTS_IMAGES: Record<string, string> = {
-  "Billionaire Champagne": "/manus-storage/bc-champagne-bottle_a3994078.png",
-  "Billionaire Vodka": "/manus-storage/bc-vodka-bottle_22a29ab2.png",
-  "Billionaire Cigar": "/manus-storage/bc-cigar-box_aadd0dc8.png",
-  "Billionaire Oud": "/manus-storage/bc-oud-gold_725b062f.png",
+  "Billionaire Champagne": "/images/bc-champagne-bottle.png",
+  "Billionaire Vodka": "/images/bc-vodka-bottle.png",
+  "Billionaire Cigar": "/images/bc-cigar-box.png",
+  "Billionaire Oud": "/images/bc-oud-gold.png",
   "Official Store": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&q=70",
 };
 
@@ -60,7 +60,7 @@ const BROKERAGE_IMAGES: Record<string, string> = {
   "Billionaire Boat": "/images/feadship-eclipse.jpg",
   "Billionaire Air": "/images/bombardier-global-7500.png",
   "Billionaire Car": "/images/bugatti-chiron-super-sport.jpg",
-  "Billionaire Art": "/manus-storage/bc-art-crown_173687a9.png",
+  "Billionaire Art": "/images/bc-art-crown.png",
   "Billionaire Chrono": "/images/chrono-richard-mille-rm53.webp",
   "Billionaire Crypto": "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/eco-tile-crypto-8UXcm66qLZSjLsGEikQGHG.webp",
   "The Off Market Sale": "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/eco-tile-offmarket-ctz7kbS5xoAPit3ZMNT275.webp",
