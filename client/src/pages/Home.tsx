@@ -269,7 +269,7 @@ export default function Home() {
             animate={{ opacity: 0.65, scale: 1 }}
             transition={{ duration: 1.6, delay: 0.7, ease: "easeOut" }}
             id="hero-sphere-mobile-inline"
-            style={{ display: "none", justifyContent: "center", marginTop: "2.5rem", pointerEvents: "none" }}
+            style={{ display: "none", justifyContent: "center", marginTop: "0.75rem", pointerEvents: "none" }}
           >
             <div style={{ width: "min(72vw, 300px)", height: "min(72vw, 300px)", borderRadius: "50%", overflow: "hidden" }}>
               <SphereAnimation style={{ width: "100%", height: "100%" }} />
