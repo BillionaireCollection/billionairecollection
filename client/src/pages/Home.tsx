@@ -237,7 +237,7 @@ export default function Home() {
             style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "2rem" }}
           >
             <div style={{ width: "32px", height: "1px", background: GOLD, flexShrink: 0 }} />
-            <span style={{ fontFamily: FONT_UI, fontWeight: 400, fontSize: "0.625rem", textTransform: "uppercase", letterSpacing: "0.28em", color: GOLD }}>Est. London</span>
+            <span style={{ fontFamily: FONT_UI, fontWeight: 400, fontSize: "0.625rem", textTransform: "uppercase", letterSpacing: "0.28em", color: GOLD }}>Est. London 2011</span>
           </motion.div>
 
           {/* Single refined CTA */}
