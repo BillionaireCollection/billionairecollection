@@ -27,7 +27,7 @@ const NAV_ITEMS: NavItem[] = [
     label: "Divisions",
     children: [
       { label: "Media", href: "/media", description: "Television, Magazine & Radio" },
-      { label: "Technology", href: "/technology", description: "University, Digital & Vitality" },
+      { label: "Technology", href: "/university", description: "University, Digital & Vitality" },
       { label: "Services", href: "/services", description: "Funding, Golf, Travel & Card" },
       { label: "Billionaire Tutor", href: "/billionaire-tutor", description: "Elite self-made wealth coaches" },
     ],

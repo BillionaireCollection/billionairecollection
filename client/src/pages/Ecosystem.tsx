@@ -40,7 +40,7 @@ const DIVISIONS = [
       { label: "Billionaire Crypto", href: "/crypto", sub: "Digital asset management" },
       { label: "The Off Market Sale", href: "/estates", sub: "Off-market property" },
       { label: "OffMarket Hotel", href: "/estates", sub: "Private hospitality assets" },
-      { label: "Billionaire University", href: "/technology", sub: "Transformational education" },
+      { label: "Billionaire University", href: "/university", sub: "Transformational education" },
     ],
   },
   {
@@ -71,7 +71,7 @@ const DIVISIONS = [
     tagline: "Digital Innovation",
     desc: "Cutting-edge technology platforms serving the UHNW community — from AI-powered advisory tools to digital wealth management and vitality platforms.",
     brands: [
-      { label: "Billionaire University", href: "/technology", sub: "Transformational education" },
+      { label: "Billionaire University", href: "/university", sub: "Transformational education" },
       { label: "Billionaire Vitality", href: "/technology", sub: "Health & longevity" },
       { label: "TheBillionaire.ai", href: "/technology", sub: "AI-powered advisory" },
       { label: "Billionaire Digital", href: "/technology", sub: "Digital ecosystem" },

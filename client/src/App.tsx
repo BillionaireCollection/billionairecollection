@@ -49,6 +49,7 @@ import Admin from "./pages/Admin";
 import XOffer from "./pages/XOffer";
 import BillionaireWisdom from "./pages/BillionaireWisdom";
 import BillionaireTutor from "./pages/BillionaireTutor";
+import BillionaireUniversity from "./pages/BillionaireUniversity";
 import Merch from "./pages/Merch";
 import Ecosystem from "./pages/Ecosystem";
 import Brands from "./pages/Brands";
@@ -112,6 +113,7 @@ function Router() {
             <Route path="/golden-ticket" component={GoldenTicket} />
             <Route path="/billionaire-wisdom" component={BillionaireWisdom} />
             <Route path="/billionaire-tutor" component={BillionaireTutor} />
+            <Route path="/university" component={BillionaireUniversity} />
             <Route path="/ecosystem" component={Ecosystem} />
             <Route path="/brands" component={Brands} />
             <Route component={NotFound} />
