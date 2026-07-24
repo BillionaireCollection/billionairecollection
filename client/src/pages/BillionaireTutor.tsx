@@ -203,14 +203,6 @@ export default function BillionaireTutor() {
         <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "2px", background: `linear-gradient(to right, transparent, ${GOLD}, transparent)` }} />
 
         <div className="container" style={{ position: "relative", zIndex: 1, paddingTop: "100px" }}>
-          {/* BU Logo */}
-          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} style={{ marginBottom: "1.75rem" }}>
-            <img
-              src="/images/billionaire-university-logo.png"
-              alt="Billionaire University"
-              style={{ height: "72px", width: "auto", display: "block" }}
-            />
-          </motion.div>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: "0.75rem", marginBottom: "2rem" }}>
               <div style={{ width: "32px", height: "1px", background: GOLD }} />
@@ -307,6 +299,14 @@ export default function BillionaireTutor() {
             {/* Image */}
             <FadeUp>
               <div style={{ position: "relative", overflow: "hidden" }}>
+                {/* BU Logo above ecosystem diagram */}
+                <div style={{ marginBottom: "1.25rem", display: "flex", justifyContent: "flex-start" }}>
+                  <img
+                    src="/images/billionaire-university-logo.png"
+                    alt="Billionaire University"
+                    style={{ height: "64px", width: "auto" }}
+                  />
+                </div>
                 <img
                   src="/images/bc-ecosystem-diagram.png"
                   alt="The Billionaire Collection Ecosystem"
