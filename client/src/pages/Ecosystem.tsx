@@ -25,6 +25,36 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
   );
 }
 
+const PRODUCTS_IMAGES: Record<string, string> = {
+  "Billionaire Champagne": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=70",
+  "Billionaire Vodka": "https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=400&q=70",
+  "Billionaire Cigar": "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?w=400&q=70",
+  "Billionaire Oud": "https://images.unsplash.com/photo-1563170351-be82bc888aa4?w=400&q=70",
+  "Official Store": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&q=70",
+};
+
+const MEDIA_IMAGES: Record<string, string> = {
+  "Billionaire Television": "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=400&q=70",
+  "Billionaire Magazine": "https://images.unsplash.com/photo-1586339949916-3e9457bef6d3?w=400&q=70",
+  "Billionaire Radio": "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=400&q=70",
+  "Billionaire News": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&q=70",
+};
+
+const TECH_IMAGES: Record<string, string> = {
+  "Billionaire University": "/images/billionaire-university-logo.png",
+  "Billionaire Vitality": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&q=70",
+  "TheBillionaire.ai": "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=400&q=70",
+  "Billionaire Digital": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&q=70",
+};
+
+const SERVICES_IMAGES: Record<string, string> = {
+  "Billionaire Card": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&q=70",
+  "Billionaire Funding": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&q=70",
+  "Billionaire Golf": "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=400&q=70",
+  "Billionaire Travel": "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=70",
+  "Billionaire Counsel": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=400&q=70",
+};
+
 const BROKERAGE_IMAGES: Record<string, string> = {
   "Billionaire Estates": "/images/malibu-ocean-estate.jpg",
   "Billionaire Boat": "/images/feadship-eclipse.jpg",
@@ -181,7 +211,13 @@ export default function Ecosystem() {
                 </div>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1px", background: "rgba(201,168,76,0.1)" }}>
                   {div.brands.map((brand) => {
-                    const img = div.name === "Brokerage" ? BROKERAGE_IMAGES[brand.label] : undefined;
+                    const img =
+                      div.name === "Brokerage" ? BROKERAGE_IMAGES[brand.label] :
+                      div.name === "Products" ? PRODUCTS_IMAGES[brand.label] :
+                      div.name === "Media" ? MEDIA_IMAGES[brand.label] :
+                      div.name === "Technology" ? TECH_IMAGES[brand.label] :
+                      div.name === "Services" ? SERVICES_IMAGES[brand.label] :
+                      undefined;
                     return (
                       <Link key={brand.label} href={brand.href}>
                         <div
