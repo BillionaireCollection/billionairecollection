@@ -203,6 +203,14 @@ export default function BillionaireTutor() {
         <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "2px", background: `linear-gradient(to right, transparent, ${GOLD}, transparent)` }} />
 
         <div className="container" style={{ position: "relative", zIndex: 1, paddingTop: "100px" }}>
+          {/* BU Logo */}
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} style={{ marginBottom: "1.75rem" }}>
+            <img
+              src="/images/billionaire-university-logo.png"
+              alt="Billionaire University"
+              style={{ height: "72px", width: "auto", display: "block" }}
+            />
+          </motion.div>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: "0.75rem", marginBottom: "2rem" }}>
               <div style={{ width: "32px", height: "1px", background: GOLD }} />
@@ -330,6 +338,17 @@ export default function BillionaireTutor() {
         </div>
       </section>
 
+      {/* BU Logo divider */}
+      <div style={{ background: "#000", paddingBottom: "4rem", display: "flex", justifyContent: "center" }}>
+        <FadeUp>
+          <img
+            src="/images/billionaire-university-logo.png"
+            alt="Billionaire University"
+            style={{ height: "56px", width: "auto", opacity: 0.7 }}
+          />
+        </FadeUp>
+      </div>
+
       {/* ══════════════════════════════════════════════════════
           SECTION 3 — WHO WE'RE LOOKING FOR
       ══════════════════════════════════════════════════════ */}
@@ -368,6 +387,17 @@ export default function BillionaireTutor() {
           </div>
         </div>
       </section>
+
+      {/* BU Logo divider */}
+      <div style={{ background: "#050505", paddingBottom: "4rem", display: "flex", justifyContent: "center" }}>
+        <FadeUp>
+          <img
+            src="/images/billionaire-university-logo.png"
+            alt="Billionaire University"
+            style={{ height: "56px", width: "auto", opacity: 0.7 }}
+          />
+        </FadeUp>
+      </div>
 
       {/* ══════════════════════════════════════════════════════
           SECTION 4 — WHY JOIN AS FACULTY
@@ -606,6 +636,14 @@ export default function BillionaireTutor() {
         <div className="container" style={{ maxWidth: "1100px" }}>
           <FadeUp>
           <div style={{ textAlign: "center", marginBottom: "4rem" }}>
+            {/* BU Logo in footer */}
+            <div style={{ display: "flex", justifyContent: "center", marginBottom: "2rem" }}>
+              <img
+                src="/images/billionaire-university-logo.png"
+                alt="Billionaire University"
+                style={{ height: "64px", width: "auto", opacity: 0.85 }}
+              />
+            </div>
             <SectionBadge>Part of the Billionaire Collection</SectionBadge>
             <h2 style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#fff" }}>
               The Ecosystem Behind{" "}
