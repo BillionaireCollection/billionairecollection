@@ -207,16 +207,7 @@ export default function Home() {
         {/* Content — bottom-anchored editorial layout */}
         <div className="container" style={{ position: "relative", zIndex: 1, paddingTop: "clamp(8rem, 16vh, 13rem)", width: "100%" }}>
 
-          {/* Eyebrow — thin gold rule + label */}
-          <motion.div
-            initial={{ opacity: 0, x: -12 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.9, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
-            style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "2rem" }}
-          >
-            <div style={{ width: "32px", height: "1px", background: GOLD, flexShrink: 0 }} />
-            <span style={{ fontFamily: FONT_UI, fontWeight: 400, fontSize: "0.625rem", textTransform: "uppercase", letterSpacing: "0.28em", color: GOLD }}>Est. London &nbsp;·&nbsp; Bespoke UHNW Experiences</span>
-          </motion.div>
+
 
           {/* H1 — concise, editorial */}
           <motion.h1
@@ -237,6 +228,17 @@ export default function Home() {
           >
             The world’s premier ecosystem of luxury brands, exclusive opportunities, private access, and exceptional experiences.
           </motion.p>
+
+          {/* Est. London — below subtitle */}
+          <motion.div
+            initial={{ opacity: 0, x: -12 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.9, delay: 0.55, ease: [0.23, 1, 0.32, 1] }}
+            style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "2rem" }}
+          >
+            <div style={{ width: "32px", height: "1px", background: GOLD, flexShrink: 0 }} />
+            <span style={{ fontFamily: FONT_UI, fontWeight: 400, fontSize: "0.625rem", textTransform: "uppercase", letterSpacing: "0.28em", color: GOLD }}>Est. London</span>
+          </motion.div>
 
           {/* Single refined CTA */}
           <motion.div
