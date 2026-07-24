@@ -287,18 +287,18 @@ export default function Home() {
           <SphereAnimation style={{ width: "100%", height: "100%" }} />
         </motion.div>
 
-        {/* Sphere — mobile only, shown below CTAs */}
+        {/* Sphere — mobile only, centred in the hero */}
         <motion.div
           initial={{ opacity: 0, scale: 0.88 }}
           animate={{ opacity: 0.65, scale: 1 }}
           transition={{ duration: 1.6, delay: 0.7, ease: "easeOut" }}
           style={{
             position: "absolute",
-            bottom: "2rem",
+            top: "50%",
             left: "50%",
-            transform: "translateX(-50%)",
-            width: "min(72vw, 320px)",
-            height: "min(72vw, 320px)",
+            transform: "translate(-50%, -50%)",
+            width: "min(80vw, 340px)",
+            height: "min(80vw, 340px)",
             pointerEvents: "none",
             zIndex: 2,
             borderRadius: "50%",
