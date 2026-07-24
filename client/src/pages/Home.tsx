@@ -205,7 +205,7 @@ export default function Home() {
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.3) 55%, transparent 100%)" }} />
 
         {/* Content — bottom-anchored editorial layout */}
-        <div className="container" style={{ position: "relative", zIndex: 1, paddingTop: "clamp(5rem, 10vh, 8rem)", width: "100%" }}>
+        <div className="container" style={{ position: "relative", zIndex: 1, paddingTop: "clamp(8rem, 16vh, 13rem)", width: "100%" }}>
 
           {/* Eyebrow — thin gold rule + label */}
           <motion.div
@@ -225,7 +225,7 @@ export default function Home() {
             transition={{ duration: 0.95, delay: 0.35, ease: [0.23, 1, 0.32, 1] }}
             style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "clamp(1.1rem, 2.8vw, 2.5rem)", lineHeight: 1.15, color: GOLD, maxWidth: "900px", marginBottom: "1.75rem", letterSpacing: "-0.01em", whiteSpace: "nowrap", fontStyle: "italic" }}
           >
-            The Place for Everything You Desire
+            The Place for <span style={{ color: "#fff" }}>Everything You Desire</span>
           </motion.h1>
 
           {/* Sub-description — single refined sentence */}
