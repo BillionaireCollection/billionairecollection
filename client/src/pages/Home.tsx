@@ -262,6 +262,19 @@ export default function Home() {
               >Concierge</span>
             </Link>
           </motion.div>
+
+          {/* Sphere — mobile only, inline below CTAs, centred */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.88 }}
+            animate={{ opacity: 0.65, scale: 1 }}
+            transition={{ duration: 1.6, delay: 0.7, ease: "easeOut" }}
+            id="hero-sphere-mobile-inline"
+            style={{ display: "none", justifyContent: "center", marginTop: "2.5rem", pointerEvents: "none" }}
+          >
+            <div style={{ width: "min(72vw, 300px)", height: "min(72vw, 300px)", borderRadius: "50%", overflow: "hidden" }}>
+              <SphereAnimation style={{ width: "100%", height: "100%" }} />
+            </div>
+          </motion.div>
         </div>
 
         {/* Sphere — desktop: absolute right-side; mobile: inline below CTAs */}
@@ -287,29 +300,6 @@ export default function Home() {
           <SphereAnimation style={{ width: "100%", height: "100%" }} />
         </motion.div>
 
-        {/* Sphere — mobile only, centred in the hero */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.88 }}
-          animate={{ opacity: 0.65, scale: 1 }}
-          transition={{ duration: 1.6, delay: 0.7, ease: "easeOut" }}
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            width: "min(80vw, 340px)",
-            height: "min(80vw, 340px)",
-            pointerEvents: "none",
-            zIndex: 2,
-            borderRadius: "50%",
-            overflow: "hidden",
-            display: "block",
-          }}
-          id="hero-sphere-mobile"
-        >
-          <SphereAnimation style={{ width: "100%", height: "100%" }} />
-        </motion.div>
-
         {/* Scroll indicator */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -329,9 +319,10 @@ export default function Home() {
         <style>{`
           @media (min-width: 1024px) {
             #hero-sphere-desktop { display: block !important; }
-            #hero-sphere-mobile { display: none !important; }
+            #hero-sphere-mobile-inline { display: none !important; }
           }
           @media (max-width: 1023px) {
+            #hero-sphere-mobile-inline { display: flex !important; }
             #hero-scroll-indicator { display: none !important; }
           }
         `}</style>
