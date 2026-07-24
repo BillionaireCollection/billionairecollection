@@ -205,7 +205,7 @@ export default function Home() {
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.3) 55%, transparent 100%)" }} />
 
         {/* Content — bottom-anchored editorial layout */}
-        <div className="container" style={{ position: "relative", zIndex: 1, paddingTop: "clamp(8rem, 16vh, 13rem)", width: "100%" }}>
+        <div className="container" style={{ position: "relative", zIndex: 1, paddingTop: "clamp(10rem, 20vh, 16rem)", width: "100%" }}>
 
 
 
