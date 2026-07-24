@@ -186,7 +186,7 @@ export default function Home() {
     <div style={{ background: "#000" }}>
       {/* ── HERO — Cinematic Minimalist ── */}
       <section
-        aria-label="Billionaire Collection — The Curated Umbrella for Bespoke UHNW Experiences"
+        aria-label="Billionaire Collection — The Place for Everything You Desire"
         style={{ position: "relative", height: "100vh", minHeight: "680px", overflow: "hidden", display: "flex", alignItems: "flex-end" }}
       >
         {/* Cinematic background with deep vignette */}
@@ -225,9 +225,9 @@ export default function Home() {
             transition={{ duration: 0.95, delay: 0.35, ease: [0.23, 1, 0.32, 1] }}
             style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "clamp(2.25rem, 5.5vw, 4.5rem)", lineHeight: 1.08, color: "#fff", maxWidth: "680px", marginBottom: "1.75rem", letterSpacing: "-0.01em" }}
           >
-            The Curated Umbrella<br />
-            <span style={{ color: GOLD, fontStyle: "italic" }}>for Bespoke UHNW</span><br />
-            <span style={{ color: GOLD, fontStyle: "italic" }}>Experiences</span>
+            The Place for<br />
+            <span style={{ color: GOLD, fontStyle: "italic" }}>Everything</span><br />
+            <span style={{ color: GOLD, fontStyle: "italic" }}>You Desire</span>
           </motion.h1>
 
           {/* Sub-description — single refined sentence */}
@@ -237,7 +237,7 @@ export default function Home() {
             transition={{ duration: 0.85, delay: 0.5, ease: [0.23, 1, 0.32, 1] }}
             style={{ fontFamily: FONT_UI, fontWeight: 300, fontSize: "clamp(0.875rem, 1.5vw, 1.0625rem)", color: "rgba(255,255,255,0.5)", maxWidth: "440px", lineHeight: 1.8, marginBottom: "3rem", letterSpacing: "0.01em" }}
           >
-            An exclusive ecosystem of distinguished brands — curating ultra-prime real estate, superyachts, private aviation, and bespoke services for visionary leaders and legacy builders worldwide.
+            The world’s premier ecosystem of luxury brands, exclusive opportunities, private access, and exceptional experiences.
           </motion.p>
 
           {/* Single refined CTA */}
