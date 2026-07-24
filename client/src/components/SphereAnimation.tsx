@@ -44,7 +44,6 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
 
     const colorGold = new THREE.Color("#C9A84C");
     const colorWhite = new THREE.Color("#ffffff");
-    const colorBlue = new THREE.Color("#a8d4ff");
 
     for (let i = 0; i < COUNT; i++) {
       // Fibonacci sphere distribution for even spread
@@ -59,13 +58,17 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
       positions[i * 3 + 1] = y;
       positions[i * 3 + 2] = z;
 
-      // Color gradient: gold near equator, white at poles, blue accent
+      // Pure gold and white — 50/50 split with slight equator bias for gold
       const t = Math.abs(Math.sin(phi)); // 0 at poles, 1 at equator
       const r = Math.random();
       let col: THREE.Color;
-      if (r < 0.55) col = colorWhite.clone().lerp(colorGold, t * 0.6);
-      else if (r < 0.8) col = colorGold.clone().lerp(colorWhite, 0.4);
-      else col = colorBlue.clone().lerp(colorWhite, 0.5);
+      if (r < 0.5) {
+        // Gold dots — slightly richer near equator
+        col = colorGold.clone().lerp(colorWhite, (1 - t) * 0.25);
+      } else {
+        // White dots — slightly warmer near equator
+        col = colorWhite.clone().lerp(colorGold, t * 0.2);
+      }
 
       colors[i * 3] = col.r;
       colors[i * 3 + 1] = col.g;
