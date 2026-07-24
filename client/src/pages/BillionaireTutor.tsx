@@ -298,14 +298,14 @@ export default function BillionaireTutor() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 420px), 1fr))", gap: "3rem 5rem", alignItems: "center" }}>
             {/* Image */}
             <FadeUp>
-              <div style={{ position: "relative", aspectRatio: "4/5", overflow: "hidden" }}>
+              <div style={{ position: "relative", overflow: "hidden" }}>
                 <img
-                  src={OPPORTUNITY_BG}
-                  alt="Billionaire University — The Opportunity"
-                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  src="/images/bc-ecosystem-diagram.png"
+                  alt="The Billionaire Collection Ecosystem"
+                  style={{ width: "100%", height: "auto", display: "block" }}
                 />
                 {/* Gold frame accent */}
-                <div style={{ position: "absolute", top: "1.5rem", left: "1.5rem", right: "-1.5rem", bottom: "-1.5rem", border: `1px solid rgba(201,168,76,0.25)`, pointerEvents: "none" }} />
+                <div style={{ position: "absolute", top: "1rem", left: "1rem", right: "-1rem", bottom: "-1rem", border: `1px solid rgba(201,168,76,0.25)`, pointerEvents: "none" }} />
               </div>
             </FadeUp>
 
