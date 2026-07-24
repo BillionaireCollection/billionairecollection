@@ -299,12 +299,12 @@ export default function BillionaireTutor() {
             {/* Image */}
             <FadeUp>
               <div style={{ position: "relative", overflow: "hidden" }}>
-                {/* BU Logo above ecosystem diagram */}
-                <div style={{ marginBottom: "1.25rem", display: "flex", justifyContent: "flex-start" }}>
+                {/* BU Logo above ecosystem diagram — centred */}
+                <div style={{ marginBottom: "1.5rem", display: "flex", justifyContent: "center" }}>
                   <img
                     src="/images/billionaire-university-logo.png"
                     alt="Billionaire University"
-                    style={{ height: "64px", width: "auto" }}
+                    style={{ height: "90px", width: "auto" }}
                   />
                 </div>
                 <img
@@ -344,7 +344,7 @@ export default function BillionaireTutor() {
           <img
             src="/images/billionaire-university-logo.png"
             alt="Billionaire University"
-            style={{ height: "56px", width: "auto", opacity: 0.7 }}
+            style={{ height: "80px", width: "auto", opacity: 0.7 }}
           />
         </FadeUp>
       </div>
@@ -394,7 +394,7 @@ export default function BillionaireTutor() {
           <img
             src="/images/billionaire-university-logo.png"
             alt="Billionaire University"
-            style={{ height: "56px", width: "auto", opacity: 0.7 }}
+            style={{ height: "80px", width: "auto", opacity: 0.7 }}
           />
         </FadeUp>
       </div>
@@ -641,7 +641,7 @@ export default function BillionaireTutor() {
               <img
                 src="/images/billionaire-university-logo.png"
                 alt="Billionaire University"
-                style={{ height: "64px", width: "auto", opacity: 0.85 }}
+                style={{ height: "90px", width: "auto", opacity: 0.85 }}
               />
             </div>
             <SectionBadge>Part of the Billionaire Collection</SectionBadge>
