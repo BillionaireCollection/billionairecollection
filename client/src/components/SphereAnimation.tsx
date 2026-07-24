@@ -90,34 +90,7 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
     points.renderOrder = 2; // render last so particles appear on top of dark fill
     scene.add(points);
 
-    // ── Central Glow Orb ──────────────────────────────────────
-    // Inner core
-    const coreGeo = new THREE.SphereGeometry(0.35, 32, 32);
-    const coreMat = new THREE.MeshBasicMaterial({ color: 0xfff8e7, transparent: true, opacity: 0.95 });
-    const core = new THREE.Mesh(coreGeo, coreMat);
-    core.renderOrder = 3;
-    scene.add(core);
-
-    // Outer glow layers (additive blending sprites)
-    const glowLayers = [
-      { radius: 0.7, opacity: 0.35, color: 0xfff0c0 },
-      { radius: 1.2, opacity: 0.18, color: 0xC9A84C },
-      { radius: 2.0, opacity: 0.08, color: 0xC9A84C },
-    ];
-    glowLayers.forEach(({ radius, opacity, color }) => {
-      const g = new THREE.SphereGeometry(radius, 24, 24);
-      const m = new THREE.MeshBasicMaterial({
-        color,
-        transparent: true,
-        opacity,
-        blending: THREE.AdditiveBlending,
-        depthWrite: false,
-        side: THREE.BackSide,
-      });
-      const glowMesh = new THREE.Mesh(g, m);
-      glowMesh.renderOrder = 3;
-      scene.add(glowMesh);
-    });
+    // Central glow orb removed — pure point-cloud sphere
 
     // ── Dark background sphere to block hero image bleed-through ──
     // Camera is OUTSIDE the sphere (z=14), so we need FrontSide facing
@@ -229,9 +202,7 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
       // Keep background sphere aligned with particle cloud
       bgSphere.rotation.copy(points.rotation);
 
-      // Pulsing core
-      const pulse = 1 + Math.sin(t * 2.5) * 0.08;
-      core.scale.setScalar(pulse);
+      // (core removed)
 
       renderer.render(scene, camera);
     };
