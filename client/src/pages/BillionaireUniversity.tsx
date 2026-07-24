@@ -78,7 +78,7 @@ export default function BillionaireUniversity() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
-            style={{ marginBottom: "2.5rem" }}
+            style={{ marginBottom: "2.5rem", display: "flex", justifyContent: "center" }}
           >
             <img
               src={BU_LOGO}
@@ -157,11 +157,13 @@ export default function BillionaireUniversity() {
         <div className="container" style={{ paddingTop: "7rem" }}>
           <FadeUp>
             <div style={{ textAlign: "center", marginBottom: "5rem" }}>
-              <img
-                src={BU_LOGO}
-                alt="Billionaire University"
-                style={{ height: "100px", width: "auto", objectFit: "contain", marginBottom: "2rem" }}
-              />
+              <div style={{ display: "flex", justifyContent: "center", marginBottom: "2rem" }}>
+                <img
+                  src={BU_LOGO}
+                  alt="Billionaire University"
+                  style={{ height: "100px", width: "auto", objectFit: "contain" }}
+                />
+              </div>
               <h2 style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "clamp(1.75rem, 3vw, 2.5rem)", color: "#fff", lineHeight: 1.25 }}>
                 The Three <span style={{ color: GOLD }}>Pillars of Preservation</span>
               </h2>
@@ -210,11 +212,13 @@ export default function BillionaireUniversity() {
       <section style={{ padding: "9rem 0", textAlign: "center" }}>
         <div className="container">
           <FadeUp>
-            <img
-              src={BU_LOGO}
-              alt="Billionaire University"
-              style={{ height: "110px", width: "auto", objectFit: "contain", marginBottom: "3rem" }}
-            />
+            <div style={{ display: "flex", justifyContent: "center", marginBottom: "3rem" }}>
+              <img
+                src={BU_LOGO}
+                alt="Billionaire University"
+                style={{ height: "110px", width: "auto", objectFit: "contain" }}
+              />
+            </div>
             <h2 style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "clamp(1.875rem, 3.5vw, 3rem)", color: "#fff", marginBottom: "1.5rem" }}>
               Begin Your <span style={{ color: GOLD, fontStyle: "italic" }}>Education</span>
             </h2>
