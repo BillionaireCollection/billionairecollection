@@ -26,10 +26,10 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 }
 
 const PRODUCTS_IMAGES: Record<string, string> = {
-  "Billionaire Champagne": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=70",
-  "Billionaire Vodka": "https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=400&q=70",
-  "Billionaire Cigar": "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?w=400&q=70",
-  "Billionaire Oud": "https://images.unsplash.com/photo-1563170351-be82bc888aa4?w=400&q=70",
+  "Billionaire Champagne": "/manus-storage/bc-champagne-bottle_a3994078.png",
+  "Billionaire Vodka": "/manus-storage/bc-vodka-bottle_22a29ab2.png",
+  "Billionaire Cigar": "/manus-storage/bc-cigar-box_aadd0dc8.png",
+  "Billionaire Oud": "/manus-storage/bc-oud-gold_725b062f.png",
   "Official Store": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&q=70",
 };
 
@@ -60,7 +60,7 @@ const BROKERAGE_IMAGES: Record<string, string> = {
   "Billionaire Boat": "/images/feadship-eclipse.jpg",
   "Billionaire Air": "/images/bombardier-global-7500.png",
   "Billionaire Car": "/images/bugatti-chiron-super-sport.jpg",
-  "Billionaire Art": "https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=400&q=70",
+  "Billionaire Art": "/manus-storage/bc-art-crown_173687a9.png",
   "Billionaire Chrono": "/images/chrono-richard-mille-rm53.webp",
   "Billionaire Crypto": "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/eco-tile-crypto-8UXcm66qLZSjLsGEikQGHG.webp",
   "The Off Market Sale": "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/eco-tile-offmarket-ctz7kbS5xoAPit3ZMNT275.webp",
