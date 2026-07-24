@@ -187,7 +187,7 @@ export default function Home() {
       {/* ── HERO — Cinematic Minimalist ── */}
       <section
         aria-label="Billionaire Collection — The Place for Everything You Desire"
-        style={{ position: "relative", height: "100vh", minHeight: "680px", overflow: "hidden", display: "flex", alignItems: "flex-end" }}
+        style={{ position: "relative", height: "100vh", minHeight: "680px", overflow: "hidden", display: "flex", alignItems: "flex-start" }}
       >
         {/* Cinematic background with deep vignette */}
         <img
@@ -205,7 +205,7 @@ export default function Home() {
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.3) 55%, transparent 100%)" }} />
 
         {/* Content — bottom-anchored editorial layout */}
-        <div className="container" style={{ position: "relative", zIndex: 1, paddingBottom: "clamp(4rem, 8vh, 7rem)", width: "100%" }}>
+        <div className="container" style={{ position: "relative", zIndex: 1, paddingTop: "clamp(5rem, 10vh, 8rem)", width: "100%" }}>
 
           {/* Eyebrow — thin gold rule + label */}
           <motion.div
@@ -223,10 +223,9 @@ export default function Home() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.95, delay: 0.35, ease: [0.23, 1, 0.32, 1] }}
-            style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "clamp(1.5rem, 3.8vw, 3.25rem)", lineHeight: 1.1, color: "#fff", maxWidth: "780px", marginBottom: "1.75rem", letterSpacing: "-0.01em" }}
+            style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "clamp(1.1rem, 2.8vw, 2.5rem)", lineHeight: 1.15, color: "#fff", maxWidth: "900px", marginBottom: "1.75rem", letterSpacing: "-0.01em", whiteSpace: "nowrap" }}
           >
-            <span style={{ whiteSpace: "nowrap" }}>The Place for <span style={{ color: GOLD, fontStyle: "italic" }}>Everything</span></span><br />
-            <span style={{ color: GOLD, fontStyle: "italic", whiteSpace: "nowrap" }}>You Desire</span>
+            The Place for <span style={{ color: GOLD, fontStyle: "italic" }}>Everything</span> <span style={{ color: GOLD, fontStyle: "italic" }}>You Desire</span>
           </motion.h1>
 
           {/* Sub-description — single refined sentence */}
