@@ -42,7 +42,8 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
     const positions = new Float32Array(COUNT * 3);
     const colors = new Float32Array(COUNT * 3);
 
-    const colorGold = new THREE.Color("#C9A84C");
+    // Brighter gold base — boosted from #C9A84C to a more vivid warm gold
+    const colorGold = new THREE.Color("#FFD700");
     const colorWhite = new THREE.Color("#ffffff");
 
     for (let i = 0; i < COUNT; i++) {
@@ -58,20 +59,21 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
       positions[i * 3 + 1] = y;
       positions[i * 3 + 2] = z;
 
-      // Pure gold and white — 50/50 split with slight equator bias for gold
+      // 70% gold / 30% white — gold dominant, white provides diamond sparkle
       const t = Math.abs(Math.sin(phi)); // 0 at poles, 1 at equator
       const r = Math.random();
       let col: THREE.Color;
-      if (r < 0.5) {
-        // Gold dots — unchanged, slightly richer near equator
-        col = colorGold.clone().lerp(colorWhite, (1 - t) * 0.25);
-        colors[i * 3] = col.r;
-        colors[i * 3 + 1] = col.g;
-        colors[i * 3 + 2] = col.b;
+      if (r < 0.70) {
+        // Gold dots — over-bright for vivid luminous gold glow
+        const goldBright = 1.8 + Math.random() * 0.8; // 1.8–2.6 over-bright gold
+        col = colorGold.clone().lerp(colorWhite, (1 - t) * 0.15);
+        colors[i * 3] = col.r * goldBright;
+        colors[i * 3 + 1] = col.g * goldBright;
+        colors[i * 3 + 2] = col.b * goldBright;
       } else {
-        // White dots — pure vivid white, slightly over-bright for sparkle
-        // Values above 1.0 with AdditiveBlending create a bloom/sparkle effect
-        const sparkle = 1.5 + Math.random() * 1.0; // 1.5–2.5 for intense diamond sparkle
+        // White dots — extreme over-bright for intense diamond sparkle
+        // Values 5.5–6.5 with AdditiveBlending create blazing diamond glitter
+        const sparkle = 5.5 + Math.random() * 1.0; // 5.5–6.5 intense diamond sparkle
         colors[i * 3] = sparkle;
         colors[i * 3 + 1] = sparkle;
         colors[i * 3 + 2] = sparkle;
@@ -83,10 +85,10 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
     geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
 
     const material = new THREE.PointsMaterial({
-      size: isMobile ? 0.055 : 0.045,
+      size: isMobile ? 0.065 : 0.055, // slightly larger dots for more visible brightness
       vertexColors: true,
       transparent: true,
-      opacity: 0.92,
+      opacity: 1.0, // full opacity for maximum brightness
       blending: THREE.AdditiveBlending,
       depthWrite: false,
       sizeAttenuation: true,
