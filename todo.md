@@ -251,3 +251,8 @@
 - [x] Add Billionaire News tile to home page Ecosystem grid
 - [x] Build full Billionaire Funding page (/funding) with investment programmes and CTA
 - [x] Add /funding to sitemap.xml (already present — confirmed)
+
+## GoldParticles Component (July 2026)
+
+- [x] Create GoldParticles component at client/src/components/GoldParticles.tsx
+- [x] Integrate GoldParticles into the home page hero section

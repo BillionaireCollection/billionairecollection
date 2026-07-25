@@ -8,6 +8,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { Link } from "wouter";
 import SphereAnimation from "@/components/SphereAnimation";
+import GoldParticles from "@/components/GoldParticles";
 import { useSEO } from "@/hooks/useSEO";
 import { useJsonLd } from "@/hooks/useJsonLd";
 import { trpc } from "@/lib/trpc";
@@ -207,6 +208,9 @@ export default function Home() {
         <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "55%", background: "linear-gradient(to top, #000 0%, rgba(0,0,0,0.7) 40%, transparent 100%)" }} />
         {/* Left fade for text legibility */}
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.3) 55%, transparent 100%)" }} />
+
+        {/* Gold floating particles — above background, below content */}
+        <GoldParticles count={14} />
 
         {/* Content — bottom-anchored editorial layout */}
         <div className="container" style={{ position: "relative", zIndex: 1, paddingTop: "clamp(10rem, 20vh, 16rem)", width: "100%" }}>
