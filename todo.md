@@ -203,3 +203,11 @@
 - [x] Wire owner email notifications for Contact form submissions
 - [x] Wire owner email notifications for Newsletter subscriptions
 - [x] Add Billionaire Chrono to mobile hamburger menu Brokerage grid (already present — confirmed)
+
+## Next Three Improvements (July 2026 — Round 2)
+
+- [x] Add Billionaire News brand image to Ecosystem Media tile
+- [x] Wire owner email notification for Concierge form submissions
+- [x] Build full /chrono page for Billionaire Chrono (ultra-rare timepieces) — page already existed, updated hero image
+- [x] Register /chrono route in App.tsx (already registered)
+- [x] Add /chrono to sitemap.xml

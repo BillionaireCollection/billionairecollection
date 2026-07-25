@@ -82,6 +82,11 @@ export const appRouter = router({
       }))
       .mutation(async ({ input }) => {
         await createConciergeRequest(input);
+        // Notify owner
+        sendOwnerEmail(
+          `New Concierge Request — ${input.name} (${input.requestType})`,
+          `**Name:** ${input.name}\n**Email:** ${input.email}\n**Phone:** ${input.phone ?? "—"}\n**Request Type:** ${input.requestType}\n**Budget:** ${input.budget ?? "—"}\n**Preferred Date:** ${input.preferredDate ?? "—"}\n\n${input.description}`,
+        ).catch(() => {/* non-blocking */});
         return { success: true };
       }),
     list: adminProcedure.query(async () => getConciergeRequests()),

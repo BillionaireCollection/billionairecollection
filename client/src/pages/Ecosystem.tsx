@@ -37,7 +37,7 @@ const MEDIA_IMAGES: Record<string, string> = {
   "Billionaire Television": "/images/bc-television.png",
   "Billionaire Magazine": "/images/bc-magazine.png",
   "Billionaire Radio": "/images/bc-radio.png",
-  "Billionaire News": "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=400&q=70",
+  "Billionaire News": "/images/bc-news-studio.jpg",
 };
 
 const TECH_IMAGES: Record<string, string> = {

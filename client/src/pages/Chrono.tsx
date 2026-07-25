@@ -53,7 +53,7 @@ export default function Chrono() {
       heroTitle="Where Rarity Meets"
       heroAccent="Absolute Precision"
       heroSubtitle="The private watch division of Billionaire Collection. Acquiring and placing only the world's most significant timepieces — strictly above one million dollars — for a closed circle of discerning collectors."
-      heroImage="https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/billionaire-chrono-hero-fRufSSQqNiuNDpFcCMxSqZ.webp"
+      heroImage="/images/bc-chrono-watch1.jpg"
       heroCta={{ label: "Enquire Now", href: "https://billionairechrono.com" }}
       heroCtaSecondary={{ label: "View Collection", href: "https://billionairechrono.com" }}
       aboutTitle="Investment-Grade Horology at the Absolute Pinnacle"
