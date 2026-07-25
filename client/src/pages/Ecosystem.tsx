@@ -37,14 +37,14 @@ const MEDIA_IMAGES: Record<string, string> = {
   "Billionaire Television": "/images/bc-television.png",
   "Billionaire Magazine": "/images/bc-magazine.png",
   "Billionaire Radio": "/images/bc-radio.png",
-  "Billionaire News": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&q=70",
+  "Billionaire News": "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=400&q=70",
 };
 
 const TECH_IMAGES: Record<string, string> = {
   "Billionaire University": "/images/billionaire-university-logo.png",
-  "Billionaire Vitality": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&q=70",
-  "TheBillionaire.ai": "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=400&q=70",
-  "Billionaire Digital": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&q=70",
+  "Billionaire Vitality": "/images/bc-vitality.png",
+  "TheBillionaire.ai": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=400&q=70",
+  "Billionaire Digital": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&q=70",
 };
 
 const SERVICES_IMAGES: Record<string, string> = {

@@ -39,6 +39,9 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
     const COUNT = isMobile ? 2800 : 5500;
     const RADIUS = 5;
 
+    // Track which dots are "white sparkle" dots for animation
+    const isSparkle: boolean[] = [];
+
     const positions = new Float32Array(COUNT * 3);
     const colors = new Float32Array(COUNT * 3);
 
@@ -70,13 +73,14 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
         colors[i * 3] = col.r * goldBright;
         colors[i * 3 + 1] = col.g * goldBright;
         colors[i * 3 + 2] = col.b * goldBright;
+        isSparkle.push(false);
       } else {
-        // White dots — extreme over-bright for intense diamond sparkle
-        // Values 5.5–6.5 with AdditiveBlending create blazing diamond glitter
-        const sparkle = 5.5 + Math.random() * 1.0; // 5.5–6.5 intense diamond sparkle
+        // White sparkle dots — initial value, will be animated
+        const sparkle = 5.5 + Math.random() * 1.0;
         colors[i * 3] = sparkle;
         colors[i * 3 + 1] = sparkle;
         colors[i * 3 + 2] = sparkle;
+        isSparkle.push(true);
       }
     }
 
@@ -188,6 +192,22 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
     const animate = () => {
       frameId = requestAnimationFrame(animate);
       t += 0.005;
+
+      // Pulsing sparkle: white dot brightness oscillates between 4.5 and 6.5 over ~2s
+      const sparkleBase = 4.5;
+      const sparkleRange = 2.0; // 4.5 to 6.5
+      const pulseCycle = Math.sin(t * Math.PI) * 0.5 + 0.5; // 0→1→0 over 2s
+      const currentSparkle = sparkleBase + pulseCycle * sparkleRange;
+      const colAttr = geometry.attributes.color as THREE.BufferAttribute;
+      for (let i = 0; i < COUNT; i++) {
+        if (isSparkle[i]) {
+          // Add per-dot phase offset for staggered shimmer
+          const phase = (i * 0.37 + t * 3.0) % (Math.PI * 2);
+          const dotPulse = sparkleBase + (Math.sin(phase) * 0.5 + 0.5) * sparkleRange;
+          colAttr.setXYZ(i, dotPulse, dotPulse, dotPulse);
+        }
+      }
+      colAttr.needsUpdate = true;
 
       // Auto-rotation
       const autoRotX = 0.0025;
