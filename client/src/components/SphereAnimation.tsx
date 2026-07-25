@@ -69,22 +69,34 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
       const whiteThreshold = isMobile ? 0.40 : 0.45;
       let col: THREE.Color;
       if (r >= whiteThreshold) {
-        // Gold dots — pure warm amber, zero green cast
-        // Use only red + a tiny blue; zero out green entirely for vivid gold
-        const goldBright = isMobile
-          ? 4.0 + Math.random() * 1.0   // mobile: 4.0–5.0 — very vivid
-          : 2.2 + Math.random() * 0.8;  // desktop: 2.2–3.0
-        col = colorGold.clone();
-        colors[i * 3]     = col.r * goldBright;           // red — full
-        colors[i * 3 + 1] = col.g * goldBright * 0.55;   // green — heavily suppressed
-        colors[i * 3 + 2] = col.b * goldBright * 0.15;   // blue — near zero for warm amber
+        if (isMobile) {
+          // Mobile: NormalBlending — use clamped 0–1 values, vivid warm gold
+          // #C9A84C = r:0.788, g:0.659, b:0.298 — suppress green further for warm amber
+          colors[i * 3]     = 0.95;   // red — near full
+          colors[i * 3 + 1] = 0.62;   // green — suppressed for warm gold
+          colors[i * 3 + 2] = 0.10;   // blue — minimal
+        } else {
+          // Desktop: AdditiveBlending — use boosted values for glow
+          const goldBright = 2.2 + Math.random() * 0.8;
+          col = colorGold.clone();
+          colors[i * 3]     = col.r * goldBright;
+          colors[i * 3 + 1] = col.g * goldBright * 0.55;
+          colors[i * 3 + 2] = col.b * goldBright * 0.15;
+        }
         isSparkle.push(false);
       } else {
-        // White sparkle dots — extreme brightness on mobile
-        const sparkle = isMobile ? 18.0 + Math.random() * 4.0 : 5.5 + Math.random() * 1.0;
-        colors[i * 3]     = sparkle;
-        colors[i * 3 + 1] = sparkle;
-        colors[i * 3 + 2] = sparkle;
+        if (isMobile) {
+          // Mobile: NormalBlending — pure white (1,1,1)
+          colors[i * 3]     = 1.0;
+          colors[i * 3 + 1] = 1.0;
+          colors[i * 3 + 2] = 1.0;
+        } else {
+          // Desktop: AdditiveBlending — boosted for glow
+          const sparkle = 5.5 + Math.random() * 1.0;
+          colors[i * 3]     = sparkle;
+          colors[i * 3 + 1] = sparkle;
+          colors[i * 3 + 2] = sparkle;
+        }
         isSparkle.push(true);
       }
     }
@@ -94,11 +106,13 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
     geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
 
     const material = new THREE.PointsMaterial({
-      size: isMobile ? 0.18 : 0.055, // much larger dots on mobile
+      size: isMobile ? 0.20 : 0.055,
       vertexColors: true,
-      transparent: false,             // non-transparent for maximum brightness on mobile
+      transparent: false,
       opacity: 1.0,
-      blending: THREE.AdditiveBlending,
+      // Mobile: NormalBlending renders dots as solid opaque colours — no additive dimming
+      // Desktop: AdditiveBlending gives the glowing bloom effect
+      blending: isMobile ? THREE.NormalBlending : THREE.AdditiveBlending,
       depthWrite: false,
       sizeAttenuation: true,
     });
@@ -198,20 +212,32 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
       frameId = requestAnimationFrame(animate);
       t += 0.005;
 
-      // Pulsing sparkle — extreme brightness on mobile for brilliant white dots
-      const sparkleBase = isMobile ? 20.0 : 4.5;
-      const sparkleRange = isMobile ? 8.0 : 2.0; // mobile: 20.0–28.0, desktop: 4.5–6.5
-      const pulseSpeed = isMobile ? 4.5 : 3.0; // faster shimmer on mobile
+      // Pulsing sparkle — desktop uses additive boosted values; mobile uses 0–1 range
       const colAttr = geometry.attributes.color as THREE.BufferAttribute;
-      for (let i = 0; i < COUNT; i++) {
-        if (isSparkle[i]) {
-          // Add per-dot phase offset for staggered shimmer
-          const phase = (i * 0.37 + t * pulseSpeed) % (Math.PI * 2);
-          const dotPulse = sparkleBase + (Math.sin(phase) * 0.5 + 0.5) * sparkleRange;
-          colAttr.setXYZ(i, dotPulse, dotPulse, dotPulse);
+      if (!isMobile) {
+        const sparkleBase = 4.5;
+        const sparkleRange = 2.0;
+        const pulseSpeed = 3.0;
+        for (let i = 0; i < COUNT; i++) {
+          if (isSparkle[i]) {
+            const phase = (i * 0.37 + t * pulseSpeed) % (Math.PI * 2);
+            const dotPulse = sparkleBase + (Math.sin(phase) * 0.5 + 0.5) * sparkleRange;
+            colAttr.setXYZ(i, dotPulse, dotPulse, dotPulse);
+          }
         }
+        colAttr.needsUpdate = true;
+      } else {
+        // Mobile: pulse white dots between 0.7 and 1.0 for a shimmer effect
+        const pulseSpeed = 4.5;
+        for (let i = 0; i < COUNT; i++) {
+          if (isSparkle[i]) {
+            const phase = (i * 0.37 + t * pulseSpeed) % (Math.PI * 2);
+            const dotPulse = 0.75 + (Math.sin(phase) * 0.5 + 0.5) * 0.25; // 0.75–1.0
+            colAttr.setXYZ(i, dotPulse, dotPulse, dotPulse);
+          }
+        }
+        colAttr.needsUpdate = true;
       }
-      colAttr.needsUpdate = true;
 
       // Auto-rotation
       const autoRotX = 0.0025;
