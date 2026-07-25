@@ -24,7 +24,8 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
 
     // ── Renderer ──────────────────────────────────────────────
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    // Use full device pixel ratio on mobile for crisp, bright dots
+    renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(mount.clientWidth, mount.clientHeight);
     renderer.setClearColor(0x000000, 0);
     mount.appendChild(renderer.domElement);
@@ -93,10 +94,10 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
     geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
 
     const material = new THREE.PointsMaterial({
-      size: isMobile ? 0.10 : 0.055, // larger dots on mobile for visibility
+      size: isMobile ? 0.18 : 0.055, // much larger dots on mobile
       vertexColors: true,
-      transparent: true,
-      opacity: 1.0, // full opacity for maximum brightness
+      transparent: false,             // non-transparent for maximum brightness on mobile
+      opacity: 1.0,
       blending: THREE.AdditiveBlending,
       depthWrite: false,
       sizeAttenuation: true,
