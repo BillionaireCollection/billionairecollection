@@ -41,7 +41,7 @@ const MEDIA_IMAGES: Record<string, string> = {
 };
 
 const TECH_IMAGES: Record<string, string> = {
-  "Billionaire University": "/images/billionaire-university-logo.png",
+  "Billionaire University": "/images/bc-university-hall.jpg",
   "Billionaire Vitality": "/images/bc-vitality.png",
   "TheBillionaire.ai": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=400&q=70",
   "Billionaire Digital": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&q=70",
@@ -65,7 +65,7 @@ const BROKERAGE_IMAGES: Record<string, string> = {
   "Billionaire Crypto": "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/eco-tile-crypto-8UXcm66qLZSjLsGEikQGHG.webp",
   "The Off Market Sale": "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/eco-tile-offmarket-ctz7kbS5xoAPit3ZMNT275.webp",
   "OffMarket Hotel": "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/eco-tile-hotel-5kQ465sUvqesef5X5hxLpA.webp",
-  "Billionaire University": "/images/billionaire-university-logo.png",
+  "Billionaire University": "/images/bc-university-hall.jpg",
 };
 
 const DIVISIONS = [

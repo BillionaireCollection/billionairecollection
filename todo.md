@@ -196,3 +196,10 @@
 - [x] Apply unique meta title/description/keywords to homepage and all new pillar pages
 - [x] Add FAQ schema to homepage for AI Overview eligibility
 - [x] Register /ecosystem and /brands routes in App.tsx
+
+## Three Improvements (July 2026)
+
+- [x] Add brand image for Billionaire University tile in Ecosystem page
+- [x] Wire owner email notifications for Contact form submissions
+- [x] Wire owner email notifications for Newsletter subscriptions
+- [x] Add Billionaire Chrono to mobile hamburger menu Brokerage grid (already present — confirmed)

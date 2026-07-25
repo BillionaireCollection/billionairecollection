@@ -59,6 +59,11 @@ export const appRouter = router({
       .input(z.object({ email: z.string().email(), name: z.string().optional(), source: z.string().optional() }))
       .mutation(async ({ input }) => {
         await subscribeNewsletter({ email: input.email, name: input.name, source: input.source ?? "website" });
+        // Notify owner
+        sendOwnerEmail(
+          `New Newsletter Subscriber — ${input.email}`,
+          `**Email:** ${input.email}\n**Name:** ${input.name ?? "—"}\n**Source:** ${input.source ?? "website"}`,
+        ).catch(() => {/* non-blocking */});
         return { success: true };
       }),
     list: adminProcedure.query(async () => getNewsletterSubscribers()),
@@ -129,6 +134,11 @@ export const appRouter = router({
       }))
       .mutation(async ({ input }) => {
         await createContactEnquiry(input);
+        // Notify owner
+        sendOwnerEmail(
+          `New Contact Enquiry — ${input.name} (${input.subject})`,
+          `**Name:** ${input.name}\n**Email:** ${input.email}\n**Phone:** ${input.phone ?? "—"}\n**Subject:** ${input.subject}\n**Division:** ${input.division ?? "general"}\n\n${input.message}`,
+        ).catch(() => {/* non-blocking */});
         return { success: true };
       }),
     list: adminProcedure.query(async () => getContactEnquiries()),
