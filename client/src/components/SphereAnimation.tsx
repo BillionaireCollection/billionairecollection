@@ -36,7 +36,7 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
 
     // ── Point Cloud Sphere ────────────────────────────────────
     const isMobile = window.innerWidth < 768;
-    const COUNT = isMobile ? 2800 : 5500;
+    const COUNT = isMobile ? 2800 : 8000;
     const RADIUS = 5;
 
     // Track which dots are "white sparkle" dots for animation
