@@ -61,7 +61,7 @@ const BROKERAGE_IMAGES: Record<string, string> = {
   "Billionaire Air": "/images/bombardier-global-7500.png",
   "Billionaire Car": "/images/bugatti-chiron-super-sport.jpg",
   "Billionaire Art": "/images/bc-art-crown.png",
-  "Billionaire Chrono": "/images/chrono-richard-mille-rm53.webp",
+  "Billionaire Chrono": "/images/bc-chrono-watch1.jpg",
   "Billionaire Crypto": "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/eco-tile-crypto-8UXcm66qLZSjLsGEikQGHG.webp",
   "The Off Market Sale": "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/eco-tile-offmarket-ctz7kbS5xoAPit3ZMNT275.webp",
   "OffMarket Hotel": "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/eco-tile-hotel-5kQ465sUvqesef5X5hxLpA.webp",

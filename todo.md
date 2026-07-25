@@ -211,3 +211,8 @@
 - [x] Build full /chrono page for Billionaire Chrono (ultra-rare timepieces) — page already existed, updated hero image
 - [x] Register /chrono route in App.tsx (already registered)
 - [x] Add /chrono to sitemap.xml
+
+## Quick Improvements (July 2026 — Round 3)
+
+- [x] Update Billionaire Chrono Ecosystem Brokerage tile image to bc-chrono-watch1.jpg
+- [x] Add sendOwnerEmail to Golden Ticket application procedure (already wired — confirmed)

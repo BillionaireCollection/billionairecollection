@@ -86,7 +86,7 @@ export const appRouter = router({
         sendOwnerEmail(
           `New Concierge Request — ${input.name} (${input.requestType})`,
           `**Name:** ${input.name}\n**Email:** ${input.email}\n**Phone:** ${input.phone ?? "—"}\n**Request Type:** ${input.requestType}\n**Budget:** ${input.budget ?? "—"}\n**Preferred Date:** ${input.preferredDate ?? "—"}\n\n${input.description}`,
-        ).catch(() => {/* non-blocking */});
+        ).catch((err) => console.error('[Notification] Concierge email failed:', err));
         return { success: true };
       }),
     list: adminProcedure.query(async () => getConciergeRequests()),
@@ -172,7 +172,7 @@ export const appRouter = router({
         sendOwnerEmail(
           `New Golden Ticket Application — ${input.name}`,
           `**Name:** ${input.name}\n**Email:** ${input.email}\n**Phone:** ${input.phone ?? "—"}\n**Country:** ${input.country ?? "—"}\n**Referred By:** ${input.referredBy ?? "—"}\n**Message:** ${input.message ?? "—"}`,
-        ).catch(() => {/* non-blocking */});
+        ).catch((err) => console.error('[Notification] Golden Ticket email failed:', err));
         return { success: true };
       }),
     list: adminProcedure.query(async () => getGoldenTicketApplications()),
