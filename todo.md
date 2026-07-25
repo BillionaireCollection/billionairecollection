@@ -234,3 +234,13 @@
 - [x] Add Counsel tile to Ecosystem page (Services section)
 - [x] Add Vitality to home page Ecosystem section
 - [x] Add Counsel to home page Ecosystem section
+
+## Round 6 Improvements (July 2026)
+
+- [x] Boost mobile gold dot brightness in sphere (goldBright 2.8–3.5x on mobile)
+- [x] Source brand images for Ecosystem Services tiles (Card, Funding, Golf, Travel)
+- [x] Build Billionaire News brand page (/news-brand)
+- [x] Register /news-brand route in App.tsx
+- [x] Add /news-brand to sitemap.xml
+- [x] Update Ecosystem Media tile for News to link to /news-brand
+- [x] Update Ecosystem Services tile images with brand photography

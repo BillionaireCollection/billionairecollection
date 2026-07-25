@@ -37,7 +37,7 @@ const MEDIA_IMAGES: Record<string, string> = {
   "Billionaire Television": "/images/bc-television.png",
   "Billionaire Magazine": "/images/bc-magazine.png",
   "Billionaire Radio": "/images/bc-radio.png",
-  "Billionaire News": "/images/bc-news-studio.jpg",
+  "Billionaire News": "/manus-storage/bc-news-hero_426f5dea.jpg",
 };
 
 const TECH_IMAGES: Record<string, string> = {
@@ -48,10 +48,10 @@ const TECH_IMAGES: Record<string, string> = {
 };
 
 const SERVICES_IMAGES: Record<string, string> = {
-  "Billionaire Card": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&q=70",
-  "Billionaire Funding": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&q=70",
-  "Billionaire Golf": "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=400&q=70",
-  "Billionaire Travel": "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=70",
+  "Billionaire Card": "/manus-storage/bc-card-tile_9390284a.jpg",
+  "Billionaire Funding": "/manus-storage/bc-funding-tile_262685ff.jpg",
+  "Billionaire Golf": "/manus-storage/bc-golf-tile_c0f4559e.jpg",
+  "Billionaire Travel": "/manus-storage/bc-travel-tile_c4de307d.jpg",
   "Billionaire Counsel": "/images/bc-counsel-hero.jpg",
 };
 
@@ -106,7 +106,7 @@ const DIVISIONS = [
       { label: "Billionaire Television", href: "/television", sub: "Luxury lifestyle TV" },
       { label: "Billionaire Magazine", href: "/magazine", sub: "Premier UHNW publication" },
       { label: "Billionaire Radio", href: "/radio", sub: "Exclusive audio content" },
-      { label: "Billionaire News", href: "/news", sub: "UHNW news & insights" },
+      { label: "Billionaire News", href: "/news-brand", sub: "UHNW news & insights" },
     ],
   },
   {

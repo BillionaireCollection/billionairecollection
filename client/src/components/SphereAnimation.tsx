@@ -69,7 +69,9 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
       let col: THREE.Color;
       if (r >= whiteThreshold) {
         // Gold dots — warm amber gold, suppress green channel to avoid green tint
-        const goldBright = 2.2 + Math.random() * 0.8; // 2.2–3.0 over-bright for vivid glow
+        const goldBright = isMobile
+          ? 2.8 + Math.random() * 0.7  // mobile: 2.8–3.5 — boosted to match brilliant white dots
+          : 2.2 + Math.random() * 0.8; // desktop: 2.2–3.0
         col = colorGold.clone().lerp(colorWhite, (1 - t) * 0.10);
         colors[i * 3] = col.r * goldBright;           // red — full
         colors[i * 3 + 1] = col.g * goldBright * 0.72; // green — suppressed to kill yellow-green cast

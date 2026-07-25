@@ -55,6 +55,7 @@ import Ecosystem from "./pages/Ecosystem";
 import Brands from "./pages/Brands";
 import Vitality from "./pages/Vitality";
 import Counsel from "./pages/Counsel";
+import NewsBrand from "./pages/NewsBrand";
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -94,6 +95,7 @@ function Router() {
             <Route path="/television" component={Television} />
             <Route path="/magazine" component={Magazine} />
             <Route path="/radio" component={Radio} />
+            <Route path="/news-brand" component={NewsBrand} />
             <Route path="/technology" component={Technology} />
             <Route path="/services" component={Services} />
             <Route path="/funding" component={Funding} />
