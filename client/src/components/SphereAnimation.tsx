@@ -36,7 +36,7 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
 
     // ── Point Cloud Sphere ────────────────────────────────────
     const isMobile = window.innerWidth < 768;
-    const COUNT = isMobile ? 3500 : 8000;
+    const COUNT = isMobile ? 3500 : 12000;
     const RADIUS = 5;
 
     // Track which dots are "white sparkle" dots for animation
@@ -62,11 +62,12 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
       positions[i * 3 + 1] = y;
       positions[i * 3 + 2] = z;
 
-      // 70% gold / 30% white — gold dominant, white provides diamond sparkle
+      // 55% gold / 45% white — more white dots for a denser sparkle effect on desktop
       const t = Math.abs(Math.sin(phi)); // 0 at poles, 1 at equator
       const r = Math.random();
+      const whiteThreshold = isMobile ? 0.30 : 0.45;
       let col: THREE.Color;
-      if (r < 0.70) {
+      if (r >= whiteThreshold) {
         // Gold dots — over-bright for vivid luminous gold glow
         const goldBright = 1.8 + Math.random() * 0.8; // 1.8–2.6 over-bright gold
         col = colorGold.clone().lerp(colorWhite, (1 - t) * 0.15);
