@@ -53,6 +53,8 @@ import BillionaireUniversity from "./pages/BillionaireUniversity";
 import Merch from "./pages/Merch";
 import Ecosystem from "./pages/Ecosystem";
 import Brands from "./pages/Brands";
+import Vitality from "./pages/Vitality";
+import Counsel from "./pages/Counsel";
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -97,6 +99,8 @@ function Router() {
             <Route path="/funding" component={Funding} />
             <Route path="/golf" component={Golf} />
             <Route path="/travel" component={Travel} />
+            <Route path="/vitality" component={Vitality} />
+            <Route path="/counsel" component={Counsel} />
             <Route path="/card" component={Card} />
             <Route path="/card-concierge" component={CardConcierge} />
             <Route path="/champagne" component={Champagne} />

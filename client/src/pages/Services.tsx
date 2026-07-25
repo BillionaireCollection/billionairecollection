@@ -70,7 +70,7 @@ const SERVICES_FULL = [
     icon: "◆",
     items: [
       { title: "Billionaire University", desc: "Transformational education programmes for entrepreneurs, executives, and next-generation leaders — covering wealth creation, business strategy, and personal mastery." },
-      { title: "Billionaire Counsel", desc: "Elite legal and advisory services for UHNW individuals and family offices, covering corporate structuring, wealth planning, dispute resolution, and succession planning." },
+      { title: "Billionaire Counsel", desc: "Elite legal and advisory services for UHNW individuals and family offices, covering corporate structuring, wealth planning, dispute resolution, and succession planning.", href: "/counsel" },
       { title: "Mentorship & Coaching", desc: "Access to world-class mentors and coaches through The Impossible Coach and Billionaire Tutor — personalised guidance for extraordinary achievement." },
     ],
   },
@@ -150,12 +150,18 @@ export default function Services() {
                   <div style={{ flex: 1, height: "1px", background: "rgba(201,168,76,0.15)" }} />
                 </div>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 340px), 1fr))", gap: "1px", background: "rgba(201,168,76,0.1)" }}>
-                  {group.items.map((item) => (
-                    <div key={item.title} className="bc-glass-card" style={{ padding: "2.5rem" }}>
-                      <h3 style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "1.25rem", color: "#fff", marginBottom: "0.875rem" }}>{item.title}</h3>
-                      <p style={{ fontFamily: FONT_UI, fontWeight: 300, fontSize: "0.875rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.75 }}>{item.desc}</p>
-                    </div>
-                  ))}
+                  {group.items.map((item) => {
+                    const card = (
+                      <div key={item.title} className="bc-glass-card" style={{ padding: "2.5rem", cursor: (item as any).href ? "pointer" : "default", transition: "border-color 0.2s" }}>
+                        <h3 style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "1.25rem", color: "#fff", marginBottom: "0.875rem" }}>{item.title}</h3>
+                        <p style={{ fontFamily: FONT_UI, fontWeight: 300, fontSize: "0.875rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.75 }}>{item.desc}</p>
+                        {(item as any).href && <span style={{ fontFamily: FONT_UI, fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "0.15em", color: "#C9A84C", marginTop: "1rem", display: "block" }}>Learn More →</span>}
+                      </div>
+                    );
+                    return (item as any).href
+                      ? <Link key={item.title} href={(item as any).href} style={{ textDecoration: "none" }}>{card}</Link>
+                      : card;
+                  })}
                 </div>
               </div>
             </FadeUp>

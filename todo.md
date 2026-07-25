@@ -216,3 +216,14 @@
 
 - [x] Update Billionaire Chrono Ecosystem Brokerage tile image to bc-chrono-watch1.jpg
 - [x] Add sendOwnerEmail to Golden Ticket application procedure (already wired — confirmed)
+
+## New Division Pages (July 2026 — Round 4)
+
+- [x] Build Billionaire Vitality page (/vitality) — Technology division
+- [x] Register /vitality route in App.tsx
+- [x] Add /vitality to sitemap.xml
+- [x] Update Technology page to link to /vitality (added to Navbar Divisions)
+- [x] Build Billionaire Counsel page (/counsel) — Services division
+- [x] Register /counsel route in App.tsx
+- [x] Add /counsel to sitemap.xml
+- [x] Update Services page to link to /counsel (added to Navbar Divisions)
