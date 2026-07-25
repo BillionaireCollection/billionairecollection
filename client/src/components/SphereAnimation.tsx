@@ -124,19 +124,23 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
     // Central glow orb removed — pure point-cloud sphere
 
     // ── Dark background sphere to block hero image bleed-through ──
-    // Camera is OUTSIDE the sphere (z=14), so we need FrontSide facing
-    // the camera. Radius slightly smaller than RADIUS so particles
-    // (at exactly RADIUS) render in front of this dark fill.
-    const bgSphereGeo = new THREE.SphereGeometry(RADIUS * 0.98, 48, 48);
-    const bgSphereMat = new THREE.MeshBasicMaterial({
-      color: 0x000000,
-      transparent: false,
-      side: THREE.FrontSide,
-      depthWrite: false,
-    });
-    const bgSphere = new THREE.Mesh(bgSphereGeo, bgSphereMat);
-    bgSphere.renderOrder = 1; // render after clear, before glow/particles
-    scene.add(bgSphere);
+    // Only needed on desktop where the sphere overlaps the hero background image.
+    // On mobile the sphere sits on a plain black section, so no fill needed.
+    let bgSphereGeo: THREE.SphereGeometry | null = null;
+    let bgSphereMat: THREE.MeshBasicMaterial | null = null;
+    let bgSphere: THREE.Mesh | null = null;
+    if (!isMobile) {
+      bgSphereGeo = new THREE.SphereGeometry(RADIUS * 0.98, 48, 48);
+      bgSphereMat = new THREE.MeshBasicMaterial({
+        color: 0x000000,
+        transparent: false,
+        side: THREE.FrontSide,
+        depthWrite: false,
+      });
+      bgSphere = new THREE.Mesh(bgSphereGeo, bgSphereMat);
+      bgSphere.renderOrder = 1;
+      scene.add(bgSphere);
+    }
 
     // ── Mouse interaction ─────────────────────────────────────
     let mouseX = 0;
@@ -257,8 +261,8 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
         dragRotY = points.rotation.y;
       }
 
-      // Keep background sphere aligned with particle cloud
-      bgSphere.rotation.copy(points.rotation);
+      // Keep background sphere aligned with particle cloud (desktop only)
+      if (bgSphere) bgSphere.rotation.copy(points.rotation);
 
       // (core removed)
 
@@ -278,8 +282,8 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
       renderer.dispose();
       geometry.dispose();
       material.dispose();
-      bgSphereGeo.dispose();
-      bgSphereMat.dispose();
+      if (bgSphereGeo) bgSphereGeo.dispose();
+      if (bgSphereMat) bgSphereMat.dispose();
       if (mount.contains(renderer.domElement)) {
         mount.removeChild(renderer.domElement);
       }
