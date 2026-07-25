@@ -46,7 +46,7 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
     const colors = new Float32Array(COUNT * 3);
 
     // Brighter gold base — boosted from #C9A84C to a more vivid warm gold
-    const colorGold = new THREE.Color("#FFD700");
+    const colorGold = new THREE.Color("#C9A84C"); // BC brand gold — warm amber, no green cast
     const colorWhite = new THREE.Color("#ffffff");
 
     for (let i = 0; i < COUNT; i++) {
@@ -68,12 +68,12 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
       const whiteThreshold = isMobile ? 0.30 : 0.45;
       let col: THREE.Color;
       if (r >= whiteThreshold) {
-        // Gold dots — over-bright for vivid luminous gold glow
-        const goldBright = 1.8 + Math.random() * 0.8; // 1.8–2.6 over-bright gold
-        col = colorGold.clone().lerp(colorWhite, (1 - t) * 0.15);
-        colors[i * 3] = col.r * goldBright;
-        colors[i * 3 + 1] = col.g * goldBright;
-        colors[i * 3 + 2] = col.b * goldBright;
+        // Gold dots — warm amber gold, suppress green channel to avoid green tint
+        const goldBright = 2.2 + Math.random() * 0.8; // 2.2–3.0 over-bright for vivid glow
+        col = colorGold.clone().lerp(colorWhite, (1 - t) * 0.10);
+        colors[i * 3] = col.r * goldBright;           // red — full
+        colors[i * 3 + 1] = col.g * goldBright * 0.72; // green — suppressed to kill yellow-green cast
+        colors[i * 3 + 2] = col.b * goldBright * 0.25; // blue — minimal for warm amber tone
         isSparkle.push(false);
       } else {
         // White sparkle dots — initial value, will be animated
