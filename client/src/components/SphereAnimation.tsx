@@ -36,7 +36,7 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
 
     // ── Point Cloud Sphere ────────────────────────────────────
     const isMobile = window.innerWidth < 768;
-    const COUNT = isMobile ? 2800 : 8000;
+    const COUNT = isMobile ? 3500 : 8000;
     const RADIUS = 5;
 
     // Track which dots are "white sparkle" dots for animation
@@ -193,16 +193,15 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
       frameId = requestAnimationFrame(animate);
       t += 0.005;
 
-      // Pulsing sparkle: white dot brightness oscillates between 4.5 and 6.5 over ~2s
-      const sparkleBase = 4.5;
-      const sparkleRange = 2.0; // 4.5 to 6.5
-      const pulseCycle = Math.sin(t * Math.PI) * 0.5 + 0.5; // 0→1→0 over 2s
-      const currentSparkle = sparkleBase + pulseCycle * sparkleRange;
+      // Pulsing sparkle — mobile gets a higher base and faster pulse for more intensity
+      const sparkleBase = isMobile ? 6.0 : 4.5;
+      const sparkleRange = isMobile ? 3.0 : 2.0; // mobile: 6.0–9.0, desktop: 4.5–6.5
+      const pulseSpeed = isMobile ? 4.5 : 3.0; // faster shimmer on mobile
       const colAttr = geometry.attributes.color as THREE.BufferAttribute;
       for (let i = 0; i < COUNT; i++) {
         if (isSparkle[i]) {
           // Add per-dot phase offset for staggered shimmer
-          const phase = (i * 0.37 + t * 3.0) % (Math.PI * 2);
+          const phase = (i * 0.37 + t * pulseSpeed) % (Math.PI * 2);
           const dotPulse = sparkleBase + (Math.sin(phase) * 0.5 + 0.5) * sparkleRange;
           colAttr.setXYZ(i, dotPulse, dotPulse, dotPulse);
         }
