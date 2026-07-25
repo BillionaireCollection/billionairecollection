@@ -63,16 +63,19 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
       const r = Math.random();
       let col: THREE.Color;
       if (r < 0.5) {
-        // Gold dots — slightly richer near equator
+        // Gold dots — unchanged, slightly richer near equator
         col = colorGold.clone().lerp(colorWhite, (1 - t) * 0.25);
+        colors[i * 3] = col.r;
+        colors[i * 3 + 1] = col.g;
+        colors[i * 3 + 2] = col.b;
       } else {
-        // White dots — slightly warmer near equator
-        col = colorWhite.clone().lerp(colorGold, t * 0.2);
+        // White dots — pure vivid white, slightly over-bright for sparkle
+        // Values above 1.0 with AdditiveBlending create a bloom/sparkle effect
+        const sparkle = 1.0 + Math.random() * 0.8; // 1.0–1.8 for sparkle
+        colors[i * 3] = sparkle;
+        colors[i * 3 + 1] = sparkle;
+        colors[i * 3 + 2] = sparkle;
       }
-
-      colors[i * 3] = col.r;
-      colors[i * 3 + 1] = col.g;
-      colors[i * 3 + 2] = col.b;
     }
 
     const geometry = new THREE.BufferGeometry();
