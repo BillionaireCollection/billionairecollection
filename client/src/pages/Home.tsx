@@ -8,7 +8,6 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { Link } from "wouter";
 import SphereAnimation from "@/components/SphereAnimation";
-import GoldParticles from "@/components/GoldParticles";
 import { useSEO } from "@/hooks/useSEO";
 import { useJsonLd } from "@/hooks/useJsonLd";
 import { trpc } from "@/lib/trpc";
@@ -192,7 +191,7 @@ export default function Home() {
       {/* ── HERO — Cinematic Minimalist ── */}
       <section
         aria-label="Billionaire Collection — The Place for Everything You Desire"
-        style={{ position: "relative", height: "100vh", minHeight: "680px", overflow: "visible", display: "flex", alignItems: "flex-start" }}
+        style={{ position: "relative", height: "100vh", minHeight: "680px", overflow: "hidden", display: "flex", alignItems: "flex-start" }}
       >
         {/* Cinematic background with deep vignette */}
         <img
@@ -209,11 +208,8 @@ export default function Home() {
         {/* Left fade for text legibility */}
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.3) 55%, transparent 100%)" }} />
 
-        {/* Gold floating particles — above background, below content */}
-        <GoldParticles count={20} />
-
         {/* Content — bottom-anchored editorial layout */}
-        <div className="container" style={{ position: "relative", zIndex: 2, paddingTop: "clamp(10rem, 20vh, 16rem)", width: "100%" }}>
+        <div className="container" style={{ position: "relative", zIndex: 1, paddingTop: "clamp(10rem, 20vh, 16rem)", width: "100%" }}>
 
 
 
@@ -331,7 +327,6 @@ export default function Home() {
           @media (max-width: 1023px) {
             #hero-sphere-mobile-inline { display: flex !important; }
             #hero-scroll-indicator { display: none !important; }
-            #hero-gold-particles { overflow: visible !important; height: 100vh !important; }
           }
         `}</style>
       </section>
