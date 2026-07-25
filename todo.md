@@ -244,3 +244,10 @@
 - [x] Add /news-brand to sitemap.xml
 - [x] Update Ecosystem Media tile for News to link to /news-brand
 - [x] Update Ecosystem Services tile images with brand photography
+
+## Round 7 Improvements (July 2026)
+
+- [x] Add Billionaire News to navbar Divisions dropdown (Media section)
+- [x] Add Billionaire News tile to home page Ecosystem grid
+- [x] Build full Billionaire Funding page (/funding) with investment programmes and CTA
+- [x] Add /funding to sitemap.xml (already present — confirmed)

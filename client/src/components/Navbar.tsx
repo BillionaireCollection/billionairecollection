@@ -26,7 +26,8 @@ const NAV_ITEMS: NavItem[] = [
   {
     label: "Divisions",
     children: [
-      { label: "Media", href: "/media", description: "Television, Magazine & Radio" },
+      { label: "Media", href: "/media", description: "Television, Magazine, Radio & News" },
+      { label: "News", href: "/news-brand", description: "UHNW intelligence & market insights" },
       { label: "Technology", href: "/university", description: "University, Digital & Vitality" },
       { label: "Vitality", href: "/vitality", description: "Wellness, longevity & biohacking" },
       { label: "Services", href: "/services", description: "Funding, Golf, Travel & Card" },
