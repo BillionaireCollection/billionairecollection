@@ -36,7 +36,7 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
 
     // ── Point Cloud Sphere ────────────────────────────────────
     const isMobile = window.innerWidth < 768;
-    const COUNT = isMobile ? 3500 : 12000;
+    const COUNT = isMobile ? 6000 : 12000;
     const RADIUS = 5;
 
     // Track which dots are "white sparkle" dots for animation
@@ -65,22 +65,23 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
       // 55% gold / 45% white — more white dots for a denser sparkle effect on desktop
       const t = Math.abs(Math.sin(phi)); // 0 at poles, 1 at equator
       const r = Math.random();
-      const whiteThreshold = isMobile ? 0.30 : 0.45;
+      const whiteThreshold = isMobile ? 0.40 : 0.45;
       let col: THREE.Color;
       if (r >= whiteThreshold) {
-        // Gold dots — warm amber gold, suppress green channel to avoid green tint
+        // Gold dots — pure warm amber, zero green cast
+        // Use only red + a tiny blue; zero out green entirely for vivid gold
         const goldBright = isMobile
-          ? 2.8 + Math.random() * 0.7  // mobile: 2.8–3.5 — boosted to match brilliant white dots
-          : 2.2 + Math.random() * 0.8; // desktop: 2.2–3.0
-        col = colorGold.clone().lerp(colorWhite, (1 - t) * 0.10);
-        colors[i * 3] = col.r * goldBright;           // red — full
-        colors[i * 3 + 1] = col.g * goldBright * 0.72; // green — suppressed to kill yellow-green cast
-        colors[i * 3 + 2] = col.b * goldBright * 0.25; // blue — minimal for warm amber tone
+          ? 4.0 + Math.random() * 1.0   // mobile: 4.0–5.0 — very vivid
+          : 2.2 + Math.random() * 0.8;  // desktop: 2.2–3.0
+        col = colorGold.clone();
+        colors[i * 3]     = col.r * goldBright;           // red — full
+        colors[i * 3 + 1] = col.g * goldBright * 0.55;   // green — heavily suppressed
+        colors[i * 3 + 2] = col.b * goldBright * 0.15;   // blue — near zero for warm amber
         isSparkle.push(false);
       } else {
-        // White sparkle dots — initial value, will be animated
-        const sparkle = isMobile ? 9.0 + Math.random() * 2.0 : 5.5 + Math.random() * 1.0;
-        colors[i * 3] = sparkle;
+        // White sparkle dots — extreme brightness on mobile
+        const sparkle = isMobile ? 18.0 + Math.random() * 4.0 : 5.5 + Math.random() * 1.0;
+        colors[i * 3]     = sparkle;
         colors[i * 3 + 1] = sparkle;
         colors[i * 3 + 2] = sparkle;
         isSparkle.push(true);
@@ -92,7 +93,7 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
     geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
 
     const material = new THREE.PointsMaterial({
-      size: isMobile ? 0.065 : 0.055, // slightly larger dots for more visible brightness
+      size: isMobile ? 0.10 : 0.055, // larger dots on mobile for visibility
       vertexColors: true,
       transparent: true,
       opacity: 1.0, // full opacity for maximum brightness
@@ -196,9 +197,9 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
       frameId = requestAnimationFrame(animate);
       t += 0.005;
 
-      // Pulsing sparkle — mobile gets a very high base for brilliant white dots
-      const sparkleBase = isMobile ? 10.0 : 4.5;
-      const sparkleRange = isMobile ? 5.0 : 2.0; // mobile: 10.0–15.0, desktop: 4.5–6.5
+      // Pulsing sparkle — extreme brightness on mobile for brilliant white dots
+      const sparkleBase = isMobile ? 20.0 : 4.5;
+      const sparkleRange = isMobile ? 8.0 : 2.0; // mobile: 20.0–28.0, desktop: 4.5–6.5
       const pulseSpeed = isMobile ? 4.5 : 3.0; // faster shimmer on mobile
       const colAttr = geometry.attributes.color as THREE.BufferAttribute;
       for (let i = 0; i < COUNT; i++) {
