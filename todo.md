@@ -256,3 +256,9 @@
 
 - [x] Create GoldParticles component at client/src/components/GoldParticles.tsx
 - [x] Integrate GoldParticles into the home page hero section
+
+## Round 8 Improvements (July 2026)
+
+- [x] Build full Billionaire Golf page (/golf) with club access tiers, featured courses, concierge CTA
+- [x] Build full Billionaire Travel page (/travel) with bespoke itinerary programmes and destination listings
+- [x] Add Counsel to home page Divisions row (5th card alongside Media, Technology, Services, Vitality)
