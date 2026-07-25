@@ -265,14 +265,35 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
         ...style,
       }}
     >
+      {/* Gold glow halo — radial gradient behind the sphere */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          borderRadius: "50%",
+          background: "radial-gradient(ellipse at center, rgba(201,168,76,0.22) 0%, rgba(255,215,0,0.10) 35%, rgba(201,168,76,0.04) 60%, transparent 75%)",
+          filter: "blur(18px)",
+          pointerEvents: "none",
+          zIndex: 0,
+          animation: "sphereGlowPulse 3s ease-in-out infinite",
+        }}
+      />
       <div
         ref={mountRef}
         style={{
           width: "100%",
           height: "100%",
           cursor: "grab",
+          position: "relative",
+          zIndex: 1,
         }}
       />
+      <style>{`
+        @keyframes sphereGlowPulse {
+          0%, 100% { opacity: 0.7; transform: scale(0.95); }
+          50% { opacity: 1; transform: scale(1.05); }
+        }
+      `}</style>
     </div>
   );
 }
