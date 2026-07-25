@@ -71,7 +71,7 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
       } else {
         // White dots — pure vivid white, slightly over-bright for sparkle
         // Values above 1.0 with AdditiveBlending create a bloom/sparkle effect
-        const sparkle = 1.0 + Math.random() * 0.8; // 1.0–1.8 for sparkle
+        const sparkle = 1.5 + Math.random() * 1.0; // 1.5–2.5 for intense diamond sparkle
         colors[i * 3] = sparkle;
         colors[i * 3 + 1] = sparkle;
         colors[i * 3 + 2] = sparkle;
