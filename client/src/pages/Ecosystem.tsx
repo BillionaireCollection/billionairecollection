@@ -42,7 +42,7 @@ const MEDIA_IMAGES: Record<string, string> = {
 
 const TECH_IMAGES: Record<string, string> = {
   "Billionaire University": "/images/bc-university-hall.jpg",
-  "Billionaire Vitality": "/images/bc-vitality.png",
+  "Billionaire Vitality": "/images/bc-vitality-hero.jpg",
   "TheBillionaire.ai": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=400&q=70",
   "Billionaire Digital": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&q=70",
 };
@@ -52,7 +52,7 @@ const SERVICES_IMAGES: Record<string, string> = {
   "Billionaire Funding": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&q=70",
   "Billionaire Golf": "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=400&q=70",
   "Billionaire Travel": "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=70",
-  "Billionaire Counsel": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=400&q=70",
+  "Billionaire Counsel": "/images/bc-counsel-hero.jpg",
 };
 
 const BROKERAGE_IMAGES: Record<string, string> = {
@@ -115,7 +115,7 @@ const DIVISIONS = [
     desc: "Cutting-edge technology platforms serving the UHNW community — from AI-powered advisory tools to digital wealth management and vitality platforms.",
     brands: [
       { label: "Billionaire University", href: "/university", sub: "Transformational education" },
-      { label: "Billionaire Vitality", href: "/technology", sub: "Health & longevity" },
+      { label: "Billionaire Vitality", href: "/vitality", sub: "Health & longevity" },
       { label: "TheBillionaire.ai", href: "/technology", sub: "AI-powered advisory" },
       { label: "Billionaire Digital", href: "/technology", sub: "Digital ecosystem" },
     ],
@@ -129,7 +129,7 @@ const DIVISIONS = [
       { label: "Billionaire Funding", href: "/funding", sub: "Investment & private equity" },
       { label: "Billionaire Golf", href: "/golf", sub: "Exclusive golf access" },
       { label: "Billionaire Travel", href: "/travel", sub: "Bespoke travel experiences" },
-      { label: "Billionaire Counsel", href: "/services", sub: "Legal & advisory" },
+      { label: "Billionaire Counsel", href: "/counsel", sub: "Legal & advisory" },
     ],
   },
 ];

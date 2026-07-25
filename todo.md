@@ -227,3 +227,10 @@
 - [x] Register /counsel route in App.tsx
 - [x] Add /counsel to sitemap.xml
 - [x] Update Services page to link to /counsel (added to Navbar Divisions)
+
+## Ecosystem & Home Page Additions (July 2026 — Round 5)
+
+- [x] Add Vitality tile to Ecosystem page (Technology section)
+- [x] Add Counsel tile to Ecosystem page (Services section)
+- [x] Add Vitality to home page Ecosystem section
+- [x] Add Counsel to home page Ecosystem section

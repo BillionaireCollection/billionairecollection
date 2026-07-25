@@ -45,6 +45,8 @@ const ECOSYSTEM_ITEMS = [
   { label: "Automotive", sub: "Rare & exotic automobiles", href: "/car", img: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&q=80" },
   { label: "Fine Art", sub: "Curated collectibles", href: "/art", img: "https://billionairecollection.com/images/billionaire-art-new.png" },
   { label: "Chrono", sub: "Ultra-rare timepieces $1M+", href: "/chrono", img: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/chrono-patek-tile-bkFdcdrvM2eDowB7LXgYyf.webp" },
+  { label: "Vitality", sub: "Wellness & longevity", href: "/vitality", img: "/images/bc-vitality-hero.jpg" },
+  { label: "Counsel", sub: "Ultra-premium legal advisory", href: "/counsel", img: "/images/bc-counsel-hero.jpg" },
 ];
 
 const PRODUCTS = [
