@@ -77,7 +77,7 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
         isSparkle.push(false);
       } else {
         // White sparkle dots — initial value, will be animated
-        const sparkle = 5.5 + Math.random() * 1.0;
+        const sparkle = isMobile ? 9.0 + Math.random() * 2.0 : 5.5 + Math.random() * 1.0;
         colors[i * 3] = sparkle;
         colors[i * 3 + 1] = sparkle;
         colors[i * 3 + 2] = sparkle;
@@ -194,9 +194,9 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
       frameId = requestAnimationFrame(animate);
       t += 0.005;
 
-      // Pulsing sparkle — mobile gets a higher base and faster pulse for more intensity
-      const sparkleBase = isMobile ? 6.0 : 4.5;
-      const sparkleRange = isMobile ? 3.0 : 2.0; // mobile: 6.0–9.0, desktop: 4.5–6.5
+      // Pulsing sparkle — mobile gets a very high base for brilliant white dots
+      const sparkleBase = isMobile ? 10.0 : 4.5;
+      const sparkleRange = isMobile ? 5.0 : 2.0; // mobile: 10.0–15.0, desktop: 4.5–6.5
       const pulseSpeed = isMobile ? 4.5 : 3.0; // faster shimmer on mobile
       const colAttr = geometry.attributes.color as THREE.BufferAttribute;
       for (let i = 0; i < COUNT; i++) {
