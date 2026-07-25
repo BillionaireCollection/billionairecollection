@@ -48,7 +48,7 @@ export default function GoldParticles({ count = 14 }: GoldParticlesProps) {
           inset: 0,
           overflow: "hidden",
           pointerEvents: "none",
-          zIndex: 0,
+          zIndex: 1,
         }}
         aria-hidden="true"
       >

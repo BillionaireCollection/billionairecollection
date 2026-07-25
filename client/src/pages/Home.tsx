@@ -213,7 +213,7 @@ export default function Home() {
         <GoldParticles count={14} />
 
         {/* Content — bottom-anchored editorial layout */}
-        <div className="container" style={{ position: "relative", zIndex: 1, paddingTop: "clamp(10rem, 20vh, 16rem)", width: "100%" }}>
+        <div className="container" style={{ position: "relative", zIndex: 2, paddingTop: "clamp(10rem, 20vh, 16rem)", width: "100%" }}>
 
 
 
