@@ -262,3 +262,15 @@
 - [x] Build full Billionaire Golf page (/golf) with club access tiers, featured courses, concierge CTA
 - [x] Build full Billionaire Travel page (/travel) with bespoke itinerary programmes and destination listings
 - [x] Add Counsel to home page Divisions row (5th card alongside Media, Technology, Services, Vitality)
+
+## Round 9 Improvements (July 2026)
+
+- [x] Build /golden-ticket page — journey-driven, cinematic, ultra-luxury with all sections
+- [x] Register /golden-ticket route in App.tsx
+- [x] Add Golden Ticket to Navbar (featured link)
+- [x] Add /golden-ticket to sitemap.xml
+- [x] Ecosystem visual: Golden Ticket at center surrounded by 11 divisions
+- [x] Journey sections: Inspire → Invite → Transform → Create a Legacy
+- [x] Golden Ticket Club benefits grid
+- [x] Billionaire Giving section (purposeful capitalism framing)
+- [x] CTA section to apply/join
