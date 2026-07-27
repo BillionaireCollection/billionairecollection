@@ -72,12 +72,12 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
         if (isMobile) {
           // Mobile: NormalBlending — use clamped 0–1 values, vivid warm gold
           // #C9A84C = r:0.788, g:0.659, b:0.298 — suppress green further for warm amber
-          colors[i * 3]     = 0.70;   // red — darkened
-          colors[i * 3 + 1] = 0.46;   // green — suppressed for warm gold
-          colors[i * 3 + 2] = 0.07;   // blue — minimal
+          colors[i * 3]     = 0.45;   // red — much darker gold
+          colors[i * 3 + 1] = 0.28;   // green — suppressed for warm gold
+          colors[i * 3 + 2] = 0.04;   // blue — minimal
         } else {
           // Desktop: AdditiveBlending — use boosted values for glow
-          const goldBright = 1.6 + Math.random() * 0.6;
+          const goldBright = 0.9 + Math.random() * 0.4;
           col = colorGold.clone();
           colors[i * 3]     = col.r * goldBright;
           colors[i * 3 + 1] = col.g * goldBright * 0.55;
@@ -87,12 +87,12 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
       } else {
         if (isMobile) {
           // Mobile: NormalBlending — pure white (1,1,1)
-          colors[i * 3]     = 0.72;
-          colors[i * 3 + 1] = 0.72;
-          colors[i * 3 + 2] = 0.72;
+          colors[i * 3]     = 0.40;
+          colors[i * 3 + 1] = 0.40;
+          colors[i * 3 + 2] = 0.40;
         } else {
           // Desktop: AdditiveBlending — boosted for glow
-          const sparkle = 4.0 + Math.random() * 0.8;
+          const sparkle = 2.2 + Math.random() * 0.5;
           colors[i * 3]     = sparkle;
           colors[i * 3 + 1] = sparkle;
           colors[i * 3 + 2] = sparkle;
@@ -219,8 +219,8 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
       // Pulsing sparkle — desktop uses additive boosted values; mobile uses 0–1 range
       const colAttr = geometry.attributes.color as THREE.BufferAttribute;
       if (!isMobile) {
-        const sparkleBase = 3.2;
-        const sparkleRange = 1.5;
+        const sparkleBase = 1.8;
+        const sparkleRange = 0.9;
         const pulseSpeed = 3.0;
         for (let i = 0; i < COUNT; i++) {
           if (isSparkle[i]) {
@@ -236,7 +236,7 @@ export default function SphereAnimation({ size = 600, className, style }: Sphere
         for (let i = 0; i < COUNT; i++) {
           if (isSparkle[i]) {
             const phase = (i * 0.37 + t * pulseSpeed) % (Math.PI * 2);
-            const dotPulse = 0.52 + (Math.sin(phase) * 0.5 + 0.5) * 0.20; // 0.52–0.72
+            const dotPulse = 0.28 + (Math.sin(phase) * 0.5 + 0.5) * 0.14; // 0.28–0.42
             colAttr.setXYZ(i, dotPulse, dotPulse, dotPulse);
           }
         }

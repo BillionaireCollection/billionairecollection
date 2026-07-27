@@ -37,7 +37,7 @@ const MEDIA_IMAGES: Record<string, string> = {
   "Billionaire Television": "/images/bc-television.png",
   "Billionaire Magazine": "/images/bc-magazine.png",
   "Billionaire Radio": "/images/bc-radio.png",
-  "Billionaire News": "/manus-storage/bc-news-hero_426f5dea.jpg",
+  "Billionaire News": "/images/bc-news-hero.jpg",
 };
 
 const TECH_IMAGES: Record<string, string> = {
@@ -48,10 +48,10 @@ const TECH_IMAGES: Record<string, string> = {
 };
 
 const SERVICES_IMAGES: Record<string, string> = {
-  "Billionaire Card": "/manus-storage/bc-card-tile_9390284a.jpg",
-  "Billionaire Funding": "/manus-storage/bc-funding-tile_262685ff.jpg",
-  "Billionaire Golf": "/manus-storage/bc-golf-tile_c0f4559e.jpg",
-  "Billionaire Travel": "/manus-storage/bc-travel-tile_c4de307d.jpg",
+  "Billionaire Card": "/images/bc-card-tile.jpg",
+  "Billionaire Funding": "/images/bc-funding-tile.jpg",
+  "Billionaire Golf": "/images/bc-golf-tile.jpg",
+  "Billionaire Travel": "/images/bc-travel-tile.jpg",
   "Billionaire Counsel": "/images/bc-counsel-hero.jpg",
 };
 

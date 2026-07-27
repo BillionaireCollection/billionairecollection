@@ -45,21 +45,21 @@ const PROGRAMMES = [
     tier: "Entry — $5M+",
     desc: "Quarterly co-investment opportunities across private equity, real estate, and structured products. Includes dedicated relationship manager, quarterly performance reporting, and access to the Billionaire Funding deal flow portal.",
     features: ["Quarterly deal flow", "Dedicated relationship manager", "Consolidated reporting", "Minimum $5M commitment"],
-    img: "/manus-storage/bc-funding-tile_262685ff.jpg",
+    img: "/images/bc-funding-tile.jpg",
   },
   {
     name: "Billionaire Capital Elite",
     tier: "Elite — $25M+",
     desc: "Priority access to all deal flow including pre-IPO rounds and exclusive PE co-investments. Includes monthly advisory sessions, bespoke portfolio construction, and direct introductions to fund managers.",
     features: ["Priority deal access", "Monthly advisory sessions", "Bespoke portfolio construction", "Fund manager introductions"],
-    img: "/manus-storage/bc-funding-tile_262685ff.jpg",
+    img: "/images/bc-funding-tile.jpg",
   },
   {
     name: "Billionaire Capital Sovereign",
     tier: "Sovereign — $100M+",
     desc: "White-glove family office service with dedicated investment committee, proprietary deal origination, and access to sovereign wealth fund co-investments. The highest tier of private capital access available.",
     features: ["Dedicated investment committee", "Proprietary deal origination", "Sovereign co-investments", "Full family office infrastructure"],
-    img: "/manus-storage/bc-funding-tile_262685ff.jpg",
+    img: "/images/bc-funding-tile.jpg",
   },
 ];
 
@@ -106,7 +106,7 @@ export default function Funding() {
         title="Capital That Moves"
         titleAccent="At Your Scale"
         subtitle="The private capital division of Billionaire Collection — providing ultra-high-net-worth individuals and family offices with exclusive access to investment opportunities unavailable through conventional channels."
-        image="/manus-storage/bc-funding-tile_262685ff.jpg"
+        image="/images/bc-funding-tile.jpg"
         cta={{ label: "Speak to an Advisor", href: "/card-concierge" }}
       />
 

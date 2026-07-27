@@ -48,7 +48,7 @@ const FALLBACK_IMGS = [
   "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
   "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80",
   "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&q=80",
-  "https://billionairecollection.com/images/billionaire-art-new.png",
+  "/images/billionaire-art-new.png",
 ];
 
 export default function News() {
