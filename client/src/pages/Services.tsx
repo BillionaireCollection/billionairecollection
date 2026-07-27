@@ -199,7 +199,7 @@ export default function Services() {
             <p style={{ fontFamily: FONT_UI, fontWeight: 300, fontSize: "1.0625rem", color: "rgba(255,255,255,0.45)", maxWidth: "520px", margin: "0 auto 3rem", lineHeight: 1.7 }}>
               Every engagement begins with a private consultation. Our team will design a bespoke service programme tailored to your exact requirements and aspirations.
             </p>
-            <Link href="/concierge">
+            <Link href="/contact">
               <button className="btn-gold" style={{ marginRight: "1rem" }}>Request a Consultation</button>
             </Link>
             <Link href="/ecosystem">
