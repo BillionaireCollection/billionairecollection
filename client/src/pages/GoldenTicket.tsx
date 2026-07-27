@@ -91,6 +91,15 @@ const ORBIT_ITEMS = [
   { label: "Giving",     icon: "🌍", href: "#giving",     angle: 237.3 },   // left-top
 ];
 
+// SVG viewBox size: 600x600, centre at (300,300)
+// Ring radius: 170px (sits at ~28% from centre)
+// Icon orbit radius: 260px (sits at ~43% from centre, well outside ring)
+const SVG_SIZE = 600;
+const SVG_CX = 300;
+const SVG_CY = 300;
+const RING_R = 170;
+const ICON_R = 260;
+
 function EcosystemOrbit() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
@@ -99,238 +108,148 @@ function EcosystemOrbit() {
     <div
       ref={ref}
       style={{
-        position: "relative",
-        width: "min(480px, 78vw)",
-        aspectRatio: "1 / 1",
+        width: "min(560px, 92vw)",
         margin: "0 auto",
-        overflow: "visible",
       }}
     >
-      {/* Orbit ring */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.7 }}
-        animate={inView ? { opacity: 1, scale: 1 } : {}}
-        transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1] }}
-        style={{
-          position: "absolute",
-          inset: "18%",
-          borderRadius: "50%",
-          border: `1px solid rgba(201,168,76,0.25)`,
-          boxShadow: `0 0 60px rgba(201,168,76,0.05), inset 0 0 60px rgba(201,168,76,0.03)`,
-        }}
-      />
-      {/* Second ring */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.7 }}
-        animate={inView ? { opacity: 1, scale: 1 } : {}}
-        transition={{ duration: 1.2, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
-        style={{
-          position: "absolute",
-          inset: "20%",
-          borderRadius: "50%",
-          border: `1px solid rgba(201,168,76,0.08)`,
-        }}
-      />
-
-      {/* Center: Golden Ticket */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={inView ? { opacity: 1, scale: 1 } : {}}
-        transition={{ duration: 1, delay: 0.3, ease: [0.23, 1, 0.32, 1] }}
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          textAlign: "center",
-          zIndex: 2,
-        }}
-      >
-        {/* Ticket shape */}
-        <div
-          style={{
-            width: "110px",
-            height: "70px",
-            background: `linear-gradient(135deg, #1a1200 0%, #2d2000 40%, #1a1200 100%)`,
-            border: `1px solid rgba(201,168,76,0.6)`,
-            borderRadius: "8px",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            boxShadow: `0 0 40px rgba(201,168,76,0.3), 0 0 80px rgba(201,168,76,0.1)`,
-            position: "relative",
-            overflow: "hidden",
-          }}
-        >
-          {/* Ticket perforations */}
-          <div
-            style={{
-              position: "absolute",
-              left: "-6px",
-              top: "50%",
-              transform: "translateY(-50%)",
-              width: "12px",
-              height: "12px",
-              borderRadius: "50%",
-              background: "#000",
-              border: `1px solid rgba(201,168,76,0.3)`,
-            }}
-          />
-          <div
-            style={{
-              position: "absolute",
-              right: "-6px",
-              top: "50%",
-              transform: "translateY(-50%)",
-              width: "12px",
-              height: "12px",
-              borderRadius: "50%",
-              background: "#000",
-              border: `1px solid rgba(201,168,76,0.3)`,
-            }}
-          />
-          <motion.div
-            animate={{ opacity: [0.7, 1, 0.7] }}
-            transition={{ duration: 3, repeat: Infinity }}
-            style={{
-              fontFamily: FONT_HEADING,
-              fontSize: "0.5rem",
-              letterSpacing: "0.15em",
-              color: GOLD,
-              textTransform: "uppercase",
-              marginBottom: "4px",
-            }}
-          >
-            Billionaire Collection
-          </motion.div>
-          <div
-            style={{
-              fontFamily: FONT_HEADING,
-              fontSize: "0.875rem",
-              color: GOLD_LIGHT,
-              letterSpacing: "0.05em",
-            }}
-          >
-            ✦ Golden Ticket ✦
-          </div>
-        </div>
-        <div
-          style={{
-            fontFamily: FONT_UI,
-            fontSize: "0.5625rem",
-            textTransform: "uppercase",
-            letterSpacing: "0.15em",
-            color: "rgba(201,168,76,0.5)",
-            marginTop: "10px",
-          }}
-        >
-          The Key to Everything
-        </div>
-      </motion.div>
-
-      {/* Orbit items */}
-      {ORBIT_ITEMS.map((item, i) => {
-        const rad = (item.angle * Math.PI) / 180;
-        const radius = 52; // percent from center — outside the ring (ring is at 40%)
-        const x = 50 + radius * Math.cos(rad);
-        const y = 50 + radius * Math.sin(rad);
-        return (
-          <motion.div
-            key={item.label}
-            initial={{ opacity: 0, scale: 0 }}
-            animate={inView ? { opacity: 1, scale: 1 } : {}}
-            transition={{
-              duration: 0.5,
-              delay: 0.6 + i * 0.07,
-              ease: [0.23, 1, 0.32, 1],
-            }}
-            style={{
-              position: "absolute",
-              left: `${x}%`,
-              top: `${y}%`,
-              transform: "translate(-50%, -50%)",
-              textAlign: "center",
-              zIndex: 3,
-            }}
-          >
-            <Link href={item.href}>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  gap: "4px",
-                  cursor: "pointer",
-                }}
-              >
-                <motion.div
-                  whileHover={{ scale: 1.2 }}
-                  style={{
-                    width: "38px",
-                    height: "38px",
-                    borderRadius: "50%",
-                    background: "rgba(0,0,0,0.9)",
-                    border: `1px solid rgba(201,168,76,0.35)`,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: "1rem",
-                    boxShadow: `0 0 12px rgba(201,168,76,0.15)`,
-                  }}
-                >
-                  {item.icon}
-                </motion.div>
-                <span
-                  style={{
-                    fontFamily: FONT_UI,
-                    fontSize: "0.4375rem",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.1em",
-                    color: "rgba(201,168,76,0.7)",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  {item.label}
-                </span>
-              </div>
-            </Link>
-          </motion.div>
-        );
-      })}
-
-      {/* Connecting lines from center to each orbit item */}
       <svg
-        style={{
-          position: "absolute",
-          inset: 0,
-          width: "100%",
-          height: "100%",
-          pointerEvents: "none",
-          zIndex: 1,
-        }}
-        viewBox="0 0 100 100"
-        preserveAspectRatio="none"
+        viewBox={`0 0 ${SVG_SIZE} ${SVG_SIZE}`}
+        style={{ width: "100%", height: "auto", overflow: "visible" }}
+        preserveAspectRatio="xMidYMid meet"
       >
+        {/* Outer ring */}
+        <motion.circle
+          cx={SVG_CX} cy={SVG_CY} r={RING_R}
+          fill="none"
+          stroke="rgba(201,168,76,0.25)"
+          strokeWidth="1"
+          initial={{ opacity: 0, scale: 0.7 }}
+          animate={inView ? { opacity: 1, scale: 1 } : {}}
+          style={{ transformOrigin: `${SVG_CX}px ${SVG_CY}px` }}
+          transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1] }}
+        />
+        {/* Inner ring */}
+        <motion.circle
+          cx={SVG_CX} cy={SVG_CY} r={RING_R - 12}
+          fill="none"
+          stroke="rgba(201,168,76,0.08)"
+          strokeWidth="1"
+          initial={{ opacity: 0, scale: 0.7 }}
+          animate={inView ? { opacity: 1, scale: 1 } : {}}
+          style={{ transformOrigin: `${SVG_CX}px ${SVG_CY}px` }}
+          transition={{ duration: 1.2, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
+        />
+
+        {/* Connecting lines */}
         {ORBIT_ITEMS.map((item) => {
           const rad = (item.angle * Math.PI) / 180;
-          const x = 50 + 52 * Math.cos(rad);
-          const y = 50 + 52 * Math.sin(rad);
+          const x2 = SVG_CX + ICON_R * Math.cos(rad);
+          const y2 = SVG_CY + ICON_R * Math.sin(rad);
           return (
             <motion.line
-              key={item.label}
-              x1="50"
-              y1="50"
-              x2={x}
-              y2={y}
+              key={item.label + "-line"}
+              x1={SVG_CX} y1={SVG_CY}
+              x2={x2} y2={y2}
               stroke="rgba(201,168,76,0.12)"
-              strokeWidth="0.3"
+              strokeWidth="0.6"
               initial={{ pathLength: 0, opacity: 0 }}
               animate={inView ? { pathLength: 1, opacity: 1 } : {}}
               transition={{ duration: 1, delay: 0.8 }}
             />
           );
         })}
+
+        {/* Center: Golden Ticket (foreignObject) */}
+        <motion.g
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={inView ? { opacity: 1, scale: 1 } : {}}
+          style={{ transformOrigin: `${SVG_CX}px ${SVG_CY}px` }}
+          transition={{ duration: 1, delay: 0.3, ease: [0.23, 1, 0.32, 1] }}
+        >
+          {/* Ticket background */}
+          <rect
+            x={SVG_CX - 75} y={SVG_CY - 45}
+            width="150" height="90"
+            rx="8" ry="8"
+            fill="url(#ticketGrad)"
+            stroke="rgba(201,168,76,0.6)"
+            strokeWidth="1"
+            filter="url(#ticketGlow)"
+          />
+          {/* Perforations */}
+          <circle cx={SVG_CX - 75} cy={SVG_CY} r="8" fill="#000" stroke="rgba(201,168,76,0.3)" strokeWidth="1" />
+          <circle cx={SVG_CX + 75} cy={SVG_CY} r="8" fill="#000" stroke="rgba(201,168,76,0.3)" strokeWidth="1" />
+          {/* Text */}
+          <text x={SVG_CX} y={SVG_CY - 18} textAnchor="middle" fill="rgba(201,168,76,0.8)" fontSize="9" letterSpacing="2" fontFamily="Raleway, sans-serif" textLength="120" lengthAdjust="spacing">BILLIONAIRE COLLECTION</text>
+          <text x={SVG_CX} y={SVG_CY + 8} textAnchor="middle" fill="#e8d5a0" fontSize="20" fontFamily="Playfair Display, Georgia, serif">❆ Golden Ticket ❆</text>
+          <text x={SVG_CX} y={SVG_CY + 56} textAnchor="middle" fill="rgba(201,168,76,0.5)" fontSize="8" letterSpacing="3" fontFamily="Raleway, sans-serif">THE KEY TO EVERYTHING</text>
+        </motion.g>
+
+        {/* Orbit icons */}
+        {ORBIT_ITEMS.map((item, i) => {
+          const rad = (item.angle * Math.PI) / 180;
+          const cx = SVG_CX + ICON_R * Math.cos(rad);
+          const cy = SVG_CY + ICON_R * Math.sin(rad);
+          const ICON_BOX = 38;
+          return (
+            <motion.g
+              key={item.label}
+              initial={{ opacity: 0, scale: 0 }}
+              animate={inView ? { opacity: 1, scale: 1 } : {}}
+              style={{ transformOrigin: `${cx}px ${cy}px`, cursor: "pointer" }}
+              transition={{ duration: 0.5, delay: 0.6 + i * 0.07, ease: [0.23, 1, 0.32, 1] }}
+              onClick={() => { window.location.href = item.href; }}
+            >
+              {/* Icon circle background */}
+              <circle cx={cx} cy={cy} r="26" fill="rgba(0,0,0,0.9)" stroke="rgba(201,168,76,0.35)" strokeWidth="1" filter="url(#iconGlow)" />
+              {/* Emoji via foreignObject */}
+              <foreignObject x={cx - 19} y={cy - 19} width="38" height="38">
+                <div
+                  style={{
+                    width: "38px",
+                    height: "38px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: "18px",
+                    lineHeight: 1,
+                  }}
+                >
+                  {item.icon}
+                </div>
+              </foreignObject>
+              {/* Label */}
+              <text
+                x={cx}
+                y={cy + 38}
+                textAnchor="middle"
+                fill="rgba(201,168,76,0.7)"
+                fontSize="11"
+                letterSpacing="1.5"
+                fontFamily="Raleway, sans-serif"
+              >
+                {item.label.toUpperCase()}
+              </text>
+            </motion.g>
+          );
+        })}
+
+        {/* SVG defs */}
+        <defs>
+          <linearGradient id="ticketGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#1a1200" />
+            <stop offset="40%" stopColor="#2d2000" />
+            <stop offset="100%" stopColor="#1a1200" />
+          </linearGradient>
+          <filter id="ticketGlow" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="8" result="blur" />
+            <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+          </filter>
+          <filter id="iconGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="4" result="blur" />
+            <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+          </filter>
+        </defs>
       </svg>
     </div>
   );
