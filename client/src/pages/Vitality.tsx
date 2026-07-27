@@ -97,7 +97,7 @@ export default function Vitality() {
           title: "Annual Vitality Membership",
           sub: "Year-round access to our full network of clinics, practitioners, and protocols",
           price: "POA",
-          img: "/images/bc-vitality.png",
+          img: "/images/bc-vitality-hero.jpg",
           tag: "Members Only",
         },
       ]}

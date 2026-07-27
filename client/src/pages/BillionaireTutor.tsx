@@ -308,7 +308,7 @@ export default function BillionaireTutor() {
                   />
                 </div>
                 <img
-                  src="/images/bc-ecosystem-diagram.png"
+                  src="/images/bc-university-hall.jpg"
                   alt="The Billionaire Collection Ecosystem"
                   style={{ width: "100%", height: "auto", display: "block" }}
                 />

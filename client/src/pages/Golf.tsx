@@ -7,7 +7,7 @@ import DivisionPage from "@/components/DivisionPage";
 import { useSEO } from "@/hooks/useSEO";
 import { useJsonLd } from "@/hooks/useJsonLd";
 
-const GOLF_HERO = "/manus-storage/bc-golf-hero_71dde1d1.jpg";
+const GOLF_HERO = "/images/bc-golf-hero.jpg";
 
 export default function Golf() {
   useSEO({
