@@ -499,8 +499,8 @@ const BENEFITS = [
   },
   {
     icon: "🎓",
-    title: "Billionaire University & Tutor",
-    desc: "Full access to Billionaire University's curriculum — entrepreneurship, wealth building, leadership, and legacy. Members also have the opportunity to teach through Billionaire Tutor, sharing their expertise and experience with the next generation of entrepreneurs.",
+    title: "Billionaire University",
+    desc: "Full access to Billionaire University's curriculum — entrepreneurship, wealth building, leadership, and legacy. As a Golden Ticket Club member, you also receive preferred access to apply as a lecturer through Billionaire Tutor, giving you the platform to teach what you know and shape the next generation of entrepreneurs.",
   },
   {
     icon: "🤝",
