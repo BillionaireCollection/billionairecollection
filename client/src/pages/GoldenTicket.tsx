@@ -1096,25 +1096,15 @@ export default function GoldenTicket() {
                     display: "block",
                   }}
                 />
-                {/* Gradient overlay at bottom */}
+                {/* Subtle gradient overlay at bottom */}
                 <div
                   style={{
                     position: "absolute",
                     inset: 0,
                     background:
-                      "linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.85) 100%)",
+                      "linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.6) 100%)",
                   }}
                 />
-                {/* Badge overlay */}
-                <div
-                  style={{
-                    position: "absolute",
-                    top: "1.5rem",
-                    left: "1.5rem",
-                  }}
-                >
-                  <span className="bc-badge">Magazine Feature</span>
-                </div>
               </div>
 
               {/* Bottom row: two images side by side + text */}
@@ -1187,6 +1177,12 @@ export default function GoldenTicket() {
                   background: "#000",
                 }}
               >
+                <span
+                  className="bc-badge"
+                  style={{ display: "inline-block", marginBottom: "1.25rem" }}
+                >
+                  Magazine Feature
+                </span>
                 <h4
                   style={{
                     fontFamily: FONT_UI,
@@ -1198,7 +1194,7 @@ export default function GoldenTicket() {
                     marginBottom: "0.875rem",
                   }}
                 >
-                  Magazine Feature
+                  Your Story. In Print. Globally.
                 </h4>
                 <p
                   style={{
