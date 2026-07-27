@@ -150,8 +150,8 @@ function EcosystemOrbit() {
               key={item.label + "-line"}
               x1={SVG_CX} y1={SVG_CY}
               x2={x2} y2={y2}
-              stroke="rgba(201,168,76,0.12)"
-              strokeWidth="0.6"
+              stroke="rgba(201,168,76,0.45)"
+              strokeWidth="1.2"
               initial={{ pathLength: 0, opacity: 0 }}
               animate={inView ? { pathLength: 1, opacity: 1 } : {}}
               transition={{ duration: 1, delay: 0.8 }}
