@@ -1715,3 +1715,4 @@ export default function GoldenTicket() {
     </div>
   );
 }
+
