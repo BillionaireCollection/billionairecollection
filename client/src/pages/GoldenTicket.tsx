@@ -499,8 +499,8 @@ const BENEFITS = [
   },
   {
     icon: "🎓",
-    title: "Billionaire University",
-    desc: "Full access to Billionaire University's curriculum — entrepreneurship, wealth building, leadership, and legacy — taught by those who have built it.",
+    title: "Billionaire University & Tutor",
+    desc: "Full access to Billionaire University's curriculum — entrepreneurship, wealth building, leadership, and legacy. Members also have the opportunity to teach through Billionaire Tutor, sharing their expertise and experience with the next generation of entrepreneurs.",
   },
   {
     icon: "🤝",
@@ -1205,10 +1205,13 @@ export default function GoldenTicket() {
                     maxWidth: "680px",
                   }}
                 >
-                  Every Golden Ticket Club member is featured in the centre
-                  section of Billionaire Magazine — spotlighting the specific
-                  cause their purchase supports and the impact created. Your
-                  name. Your story. Your legacy. In print, globally.
+                  Golden Ticket Club members have the opportunity to be
+                  featured in the centre section of Billionaire Magazine —
+                  spotlighting the specific cause their purchase supports and
+                  the impact created. Participation is entirely your choice.
+                  Those who elect to be included will have their name, story,
+                  and legacy shared with our global readership. Your moment.
+                  Your terms.
                 </p>
               </div>
             </div>
