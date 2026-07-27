@@ -788,6 +788,70 @@ export default function GoldenTicket() {
       </section>
 
       {/* ══════════════════════════════════════════
+          VISUAL BRIDGE — Magazine / Jet Image
+      ══════════════════════════════════════════ */}
+      <section
+        style={{
+          position: "relative",
+          height: "clamp(300px, 52vw, 660px)",
+          overflow: "hidden",
+          background: "#000",
+        }}
+      >
+        {/* Top fade from black */}
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            height: "38%",
+            background: "linear-gradient(to bottom, #000 0%, transparent 100%)",
+            zIndex: 2,
+            pointerEvents: "none",
+          }}
+        />
+        {/* Bottom fade to black */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: "38%",
+            background: "linear-gradient(to top, #000 0%, transparent 100%)",
+            zIndex: 2,
+            pointerEvents: "none",
+          }}
+        />
+        {/* Subtle warm gold tint */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: "linear-gradient(135deg, rgba(201,168,76,0.07) 0%, transparent 55%)",
+            zIndex: 1,
+            pointerEvents: "none",
+          }}
+        />
+        <motion.img
+          src={MAG_JET_IMG}
+          alt="Billionaire Collection — private jet edition"
+          initial={{ opacity: 0, scale: 1.04 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.4, ease: [0.23, 1, 0.32, 1] }}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: "center 40%",
+            display: "block",
+          }}
+        />
+      </section>
+
+      {/* ══════════════════════════════════════════
           PHILOSOPHY — Purposeful Capitalism
       ══════════════════════════════════════════ */}
       <section
@@ -1107,66 +1171,28 @@ export default function GoldenTicket() {
                 />
               </div>
 
-              {/* Bottom row: two images side by side + text */}
+              {/* Bottom row: Golden Ticket box image full-width */}
               <div
                 style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
-                  gap: "1px",
-                  background: "rgba(201,168,76,0.08)",
+                  position: "relative",
+                  width: "100%",
+                  aspectRatio: "3/2",
+                  overflow: "hidden",
+                  background: "#0a0a0a",
                 }}
               >
-                {/* Jet image */}
-                <div
+                <img
+                  src={MAG_TICKET_BOX_IMG}
+                  alt="Golden Ticket — Because of you, this world heals"
                   style={{
-                    position: "relative",
-                    aspectRatio: "3/2",
-                    overflow: "hidden",
-                    background: "#0a0a0a",
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain",
+                    objectPosition: "center",
+                    display: "block",
+                    padding: "1.5rem",
                   }}
-                >
-                  <img
-                    src={MAG_JET_IMG}
-                    alt="Billionaire Collection magazine on private jet"
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                      objectPosition: "center",
-                      display: "block",
-                    }}
-                  />
-                  <div
-                    style={{
-                      position: "absolute",
-                      inset: 0,
-                      background: "rgba(0,0,0,0.25)",
-                    }}
-                  />
-                </div>
-
-                {/* Golden Ticket box image */}
-                <div
-                  style={{
-                    position: "relative",
-                    aspectRatio: "3/2",
-                    overflow: "hidden",
-                    background: "#0a0a0a",
-                  }}
-                >
-                  <img
-                    src={MAG_TICKET_BOX_IMG}
-                    alt="Golden Ticket — Because of you, this world heals"
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "contain",
-                      objectPosition: "center",
-                      display: "block",
-                      padding: "1rem",
-                    }}
-                  />
-                </div>
+                />
               </div>
 
               {/* Text block */}
