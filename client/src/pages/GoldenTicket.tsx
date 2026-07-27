@@ -100,8 +100,8 @@ function EcosystemOrbit() {
       ref={ref}
       style={{
         position: "relative",
-        width: "min(560px, 82vw)",
-        height: "min(560px, 82vw)",
+        width: "min(480px, 78vw)",
+        aspectRatio: "1 / 1",
         margin: "0 auto",
         overflow: "visible",
       }}
@@ -113,7 +113,7 @@ function EcosystemOrbit() {
         transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1] }}
         style={{
           position: "absolute",
-          inset: "10%",
+          inset: "18%",
           borderRadius: "50%",
           border: `1px solid rgba(201,168,76,0.25)`,
           boxShadow: `0 0 60px rgba(201,168,76,0.05), inset 0 0 60px rgba(201,168,76,0.03)`,
@@ -126,7 +126,7 @@ function EcosystemOrbit() {
         transition={{ duration: 1.2, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
         style={{
           position: "absolute",
-          inset: "12%",
+          inset: "20%",
           borderRadius: "50%",
           border: `1px solid rgba(201,168,76,0.08)`,
         }}
