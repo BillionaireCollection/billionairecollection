@@ -111,11 +111,27 @@ function EcosystemOrbit() {
       style={{
         width: "min(560px, 92vw)",
         margin: "0 auto",
+        position: "relative",
       }}
     >
+      {/* Rotating sphere overlay — centred on the SVG diagram */}
+      <div
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          width: "min(200px, 33vw)",
+          height: "min(200px, 33vw)",
+          zIndex: 2,
+          pointerEvents: "none",
+        }}
+      >
+        <SphereAnimation style={{ width: "100%", height: "100%" }} />
+      </div>
       <svg
         viewBox={`0 0 ${SVG_SIZE} ${SVG_SIZE}`}
-        style={{ width: "100%", height: "auto", overflow: "visible" }}
+        style={{ width: "100%", height: "auto", overflow: "visible", position: "relative", zIndex: 1 }}
         preserveAspectRatio="xMidYMid meet"
       >
         {/* Outer ring */}
@@ -160,21 +176,10 @@ function EcosystemOrbit() {
           );
         })}
 
-        {/* Center: Rotating Sphere */}
-        <foreignObject
-          x={SVG_CX - 140}
-          y={SVG_CY - 140}
-          width="280"
-          height="280"
-        >
-          <div style={{ width: "280px", height: "280px", position: "relative" }}>
-            <SphereAnimation size={280} style={{ width: "100%", height: "100%" }} />
-          </div>
-        </foreignObject>
-        {/* Golden Ticket label below sphere */}
-        <text x={SVG_CX} y={SVG_CY + 105} textAnchor="middle" fill="rgba(201,168,76,0.8)" fontSize="9" letterSpacing="2" fontFamily="Raleway, sans-serif">BILLIONAIRE COLLECTION</text>
-        <text x={SVG_CX} y={SVG_CY + 120} textAnchor="middle" fill="#e8d5a0" fontSize="14" fontFamily="Playfair Display, Georgia, serif">❆ Golden Ticket ❆</text>
-        <text x={SVG_CX} y={SVG_CY + 135} textAnchor="middle" fill="rgba(201,168,76,0.5)" fontSize="7" letterSpacing="3" fontFamily="Raleway, sans-serif">THE KEY TO EVERYTHING</text>
+        {/* Golden Ticket label — sits below the HTML sphere overlay */}
+        <text x={SVG_CX} y={SVG_CY + 120} textAnchor="middle" fill="rgba(201,168,76,0.8)" fontSize="9" letterSpacing="2" fontFamily="Raleway, sans-serif">BILLIONAIRE COLLECTION</text>
+        <text x={SVG_CX} y={SVG_CY + 138} textAnchor="middle" fill="#e8d5a0" fontSize="14" fontFamily="Playfair Display, Georgia, serif">❆ Golden Ticket ❆</text>
+        <text x={SVG_CX} y={SVG_CY + 153} textAnchor="middle" fill="rgba(201,168,76,0.5)" fontSize="7" letterSpacing="3" fontFamily="Raleway, sans-serif">THE KEY TO EVERYTHING</text>
 
         {/* Orbit icons */}
         {ORBIT_ITEMS.map((item, i) => {
