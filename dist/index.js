@@ -15,6 +15,7 @@ var NOT_ADMIN_ERR_MSG = "You do not have required permission (10002)";
 // server/db.ts
 import { eq, desc, and, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
+import mysql from "mysql2/promise";
 
 // drizzle/schema.ts
 import {
@@ -187,7 +188,23 @@ var _db = null;
 async function getDb() {
   if (!_db && process.env.DATABASE_URL) {
     try {
-      _db = drizzle(process.env.DATABASE_URL);
+      const rawUrl = process.env.DATABASE_URL;
+      const urlObj = new URL(rawUrl);
+      const socketPath = urlObj.searchParams.get("socketPath");
+      if (socketPath) {
+        const pool = mysql.createPool({
+          user: urlObj.username,
+          password: decodeURIComponent(urlObj.password),
+          database: urlObj.pathname.replace("/", ""),
+          socketPath,
+          waitForConnections: true,
+          connectionLimit: 10
+        });
+        _db = drizzle(pool);
+        console.log("[Database] Connected via socket:", socketPath);
+      } else {
+        _db = drizzle(rawUrl);
+      }
     } catch (error) {
       console.warn("[Database] Failed to connect:", error);
       _db = null;
@@ -410,8 +427,16 @@ async function getUsers() {
 }
 async function getNewsArticles(limit = 30) {
   const db = await getDb();
-  if (!db) return [];
-  return db.select().from(newsArticles).orderBy(sql`${newsArticles.publishedAt} DESC`).limit(limit);
+  if (!db) {
+    console.error("[News] getDb() returned null. DATABASE_URL:", process.env.DATABASE_URL ? "SET" : "NOT SET");
+    return [];
+  }
+  try {
+    return await db.select().from(newsArticles).orderBy(sql`${newsArticles.publishedAt} DESC`).limit(limit);
+  } catch (error) {
+    console.error("[News] Query failed. Cause:", error?.cause?.message ?? error?.message ?? error);
+    throw error;
+  }
 }
 async function upsertNewsArticle(data) {
   const db = await getDb();
@@ -1108,6 +1133,64 @@ async function stripeWebhookHandler(req, res) {
 
 // server/routers.ts
 import { TRPCError as TRPCError3 } from "@trpc/server";
+
+// server/_core/email.ts
+import nodemailer from "nodemailer";
+async function sendOwnerEmail(subject, body) {
+  const SMTP_HOST = process.env.SMTP_HOST || "smtp.office365.com";
+  const SMTP_PORT = parseInt(process.env.SMTP_PORT || "587", 10);
+  const SMTP_USER = process.env.SMTP_USER || "";
+  const SMTP_PASS = process.env.SMTP_PASS || "";
+  const NOTIFY_TO = process.env.NOTIFY_EMAIL || SMTP_USER;
+  if (!SMTP_PASS) {
+    console.warn("[Email] SMTP_PASS not configured \u2014 skipping notification.");
+    return;
+  }
+  try {
+    const transporter = nodemailer.createTransport({
+      host: SMTP_HOST,
+      port: SMTP_PORT,
+      secure: false,
+      // STARTTLS on port 587
+      auth: {
+        user: SMTP_USER,
+        pass: SMTP_PASS
+      },
+      tls: {
+        rejectUnauthorized: false
+      }
+    });
+    const plainBody = body.replace(/\*\*(.*?)\*\*/g, "$1");
+    const htmlBody = body.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>").replace(/\n/g, "<br>");
+    const html = `<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"></head>
+<body style="background:#000;color:#fff;font-family:Georgia,serif;padding:32px;">
+  <div style="max-width:600px;margin:0 auto;border:1px solid #C9A84C;padding:32px;">
+    <h2 style="color:#C9A84C;margin-top:0;">${subject}</h2>
+    <div style="line-height:1.8;">${htmlBody}</div>
+    <hr style="border-color:#C9A84C;margin-top:32px;">
+    <p style="color:#666;font-size:12px;">
+      Billionaire Collection \u2014 <a href="https://billionairecollection.com" style="color:#C9A84C;">billionairecollection.com</a>
+    </p>
+  </div>
+</body>
+</html>`;
+    await transporter.sendMail({
+      from: `"Billionaire Collection" <${SMTP_USER}>`,
+      to: NOTIFY_TO,
+      subject: `[BC] ${subject}`,
+      text: plainBody,
+      html
+    });
+    console.log(`[Email] Notification sent: ${subject}`);
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    console.error(`[Email] Failed to send notification: ${msg}`);
+  }
+}
+
+// server/routers.ts
 var adminProcedure2 = protectedProcedure.use(({ ctx, next }) => {
   if (ctx.user.role !== "admin") {
     throw new TRPCError3({ code: "FORBIDDEN", message: "Admin access required" });
@@ -1127,6 +1210,13 @@ var appRouter = router({
   newsletter: router({
     subscribe: publicProcedure.input(z2.object({ email: z2.string().email(), name: z2.string().optional(), source: z2.string().optional() })).mutation(async ({ input }) => {
       await subscribeNewsletter({ email: input.email, name: input.name, source: input.source ?? "website" });
+      sendOwnerEmail(
+        `New Newsletter Subscriber \u2014 ${input.email}`,
+        `**Email:** ${input.email}
+**Name:** ${input.name ?? "\u2014"}
+**Source:** ${input.source ?? "website"}`
+      ).catch(() => {
+      });
       return { success: true };
     }),
     list: adminProcedure2.query(async () => getNewsletterSubscribers())
@@ -1142,6 +1232,17 @@ var appRouter = router({
       preferredDate: z2.string().optional()
     })).mutation(async ({ input }) => {
       await createConciergeRequest(input);
+      sendOwnerEmail(
+        `New Concierge Request \u2014 ${input.name} (${input.requestType})`,
+        `**Name:** ${input.name}
+**Email:** ${input.email}
+**Phone:** ${input.phone ?? "\u2014"}
+**Request Type:** ${input.requestType}
+**Budget:** ${input.budget ?? "\u2014"}
+**Preferred Date:** ${input.preferredDate ?? "\u2014"}
+
+${input.description}`
+      ).catch((err) => console.error("[Notification] Concierge email failed:", err));
       return { success: true };
     }),
     list: adminProcedure2.query(async () => getConciergeRequests())
@@ -1159,9 +1260,9 @@ var appRouter = router({
       referralCode: z2.string().optional()
     })).mutation(async ({ input }) => {
       await createCardApplication(input);
-      notifyOwner({
-        title: `New Billionaire Card Application \u2014 ${input.firstName} ${input.lastName}`,
-        content: `**Name:** ${input.firstName} ${input.lastName}
+      sendOwnerEmail(
+        `New Billionaire Card Application \u2014 ${input.firstName} ${input.lastName}`,
+        `**Name:** ${input.firstName} ${input.lastName}
 **Email:** ${input.email}
 **Phone:** ${input.phone ?? "\u2014"}
 **Country:** ${input.country ?? "\u2014"}
@@ -1169,7 +1270,7 @@ var appRouter = router({
 **Net Worth:** ${input.netWorth ?? "\u2014"}
 **Card Tier:** ${input.cardTier}
 **Referral Code:** ${input.referralCode ?? "\u2014"}`
-      }).catch(() => {
+      ).catch(() => {
       });
       return { success: true };
     }),
@@ -1193,6 +1294,17 @@ var appRouter = router({
       division: z2.string().optional()
     })).mutation(async ({ input }) => {
       await createContactEnquiry(input);
+      sendOwnerEmail(
+        `New Contact Enquiry \u2014 ${input.name} (${input.subject})`,
+        `**Name:** ${input.name}
+**Email:** ${input.email}
+**Phone:** ${input.phone ?? "\u2014"}
+**Subject:** ${input.subject}
+**Division:** ${input.division ?? "general"}
+
+${input.message}`
+      ).catch(() => {
+      });
       return { success: true };
     }),
     list: adminProcedure2.query(async () => getContactEnquiries())
@@ -1211,16 +1323,15 @@ var appRouter = router({
       referredBy: z2.string().optional()
     })).mutation(async ({ input }) => {
       await createGoldenTicketApplication(input);
-      notifyOwner({
-        title: `New Golden Ticket Application \u2014 ${input.name}`,
-        content: `**Name:** ${input.name}
+      sendOwnerEmail(
+        `New Golden Ticket Application \u2014 ${input.name}`,
+        `**Name:** ${input.name}
 **Email:** ${input.email}
 **Phone:** ${input.phone ?? "\u2014"}
 **Country:** ${input.country ?? "\u2014"}
 **Referred By:** ${input.referredBy ?? "\u2014"}
 **Message:** ${input.message ?? "\u2014"}`
-      }).catch(() => {
-      });
+      ).catch((err) => console.error("[Notification] Golden Ticket email failed:", err));
       return { success: true };
     }),
     list: adminProcedure2.query(async () => getGoldenTicketApplications()),
@@ -1271,15 +1382,15 @@ var appRouter = router({
       source: z2.string().optional()
     })).mutation(async ({ input }) => {
       await createFacultyApplication(input);
-      notifyOwner({
-        title: `New Faculty Application \u2014 ${input.name}`,
-        content: `**Name:** ${input.name}
+      sendOwnerEmail(
+        `New Faculty Application \u2014 ${input.name}`,
+        `**Name:** ${input.name}
 **Email:** ${input.email}
 **Phone:** ${input.phone ?? "\u2014"}
 **Ventures:** ${input.ventures ?? "\u2014"}
 **Journey:** ${input.journey ?? "\u2014"}
 **LinkedIn:** ${input.linkedin ?? "\u2014"}`
-      }).catch(() => {
+      ).catch(() => {
       });
       return { success: true };
     }),
@@ -1369,12 +1480,12 @@ var appRouter = router({
         totalAmount,
         status: "pending"
       });
-      notifyOwner({
-        title: `New Merch Order \u2014 ${input.email}`,
-        content: `**Email:** ${input.email}
+      sendOwnerEmail(
+        `New Merch Order \u2014 ${input.email}`,
+        `**Email:** ${input.email}
 **Items:** ${input.items.map((i) => `${i.qty}x ${i.name} (${i.color})`).join(", ")}
 **Total:** $${(totalAmount / 100).toFixed(2)}`
-      }).catch(() => {
+      ).catch(() => {
       });
       return { success: true, orderId: order.id };
     }),
@@ -1748,7 +1859,7 @@ async function newsRefreshHandler(req, res) {
 }
 
 // server/_core/index.ts
-dotenv.config();
+dotenv.config({ override: true });
 function isPortAvailable(port) {
   return new Promise((resolve) => {
     const server = net.createServer();
