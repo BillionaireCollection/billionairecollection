@@ -100,9 +100,10 @@ function EcosystemOrbit() {
       ref={ref}
       style={{
         position: "relative",
-        width: "min(560px, 90vw)",
-        height: "min(560px, 90vw)",
+        width: "min(560px, 82vw)",
+        height: "min(560px, 82vw)",
         margin: "0 auto",
+        overflow: "visible",
       }}
     >
       {/* Orbit ring */}
@@ -231,7 +232,7 @@ function EcosystemOrbit() {
       {/* Orbit items */}
       {ORBIT_ITEMS.map((item, i) => {
         const rad = (item.angle * Math.PI) / 180;
-        const radius = 44; // percent from center
+        const radius = 40; // percent from center — reduced to keep labels within viewport
         const x = 50 + radius * Math.cos(rad);
         const y = 50 + radius * Math.sin(rad);
         return (
@@ -313,8 +314,8 @@ function EcosystemOrbit() {
       >
         {ORBIT_ITEMS.map((item) => {
           const rad = (item.angle * Math.PI) / 180;
-          const x = 50 + 44 * Math.cos(rad);
-          const y = 50 + 44 * Math.sin(rad);
+          const x = 50 + 40 * Math.cos(rad);
+          const y = 50 + 40 * Math.sin(rad);
           return (
             <motion.line
               key={item.label}
