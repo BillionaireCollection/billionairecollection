@@ -9,6 +9,7 @@ import { useRef, useState, useEffect } from "react";
 import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { useSEO } from "@/hooks/useSEO";
+import SphereAnimation from "@/components/SphereAnimation";
 import { useJsonLd } from "@/hooks/useJsonLd";
 
 const GOLD = "#C9A84C";
@@ -159,31 +160,21 @@ function EcosystemOrbit() {
           );
         })}
 
-        {/* Center: Golden Ticket (foreignObject) */}
-        <motion.g
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={inView ? { opacity: 1, scale: 1 } : {}}
-          style={{ transformOrigin: `${SVG_CX}px ${SVG_CY}px` }}
-          transition={{ duration: 1, delay: 0.3, ease: [0.23, 1, 0.32, 1] }}
+        {/* Center: Rotating Sphere */}
+        <foreignObject
+          x={SVG_CX - 140}
+          y={SVG_CY - 140}
+          width="280"
+          height="280"
         >
-          {/* Ticket background */}
-          <rect
-            x={SVG_CX - 75} y={SVG_CY - 45}
-            width="150" height="90"
-            rx="8" ry="8"
-            fill="url(#ticketGrad)"
-            stroke="rgba(201,168,76,0.6)"
-            strokeWidth="1"
-            filter="url(#ticketGlow)"
-          />
-          {/* Perforations */}
-          <circle cx={SVG_CX - 75} cy={SVG_CY} r="8" fill="#000" stroke="rgba(201,168,76,0.3)" strokeWidth="1" />
-          <circle cx={SVG_CX + 75} cy={SVG_CY} r="8" fill="#000" stroke="rgba(201,168,76,0.3)" strokeWidth="1" />
-          {/* Text */}
-          <text x={SVG_CX} y={SVG_CY - 18} textAnchor="middle" fill="rgba(201,168,76,0.8)" fontSize="9" letterSpacing="2" fontFamily="Raleway, sans-serif" textLength="120" lengthAdjust="spacing">BILLIONAIRE COLLECTION</text>
-          <text x={SVG_CX} y={SVG_CY + 8} textAnchor="middle" fill="#e8d5a0" fontSize="20" fontFamily="Playfair Display, Georgia, serif">❆ Golden Ticket ❆</text>
-          <text x={SVG_CX} y={SVG_CY + 56} textAnchor="middle" fill="rgba(201,168,76,0.5)" fontSize="8" letterSpacing="3" fontFamily="Raleway, sans-serif">THE KEY TO EVERYTHING</text>
-        </motion.g>
+          <div style={{ width: "280px", height: "280px", position: "relative" }}>
+            <SphereAnimation size={280} style={{ width: "100%", height: "100%" }} />
+          </div>
+        </foreignObject>
+        {/* Golden Ticket label below sphere */}
+        <text x={SVG_CX} y={SVG_CY + 105} textAnchor="middle" fill="rgba(201,168,76,0.8)" fontSize="9" letterSpacing="2" fontFamily="Raleway, sans-serif">BILLIONAIRE COLLECTION</text>
+        <text x={SVG_CX} y={SVG_CY + 120} textAnchor="middle" fill="#e8d5a0" fontSize="14" fontFamily="Playfair Display, Georgia, serif">❆ Golden Ticket ❆</text>
+        <text x={SVG_CX} y={SVG_CY + 135} textAnchor="middle" fill="rgba(201,168,76,0.5)" fontSize="7" letterSpacing="3" fontFamily="Raleway, sans-serif">THE KEY TO EVERYTHING</text>
 
         {/* Orbit icons */}
         {ORBIT_ITEMS.map((item, i) => {
