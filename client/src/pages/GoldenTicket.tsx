@@ -232,7 +232,7 @@ function EcosystemOrbit() {
       {/* Orbit items */}
       {ORBIT_ITEMS.map((item, i) => {
         const rad = (item.angle * Math.PI) / 180;
-        const radius = 40; // percent from center — reduced to keep labels within viewport
+        const radius = 52; // percent from center — outside the ring (ring is at 40%)
         const x = 50 + radius * Math.cos(rad);
         const y = 50 + radius * Math.sin(rad);
         return (
@@ -314,8 +314,8 @@ function EcosystemOrbit() {
       >
         {ORBIT_ITEMS.map((item) => {
           const rad = (item.angle * Math.PI) / 180;
-          const x = 50 + 40 * Math.cos(rad);
-          const y = 50 + 40 * Math.sin(rad);
+          const x = 50 + 52 * Math.cos(rad);
+          const y = 50 + 52 * Math.sin(rad);
           return (
             <motion.line
               key={item.label}
