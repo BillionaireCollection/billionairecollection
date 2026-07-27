@@ -31,6 +31,7 @@ import {
   createMerchOrder,
   getMerchOrders,
 } from "./db";
+import { createMerchCheckoutSession } from "./stripe";
 import { TRPCError } from "@trpc/server";
 import { notifyOwner } from "./_core/notification";
 import { sendOwnerEmail } from "./_core/email";
@@ -280,6 +281,37 @@ export const appRouter = router({
   }),
 
   merch: router({
+    // Creates a Stripe Checkout session and returns the hosted checkout URL
+    createCheckout: publicProcedure
+      .input(z.object({
+        email: z.string().email(),
+        items: z.array(z.object({
+          productId: z.string(),
+          name: z.string(),
+          color: z.string(),
+          size: z.string().optional(),
+          qty: z.number().min(1),
+          unitPrice: z.number(), // in cents
+        })),
+        shippingAddress: z.object({
+          name: z.string(),
+          address1: z.string(),
+          city: z.string(),
+          zip: z.string(),
+          country_code: z.string(),
+        }),
+        origin: z.string().url(),
+      }))
+      .mutation(async ({ input }) => {
+        const { checkoutUrl, orderId } = await createMerchCheckoutSession({
+          email: input.email,
+          items: input.items,
+          shippingAddress: input.shippingAddress,
+          origin: input.origin,
+        });
+        return { checkoutUrl, orderId };
+      }),
+    // Legacy direct order (kept for admin reference / fallback)
     placeOrder: publicProcedure
       .input(z.object({
         email: z.string().email(),

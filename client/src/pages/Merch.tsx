@@ -510,7 +510,7 @@ function CartModal({
   const [countryCode, setCountryCode] = useState("US");
   const [submitting, setSubmitting] = useState(false);
 
-  const placeOrder = trpc.merch.placeOrder.useMutation();
+  const createCheckout = trpc.merch.createCheckout.useMutation();
 
   const subtotal = cart.reduce((sum, item) => sum + item.product.price * item.qty, 0);
 
@@ -521,7 +521,8 @@ function CartModal({
     }
     setSubmitting(true);
     try {
-      await placeOrder.mutateAsync({
+      toast.info("Redirecting to secure checkout...");
+      const { checkoutUrl } = await createCheckout.mutateAsync({
         email,
         items: cart.map((item) => ({
           productId: item.product.id,
@@ -538,10 +539,11 @@ function CartModal({
           zip,
           country_code: countryCode,
         },
+        origin: window.location.origin,
       });
-      setStep("success");
+      window.open(checkoutUrl, "_blank");
     } catch {
-      toast.error("Order failed. Please try again.");
+      toast.error("Checkout failed. Please try again.");
     } finally {
       setSubmitting(false);
     }
@@ -992,7 +994,7 @@ function CartModal({
                     borderRadius: 0,
                   }}
                 >
-                  {submitting ? "Placing Order..." : `Place Order · ${formatPrice(subtotal)}`}
+                  {submitting ? "Redirecting to Checkout..." : `Checkout Securely · ${formatPrice(subtotal)}`}
                 </button>
               </div>
             )}
