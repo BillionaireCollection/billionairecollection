@@ -14,7 +14,7 @@ import { toast } from "sonner";
 
 // ─── Design tokens ────────────────────────────────────────────
 const GOLD = "#C9A84C";
-const NAVY = "#0a0e1a";
+const NAVY = "#000000";
 const IVORY = "#f5f0e8";
 
 // ─── Product catalogue ─────────────────────────────────────────
@@ -232,9 +232,9 @@ const CATEGORIES: Category[] = ["All", "T-Shirts", "Hoodies", "Hats", "Mugs", "P
 // ─── Badge colour map ──────────────────────────────────────────
 const BADGE_STYLES: Record<string, { bg: string; text: string }> = {
   New: { bg: GOLD, text: NAVY },
-  "Best Seller": { bg: "#1a2744", text: GOLD },
+  "Best Seller": { bg: "#1a1400", text: GOLD },
   Premium: { bg: "#2a1a00", text: GOLD },
-  Popular: { bg: "#1a1a2e", text: IVORY },
+  Popular: { bg: "#1a1400", text: IVORY },
 };
 
 // ─── Cart types ────────────────────────────────────────────────
@@ -300,7 +300,7 @@ function ProductCard({
       }}
     >
       {/* Image area */}
-      <div style={{ position: "relative", height: "288px", background: "#111827", overflow: "hidden" }}>
+      <div style={{ position: "relative", height: "288px", background: "#111", overflow: "hidden" }}>
         <img
           src={product.image}
           alt={product.name}
@@ -552,7 +552,7 @@ function CartModal({
   const inputStyle: React.CSSProperties = {
     width: "100%",
     padding: "10px 14px",
-    background: "#0d1630",
+    background: "#0a0a0a",
     border: `1px solid rgba(201,168,76,0.3)`,
     color: IVORY,
     fontFamily: "Inter, sans-serif",
@@ -703,7 +703,7 @@ function CartModal({
                       style={{
                         width: "64px",
                         height: "64px",
-                        background: `linear-gradient(135deg, #1a2744, #0d1630)`,
+                        background: "#111",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",

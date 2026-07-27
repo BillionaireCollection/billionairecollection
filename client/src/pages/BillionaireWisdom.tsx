@@ -10,7 +10,7 @@ import { useJsonLd } from "@/hooks/useJsonLd";
 
 const GOLD = "#c9a84c";
 const NAVY = "#000000";
-const NAVY_DARK = "#0a0a0a";
+const NAVY_DARK = "#000000";
 
 // ── Video data ──────────────────────────────────────────────
 const VIDEOS = [
