@@ -475,13 +475,13 @@ function BenefitCard({
   );
 }
 
+/* ── Magazine asset URLs ── */
+const MAG_SPREAD_IMG = "/images/bc-magazine-spread.png";
+const MAG_JET_IMG = "/images/bc-magazine-jet.png";
+const MAG_TICKET_BOX_IMG = "/images/bc-golden-ticket-box.png";
+
 /* ── Data ── */
 const BENEFITS = [
-  {
-    icon: "📖",
-    title: "Magazine Feature",
-    desc: "Every Golden Ticket Club member is featured in the centre section of Billionaire Magazine, spotlighting the specific cause their purchase supports and the impact created.",
-  },
   {
     icon: "🌐",
     title: "Global Network",
@@ -1062,6 +1062,159 @@ export default function GoldenTicket() {
                 is an ongoing relationship with a community, an ecosystem, and
                 a mission.
               </p>
+            </div>
+          </FadeUp>
+
+          {/* ── Magazine Feature — Full-width cinematic showcase ── */}
+          <FadeUp>
+            <div
+              style={{
+                marginBottom: "1px",
+                background: "#000",
+                border: "1px solid rgba(201,168,76,0.15)",
+                borderBottom: "none",
+                overflow: "hidden",
+              }}
+            >
+              {/* Top row: spread image full-width */}
+              <div
+                style={{
+                  position: "relative",
+                  width: "100%",
+                  aspectRatio: "3/2",
+                  overflow: "hidden",
+                }}
+              >
+                <img
+                  src={MAG_SPREAD_IMG}
+                  alt="Billionaire Magazine — Meet the World Changers centre spread"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    objectPosition: "center",
+                    display: "block",
+                  }}
+                />
+                {/* Gradient overlay at bottom */}
+                <div
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    background:
+                      "linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.85) 100%)",
+                  }}
+                />
+                {/* Badge overlay */}
+                <div
+                  style={{
+                    position: "absolute",
+                    top: "1.5rem",
+                    left: "1.5rem",
+                  }}
+                >
+                  <span className="bc-badge">Magazine Feature</span>
+                </div>
+              </div>
+
+              {/* Bottom row: two images side by side + text */}
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr",
+                  gap: "1px",
+                  background: "rgba(201,168,76,0.08)",
+                }}
+              >
+                {/* Jet image */}
+                <div
+                  style={{
+                    position: "relative",
+                    aspectRatio: "3/2",
+                    overflow: "hidden",
+                    background: "#0a0a0a",
+                  }}
+                >
+                  <img
+                    src={MAG_JET_IMG}
+                    alt="Billionaire Collection magazine on private jet"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      objectPosition: "center",
+                      display: "block",
+                    }}
+                  />
+                  <div
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      background: "rgba(0,0,0,0.25)",
+                    }}
+                  />
+                </div>
+
+                {/* Golden Ticket box image */}
+                <div
+                  style={{
+                    position: "relative",
+                    aspectRatio: "3/2",
+                    overflow: "hidden",
+                    background: "#0a0a0a",
+                  }}
+                >
+                  <img
+                    src={MAG_TICKET_BOX_IMG}
+                    alt="Golden Ticket — Because of you, this world heals"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "contain",
+                      objectPosition: "center",
+                      display: "block",
+                      padding: "1rem",
+                    }}
+                  />
+                </div>
+              </div>
+
+              {/* Text block */}
+              <div
+                style={{
+                  padding: "2.5rem 2rem",
+                  borderTop: `2px solid rgba(201,168,76,0.25)`,
+                  background: "#000",
+                }}
+              >
+                <h4
+                  style={{
+                    fontFamily: FONT_UI,
+                    fontWeight: 600,
+                    fontSize: "0.8125rem",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.1em",
+                    color: GOLD,
+                    marginBottom: "0.875rem",
+                  }}
+                >
+                  Magazine Feature
+                </h4>
+                <p
+                  style={{
+                    fontFamily: FONT_UI,
+                    fontSize: "0.9375rem",
+                    color: "rgba(255,255,255,0.6)",
+                    lineHeight: 1.8,
+                    maxWidth: "680px",
+                  }}
+                >
+                  Every Golden Ticket Club member is featured in the centre
+                  section of Billionaire Magazine — spotlighting the specific
+                  cause their purchase supports and the impact created. Your
+                  name. Your story. Your legacy. In print, globally.
+                </p>
+              </div>
             </div>
           </FadeUp>
 
