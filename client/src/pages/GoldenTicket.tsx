@@ -76,18 +76,19 @@ function GoldDivider() {
 }
 
 /* ── Ecosystem orbit visual ── */
+// 11 items evenly spaced: 360/11 ≈ 32.727° apart, starting at top (270°) going clockwise
 const ORBIT_ITEMS = [
-  { label: "Magazine", icon: "📖", href: "/magazine", angle: 0 },
-  { label: "University", icon: "🎓", href: "/university", angle: 32.7 },
-  { label: "Vitality", icon: "💚", href: "/vitality", angle: 65.5 },
-  { label: "Aviation", icon: "✈️", href: "/air", angle: 98.2 },
-  { label: "Yachts", icon: "⚓", href: "/boat", angle: 130.9 },
-  { label: "Estates", icon: "🏛️", href: "/estates", angle: 163.6 },
-  { label: "Funding", icon: "💼", href: "/funding", angle: 196.4 },
-  { label: "Card", icon: "💳", href: "/card", angle: 229.1 },
-  { label: "Store", icon: "🛍️", href: "/marketplace", angle: 261.8 },
-  { label: "Media", icon: "📺", href: "/media", angle: 294.5 },
-  { label: "Giving", icon: "🌍", href: "#giving", angle: 327.3 },
+  { label: "Magazine",   icon: "📖", href: "/magazine",   angle: 270.0 },   // top
+  { label: "University", icon: "🎓", href: "/university", angle: 302.7 },   // top-right
+  { label: "Vitality",   icon: "💚", href: "/vitality",   angle: 335.5 },   // right-top
+  { label: "Aviation",   icon: "✈️", href: "/air",        angle: 8.2  },   // right
+  { label: "Yachts",     icon: "⚓", href: "/boat",       angle: 40.9  },   // right-bottom
+  { label: "Estates",    icon: "🏛️", href: "/estates",    angle: 73.6  },   // bottom-right
+  { label: "Funding",    icon: "💼", href: "/funding",    angle: 106.4 },   // bottom
+  { label: "Card",       icon: "💳", href: "/card",       angle: 139.1 },   // bottom-left
+  { label: "Store",      icon: "🛍️", href: "/marketplace",angle: 171.8 },   // left-bottom
+  { label: "Media",      icon: "📺", href: "/media",      angle: 204.5 },   // left
+  { label: "Giving",     icon: "🌍", href: "#giving",     angle: 237.3 },   // left-top
 ];
 
 function EcosystemOrbit() {
