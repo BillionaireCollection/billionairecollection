@@ -47,7 +47,7 @@ const ECOSYSTEM_ITEMS = [
   { label: "Chrono", sub: "Ultra-rare timepieces $1M+", href: "/chrono", img: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/chrono-patek-tile-bkFdcdrvM2eDowB7LXgYyf.webp" },
   { label: "Vitality", sub: "Wellness & longevity", href: "/vitality", img: "/images/bc-vitality-hero.jpg" },
   { label: "Counsel", sub: "Ultra-premium legal advisory", href: "/counsel", img: "/images/bc-counsel-hero.jpg" },
-  { label: "Billionaire News", sub: "UHNW intelligence & insights", href: "/news-brand", img: "/images/bc-news-hero.jpg" },
+  { label: "News", sub: "UHNW intelligence & insights", href: "/news-brand", img: "/images/bc-news-hero.jpg" },
 ];
 
 const PRODUCTS = [
