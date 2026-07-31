@@ -68,6 +68,7 @@ const FOOTER_COLS = [
     heading: "Company",
     links: [
       { label: "About", href: "/about" },
+      { label: "Founder & CEO", href: "/founder" },
       { label: "Billionaire News", href: "/news" },
       { label: "The Golden Ticket", href: "/golden-ticket" },
       { label: "Privacy Policy", href: "/privacy" },

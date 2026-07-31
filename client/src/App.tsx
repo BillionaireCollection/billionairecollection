@@ -56,6 +56,7 @@ import Brands from "./pages/Brands";
 import Vitality from "./pages/Vitality";
 import Counsel from "./pages/Counsel";
 import NewsBrand from "./pages/NewsBrand";
+import Founder from "./pages/Founder";
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -122,6 +123,7 @@ function Router() {
             <Route path="/university" component={BillionaireUniversity} />
             <Route path="/ecosystem" component={Ecosystem} />
             <Route path="/brands" component={Brands} />
+            <Route path="/founder" component={Founder} />
             <Route component={NotFound} />
           </Switch>
         </Layout>
