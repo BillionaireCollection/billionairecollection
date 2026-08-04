@@ -115,3 +115,8 @@ temp/
 insert_news*.mjs
 insert_news*.js
 ideas.md
+
+# Large local image assets (served from CDN/S3 or local dev only)
+client/public/images/
+dist/public/images/
+
