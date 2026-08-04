@@ -1335,6 +1335,185 @@ export default function GoldenTicket() {
       </section>
 
       {/* ══════════════════════════════════════════
+          LIMITED MEMBERSHIP — Scarcity & Associate Pathway
+      ══════════════════════════════════════════ */}
+      <section
+        style={{
+          padding: "9rem 0",
+          background: "radial-gradient(ellipse at top, rgba(201,168,76,0.05) 0%, #000 60%)",
+          borderTop: "1px solid rgba(201,168,76,0.08)",
+        }}
+      >
+        <div className="container" style={{ maxWidth: "900px" }}>
+          <FadeUp>
+            <div style={{ textAlign: "center", marginBottom: "4rem" }}>
+              <span className="bc-badge" style={{ marginBottom: "1.5rem" }}>Membership Availability</span>
+              <h2
+                style={{
+                  fontFamily: FONT_HEADING,
+                  fontWeight: 400,
+                  fontSize: "clamp(2rem, 5vw, 3.25rem)",
+                  color: "#fff",
+                  marginBottom: "1.5rem",
+                  lineHeight: 1.15,
+                }}
+              >
+                A Finite Number of{" "}
+                <span style={{ color: GOLD }}>Places.</span>
+              </h2>
+              <p
+                style={{
+                  fontFamily: FONT_UI,
+                  fontWeight: 300,
+                  fontSize: "1.0625rem",
+                  color: "rgba(255,255,255,0.55)",
+                  lineHeight: 1.8,
+                  maxWidth: "680px",
+                  margin: "0 auto",
+                }}
+              >
+                The Golden Ticket Club admits a strictly limited number of full members across the entire ecosystem. This is not a marketing device — it is a structural commitment to intimacy, quality, and the integrity of every relationship within the Club.
+              </p>
+            </div>
+          </FadeUp>
+
+          <FadeUp delay={0.1}>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+                gap: "1px",
+                background: "rgba(201,168,76,0.12)",
+                marginBottom: "4rem",
+              }}
+            >
+              {/* Full Member */}
+              <div style={{ background: "#000", padding: "3rem 2.5rem", position: "relative" }}>
+                <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "3px", background: `linear-gradient(to right, ${GOLD}, transparent)` }} />
+                <span style={{ fontFamily: FONT_UI, fontSize: "0.625rem", textTransform: "uppercase" as const, letterSpacing: "0.18em", color: GOLD, display: "block", marginBottom: "1.25rem" }}>Full Member</span>
+                <h3 style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "1.625rem", color: "#fff", marginBottom: "1.25rem", lineHeight: 1.2 }}>The Golden Ticket</h3>
+                <p style={{ fontFamily: FONT_UI, fontSize: "0.9375rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.8, marginBottom: "2rem" }}>
+                  Full membership is available while places remain. Members receive immediate, unrestricted access to every corner of the ecosystem — private aviation, ultra-prime estates, Billionaire University, the Media division, and the full suite of concierge services — alongside a permanent seat within the Golden Ticket Club community.
+                </p>
+                <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column" as const, gap: "0.75rem" }}>
+                  {["Immediate full ecosystem access", "Permanent Club membership", "Magazine feature eligibility", "Billionaire Giving participation", "Nomination rights for new members"].map((item) => (
+                    <li key={item} style={{ fontFamily: FONT_UI, fontSize: "0.875rem", color: "rgba(255,255,255,0.6)", display: "flex", alignItems: "flex-start", gap: "0.75rem" }}>
+                      <span style={{ color: GOLD, flexShrink: 0, marginTop: "2px" }}>◆</span>{item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Qualifying Associate */}
+              <div style={{ background: "#000", padding: "3rem 2.5rem", position: "relative" }}>
+                <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "3px", background: "linear-gradient(to right, rgba(201,168,76,0.4), transparent)" }} />
+                <span style={{ fontFamily: FONT_UI, fontSize: "0.625rem", textTransform: "uppercase" as const, letterSpacing: "0.18em", color: "rgba(201,168,76,0.6)", display: "block", marginBottom: "1.25rem" }}>Qualifying Associate</span>
+                <h3 style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "1.625rem", color: "rgba(255,255,255,0.85)", marginBottom: "1.25rem", lineHeight: 1.2 }}>When Full Places Are Taken</h3>
+                <p style={{ fontFamily: FONT_UI, fontSize: "0.9375rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.8, marginBottom: "2rem" }}>
+                  Once full membership places are filled, new applicants enter the ecosystem as Qualifying Associates. Associates build their relationship with the Club through their purchases and engagement across the ecosystem. Full membership is then extended following a thorough vetting process — ensuring that every member admitted upholds the values and standards of the Club.
+                </p>
+                <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column" as const, gap: "0.75rem" }}>
+                  {["Access to ecosystem services via purchase", "Relationship-building with the Club", "Vetting process for full membership", "Priority consideration when places open", "Nomination by a current member accelerates review"].map((item) => (
+                    <li key={item} style={{ fontFamily: FONT_UI, fontSize: "0.875rem", color: "rgba(255,255,255,0.45)", display: "flex", alignItems: "flex-start", gap: "0.75rem" }}>
+                      <span style={{ color: "rgba(201,168,76,0.5)", flexShrink: 0, marginTop: "2px" }}>◆</span>{item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </FadeUp>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          NOMINATION & PARTNER TIER
+      ══════════════════════════════════════════ */}
+      <section
+        style={{
+          padding: "9rem 0",
+          background: "#000",
+          borderTop: "1px solid rgba(201,168,76,0.08)",
+        }}
+      >
+        <div className="container" style={{ maxWidth: "900px" }}>
+          <FadeUp>
+            <div style={{ textAlign: "center", marginBottom: "4rem" }}>
+              <span className="bc-badge" style={{ marginBottom: "1.5rem" }}>Nominations &amp; Partnership</span>
+              <h2
+                style={{
+                  fontFamily: FONT_HEADING,
+                  fontWeight: 400,
+                  fontSize: "clamp(2rem, 5vw, 3.25rem)",
+                  color: "#fff",
+                  marginBottom: "1.5rem",
+                  lineHeight: 1.15,
+                }}
+              >
+                Introduce. Elevate.{" "}
+                <span style={{ color: GOLD }}>Become a Partner.</span>
+              </h2>
+              <p
+                style={{
+                  fontFamily: FONT_UI,
+                  fontWeight: 300,
+                  fontSize: "1.0625rem",
+                  color: "rgba(255,255,255,0.55)",
+                  lineHeight: 1.8,
+                  maxWidth: "680px",
+                  margin: "0 auto",
+                }}
+              >
+                The Golden Ticket Club grows through trust, not advertising. Every current member holds the privilege — and the responsibility — of nominating prospective new members whose character, ambition, and values align with the Club's founding principles.
+              </p>
+            </div>
+          </FadeUp>
+
+          <FadeUp delay={0.1}>
+            <div style={{ border: "1px solid rgba(201,168,76,0.15)", padding: "3rem 2.5rem", marginBottom: "1px", background: "rgba(201,168,76,0.02)" }}>
+              <div style={{ display: "flex", gap: "1.5rem", alignItems: "flex-start" }}>
+                <span style={{ fontSize: "1.75rem", flexShrink: 0, marginTop: "4px" }}>🤝</span>
+                <div>
+                  <h4 style={{ fontFamily: FONT_UI, fontWeight: 600, fontSize: "0.8125rem", textTransform: "uppercase" as const, letterSpacing: "0.1em", color: GOLD, marginBottom: "0.875rem" }}>Member Nominations</h4>
+                  <p style={{ fontFamily: FONT_UI, fontSize: "0.9375rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.8 }}>
+                    A nomination from a current member significantly improves a prospective applicant's chances of acceptance. When you nominate someone, you are lending your credibility to their application — and the Club takes that endorsement seriously. Nominations are not a guarantee of admission, but they signal that a trusted member of the community has personally vouched for the individual's alignment with the Club's values.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </FadeUp>
+
+          <FadeUp delay={0.2}>
+            <div style={{ border: "1px solid rgba(201,168,76,0.3)", padding: "3rem 2.5rem", marginBottom: "3rem", background: "rgba(201,168,76,0.04)", position: "relative", overflow: "hidden" }}>
+              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "3px", background: `linear-gradient(to right, ${GOLD}, ${GOLD_LIGHT}, transparent)` }} />
+              <div style={{ display: "flex", gap: "1.5rem", alignItems: "flex-start" }}>
+                <span style={{ fontSize: "1.75rem", flexShrink: 0, marginTop: "4px" }}>⭐</span>
+                <div>
+                  <span style={{ fontFamily: FONT_UI, fontSize: "0.625rem", textTransform: "uppercase" as const, letterSpacing: "0.18em", color: GOLD, display: "block", marginBottom: "0.5rem" }}>Partner Status</span>
+                  <h4 style={{ fontFamily: FONT_UI, fontWeight: 600, fontSize: "0.8125rem", textTransform: "uppercase" as const, letterSpacing: "0.1em", color: "#fff", marginBottom: "0.875rem" }}>Elevate to Partner</h4>
+                  <p style={{ fontFamily: FONT_UI, fontSize: "0.9375rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.8, marginBottom: "1.75rem" }}>
+                    Members who successfully introduce a requisite number of new full members to the Club are elevated to Partner status within the ecosystem. Partners receive a higher tier of service, deeper access across all divisions, and a recognised standing within the Club that reflects their contribution to its growth and culture.
+                  </p>
+                  <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "0.75rem" }}>
+                    {["Enhanced service tier across all divisions", "Deeper access to exclusive ecosystem events", "Recognised Partner standing within the Club", "Priority concierge and advisory access", "Invitation to Partner-only experiences", "Formal acknowledgement in Billionaire Magazine"].map((item) => (
+                      <li key={item} style={{ fontFamily: FONT_UI, fontSize: "0.875rem", color: "rgba(255,255,255,0.6)", display: "flex", alignItems: "flex-start", gap: "0.75rem" }}>
+                        <span style={{ color: GOLD, flexShrink: 0, marginTop: "2px" }}>◆</span>{item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </FadeUp>
+
+          <FadeUp delay={0.3}>
+            <p style={{ fontFamily: FONT_UI, fontSize: "0.875rem", color: "rgba(255,255,255,0.3)", lineHeight: 1.75, textAlign: "center", fontStyle: "italic" }}>
+              The number of introductions required for Partner status is determined by the Club and communicated privately to members. The Club reserves the right to adjust criteria as the ecosystem evolves.
+            </p>
+          </FadeUp>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
           APPLICATION FORM
       ══════════════════════════════════════════ */}
       <section
