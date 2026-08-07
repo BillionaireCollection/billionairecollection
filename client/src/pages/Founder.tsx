@@ -380,8 +380,28 @@ export default function Founder() {
                 padding: "6px 14px",
               }}
             >
-              Founder of the Billionaire Collection
-            </p>
+            Founder of the Billionaire Collection
+          </p>
+        </motion.div>
+
+          {/* Book cover — Forever In Service */}
+          <motion.div
+            initial={{ opacity: 0, y: 24, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.9, delay: 0.08, ease: [0.23, 1, 0.32, 1] }}
+            style={{ marginBottom: "2rem" }}
+          >
+            <img
+              src="/forever-in-service-book.jpg"
+              alt="Forever In Service — by Lawrence Colbert"
+              style={{
+                width: "clamp(120px, 22vw, 200px)",
+                height: "auto",
+                display: "block",
+                boxShadow: "0 12px 48px rgba(0,0,0,0.7), 0 4px 16px rgba(201,168,76,0.15)",
+                border: "1px solid rgba(201,168,76,0.2)",
+              }}
+            />
           </motion.div>
 
           <motion.h1
