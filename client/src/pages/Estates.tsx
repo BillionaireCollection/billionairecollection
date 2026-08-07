@@ -79,9 +79,9 @@ export default function Estates() {
     { icon: "⚡", title: "Dedicated Advisor", desc: "Personal property consultant" }
 ]}
       listings={[
-    { title: "Mayfair Grand Penthouse", sub: "London, United Kingdom", price: "$57,000,000", img: "/images/mayfair-penthouse.webp", tag: "Off-Market" },
-    { title: "Monaco Clifftop Villa", sub: "Monaco, Monte Carlo", price: "$93,500,000", img: "/images/monaco-clifftop-villa.jpg", tag: "Exclusive" },
-    { title: "Malibu Ocean Estate", sub: "California, USA", price: "$120,000,000", img: "/images/malibu-ocean-estate.jpg", tag: "New" }
+    { title: "Mayfair Grand Penthouse", sub: "London, United Kingdom", price: "$57,000,000", img: "/listing-mayfair-penthouse.jpg", tag: "Off-Market" },
+    { title: "Monaco Clifftop Villa", sub: "Monaco, Monte Carlo", price: "$93,500,000", img: "/listing-monaco-clifftop-villa.jpg", tag: "Exclusive" },
+    { title: "Malibu Ocean Estate", sub: "California, USA", price: "$120,000,000", img: "/listing-malibu-ocean-estate.jpg", tag: "New" }
 ]}
       listingsTitle="Featured Properties"
       ctaBanner={{ title: "Begin Your Property Journey", sub: "Our advisors are ready to present the world's finest properties, tailored to your exact specifications.", btnLabel: "Speak to an Advisor", btnHref: "https://billionaireestates.com" }}
