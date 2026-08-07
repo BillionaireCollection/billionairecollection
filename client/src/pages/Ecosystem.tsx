@@ -10,6 +10,7 @@ import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
 import { useSEO } from "@/hooks/useSEO";
 import { useJsonLd } from "@/hooks/useJsonLd";
+import SphereAnimation from "@/components/SphereAnimation";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -24,6 +25,66 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
     </motion.div>
   );
 }
+
+// ── Ecosystem Orbit Visual ──────────────────────────────────────────────────
+const ORBIT_ITEMS_ECO = [
+  { label: "Magazine",   icon: "📖", href: "/magazine",    angle: 270.0 },
+  { label: "University", icon: "🎓", href: "/university",  angle: 302.7 },
+  { label: "Vitality",   icon: "💚", href: "/vitality",    angle: 335.5 },
+  { label: "Aviation",   icon: "✈️", href: "/air",         angle: 8.2   },
+  { label: "Yachts",     icon: "⚓", href: "/boat",        angle: 40.9  },
+  { label: "Estates",    icon: "🏛️", href: "/estates",     angle: 73.6  },
+  { label: "Funding",    icon: "💼", href: "/funding",     angle: 106.4 },
+  { label: "Card",       icon: "💳", href: "/card",        angle: 139.1 },
+  { label: "Store",      icon: "🛍️", href: "/marketplace", angle: 171.8 },
+  { label: "Media",      icon: "📺", href: "/media",       angle: 204.5 },
+  { label: "Giving",     icon: "🌍", href: "#giving",      angle: 237.3 },
+];
+const ECO_SVG = 600, ECO_CX = 300, ECO_CY = 300, ECO_RING = 170, ECO_ICON_R = 260;
+
+function EcosystemOrbitVisual() {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+  return (
+    <div ref={ref} style={{ width: "min(560px, 92vw)", margin: "0 auto", position: "relative" }}>
+      <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: "min(200px, 33vw)", height: "min(200px, 33vw)", zIndex: 2, pointerEvents: "none" }}>
+        <SphereAnimation style={{ width: "100%", height: "100%" }} />
+      </div>
+      <svg viewBox={`0 0 ${ECO_SVG} ${ECO_SVG}`} style={{ width: "100%", height: "auto", overflow: "visible", position: "relative", zIndex: 1 }} preserveAspectRatio="xMidYMid meet">
+        <motion.circle cx={ECO_CX} cy={ECO_CY} r={ECO_RING} fill="none" stroke="rgba(201,168,76,0.25)" strokeWidth="1" initial={{ opacity: 0, scale: 0.7 }} animate={inView ? { opacity: 1, scale: 1 } : {}} style={{ transformOrigin: `${ECO_CX}px ${ECO_CY}px` }} transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1] }} />
+        <motion.circle cx={ECO_CX} cy={ECO_CY} r={ECO_RING - 12} fill="none" stroke="rgba(201,168,76,0.08)" strokeWidth="1" initial={{ opacity: 0, scale: 0.7 }} animate={inView ? { opacity: 1, scale: 1 } : {}} style={{ transformOrigin: `${ECO_CX}px ${ECO_CY}px` }} transition={{ duration: 1.2, delay: 0.1, ease: [0.23, 1, 0.32, 1] }} />
+        {ORBIT_ITEMS_ECO.map((item) => {
+          const rad = (item.angle * Math.PI) / 180;
+          return <motion.line key={item.label + "-line"} x1={ECO_CX} y1={ECO_CY} x2={ECO_CX + ECO_ICON_R * Math.cos(rad)} y2={ECO_CY + ECO_ICON_R * Math.sin(rad)} stroke="rgba(201,168,76,0.45)" strokeWidth="1.2" initial={{ pathLength: 0, opacity: 0 }} animate={inView ? { pathLength: 1, opacity: 1 } : {}} transition={{ duration: 1, delay: 0.8 }} />;
+        })}
+        <text x={ECO_CX} y={ECO_CY + 120} textAnchor="middle" fill="rgba(201,168,76,0.8)" fontSize="9" letterSpacing="2" fontFamily="Raleway, sans-serif">BILLIONAIRE COLLECTION</text>
+        <text x={ECO_CX} y={ECO_CY + 138} textAnchor="middle" fill="#e8d5a0" fontSize="14" fontFamily="Playfair Display, Georgia, serif">The Ecosystem</text>
+        <text x={ECO_CX} y={ECO_CY + 153} textAnchor="middle" fill="rgba(201,168,76,0.5)" fontSize="7" letterSpacing="3" fontFamily="Raleway, sans-serif">ONE UMBRELLA · EVERY DESIRE</text>
+        {ORBIT_ITEMS_ECO.map((item, i) => {
+          const rad = (item.angle * Math.PI) / 180;
+          const cx = ECO_CX + ECO_ICON_R * Math.cos(rad);
+          const cy = ECO_CY + ECO_ICON_R * Math.sin(rad);
+          return (
+            <motion.g key={item.label} initial={{ opacity: 0, scale: 0 }} animate={inView ? { opacity: 1, scale: 1 } : {}} style={{ transformOrigin: `${cx}px ${cy}px`, cursor: "pointer" }} transition={{ duration: 0.5, delay: 0.6 + i * 0.07, ease: [0.23, 1, 0.32, 1] }} onClick={() => { window.location.href = item.href; }}>
+              <circle cx={cx} cy={cy} r="26" fill="rgba(0,0,0,0.9)" stroke="rgba(201,168,76,0.35)" strokeWidth="1" filter="url(#ecoIconGlow)" />
+              <foreignObject x={cx - 19} y={cy - 19} width="38" height="38">
+                <div style={{ width: "38px", height: "38px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "18px", lineHeight: 1 }}>{item.icon}</div>
+              </foreignObject>
+              <text x={cx} y={cy + 38} textAnchor="middle" fill="rgba(201,168,76,0.7)" fontSize="11" letterSpacing="1.5" fontFamily="Raleway, sans-serif">{item.label.toUpperCase()}</text>
+            </motion.g>
+          );
+        })}
+        <defs>
+          <filter id="ecoIconGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="4" result="blur" />
+            <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+          </filter>
+        </defs>
+      </svg>
+    </div>
+  );
+}
+// ───────────────────────────────────────────────────────────────────────────
 
 const PRODUCTS_IMAGES: Record<string, string> = {
   "Billionaire Champagne": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80",
@@ -177,7 +238,31 @@ export default function Ecosystem() {
       />
 
       {/* Intro */}
-      <section style={{ padding: "8rem 0" }}>
+      {/* ── Ecosystem Orbit Visual ── */}
+      <section style={{ padding: "7rem 0", background: "radial-gradient(ellipse at center, rgba(201,168,76,0.04) 0%, #000 70%)", borderBottom: "1px solid rgba(201,168,76,0.08)" }}>
+        <div className="container">
+          <FadeUp>
+            <div style={{ textAlign: "center", marginBottom: "4rem" }}>
+              <span className="bc-badge" style={{ marginBottom: "1.5rem" }}>The Architecture</span>
+              <h2 style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "clamp(1.75rem, 3vw, 2.75rem)", color: "#fff", marginBottom: "1.25rem" }}>
+                One Umbrella. <span style={{ color: GOLD }}>Every Desire Fulfilled.</span>
+              </h2>
+              <p style={{ fontFamily: FONT_UI, fontWeight: 300, fontSize: "1rem", color: "rgba(255,255,255,0.45)", maxWidth: "500px", margin: "0 auto", lineHeight: 1.75 }}>
+                Eleven divisions. One unified vision. Click any node to explore.
+              </p>
+            </div>
+          </FadeUp>
+          <EcosystemOrbitVisual />
+          <FadeUp delay={0.4}>
+            <p style={{ fontFamily: FONT_UI, fontWeight: 300, fontSize: "0.9375rem", color: "rgba(255,255,255,0.35)", textAlign: "center", marginTop: "4rem", letterSpacing: "0.05em" }}>
+              Magazine · University · Vitality · Aviation · Yachts · Estates · Funding · Card · Store · Media · Giving
+            </p>
+          </FadeUp>
+        </div>
+      </section>
+
+      {/* Our Architecture */}
+      <section style={{ padding: "8rem 0", borderTop: "1px solid rgba(201,168,76,0.08)" }}>
         <div className="container">
           <FadeUp>
             <div style={{ maxWidth: "820px", margin: "0 auto", textAlign: "center" }}>
