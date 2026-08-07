@@ -74,7 +74,7 @@ export default function Champagne() {
 ]);
   return (
     <div style={{ background: "#000" }}>
-      <PageHero badge="Billionaire Champagne" title="Ultra-Premium" titleAccent="Cuvées" subtitle="The world's most exclusive champagnes — from legendary Prestige Cuvées to rare single-vineyard expressions and bespoke private label creations." image="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" cta={{ label: "Enquire", href: "/card-concierge" }} />
+      <PageHero badge="Billionaire Champagne" title="Ultra-Premium" titleAccent="Cuvées" subtitle="The world's most exclusive champagnes — from legendary Prestige Cuvées to rare single-vineyard expressions and bespoke private label creations." image="https://billionairecollection.com/images/billionaire-champagne-new.png" cta={{ label: "Enquire", href: "/card-concierge" }} />
       <section style={{ padding: "8rem 0" }}>
         <div className="container">
           <FadeUp>

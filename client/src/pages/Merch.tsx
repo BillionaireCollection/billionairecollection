@@ -14,7 +14,7 @@ import { toast } from "sonner";
 
 // ─── Design tokens ────────────────────────────────────────────
 const GOLD = "#C9A84C";
-const NAVY = "#000000";
+const NAVY = "#0a0e1a";
 const IVORY = "#f5f0e8";
 
 // ─── Product catalogue ─────────────────────────────────────────
@@ -68,7 +68,7 @@ const PRODUCTS: Product[] = [
     tagline: "Arch print. Gold on dark.",
     description: "Bold arch typography in gold on premium dark fabric. A collector's essential.",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
-    image: "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=800&q=80",
+    image: "/images/arch-logo-tee_f557ef32.png",
   },
   {
     id: "tee-crest-standard",
@@ -114,7 +114,7 @@ const PRODUCTS: Product[] = [
     tagline: "Heavyweight luxury. Crest embroidered.",
     description: "400gsm heavyweight fleece with embroidered crest. The pinnacle of casual luxury.",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
-    image: "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=800&q=80",
+    image: "/images/crest-pullover-hoodie_d1866b2e.png",
   },
   {
     id: "hoodie-crest-embroidered",
@@ -126,7 +126,7 @@ const PRODUCTS: Product[] = [
     tagline: "Full embroidery. Heirloom quality.",
     description: "Full embroidered crest on premium fleece. Limited production. Collector's edition.",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
-    image: "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=800&q=80",
+    image: "/images/crest-hoodie-embroidered_529f6e46.png",
   },
   {
     id: "hoodie-wealth-creation",
@@ -137,7 +137,7 @@ const PRODUCTS: Product[] = [
     tagline: "Create. Preserve. Transcend.",
     description: "Our most exclusive hoodie. Gold foil print on premium fleece. For those who understand the game.",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
-    image: "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=800&q=80",
+    image: "/images/wealth-preservation-hoodie_d16ea859.png",
   },
   // Hats
   {
@@ -159,7 +159,7 @@ const PRODUCTS: Product[] = [
     colors: ["Black/Gold", "Navy/Gold"],
     tagline: "Crown the collection.",
     description: "Flat-brim snapback with gold crown logo embroidery. Adjustable snap closure.",
-    image: "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=800&q=80",
+    image: "/images/crown-snapback_4eccbd23.png",
   },
   // Mugs
   {
@@ -192,7 +192,7 @@ const PRODUCTS: Product[] = [
     badge: "Popular",
     tagline: "Gallery-quality. Frameable.",
     description: "A2 premium matte print. Gallery-quality paper. The BC crest rendered in gold on dark.",
-    image: "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=800&q=80",
+    image: "/images/bc-crest-poster_4c6e5238.png",
   },
   {
     id: "poster-manifesto",
@@ -202,7 +202,7 @@ const PRODUCTS: Product[] = [
     colors: ["Black/Gold", "Navy/Gold"],
     tagline: "The Billionaire manifesto. Framed.",
     description: "A2 premium matte print featuring the Billionaire Collection manifesto in gold typography.",
-    image: "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=800&q=80",
+    image: "/images/wealth-mindset-poster_09de1e2c.png",
   },
   // Tote Bags
   {
@@ -213,7 +213,7 @@ const PRODUCTS: Product[] = [
     colors: ["Natural/Navy", "Black/Gold"],
     tagline: "Carry the crest.",
     description: "Heavy-duty canvas tote with BC crest print. Reinforced handles. 15L capacity.",
-    image: "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=800&q=80",
+    image: "/images/bc-signature-tote_76305794.png",
   },
   {
     id: "tote-build-empire",
@@ -223,7 +223,7 @@ const PRODUCTS: Product[] = [
     colors: ["Natural/Black", "Black/Gold"],
     tagline: "Build empires. Carry essentials.",
     description: "Premium canvas tote with Build Empire print. The everyday carry for the ambitious.",
-    image: "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=800&q=80",
+    image: "/images/arch-logo-tote_a926aa13.png",
   },
 ];
 
@@ -232,9 +232,9 @@ const CATEGORIES: Category[] = ["All", "T-Shirts", "Hoodies", "Hats", "Mugs", "P
 // ─── Badge colour map ──────────────────────────────────────────
 const BADGE_STYLES: Record<string, { bg: string; text: string }> = {
   New: { bg: GOLD, text: NAVY },
-  "Best Seller": { bg: "#1a1400", text: GOLD },
+  "Best Seller": { bg: "#1a2744", text: GOLD },
   Premium: { bg: "#2a1a00", text: GOLD },
-  Popular: { bg: "#1a1400", text: IVORY },
+  Popular: { bg: "#1a1a2e", text: IVORY },
 };
 
 // ─── Cart types ────────────────────────────────────────────────
@@ -300,7 +300,7 @@ function ProductCard({
       }}
     >
       {/* Image area */}
-      <div style={{ position: "relative", height: "288px", background: "#111", overflow: "hidden" }}>
+      <div style={{ position: "relative", height: "288px", background: "#111827", overflow: "hidden" }}>
         <img
           src={product.image}
           alt={product.name}
@@ -510,7 +510,7 @@ function CartModal({
   const [countryCode, setCountryCode] = useState("US");
   const [submitting, setSubmitting] = useState(false);
 
-  const createCheckout = trpc.merch.createCheckout.useMutation();
+  const placeOrder = trpc.merch.placeOrder.useMutation();
 
   const subtotal = cart.reduce((sum, item) => sum + item.product.price * item.qty, 0);
 
@@ -521,8 +521,7 @@ function CartModal({
     }
     setSubmitting(true);
     try {
-      toast.info("Redirecting to secure checkout...");
-      const { checkoutUrl } = await createCheckout.mutateAsync({
+      await placeOrder.mutateAsync({
         email,
         items: cart.map((item) => ({
           productId: item.product.id,
@@ -539,11 +538,10 @@ function CartModal({
           zip,
           country_code: countryCode,
         },
-        origin: window.location.origin,
       });
-      window.open(checkoutUrl, "_blank");
+      setStep("success");
     } catch {
-      toast.error("Checkout failed. Please try again.");
+      toast.error("Order failed. Please try again.");
     } finally {
       setSubmitting(false);
     }
@@ -552,7 +550,7 @@ function CartModal({
   const inputStyle: React.CSSProperties = {
     width: "100%",
     padding: "10px 14px",
-    background: "#0a0a0a",
+    background: "#0d1630",
     border: `1px solid rgba(201,168,76,0.3)`,
     color: IVORY,
     fontFamily: "Inter, sans-serif",
@@ -703,7 +701,7 @@ function CartModal({
                       style={{
                         width: "64px",
                         height: "64px",
-                        background: "#111",
+                        background: `linear-gradient(135deg, #1a2744, #0d1630)`,
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
@@ -994,7 +992,7 @@ function CartModal({
                     borderRadius: 0,
                   }}
                 >
-                  {submitting ? "Redirecting to Checkout..." : `Checkout Securely · ${formatPrice(subtotal)}`}
+                  {submitting ? "Placing Order..." : `Place Order · ${formatPrice(subtotal)}`}
                 </button>
               </div>
             )}

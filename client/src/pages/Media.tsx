@@ -21,9 +21,9 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 }
 
 const CHANNELS = [
-  { label: "Television", href: "/television", icon: "📺", desc: "Exclusive programming for the world's most discerning viewers — documentary series, lifestyle content, and live events from the pinnacle of luxury culture.", img: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80" },
-  { label: "Magazine", href: "/magazine", icon: "📖", desc: "The definitive print and digital publication for ultra-high-net-worth individuals — featuring in-depth profiles, market intelligence, and the finest luxury editorial.", img: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80" },
-  { label: "Radio & Podcast", href: "/radio", icon: "🎙", desc: "Curated audio content for the global elite — expert conversations on wealth, investment, lifestyle, and the forces shaping the world of ultra-high-net-worth individuals.", img: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80" },
+  { label: "Television", href: "/television", icon: "📺", desc: "Exclusive programming for the world's most discerning viewers — documentary series, lifestyle content, and live events from the pinnacle of luxury culture.", img: "/images/billionaire-television-new.png" },
+  { label: "Magazine", href: "/magazine", icon: "📖", desc: "The definitive print and digital publication for ultra-high-net-worth individuals — featuring in-depth profiles, market intelligence, and the finest luxury editorial.", img: "/images/billionaire-magazine-new.png" },
+  { label: "Radio & Podcast", href: "/radio", icon: "🎙", desc: "Curated audio content for the global elite — expert conversations on wealth, investment, lifestyle, and the forces shaping the world of ultra-high-net-worth individuals.", img: "/images/billionaire-radio-new.png" },
 ];
 
 export default function Media() {

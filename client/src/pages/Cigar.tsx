@@ -74,7 +74,7 @@ export default function Cigar() {
 ]);
   return (
     <div style={{ background: "#000" }}>
-      <PageHero badge="Billionaire Cigars" title="Rare" titleAccent="Hand-Rolled Cigars" subtitle="The world's finest hand-rolled cigars — from aged Cuban Cohibas to rare Nicaraguan limited editions — presented in bespoke humidors of exceptional craftsmanship." image="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?w=800&q=80" cta={{ label: "Enquire", href: "/card-concierge" }} />
+      <PageHero badge="Billionaire Cigars" title="Rare" titleAccent="Hand-Rolled Cigars" subtitle="The world's finest hand-rolled cigars — from aged Cuban Cohibas to rare Nicaraguan limited editions — presented in bespoke humidors of exceptional craftsmanship." image="https://billionairecollection.com/images/billionaire-cigar-new.png" cta={{ label: "Enquire", href: "/card-concierge" }} />
       <section style={{ padding: "8rem 0" }}>
         <div className="container">
           <FadeUp>

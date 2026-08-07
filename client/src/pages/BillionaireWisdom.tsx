@@ -9,8 +9,8 @@ import { useSEO } from "@/hooks/useSEO";
 import { useJsonLd } from "@/hooks/useJsonLd";
 
 const GOLD = "#c9a84c";
-const NAVY = "#000000";
-const NAVY_DARK = "#000000";
+const NAVY = "#0a0e1a";
+const NAVY_DARK = "#080c18";
 
 // ── Video data ──────────────────────────────────────────────
 const VIDEOS = [
@@ -121,7 +121,7 @@ function VideoCard({ video }: { video: typeof VIDEOS[0] }) {
   const embedUrl = `https://www.youtube.com/embed/${video.id}?autoplay=1&rel=0&modestbranding=1`;
 
   return (
-    <div style={{ background: "#0a0a0a", border: "1px solid rgba(201,168,76,0.15)", display: "flex", flexDirection: "column" }}>
+    <div style={{ background: "#0d1120", border: "1px solid rgba(201,168,76,0.15)", display: "flex", flexDirection: "column" }}>
       {/* Thumbnail / iframe */}
       <div
         style={{ position: "relative", width: "100%", paddingBottom: "56.25%", overflow: "hidden", cursor: "pointer" }}
