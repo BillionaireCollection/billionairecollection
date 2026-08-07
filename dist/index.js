@@ -1209,14 +1209,21 @@ var appRouter = router({
   }),
   newsletter: router({
     subscribe: publicProcedure.input(z2.object({ email: z2.string().email(), name: z2.string().optional(), source: z2.string().optional() })).mutation(async ({ input }) => {
-      await subscribeNewsletter({ email: input.email, name: input.name, source: input.source ?? "website" });
-      sendOwnerEmail(
-        `New Newsletter Subscriber \u2014 ${input.email}`,
-        `**Email:** ${input.email}
+      try {
+        await subscribeNewsletter({ email: input.email, name: input.name, source: input.source ?? "website" });
+        sendOwnerEmail(
+          `New Newsletter Subscriber \u2014 ${input.email}`,
+          `**Email:** ${input.email}
 **Name:** ${input.name ?? "\u2014"}
 **Source:** ${input.source ?? "website"}`
-      ).catch(() => {
-      });
+        ).catch(() => {
+        });
+      } catch (err) {
+        const msg = err instanceof Error ? err.message : String(err);
+        if (!msg.includes("duplicate") && !msg.includes("Duplicate") && !msg.includes("ER_DUP")) {
+          throw err;
+        }
+      }
       return { success: true };
     }),
     list: adminProcedure2.query(async () => getNewsletterSubscribers())

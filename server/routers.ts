@@ -59,12 +59,20 @@ export const appRouter = router({
     subscribe: publicProcedure
       .input(z.object({ email: z.string().email(), name: z.string().optional(), source: z.string().optional() }))
       .mutation(async ({ input }) => {
-        await subscribeNewsletter({ email: input.email, name: input.name, source: input.source ?? "website" });
-        // Notify owner
-        sendOwnerEmail(
-          `New Newsletter Subscriber — ${input.email}`,
-          `**Email:** ${input.email}\n**Name:** ${input.name ?? "—"}\n**Source:** ${input.source ?? "website"}`,
-        ).catch(() => {/* non-blocking */});
+        try {
+          await subscribeNewsletter({ email: input.email, name: input.name, source: input.source ?? "website" });
+          // Notify owner only on new subscription
+          sendOwnerEmail(
+            `New Newsletter Subscriber — ${input.email}`,
+            `**Email:** ${input.email}\n**Name:** ${input.name ?? "—"}\n**Source:** ${input.source ?? "website"}`,
+          ).catch(() => {/* non-blocking */});
+        } catch (err: unknown) {
+          // Silently swallow duplicate email errors — treat as already subscribed
+          const msg = err instanceof Error ? err.message : String(err);
+          if (!msg.includes("duplicate") && !msg.includes("Duplicate") && !msg.includes("ER_DUP")) {
+            throw err; // re-throw genuine errors
+          }
+        }
         return { success: true };
       }),
     list: adminProcedure.query(async () => getNewsletterSubscribers()),
