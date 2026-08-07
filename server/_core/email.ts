@@ -11,6 +11,8 @@ export async function sendOwnerEmail(subject: string, body: string): Promise<voi
   const SMTP_PASS = process.env.SMTP_PASS || "";
   const NOTIFY_TO = process.env.NOTIFY_EMAIL || SMTP_USER;
 
+  console.log(`[Email] Attempting to send: "${subject}" via ${SMTP_HOST}:${SMTP_PORT} from ${SMTP_USER} to ${NOTIFY_TO}`);
+
   if (!SMTP_PASS) {
     console.warn("[Email] SMTP_PASS not configured — skipping notification.");
     return;
@@ -29,6 +31,10 @@ export async function sendOwnerEmail(subject: string, body: string): Promise<voi
         rejectUnauthorized: false,
       },
     });
+
+    // Verify SMTP connection before sending
+    await transporter.verify();
+    console.log(`[Email] SMTP connection verified successfully`);
 
     const plainBody = body.replace(/\*\*(.*?)\*\*/g, "$1");
     const htmlBody = body

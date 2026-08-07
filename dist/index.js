@@ -1142,6 +1142,7 @@ async function sendOwnerEmail(subject, body) {
   const SMTP_USER = process.env.SMTP_USER || "";
   const SMTP_PASS = process.env.SMTP_PASS || "";
   const NOTIFY_TO = process.env.NOTIFY_EMAIL || SMTP_USER;
+  console.log(`[Email] Attempting to send: "${subject}" via ${SMTP_HOST}:${SMTP_PORT} from ${SMTP_USER} to ${NOTIFY_TO}`);
   if (!SMTP_PASS) {
     console.warn("[Email] SMTP_PASS not configured \u2014 skipping notification.");
     return;
@@ -1160,6 +1161,8 @@ async function sendOwnerEmail(subject, body) {
         rejectUnauthorized: false
       }
     });
+    await transporter.verify();
+    console.log(`[Email] SMTP connection verified successfully`);
     const plainBody = body.replace(/\*\*(.*?)\*\*/g, "$1");
     const htmlBody = body.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>").replace(/\n/g, "<br>");
     const html = `<!DOCTYPE html>
