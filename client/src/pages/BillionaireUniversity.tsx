@@ -12,7 +12,7 @@ const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
 const FONT_UI = "'Raleway', sans-serif";
 
-const BU_LOGO = "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/ppmZdiZKLUQkdQiQ.png";
+const BU_LOGO = "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800&q=80";
 const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-main-QJbNmDnsM8Jru6dBDixZQ8.webp";
 
 function FadeUp({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {

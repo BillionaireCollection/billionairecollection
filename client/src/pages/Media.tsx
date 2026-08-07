@@ -21,9 +21,9 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 }
 
 const CHANNELS = [
-  { label: "Television", href: "/television", icon: "📺", desc: "Exclusive programming for the world's most discerning viewers — documentary series, lifestyle content, and live events from the pinnacle of luxury culture.", img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/CDvuqOIJicHtjcPa.png" },
-  { label: "Magazine", href: "/magazine", icon: "📖", desc: "The definitive print and digital publication for ultra-high-net-worth individuals — featuring in-depth profiles, market intelligence, and the finest luxury editorial.", img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/hQbDnWCQGwFCnbHD.png" },
-  { label: "Radio & Podcast", href: "/radio", icon: "🎙", desc: "Curated audio content for the global elite — expert conversations on wealth, investment, lifestyle, and the forces shaping the world of ultra-high-net-worth individuals.", img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/HjxUmjJxEklgbPKo.png" },
+  { label: "Television", href: "/television", icon: "📺", desc: "Exclusive programming for the world's most discerning viewers — documentary series, lifestyle content, and live events from the pinnacle of luxury culture.", img: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80" },
+  { label: "Magazine", href: "/magazine", icon: "📖", desc: "The definitive print and digital publication for ultra-high-net-worth individuals — featuring in-depth profiles, market intelligence, and the finest luxury editorial.", img: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80" },
+  { label: "Radio & Podcast", href: "/radio", icon: "🎙", desc: "Curated audio content for the global elite — expert conversations on wealth, investment, lifestyle, and the forces shaping the world of ultra-high-net-worth individuals.", img: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80" },
 ];
 
 export default function Media() {

@@ -32,18 +32,18 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 const CATEGORIES = ["All", "Properties", "Vehicles", "Yachts", "Aviation", "Art"];
 
 const ALL_LISTINGS = [
-  { cat: "Properties", title: "Mayfair Grand Penthouse", loc: "London, United Kingdom", price: "$57,000,000", img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/tWqzQQlLlGuTeaQF.webp", tag: "Off-Market", href: "/estates" },
+  { cat: "Properties", title: "Mayfair Grand Penthouse", loc: "London, United Kingdom", price: "$57,000,000", img: "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=800&q=80", tag: "Off-Market", href: "/estates" },
   { cat: "Yachts", title: "M/Y Aurora — 82m Lürssen", loc: "Mediterranean", price: "$105,000,000", img: YACHT_IMG, tag: "For Sale", href: "/boat" },
   { cat: "Aviation", title: "Gulfstream G800", loc: "Ultra-Long Range", price: "POA", img: AIR_IMG, tag: "For Sale", href: "/air" },
   { cat: "Properties", title: "Monaco Clifftop Villa", loc: "Monaco, Monte Carlo", price: "$93,500,000", img: ESTATES_IMG, tag: "Exclusive", href: "/estates" },
-  { cat: "Vehicles", title: "Ferrari LaFerrari Aperta", loc: "1 of 210, Rosso Corsa", price: "POA", img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/sTknOzbUZnSrqEBc.webp", tag: "Rare", href: "/car" },
-  { cat: "Properties", title: "Malibu Ocean Estate", loc: "California, USA", price: "$120,000,000", img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/wtjbrlvABqFUUuHE.jpg", tag: "New", href: "/estates" },
+  { cat: "Vehicles", title: "Ferrari LaFerrari Aperta", loc: "1 of 210, Rosso Corsa", price: "POA", img: "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=800&q=80", tag: "Rare", href: "/car" },
+  { cat: "Properties", title: "Malibu Ocean Estate", loc: "California, USA", price: "$120,000,000", img: "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=800&q=80", tag: "New", href: "/estates" },
   { cat: "Yachts", title: "M/Y Solaris — 65m Benetti", loc: "Caribbean Charter", price: "$490,000/week", img: "https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=800&q=80", tag: "Charter", href: "/boat" },
-  { cat: "Vehicles", title: "Bugatti Chiron Super Sport", loc: "2022, 1,600hp", price: "$4,100,000", img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/JSSAseBOTMUolgNE.jpg", tag: "For Sale", href: "/car" },
-  { cat: "Art", title: "Jean-Michel Basquiat", loc: "Untitled, 1982", price: "POA", img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/HSsolmMQAvZMcpXj.png", tag: "Private Sale", href: "/art" },
-  { cat: "Aviation", title: "Bombardier Global 7500", loc: "London to Sydney Non-Stop", price: "POA", img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/FMfsevRbcArmLAdy.png", tag: "Charter", href: "/air" },
-  { cat: "Properties", title: "Dubai Palm Penthouse", loc: "Palm Jumeirah, Dubai", price: "$25,900,000", img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/bjqcZSIFkHYRTHXl.jpg", tag: "Exclusive", href: "/estates" },
-  { cat: "Vehicles", title: "Rolls-Royce Phantom Bespoke", loc: "Commission Available", price: "POA", img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/jhGdabnqYkcmtEzN.webp", tag: "Commission", href: "/car" },
+  { cat: "Vehicles", title: "Bugatti Chiron Super Sport", loc: "2022, 1,600hp", price: "$4,100,000", img: "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=800&q=80", tag: "For Sale", href: "/car" },
+  { cat: "Art", title: "Jean-Michel Basquiat", loc: "Untitled, 1982", price: "POA", img: "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=800&q=80", tag: "Private Sale", href: "/art" },
+  { cat: "Aviation", title: "Bombardier Global 7500", loc: "London to Sydney Non-Stop", price: "POA", img: "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=800&q=80", tag: "Charter", href: "/air" },
+  { cat: "Properties", title: "Dubai Palm Penthouse", loc: "Palm Jumeirah, Dubai", price: "$25,900,000", img: "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=800&q=80", tag: "Exclusive", href: "/estates" },
+  { cat: "Vehicles", title: "Rolls-Royce Phantom Bespoke", loc: "Commission Available", price: "POA", img: "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=800&q=80", tag: "Commission", href: "/car" },
 ];
 
 export default function Marketplace() {

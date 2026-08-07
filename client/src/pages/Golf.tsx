@@ -7,7 +7,7 @@ import DivisionPage from "@/components/DivisionPage";
 import { useSEO } from "@/hooks/useSEO";
 import { useJsonLd } from "@/hooks/useJsonLd";
 
-const GOLF_HERO = "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/xBoLsXGRbUVLaOnT.jpg";
+const GOLF_HERO = "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=800&q=80";
 
 export default function Golf() {
   useSEO({

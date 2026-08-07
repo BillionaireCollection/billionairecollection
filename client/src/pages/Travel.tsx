@@ -7,7 +7,7 @@ import DivisionPage from "@/components/DivisionPage";
 import { useSEO } from "@/hooks/useSEO";
 import { useJsonLd } from "@/hooks/useJsonLd";
 
-const TRAVEL_HERO = "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/ibAjqnVcgrvVBibM.png";
+const TRAVEL_HERO = "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=80";
 
 export default function Travel() {
   useSEO({

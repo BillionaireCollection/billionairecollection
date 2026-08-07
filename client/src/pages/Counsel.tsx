@@ -61,7 +61,7 @@ export default function Counsel() {
       heroTitle="Legal Mastery at"
       heroAccent="the Highest Level"
       heroSubtitle="The ultra-premium legal advisory division of Billionaire Collection — connecting ultra-high-net-worth individuals with the world's most elite legal minds for wealth structuring, asset protection, and complex cross-border transactions."
-      heroImage="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/VwUGnELdcTIZDXDK.jpg"
+      heroImage="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=80"
       heroCta={{ label: "Request a Consultation", href: "/concierge" }}
       heroCtaSecondary={{ label: "Learn More", href: "/services" }}
       aboutTitle="Counsel Reserved for Those Who Operate at the Pinnacle"
@@ -83,21 +83,21 @@ export default function Counsel() {
           title: "Wealth Structuring Review",
           sub: "Comprehensive audit of existing structures with recommendations for optimisation across all jurisdictions",
           price: "From $50,000",
-          img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/bfisuZeLSolsuwIP.jpg",
+          img: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=80",
           tag: "Flagship",
         },
         {
           title: "Cross-Border Transaction Advisory",
           sub: "End-to-end legal counsel for complex international acquisitions, mergers, and asset transfers",
           price: "POA",
-          img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/VwUGnELdcTIZDXDK.jpg",
+          img: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=80",
           tag: "Bespoke",
         },
         {
           title: "Annual Retainer Programme",
           sub: "Priority access to our full network of elite private client lawyers — on-demand, year-round",
           price: "POA",
-          img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/bfisuZeLSolsuwIP.jpg",
+          img: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=80",
           tag: "Members Only",
         },
       ]}

@@ -43,26 +43,26 @@ const ECOSYSTEM_ITEMS = [
   { label: "Superyachts", sub: "Bespoke vessels worldwide", href: "/boat", img: YACHT_IMG },
   { label: "Private Aviation", sub: "Charter & acquisition", href: "/air", img: AIR_IMG },
   { label: "Automotive", sub: "Rare & exotic automobiles", href: "/car", img: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&q=80" },
-  { label: "Fine Art", sub: "Curated collectibles", href: "/art", img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/HSsolmMQAvZMcpXj.png" },
+  { label: "Fine Art", sub: "Curated collectibles", href: "/art", img: "https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=800&q=80" },
   { label: "Chrono", sub: "Ultra-rare timepieces $1M+", href: "/chrono", img: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/chrono-patek-tile-bkFdcdrvM2eDowB7LXgYyf.webp" },
-  { label: "Vitality", sub: "Wellness & longevity", href: "/vitality", img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/zxJZwfoQGaClWbjo.jpg" },
-  { label: "Counsel", sub: "Ultra-premium legal advisory", href: "/counsel", img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/VwUGnELdcTIZDXDK.jpg" },
-  { label: "News", sub: "UHNW intelligence & insights", href: "/news-brand", img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/wJIfjrDUbToiPuyl.jpg" },
+  { label: "Vitality", sub: "Wellness & longevity", href: "/vitality", img: "https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=800&q=80" },
+  { label: "Counsel", sub: "Ultra-premium legal advisory", href: "/counsel", img: "https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=800&q=80" },
+  { label: "News", sub: "UHNW intelligence & insights", href: "/news-brand", img: "https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=800&q=80" },
 ];
 
 const PRODUCTS = [
-  { label: "Champagne", desc: "Ultra-premium cuvées from the world's most exclusive houses.", href: "/champagne", img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/qEOvncifSFGmootV.png" },
-  { label: "Vodka", desc: "Limited-edition spirits crafted for the discerning palate.", href: "/vodka", img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/DvDBCutAmmUcDDUg.png" },
-  { label: "Cigars", desc: "Rare hand-rolled cigars from the world's finest tobacco estates.", href: "/cigar", img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/hHzxkyIrjOXXlhoc.png" },
-  { label: "Oud", desc: "Bespoke Arabian fragrances of unparalleled rarity.", href: "/oud", img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/aTrBEiICNdtmqDta.png" },
+  { label: "Champagne", desc: "Ultra-premium cuvées from the world's most exclusive houses.", href: "/champagne", img: "https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=800&q=80" },
+  { label: "Vodka", desc: "Limited-edition spirits crafted for the discerning palate.", href: "/vodka", img: "https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=800&q=80" },
+  { label: "Cigars", desc: "Rare hand-rolled cigars from the world's finest tobacco estates.", href: "/cigar", img: "https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=800&q=80" },
+  { label: "Oud", desc: "Bespoke Arabian fragrances of unparalleled rarity.", href: "/oud", img: "https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=800&q=80" },
 ];
 
 const DIVISIONS = [
-  { label: "Media", desc: "Television, Magazine & Radio", href: "/media", img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/itzinQcpTXkncyCc.png" },
+  { label: "Media", desc: "Television, Magazine & Radio", href: "/media", img: "https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=800&q=80" },
   { label: "Technology", desc: "University, Digital & Vitality", href: "/technology", img: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-division-technology-nWtUGuzYcwAKr9AmPRXHQt.webp" },
   { label: "Services", desc: "Funding, Golf, Travel & Card", href: "/services", img: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-division-services-em9tFW6VuRLTSTwzJ4RNkf.webp" },
-  { label: "Vitality", desc: "Wellness, Longevity & Biohacking", href: "/vitality", img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/zxJZwfoQGaClWbjo.jpg" },
-  { label: "Counsel", desc: "Legal Advisory & Wealth Structuring", href: "/counsel", img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/VwUGnELdcTIZDXDK.jpg" },
+  { label: "Vitality", desc: "Wellness, Longevity & Biohacking", href: "/vitality", img: "https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=800&q=80" },
+  { label: "Counsel", desc: "Legal Advisory & Wealth Structuring", href: "/counsel", img: "https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=800&q=80" },
 ];
 
 const BRANDS = [

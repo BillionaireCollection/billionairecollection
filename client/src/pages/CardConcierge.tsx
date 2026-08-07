@@ -26,14 +26,14 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 }
 
 const SERVICES = [
-  { img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/QSAxxKgjrjAORvCF.jpg", title: "Private Aviation", desc: "Arrange private jets, helicopter transfers, and bespoke flight experiences worldwide." },
-  { img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/gZGRAoHYbdfjWlgx.jpg", title: "Hotel & Accommodation", desc: "Secure suites at the world's finest hotels, private villas, and exclusive resort access." },
-  { img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/hBeuCtkQHzYbTcEr.jpg", title: "Fine Dining", desc: "Priority reservations at Michelin-starred restaurants and exclusive private dining experiences." },
-  { img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/nwEqMAoiBYfEeSGm.jpg", title: "Events & Entertainment", desc: "Access to sold-out events, private concerts, galas, and exclusive cultural experiences." },
-  { img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/hYRjWZDuuYMiEsHA.jpg", title: "Yacht Charter", desc: "Arrange superyacht charters, sailing experiences, and private island retreats." },
-  { img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/HxgXfCpoXIFJqJeG.jpg", title: "Personal Shopping", desc: "Bespoke personal shopping services from the world's most prestigious luxury houses." },
-  { img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/MAojMcjsyXEsduKy.jpg", title: "Medical & Wellness", desc: "Access to elite medical specialists, longevity clinics, and exclusive wellness retreats." },
-  { img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/pTZFLDVPALObEJAG.jpg", title: "Security & Privacy", desc: "Discreet personal security arrangements and privacy protection services." },
+  { img: "https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=800&q=80", title: "Private Aviation", desc: "Arrange private jets, helicopter transfers, and bespoke flight experiences worldwide." },
+  { img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80", title: "Hotel & Accommodation", desc: "Secure suites at the world's finest hotels, private villas, and exclusive resort access." },
+  { img: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80", title: "Fine Dining", desc: "Priority reservations at Michelin-starred restaurants and exclusive private dining experiences." },
+  { img: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80", title: "Events & Entertainment", desc: "Access to sold-out events, private concerts, galas, and exclusive cultural experiences." },
+  { img: "https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=800&q=80", title: "Yacht Charter", desc: "Arrange superyacht charters, sailing experiences, and private island retreats." },
+  { img: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80", title: "Personal Shopping", desc: "Bespoke personal shopping services from the world's most prestigious luxury houses." },
+  { img: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80", title: "Medical & Wellness", desc: "Access to elite medical specialists, longevity clinics, and exclusive wellness retreats." },
+  { img: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=80", title: "Security & Privacy", desc: "Discreet personal security arrangements and privacy protection services." },
 ];
 
 const REQUEST_TYPES = [

@@ -68,7 +68,7 @@ const PRODUCTS: Product[] = [
     tagline: "Arch print. Gold on dark.",
     description: "Bold arch typography in gold on premium dark fabric. A collector's essential.",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
-    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/PjfBdRuagPOvKFsS.png",
+    image: "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=800&q=80",
   },
   {
     id: "tee-crest-standard",
@@ -114,7 +114,7 @@ const PRODUCTS: Product[] = [
     tagline: "Heavyweight luxury. Crest embroidered.",
     description: "400gsm heavyweight fleece with embroidered crest. The pinnacle of casual luxury.",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
-    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/bpedGlKmUYtaDfeS.png",
+    image: "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=800&q=80",
   },
   {
     id: "hoodie-crest-embroidered",
@@ -126,7 +126,7 @@ const PRODUCTS: Product[] = [
     tagline: "Full embroidery. Heirloom quality.",
     description: "Full embroidered crest on premium fleece. Limited production. Collector's edition.",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
-    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/bdYcjOcPgFVxylJv.png",
+    image: "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=800&q=80",
   },
   {
     id: "hoodie-wealth-creation",
@@ -137,7 +137,7 @@ const PRODUCTS: Product[] = [
     tagline: "Create. Preserve. Transcend.",
     description: "Our most exclusive hoodie. Gold foil print on premium fleece. For those who understand the game.",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
-    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/tdocGTXYQUHspBWY.png",
+    image: "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=800&q=80",
   },
   // Hats
   {
@@ -159,7 +159,7 @@ const PRODUCTS: Product[] = [
     colors: ["Black/Gold", "Navy/Gold"],
     tagline: "Crown the collection.",
     description: "Flat-brim snapback with gold crown logo embroidery. Adjustable snap closure.",
-    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/lCjzTNCJHLPXXeEC.png",
+    image: "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=800&q=80",
   },
   // Mugs
   {
@@ -192,7 +192,7 @@ const PRODUCTS: Product[] = [
     badge: "Popular",
     tagline: "Gallery-quality. Frameable.",
     description: "A2 premium matte print. Gallery-quality paper. The BC crest rendered in gold on dark.",
-    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/mEKRJftboXbiLnbz.png",
+    image: "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=800&q=80",
   },
   {
     id: "poster-manifesto",
@@ -202,7 +202,7 @@ const PRODUCTS: Product[] = [
     colors: ["Black/Gold", "Navy/Gold"],
     tagline: "The Billionaire manifesto. Framed.",
     description: "A2 premium matte print featuring the Billionaire Collection manifesto in gold typography.",
-    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/HmqDWCRlRmVZtpKl.png",
+    image: "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=800&q=80",
   },
   // Tote Bags
   {
@@ -213,7 +213,7 @@ const PRODUCTS: Product[] = [
     colors: ["Natural/Navy", "Black/Gold"],
     tagline: "Carry the crest.",
     description: "Heavy-duty canvas tote with BC crest print. Reinforced handles. 15L capacity.",
-    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/OrXJEgpNKGPkEzJE.png",
+    image: "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=800&q=80",
   },
   {
     id: "tote-build-empire",
@@ -223,7 +223,7 @@ const PRODUCTS: Product[] = [
     colors: ["Natural/Black", "Black/Gold"],
     tagline: "Build empires. Carry essentials.",
     description: "Premium canvas tote with Build Empire print. The everyday carry for the ambitious.",
-    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/IocKarkPGZHnsQXy.png",
+    image: "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=800&q=80",
   },
 ];
 

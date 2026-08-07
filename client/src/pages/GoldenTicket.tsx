@@ -393,9 +393,9 @@ function BenefitCard({
 }
 
 /* ── Magazine asset URLs ── */
-const MAG_SPREAD_IMG = "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/GIjdGiZnfjHcPZpO.png";
-const MAG_JET_IMG = "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/qyJaarZYpfkZZMDY.png";
-const MAG_TICKET_BOX_IMG = "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/wzFRaWSgYsfaQKOD.png";
+const MAG_SPREAD_IMG = "https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=800&q=80";
+const MAG_JET_IMG = "https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=800&q=80";
+const MAG_TICKET_BOX_IMG = "https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=800&q=80";
 
 /* ── Data ── */
 const BENEFITS = [

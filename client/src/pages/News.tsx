@@ -48,7 +48,7 @@ const FALLBACK_IMGS = [
   "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
   "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80",
   "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&q=80",
-  "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/HSsolmMQAvZMcpXj.png",
+  "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80",
 ];
 
 export default function News() {

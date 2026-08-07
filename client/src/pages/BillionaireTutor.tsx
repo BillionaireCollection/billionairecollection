@@ -302,13 +302,13 @@ export default function BillionaireTutor() {
                 {/* BU Logo above ecosystem diagram — centred */}
                 <div style={{ marginBottom: "1.5rem", display: "flex", justifyContent: "center" }}>
                   <img
-                    src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/ppmZdiZKLUQkdQiQ.png"
+                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80"
                     alt="Billionaire University"
                     style={{ height: "140px", width: "auto" }}
                   />
                 </div>
                 <img
-                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/KbBKAUaMpqalBUUP.jpg"
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80"
                   alt="The Billionaire Collection Ecosystem"
                   style={{ width: "100%", height: "auto", display: "block" }}
                 />
@@ -342,7 +342,7 @@ export default function BillionaireTutor() {
       <div style={{ background: "#000", paddingBottom: "4rem", display: "flex", justifyContent: "center" }}>
         <FadeUp>
           <img
-            src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/ppmZdiZKLUQkdQiQ.png"
+            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80"
             alt="Billionaire University"
             style={{ height: "120px", width: "auto", opacity: 0.7 }}
           />
@@ -392,7 +392,7 @@ export default function BillionaireTutor() {
       <div style={{ background: "#050505", paddingBottom: "4rem", display: "flex", justifyContent: "center" }}>
         <FadeUp>
           <img
-            src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/ppmZdiZKLUQkdQiQ.png"
+            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80"
             alt="Billionaire University"
             style={{ height: "120px", width: "auto", opacity: 0.7 }}
           />
@@ -639,7 +639,7 @@ export default function BillionaireTutor() {
             {/* BU Logo in footer */}
             <div style={{ display: "flex", justifyContent: "center", marginBottom: "2rem" }}>
               <img
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/ppmZdiZKLUQkdQiQ.png"
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80"
                 alt="Billionaire University"
                 style={{ height: "140px", width: "auto", opacity: 0.85 }}
               />
