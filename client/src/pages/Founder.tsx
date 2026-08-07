@@ -468,6 +468,55 @@ export default function Founder() {
         </div>
       </section>
 
+
+      {/* ══════════════════════════════════════════════════════
+          9. FEATURED INTERVIEW (VIDEO)
+          ══════════════════════════════════════════════════════ */}
+      <section style={{ padding: sectionPad, background: "#000" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+          <FadeUp>
+            <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
+              <SectionLabel>Featured Interview</SectionLabel>
+              <h2
+                style={{
+                  fontFamily: FONT_HEADING,
+                  fontWeight: 700,
+                  fontSize: "clamp(1.6rem, 3.5vw, 2.4rem)",
+                  color: "#fff",
+                  marginBottom: "1rem",
+                }}
+              >
+                A Global Shift in Wealth
+              </h2>
+              <GoldDivider />
+              <p
+                style={{
+                  fontFamily: FONT_UI,
+                  fontSize: "clamp(0.85rem, 1.5vw, 1rem)",
+                  color: "rgba(255,255,255,0.6)",
+                  marginTop: "1.5rem",
+                  maxWidth: "600px",
+                  margin: "1.5rem auto 0",
+                  lineHeight: 1.7,
+                }}
+              >
+                In this featured interview, Lawrence Colbert discusses the changing geography of global wealth and the historic moment when China emerged as home to more billionaires than the United States.
+              </p>
+            </div>
+          </FadeUp>
+          <FadeUp delay={0.15}>
+            <div
+              style={{
+                border: `1px solid rgba(201,168,76,0.2)`,
+                overflow: "hidden",
+              }}
+            >
+              <VideoEmbed />
+            </div>
+          </FadeUp>
+        </div>
+      </section>
+
       {/* ══════════════════════════════════════════════════════
           1. OPENING STATEMENT + PULL QUOTE
           ══════════════════════════════════════════════════════ */}
@@ -658,54 +707,6 @@ export default function Founder() {
             <BodyP>
               Billionaire Television and Billionaires Radio extended this reach into new formats, bringing the Billionaire Collection's editorial perspective to audiences across digital and broadcast platforms worldwide. Together, the media division represents a significant and growing influence on the conversation about wealth, success, and the future of the global economy.
             </BodyP>
-          </FadeUp>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════════════════
-          9. FEATURED INTERVIEW (VIDEO)
-          ══════════════════════════════════════════════════════ */}
-      <section style={{ padding: sectionPad, background: "#000" }}>
-        <div style={{ maxWidth: "900px", margin: "0 auto" }}>
-          <FadeUp>
-            <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
-              <SectionLabel>Featured Interview</SectionLabel>
-              <h2
-                style={{
-                  fontFamily: FONT_HEADING,
-                  fontWeight: 700,
-                  fontSize: "clamp(1.6rem, 3.5vw, 2.4rem)",
-                  color: "#fff",
-                  marginBottom: "1rem",
-                }}
-              >
-                A Global Shift in Wealth
-              </h2>
-              <GoldDivider />
-              <p
-                style={{
-                  fontFamily: FONT_UI,
-                  fontSize: "clamp(0.85rem, 1.5vw, 1rem)",
-                  color: "rgba(255,255,255,0.6)",
-                  marginTop: "1.5rem",
-                  maxWidth: "600px",
-                  margin: "1.5rem auto 0",
-                  lineHeight: 1.7,
-                }}
-              >
-                In this featured interview, Lawrence Colbert discusses the changing geography of global wealth and the historic moment when China emerged as home to more billionaires than the United States.
-              </p>
-            </div>
-          </FadeUp>
-          <FadeUp delay={0.15}>
-            <div
-              style={{
-                border: `1px solid rgba(201,168,76,0.2)`,
-                overflow: "hidden",
-              }}
-            >
-              <VideoEmbed />
-            </div>
           </FadeUp>
         </div>
       </section>
