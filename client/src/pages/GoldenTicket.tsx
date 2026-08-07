@@ -393,9 +393,9 @@ function BenefitCard({
 }
 
 /* ── Magazine asset URLs ── */
-const MAG_SPREAD_IMG = "/images/bc-magazine-spread.png";
-const MAG_JET_IMG = "/images/bc-magazine-jet.png";
-const MAG_TICKET_BOX_IMG = "/images/bc-golden-ticket-box.png";
+const MAG_SPREAD_IMG = "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/GIjdGiZnfjHcPZpO.png";
+const MAG_JET_IMG = "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/qyJaarZYpfkZZMDY.png";
+const MAG_TICKET_BOX_IMG = "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/wzFRaWSgYsfaQKOD.png";
 
 /* ── Data ── */
 const BENEFITS = [
