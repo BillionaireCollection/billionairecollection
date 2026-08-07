@@ -33,6 +33,7 @@ const NAV_ITEMS: NavItem[] = [
       { label: "Services", href: "/services", description: "Funding, Golf, Travel & Card" },
       { label: "Counsel", href: "/counsel", description: "Ultra-premium legal advisory" },
       { label: "Billionaire Tutor", href: "/billionaire-tutor", description: "Elite self-made wealth coaches" },
+      { label: "Founder & CEO", href: "/founder", description: "Lawrence Colbert — vision & legacy" },
     ],
   },
   {
