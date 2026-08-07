@@ -90,14 +90,14 @@ export default function Vitality() {
           title: "Private Wellness Retreat",
           sub: "7-day immersive programme at an exclusive private health sanctuary — fully bespoke",
           price: "From $75,000",
-          img: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80",
+          img: "/listing-vitality-wellness-retreat.jpg",
           tag: "Exclusive",
         },
         {
           title: "Annual Vitality Membership",
           sub: "Year-round access to our full network of clinics, practitioners, and protocols",
           price: "POA",
-          img: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80",
+          img: "/listing-vitality-longevity.jpg",
           tag: "Members Only",
         },
       ]}

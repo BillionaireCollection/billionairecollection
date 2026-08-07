@@ -70,8 +70,8 @@ export default function Car() {
 ]}
       listings={[
     { title: "Ferrari LaFerrari Aperta", sub: "1 of 210, Rosso Corsa", price: "POA", img: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&q=80", tag: "Rare" },
-    { title: "Bugatti Chiron Super Sport", sub: "2022, 1,600hp", price: "$4,100,000", img: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&q=80", tag: "For Sale" },
-    { title: "Rolls-Royce Phantom Bespoke", sub: "Commission Available", price: "POA", img: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&q=80", tag: "Commission" }
+    { title: "Bugatti Chiron Super Sport", sub: "2022, 1,600hp", price: "$4,100,000", img: "/listing-bugatti-chiron-super-sport.jpg", tag: "For Sale" },
+    { title: "Rolls-Royce Phantom Bespoke", sub: "Commission Available", price: "POA", img: "/listing-rolls-royce-phantom-bespoke.jpg", tag: "Commission" }
 ]}
       listingsTitle="Featured Vehicles"
       ctaBanner={{ title: "Find Your Perfect Machine", sub: "Our automotive advisors will source, acquire, or commission the exact vehicle you desire.", btnLabel: "Speak to an Advisor", btnHref: "/card-concierge" }}
