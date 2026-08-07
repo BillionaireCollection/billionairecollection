@@ -55,4 +55,11 @@
   <url><loc>https://billionairecollection.com/privacy</loc><lastmod>2026-07-06</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
   <url><loc>https://billionairecollection.com/terms</loc><lastmod>2026-07-06</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
 
+  <!-- New pages added 2026-08-07 -->
+  <url><loc>https://billionairecollection.com/founder</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://billionairecollection.com/ecosystem</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://billionairecollection.com/university</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://billionairecollection.com/store</loc><lastmod>2026-08-07</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://billionairecollection.com/brands</loc><lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
 </urlset>

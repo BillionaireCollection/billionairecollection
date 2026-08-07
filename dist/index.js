@@ -1670,6 +1670,14 @@ var vite_config_default = defineConfig({
 });
 
 // server/_core/vite.ts
+var BASE_URL = "https://billionairecollection.com";
+function injectCanonical(html, pathname) {
+  const canonical = `${BASE_URL}${pathname === "/" ? "" : pathname.replace(/\/$/, "")}`;
+  return html.replace(
+    /<link rel="canonical"[^>]*>/,
+    `<link rel="canonical" href="${canonical}" />`
+  );
+}
 async function setupVite(app, server) {
   const serverOptions = {
     middlewareMode: true,
@@ -1697,7 +1705,8 @@ async function setupVite(app, server) {
         `src="/src/main.tsx"`,
         `src="/src/main.tsx?v=${nanoid()}"`
       );
-      const page = await vite.transformIndexHtml(url, template);
+      let page = await vite.transformIndexHtml(url, template);
+      page = injectCanonical(page, req.path);
       res.status(200).set({ "Content-Type": "text/html" }).end(page);
     } catch (e) {
       vite.ssrFixStacktrace(e);
@@ -1713,8 +1722,16 @@ function serveStatic(app) {
     );
   }
   app.use(express.static(distPath));
-  app.use("*", (_req, res) => {
-    res.sendFile(path2.resolve(distPath, "index.html"));
+  app.use("*", (req, res) => {
+    const indexPath = path2.resolve(distPath, "index.html");
+    fs2.readFile(indexPath, "utf-8", (err, html) => {
+      if (err) {
+        res.status(500).send("Internal Server Error");
+        return;
+      }
+      const injected = injectCanonical(html, req.path);
+      res.status(200).set({ "Content-Type": "text/html" }).end(injected);
+    });
   });
 }
 
