@@ -101,7 +101,14 @@ export default function News() {
 
   const subscribeMutation = trpc.newsletter.subscribe.useMutation({
     onSuccess: () => setSubscribed(true),
-    onError: (err) => setSubscribeError(err.message || "Something went wrong. Please try again."),
+    onError: (err) => {
+      const msg = err.message || "";
+      if (msg.includes("duplicate") || msg.includes("Duplicate") || msg.includes("already")) {
+        setSubscribed(true); // treat duplicate as already subscribed — show success
+      } else {
+        setSubscribeError("Unable to subscribe at this time. Please try again shortly.");
+      }
+    },
   });
   const { data: dbArticles, isLoading: loading, dataUpdatedAt, refetch } = trpc.news.list.useQuery(
     { limit: 30 },

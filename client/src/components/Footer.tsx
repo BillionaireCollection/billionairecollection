@@ -84,7 +84,14 @@ export default function Footer() {
   const [subError, setSubError] = useState("");
   const subscribeMutation = trpc.newsletter.subscribe.useMutation({
     onSuccess: () => { setSubscribed(true); setEmail(""); setSubError(""); },
-    onError: (err) => setSubError(err.message || "Something went wrong. Please try again."),
+    onError: (err) => {
+      const msg = err.message || "";
+      if (msg.includes("duplicate") || msg.includes("Duplicate") || msg.includes("already")) {
+        setSubscribed(true); // treat duplicate as already subscribed
+      } else {
+        setSubError("Unable to subscribe at this time. Please try again shortly.");
+      }
+    },
   });
 
   return (
