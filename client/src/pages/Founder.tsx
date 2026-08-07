@@ -359,7 +359,7 @@ export default function Founder() {
         {/* Hero content */}
         <div
           className="container"
-          style={{ position: "relative", zIndex: 1, paddingBottom: "clamp(4rem, 8vw, 7rem)" }}
+          style={{ position: "relative", zIndex: 1, paddingTop: "clamp(6rem, 12vw, 9rem)", paddingBottom: "clamp(4rem, 8vw, 7rem)" }}
         >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
