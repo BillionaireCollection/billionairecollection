@@ -395,7 +395,7 @@ export default function Founder() {
               src="/forever-in-service-book.jpg"
               alt="Forever In Service — by Lawrence Colbert"
               style={{
-                width: "clamp(120px, 22vw, 200px)",
+                width: "clamp(240px, 55vw, 420px)",
                 height: "auto",
                 display: "block",
                 boxShadow: "0 12px 48px rgba(0,0,0,0.7), 0 4px 16px rgba(201,168,76,0.15)",
