@@ -68,7 +68,7 @@ const PRODUCTS: Product[] = [
     tagline: "Arch print. Gold on dark.",
     description: "Bold arch typography in gold on premium dark fabric. A collector's essential.",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
-    image: "/images/arch-logo-tee_f557ef32.png",
+    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/PjfBdRuagPOvKFsS.png",
   },
   {
     id: "tee-crest-standard",
@@ -114,7 +114,7 @@ const PRODUCTS: Product[] = [
     tagline: "Heavyweight luxury. Crest embroidered.",
     description: "400gsm heavyweight fleece with embroidered crest. The pinnacle of casual luxury.",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
-    image: "/images/crest-pullover-hoodie_d1866b2e.png",
+    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/bpedGlKmUYtaDfeS.png",
   },
   {
     id: "hoodie-crest-embroidered",
@@ -126,7 +126,7 @@ const PRODUCTS: Product[] = [
     tagline: "Full embroidery. Heirloom quality.",
     description: "Full embroidered crest on premium fleece. Limited production. Collector's edition.",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
-    image: "/images/crest-hoodie-embroidered_529f6e46.png",
+    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/bdYcjOcPgFVxylJv.png",
   },
   {
     id: "hoodie-wealth-creation",
@@ -137,7 +137,7 @@ const PRODUCTS: Product[] = [
     tagline: "Create. Preserve. Transcend.",
     description: "Our most exclusive hoodie. Gold foil print on premium fleece. For those who understand the game.",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
-    image: "/images/wealth-preservation-hoodie_d16ea859.png",
+    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/tdocGTXYQUHspBWY.png",
   },
   // Hats
   {
@@ -159,7 +159,7 @@ const PRODUCTS: Product[] = [
     colors: ["Black/Gold", "Navy/Gold"],
     tagline: "Crown the collection.",
     description: "Flat-brim snapback with gold crown logo embroidery. Adjustable snap closure.",
-    image: "/images/crown-snapback_4eccbd23.png",
+    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/lCjzTNCJHLPXXeEC.png",
   },
   // Mugs
   {
@@ -192,7 +192,7 @@ const PRODUCTS: Product[] = [
     badge: "Popular",
     tagline: "Gallery-quality. Frameable.",
     description: "A2 premium matte print. Gallery-quality paper. The BC crest rendered in gold on dark.",
-    image: "/images/bc-crest-poster_4c6e5238.png",
+    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/mEKRJftboXbiLnbz.png",
   },
   {
     id: "poster-manifesto",
@@ -202,7 +202,7 @@ const PRODUCTS: Product[] = [
     colors: ["Black/Gold", "Navy/Gold"],
     tagline: "The Billionaire manifesto. Framed.",
     description: "A2 premium matte print featuring the Billionaire Collection manifesto in gold typography.",
-    image: "/images/wealth-mindset-poster_09de1e2c.png",
+    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/HmqDWCRlRmVZtpKl.png",
   },
   // Tote Bags
   {
@@ -213,7 +213,7 @@ const PRODUCTS: Product[] = [
     colors: ["Natural/Navy", "Black/Gold"],
     tagline: "Carry the crest.",
     description: "Heavy-duty canvas tote with BC crest print. Reinforced handles. 15L capacity.",
-    image: "/images/bc-signature-tote_76305794.png",
+    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/OrXJEgpNKGPkEzJE.png",
   },
   {
     id: "tote-build-empire",
@@ -223,7 +223,7 @@ const PRODUCTS: Product[] = [
     colors: ["Natural/Black", "Black/Gold"],
     tagline: "Build empires. Carry essentials.",
     description: "Premium canvas tote with Build Empire print. The everyday carry for the ambitious.",
-    image: "/images/arch-logo-tote_a926aa13.png",
+    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/IocKarkPGZHnsQXy.png",
   },
 ];
 

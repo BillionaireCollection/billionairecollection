@@ -53,7 +53,7 @@ export default function Chrono() {
       heroTitle="Where Rarity Meets"
       heroAccent="Absolute Precision"
       heroSubtitle="The private watch division of Billionaire Collection. Acquiring and placing only the world's most significant timepieces — strictly above one million dollars — for a closed circle of discerning collectors."
-      heroImage="/images/bc-chrono-watch1.jpg"
+      heroImage="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/zBUTYpKIDoUJiYbC.jpg"
       heroCta={{ label: "Enquire Now", href: "https://billionairechrono.com" }}
       heroCtaSecondary={{ label: "View Collection", href: "https://billionairechrono.com" }}
       aboutTitle="Investment-Grade Horology at the Absolute Pinnacle"
@@ -70,8 +70,8 @@ export default function Chrono() {
 ]}
       listings={[
     { title: "Patek Philippe Grandmaster Chime", sub: "Ref. 6300A-010 — World Auction Record · 20 Complications", price: "$31M+", img: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/chrono-grandmaster-chime-7kBFBn4qMFkw6tDXxyuLUU.webp", tag: "Private Sale" },
-    { title: "Jacob & Co. Billionaire Series", sub: "Diamond Tourbillon — 260ct · 18k White Gold", price: "$18M–$20M+", img: "/images/bc-chrono-watch1.jpg", tag: "Available" },
-    { title: "Richard Mille RM 53-02", sub: "Sapphire Tourbillon — Ultra-Rare", price: "$4M–$5M+", img: "/images/chrono-richard-mille-rm53.webp", tag: "Exclusive" }
+    { title: "Jacob & Co. Billionaire Series", sub: "Diamond Tourbillon — 260ct · 18k White Gold", price: "$18M–$20M+", img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/zBUTYpKIDoUJiYbC.jpg", tag: "Available" },
+    { title: "Richard Mille RM 53-02", sub: "Sapphire Tourbillon — Ultra-Rare", price: "$4M–$5M+", img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/MGEseaVHvTOGGlbe.webp", tag: "Exclusive" }
 ]}
       listingsTitle="Featured Acquisitions"
       ctaBanner={{ title: "Access Reserved for Those Who Collect at the Pinnacle", sub: "Our concierge team is available to source, authenticate, and place the world's most significant timepieces with absolute discretion.", btnLabel: "Request Private Access", btnHref: "https://billionairechrono.com" }}

@@ -48,7 +48,7 @@ const FALLBACK_IMGS = [
   "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
   "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80",
   "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&q=80",
-  "/images/billionaire-art-new.png",
+  "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/HSsolmMQAvZMcpXj.png",
 ];
 
 export default function News() {

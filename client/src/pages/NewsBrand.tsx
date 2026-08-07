@@ -43,7 +43,7 @@ const FORMATS = [
   {
     label: "Breaking Intelligence",
     desc: "Real-time market-moving news delivered directly to Billionaire Card members before it reaches mainstream financial media.",
-    img: "/images/bc-news-hero.jpg",
+    img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/wJIfjrDUbToiPuyl.jpg",
   },
   {
     label: "In-Depth Analysis",
@@ -103,7 +103,7 @@ export default function NewsBrand() {
         title="Intelligence for the"
         titleAccent="Ultra-Wealthy"
         subtitle="The world's only news platform built exclusively for ultra-high-net-worth individuals — delivering real-time market intelligence, exclusive interviews, and in-depth analysis that moves wealth."
-        image="/images/bc-news-hero.jpg"
+        image="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/wJIfjrDUbToiPuyl.jpg"
         cta={{ label: "Back to Media", href: "/media" }}
       />
 

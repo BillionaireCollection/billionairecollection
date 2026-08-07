@@ -26,46 +26,46 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 }
 
 const PRODUCTS_IMAGES: Record<string, string> = {
-  "Billionaire Champagne": "/images/bc-champagne-bottle.png",
-  "Billionaire Vodka": "/images/bc-vodka-bottle.png",
-  "Billionaire Cigar": "/images/bc-cigar-box.png",
-  "Billionaire Oud": "/images/bc-oud-gold.png",
+  "Billionaire Champagne": "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/renYSHTvqirjjIkH.png",
+  "Billionaire Vodka": "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/ZwZblICMZRmpAPsw.png",
+  "Billionaire Cigar": "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/YussZorVZGYPLbyw.png",
+  "Billionaire Oud": "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/lPNmRGfmZRWqQlFI.png",
   "Official Store": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&q=70",
 };
 
 const MEDIA_IMAGES: Record<string, string> = {
-  "Billionaire Television": "/images/bc-television.png",
-  "Billionaire Magazine": "/images/bc-magazine.png",
-  "Billionaire Radio": "/images/bc-radio.png",
-  "Billionaire News": "/images/bc-news-hero.jpg",
+  "Billionaire Television": "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/fwFLVxmWMOrdWWJk.png",
+  "Billionaire Magazine": "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/ZmFnrLjbUHKbPtdR.png",
+  "Billionaire Radio": "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/fSrajDZOGAivGqVc.png",
+  "Billionaire News": "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/wJIfjrDUbToiPuyl.jpg",
 };
 
 const TECH_IMAGES: Record<string, string> = {
-  "Billionaire University": "/images/bc-university-hall.jpg",
-  "Billionaire Vitality": "/images/bc-vitality-hero.jpg",
+  "Billionaire University": "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/KbBKAUaMpqalBUUP.jpg",
+  "Billionaire Vitality": "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/zxJZwfoQGaClWbjo.jpg",
   "TheBillionaire.ai": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=400&q=70",
   "Billionaire Digital": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&q=70",
 };
 
 const SERVICES_IMAGES: Record<string, string> = {
-  "Billionaire Card": "/images/bc-card-tile.jpg",
-  "Billionaire Funding": "/images/bc-funding-tile.jpg",
-  "Billionaire Golf": "/images/bc-golf-tile.jpg",
-  "Billionaire Travel": "/images/bc-travel-tile.jpg",
-  "Billionaire Counsel": "/images/bc-counsel-hero.jpg",
+  "Billionaire Card": "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/yDDGSxKUYLAesqSu.jpg",
+  "Billionaire Funding": "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/WfjOWXUhiXZMuplX.jpg",
+  "Billionaire Golf": "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/rVUWWwKsHCEIgdir.jpg",
+  "Billionaire Travel": "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/tIpCmWcyEFCmJjVg.jpg",
+  "Billionaire Counsel": "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/VwUGnELdcTIZDXDK.jpg",
 };
 
 const BROKERAGE_IMAGES: Record<string, string> = {
-  "Billionaire Estates": "/images/malibu-ocean-estate.jpg",
-  "Billionaire Boat": "/images/feadship-eclipse.jpg",
-  "Billionaire Air": "/images/bombardier-global-7500.png",
-  "Billionaire Car": "/images/bugatti-chiron-super-sport.jpg",
-  "Billionaire Art": "/images/bc-art-crown.png",
-  "Billionaire Chrono": "/images/bc-chrono-watch1.jpg",
+  "Billionaire Estates": "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/wtjbrlvABqFUUuHE.jpg",
+  "Billionaire Boat": "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/DIcnicdxAvuklPof.jpg",
+  "Billionaire Air": "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/FMfsevRbcArmLAdy.png",
+  "Billionaire Car": "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/JSSAseBOTMUolgNE.jpg",
+  "Billionaire Art": "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/AgccAWHlWJkzKjuv.png",
+  "Billionaire Chrono": "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/zBUTYpKIDoUJiYbC.jpg",
   "Billionaire Crypto": "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/eco-tile-crypto-8UXcm66qLZSjLsGEikQGHG.webp",
   "The Off Market Sale": "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/eco-tile-offmarket-ctz7kbS5xoAPit3ZMNT275.webp",
   "OffMarket Hotel": "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/eco-tile-hotel-5kQ465sUvqesef5X5hxLpA.webp",
-  "Billionaire University": "/images/bc-university-hall.jpg",
+  "Billionaire University": "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/KbBKAUaMpqalBUUP.jpg",
 };
 
 const DIVISIONS = [

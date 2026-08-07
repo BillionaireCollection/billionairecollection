@@ -69,9 +69,9 @@ export default function Car() {
     { icon: "🌍", title: "Global Sourcing", desc: "Worldwide network" }
 ]}
       listings={[
-    { title: "Ferrari LaFerrari Aperta", sub: "1 of 210, Rosso Corsa", price: "POA", img: "/images/ferrari-laferrari-aperta.webp", tag: "Rare" },
-    { title: "Bugatti Chiron Super Sport", sub: "2022, 1,600hp", price: "$4,100,000", img: "/images/bugatti-chiron-super-sport.jpg", tag: "For Sale" },
-    { title: "Rolls-Royce Phantom Bespoke", sub: "Commission Available", price: "POA", img: "/images/rolls-royce-phantom-bespoke.webp", tag: "Commission" }
+    { title: "Ferrari LaFerrari Aperta", sub: "1 of 210, Rosso Corsa", price: "POA", img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/sTknOzbUZnSrqEBc.webp", tag: "Rare" },
+    { title: "Bugatti Chiron Super Sport", sub: "2022, 1,600hp", price: "$4,100,000", img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/JSSAseBOTMUolgNE.jpg", tag: "For Sale" },
+    { title: "Rolls-Royce Phantom Bespoke", sub: "Commission Available", price: "POA", img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/jhGdabnqYkcmtEzN.webp", tag: "Commission" }
 ]}
       listingsTitle="Featured Vehicles"
       ctaBanner={{ title: "Find Your Perfect Machine", sub: "Our automotive advisors will source, acquire, or commission the exact vehicle you desire.", btnLabel: "Speak to an Advisor", btnHref: "/card-concierge" }}

@@ -61,7 +61,7 @@ export default function Counsel() {
       heroTitle="Legal Mastery at"
       heroAccent="the Highest Level"
       heroSubtitle="The ultra-premium legal advisory division of Billionaire Collection — connecting ultra-high-net-worth individuals with the world's most elite legal minds for wealth structuring, asset protection, and complex cross-border transactions."
-      heroImage="/images/bc-counsel-hero.jpg"
+      heroImage="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/VwUGnELdcTIZDXDK.jpg"
       heroCta={{ label: "Request a Consultation", href: "/concierge" }}
       heroCtaSecondary={{ label: "Learn More", href: "/services" }}
       aboutTitle="Counsel Reserved for Those Who Operate at the Pinnacle"
@@ -83,21 +83,21 @@ export default function Counsel() {
           title: "Wealth Structuring Review",
           sub: "Comprehensive audit of existing structures with recommendations for optimisation across all jurisdictions",
           price: "From $50,000",
-          img: "/images/bc-counsel-boardroom.jpg",
+          img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/bfisuZeLSolsuwIP.jpg",
           tag: "Flagship",
         },
         {
           title: "Cross-Border Transaction Advisory",
           sub: "End-to-end legal counsel for complex international acquisitions, mergers, and asset transfers",
           price: "POA",
-          img: "/images/bc-counsel-hero.jpg",
+          img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/VwUGnELdcTIZDXDK.jpg",
           tag: "Bespoke",
         },
         {
           title: "Annual Retainer Programme",
           sub: "Priority access to our full network of elite private client lawyers — on-demand, year-round",
           price: "POA",
-          img: "/images/bc-counsel-boardroom.jpg",
+          img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/bfisuZeLSolsuwIP.jpg",
           tag: "Members Only",
         },
       ]}

@@ -61,7 +61,7 @@ export default function Vitality() {
       heroTitle="Optimise Your"
       heroAccent="Longevity"
       heroSubtitle="The ultra-premium wellness and longevity division of Billionaire Collection — delivering the world's most advanced biohacking protocols, private longevity clinics, and bespoke health optimisation programmes to ultra-high-net-worth individuals."
-      heroImage="/images/bc-vitality-hero.jpg"
+      heroImage="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/zxJZwfoQGaClWbjo.jpg"
       heroCta={{ label: "Begin Your Programme", href: "/concierge" }}
       heroCtaSecondary={{ label: "Learn More", href: "/technology" }}
       aboutTitle="The Science of Living Exceptionally"
@@ -83,21 +83,21 @@ export default function Vitality() {
           title: "Executive Longevity Assessment",
           sub: "Comprehensive 3-day biomarker analysis, genetic profiling, and personalised longevity roadmap",
           price: "From $25,000",
-          img: "/images/bc-vitality-clinic.jpg",
+          img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/GTtaLZsmUzYjtBaV.jpg",
           tag: "Flagship",
         },
         {
           title: "Private Wellness Retreat",
           sub: "7-day immersive programme at an exclusive private health sanctuary — fully bespoke",
           price: "From $75,000",
-          img: "/images/bc-vitality-hero.jpg",
+          img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/zxJZwfoQGaClWbjo.jpg",
           tag: "Exclusive",
         },
         {
           title: "Annual Vitality Membership",
           sub: "Year-round access to our full network of clinics, practitioners, and protocols",
           price: "POA",
-          img: "/images/bc-vitality-hero.jpg",
+          img: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/zxJZwfoQGaClWbjo.jpg",
           tag: "Members Only",
         },
       ]}

@@ -67,7 +67,7 @@ export default function Technology() {
     {
       label: "Billionaire University",
       icon: null,
-      logo: "/images/billionaire-university-logo.png",
+      logo: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/ppmZdiZKLUQkdQiQ.png",
       href: "https://www.billionaireuniversity.com/",
       desc: "The world's most exclusive educational platform for ultra-high-net-worth individuals — masterclasses, mentorship, and knowledge from the world's greatest minds.",
       detail: "Curated curricula spanning wealth preservation, geopolitical intelligence, alternative investments, and the art of living — delivered by Nobel laureates, heads of state, and industry titans.",
@@ -75,7 +75,7 @@ export default function Technology() {
     {
       label: "Billionaire Counsel",
       icon: null,
-      logo: "/images/billionaire-counsel-signing-room.webp",
+      logo: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/dlpJuBQofecGCPil.webp",
       href: "https://www.billionairecounsel.com/",
       desc: "The world's most exclusive private wealth counsel for ultra-high-net-worth individuals and family offices — protecting, preserving, and transferring wealth across generations.",
       detail: "Asset protection, estate planning, tax advisory, family governance, and international structuring — delivered by elite advisors across 47 jurisdictions with absolute discretion.",
@@ -83,7 +83,7 @@ export default function Technology() {
     {
       label: "Billionaire Vitality",
       icon: null,
-      logo: "/images/billionaire-vitality-lifestyle.png",
+      logo: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028447909/OYXzsDYDGfBnBslv.png",
       href: "/vitality",
       desc: "Elite health and longevity programmes designed for peak performance — combining the latest in medical science with the most exclusive wellness retreats.",
       detail: "Precision medicine, cellular reprogramming research, biometric optimisation, and access to the world's foremost longevity clinics — for those who demand more from life.",
