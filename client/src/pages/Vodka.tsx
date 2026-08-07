@@ -74,7 +74,7 @@ export default function Vodka() {
 ]);
   return (
     <div style={{ background: "#000" }}>
-      <PageHero badge="Billionaire Vodka" title="Limited-Edition" titleAccent="Spirits" subtitle="Ultra-premium vodkas crafted for the most discerning palates — from crystal-clear Scandinavian expressions to rare single-grain distillations." image="https://billionairecollection.com/images/billionaire-vodka-new.png" cta={{ label: "Enquire", href: "/card-concierge" }} />
+      <PageHero badge="Billionaire Vodka" title="Limited-Edition" titleAccent="Spirits" subtitle="Ultra-premium vodkas crafted for the most discerning palates — from crystal-clear Scandinavian expressions to rare single-grain distillations." image="/billionaire-vodka-new.jpg" cta={{ label: "Enquire", href: "/card-concierge" }} />
       <section style={{ padding: "8rem 0" }}>
         <div className="container">
           <FadeUp>

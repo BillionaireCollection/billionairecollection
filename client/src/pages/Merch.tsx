@@ -192,7 +192,7 @@ const PRODUCTS: Product[] = [
     badge: "Popular",
     tagline: "Gallery-quality. Frameable.",
     description: "A2 premium matte print. Gallery-quality paper. The BC crest rendered in gold on dark.",
-    image: "/images/bc-crest-poster_4c6e5238.png",
+    image: "/bc-crest-poster.jpg",
   },
   {
     id: "poster-manifesto",
@@ -213,7 +213,7 @@ const PRODUCTS: Product[] = [
     colors: ["Natural/Navy", "Black/Gold"],
     tagline: "Carry the crest.",
     description: "Heavy-duty canvas tote with BC crest print. Reinforced handles. 15L capacity.",
-    image: "/images/bc-signature-tote_76305794.png",
+    image: "/bc-signature-tote.jpg",
   },
   {
     id: "tote-build-empire",
