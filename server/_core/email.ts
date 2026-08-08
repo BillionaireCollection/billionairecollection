@@ -12,8 +12,9 @@ import nodemailer from "nodemailer";
 let _transport: ReturnType<typeof nodemailer.createTransport> | null = null;
 
 function getTransport() {
-  // Support both naming conventions: skill uses SMTP_USERNAME, Hostinger env uses SMTP_USER
-  const host = process.env.SMTP_HOST || "smtp.office365.com";
+  // Always use Office 365 SMTP (GoDaddy email) — ignore SMTP_HOST env var which may be set
+  // incorrectly to smtp.hostinger.com on Hostinger's Node.js environment
+  const host = "smtp.office365.com";
   const port = parseInt(process.env.SMTP_PORT || "587", 10);
   const user = process.env.SMTP_USERNAME || process.env.SMTP_USER || "";
   const pass = process.env.SMTP_PASSWORD || process.env.SMTP_PASS || "";
