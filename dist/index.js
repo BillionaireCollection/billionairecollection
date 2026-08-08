@@ -1136,33 +1136,48 @@ import { TRPCError as TRPCError3 } from "@trpc/server";
 
 // server/_core/email.ts
 import nodemailer from "nodemailer";
+var _transport = null;
+function getTransport() {
+  const host = process.env.SMTP_HOST || "smtp.office365.com";
+  const port = parseInt(process.env.SMTP_PORT || "587", 10);
+  const user = process.env.SMTP_USERNAME || process.env.SMTP_USER || "";
+  const pass = process.env.SMTP_PASSWORD || process.env.SMTP_PASS || "";
+  if (!_transport) {
+    _transport = nodemailer.createTransport({
+      host,
+      port,
+      secure: false,
+      // STARTTLS — not SSL
+      requireTLS: true,
+      // Enforce TLS upgrade (required for Office 365)
+      auth: { user, pass },
+      tls: {
+        minVersion: "TLSv1.2",
+        rejectUnauthorized: true
+      },
+      connectionTimeout: 1e4,
+      greetingTimeout: 1e4,
+      socketTimeout: 15e3
+    });
+  }
+  return { transport: _transport, user, pass, host, port };
+}
 async function sendOwnerEmail(subject, body) {
-  const SMTP_HOST = process.env.SMTP_HOST || "smtp.office365.com";
-  const SMTP_PORT = parseInt(process.env.SMTP_PORT || "587", 10);
-  const SMTP_USER = process.env.SMTP_USER || "";
-  const SMTP_PASS = process.env.SMTP_PASS || "";
-  const NOTIFY_TO = process.env.NOTIFY_EMAIL || SMTP_USER;
-  console.log(`[Email] Attempting to send: "${subject}" via ${SMTP_HOST}:${SMTP_PORT} from ${SMTP_USER} to ${NOTIFY_TO}`);
-  if (!SMTP_PASS) {
-    console.warn("[Email] SMTP_PASS not configured \u2014 skipping notification.");
+  const { transport, user, pass, host, port } = getTransport();
+  const fromEmail = process.env.SMTP_FROM_EMAIL || user;
+  const toEmail = process.env.SMTP_TO_EMAIL || process.env.NOTIFY_EMAIL || user;
+  console.log(`[Email] Attempting: "${subject}" via ${host}:${port} from ${fromEmail} to ${toEmail}`);
+  if (!pass) {
+    console.warn("[Email] SMTP password not configured (SMTP_PASSWORD or SMTP_PASS) \u2014 skipping.");
+    return;
+  }
+  if (!user) {
+    console.warn("[Email] SMTP username not configured (SMTP_USERNAME or SMTP_USER) \u2014 skipping.");
     return;
   }
   try {
-    const transporter = nodemailer.createTransport({
-      host: SMTP_HOST,
-      port: SMTP_PORT,
-      secure: false,
-      // STARTTLS on port 587
-      auth: {
-        user: SMTP_USER,
-        pass: SMTP_PASS
-      },
-      tls: {
-        rejectUnauthorized: false
-      }
-    });
-    await transporter.verify();
-    console.log(`[Email] SMTP connection verified successfully`);
+    await transport.verify();
+    console.log("[Email] SMTP handshake verified");
     const plainBody = body.replace(/\*\*(.*?)\*\*/g, "$1");
     const htmlBody = body.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>").replace(/\n/g, "<br>");
     const html = `<!DOCTYPE html>
@@ -1179,17 +1194,18 @@ async function sendOwnerEmail(subject, body) {
   </div>
 </body>
 </html>`;
-    await transporter.sendMail({
-      from: `"Billionaire Collection" <${SMTP_USER}>`,
-      to: NOTIFY_TO,
+    await transport.sendMail({
+      from: `"Billionaire Collection" <${fromEmail}>`,
+      to: toEmail,
       subject: `[BC] ${subject}`,
       text: plainBody,
       html
     });
-    console.log(`[Email] Notification sent: ${subject}`);
+    console.log(`[Email] Sent: ${subject}`);
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
-    console.error(`[Email] Failed to send notification: ${msg}`);
+    _transport = null;
+    console.error(`[Email] Failed: ${msg}`);
   }
 }
 

@@ -2,39 +2,61 @@ import nodemailer from "nodemailer";
 
 /**
  * Send an email notification to the site owner.
- * All env vars are read lazily (at call time) so dotenv has already loaded them.
+ * Follows the Billionaire PLC SMTP skill contract:
+ * - STARTTLS on port 587 (secure: false, requireTLS: true)
+ * - Supports both SMTP_USERNAME/SMTP_PASSWORD and SMTP_USER/SMTP_PASS aliases
+ * - All env vars read lazily at call time
  */
+
+// Lazy singleton transport — one per process
+let _transport: ReturnType<typeof nodemailer.createTransport> | null = null;
+
+function getTransport() {
+  // Support both naming conventions: skill uses SMTP_USERNAME, Hostinger env uses SMTP_USER
+  const host = process.env.SMTP_HOST || "smtp.office365.com";
+  const port = parseInt(process.env.SMTP_PORT || "587", 10);
+  const user = process.env.SMTP_USERNAME || process.env.SMTP_USER || "";
+  const pass = process.env.SMTP_PASSWORD || process.env.SMTP_PASS || "";
+
+  if (!_transport) {
+    _transport = nodemailer.createTransport({
+      host,
+      port,
+      secure: false,       // STARTTLS — not SSL
+      requireTLS: true,    // Enforce TLS upgrade (required for Office 365)
+      auth: { user, pass },
+      tls: {
+        minVersion: "TLSv1.2",
+        rejectUnauthorized: true,
+      },
+      connectionTimeout: 10000,
+      greetingTimeout: 10000,
+      socketTimeout: 15000,
+    });
+  }
+  return { transport: _transport, user, pass, host, port };
+}
+
 export async function sendOwnerEmail(subject: string, body: string): Promise<void> {
-  const SMTP_HOST = process.env.SMTP_HOST || "smtp.office365.com";
-  const SMTP_PORT = parseInt(process.env.SMTP_PORT || "587", 10);
-  const SMTP_USER = process.env.SMTP_USER || "";
-  const SMTP_PASS = process.env.SMTP_PASS || "";
-  const NOTIFY_TO = process.env.NOTIFY_EMAIL || SMTP_USER;
+  const { transport, user, pass, host, port } = getTransport();
+  const fromEmail = process.env.SMTP_FROM_EMAIL || user;
+  const toEmail = process.env.SMTP_TO_EMAIL || process.env.NOTIFY_EMAIL || user;
 
-  console.log(`[Email] Attempting to send: "${subject}" via ${SMTP_HOST}:${SMTP_PORT} from ${SMTP_USER} to ${NOTIFY_TO}`);
+  console.log(`[Email] Attempting: "${subject}" via ${host}:${port} from ${fromEmail} to ${toEmail}`);
 
-  if (!SMTP_PASS) {
-    console.warn("[Email] SMTP_PASS not configured — skipping notification.");
+  if (!pass) {
+    console.warn("[Email] SMTP password not configured (SMTP_PASSWORD or SMTP_PASS) — skipping.");
+    return;
+  }
+
+  if (!user) {
+    console.warn("[Email] SMTP username not configured (SMTP_USERNAME or SMTP_USER) — skipping.");
     return;
   }
 
   try {
-    const transporter = nodemailer.createTransport({
-      host: SMTP_HOST,
-      port: SMTP_PORT,
-      secure: false, // STARTTLS on port 587
-      auth: {
-        user: SMTP_USER,
-        pass: SMTP_PASS,
-      },
-      tls: {
-        rejectUnauthorized: false,
-      },
-    });
-
-    // Verify SMTP connection before sending
-    await transporter.verify();
-    console.log(`[Email] SMTP connection verified successfully`);
+    await transport.verify();
+    console.log("[Email] SMTP handshake verified");
 
     const plainBody = body.replace(/\*\*(.*?)\*\*/g, "$1");
     const htmlBody = body
@@ -56,17 +78,19 @@ export async function sendOwnerEmail(subject: string, body: string): Promise<voi
 </body>
 </html>`;
 
-    await transporter.sendMail({
-      from: `"Billionaire Collection" <${SMTP_USER}>`,
-      to: NOTIFY_TO,
+    await transport.sendMail({
+      from: `"Billionaire Collection" <${fromEmail}>`,
+      to: toEmail,
       subject: `[BC] ${subject}`,
       text: plainBody,
       html,
     });
 
-    console.log(`[Email] Notification sent: ${subject}`);
+    console.log(`[Email] Sent: ${subject}`);
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : String(err);
-    console.error(`[Email] Failed to send notification: ${msg}`);
+    // Reset transport so next call gets a fresh connection
+    _transport = null;
+    console.error(`[Email] Failed: ${msg}`);
   }
 }
