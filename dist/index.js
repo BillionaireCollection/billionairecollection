@@ -1748,6 +1748,9 @@ function serveStatic(app) {
     );
   }
   app.use(express.static(distPath));
+  app.get("/googleb0c6e8d7a35c9529.html", (_req, res) => {
+    res.set("Content-Type", "text/html").send("google-site-verification: googleb0c6e8d7a35c9529.html");
+  });
   app.use("*", (req, res) => {
     const indexPath = path2.resolve(distPath, "index.html");
     fs2.readFile(indexPath, "utf-8", (err, html) => {

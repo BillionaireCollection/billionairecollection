@@ -72,6 +72,11 @@ export function serveStatic(app: Express) {
 
   app.use(express.static(distPath));
 
+  // Google Search Console ownership verification
+  app.get("/googleb0c6e8d7a35c9529.html", (_req, res) => {
+    res.set("Content-Type", "text/html").send("google-site-verification: googleb0c6e8d7a35c9529.html");
+  });
+
   // fall through to index.html if the file doesn't exist
   app.use("*", (req, res) => {
     const indexPath = path.resolve(distPath, "index.html");
