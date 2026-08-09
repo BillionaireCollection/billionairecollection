@@ -139,7 +139,7 @@ const TIMELINE = [
   { stage: "02", label: "Military Service", desc: "Served in the United States military, developing discipline, leadership, and an unshakeable commitment to excellence." },
   { stage: "03", label: "United Kingdom", desc: "Relocated to the United Kingdom to pursue business development, establishing roots in one of the world's great commercial centres." },
   { stage: "04", label: "Recording Career", desc: "Entered the international music industry as a recording artist, gaining first-hand experience of global media, branding, and entertainment." },
-  { stage: "05", label: "Sales & Consulting", desc: "Built a distinguished career in sales, commercial training, and consulting — mastering the art of persuasion, value creation, and enterprise growth." },
+  { stage: "05", label: "Sales & Consulting", desc: "Delivered elite sales training to Ferrari, Rolls-Royce, Bentley, Lamborghini, and Porsche — teaching the world's finest sales professionals how to operate at an even higher level." },
   { stage: "06", label: "BILLIONAIRE Brand", desc: "Created the BILLIONAIRE brand, establishing a distinctive identity at the intersection of wealth, aspiration, and lifestyle." },
   { stage: "07", label: "Billionaire Magazine", desc: "Founded Billionaire Magazine in London — a landmark publication serving the global ultra-high-net-worth community." },
   { stage: "08", label: "Billionaire University", desc: "Launched Billionaire University, a structured education platform designed to close the gap between inspiration and implementation for entrepreneurs worldwide." },
@@ -655,10 +655,13 @@ export default function Founder() {
               "Sales is not a profession. It is the fundamental skill of civilisation. Every great leader, every great builder, every great artist — they all understood how to move people toward a vision."
             </PullQuote>
             <BodyP>
-              This commercial foundation would prove essential. When Lawrence began building the Billionaire brand, he did not approach it as a creative exercise. He approached it as a business architect — identifying underserved markets, designing products and services that delivered genuine value, and building systems that could scale without sacrificing quality.
+              Lawrence's specialism was elite sales training — working directly with the retail teams of the world's most prestigious automotive marques. He delivered advanced sales programmes to Ferrari, Rolls-Royce, Bentley, Lamborghini, and Porsche, teaching the highest-performing sales executives in the industry how to operate at an even higher level. His methodology was not about technique alone — it was about the psychology of trust, the art of understanding what the world's wealthiest clients truly desire, and the discipline of delivering an experience that matches the extraordinary nature of the product.
             </BodyP>
             <BodyP>
-              His consulting work brought him into contact with organisations and individuals across multiple industries and geographies, deepening his understanding of how wealth is created, managed, and deployed at the highest levels. It was during this period that the vision for the Billionaire Collection began to crystallise — not as a single brand, but as an entire ecosystem.
+              Among his delegates was Garry O'Dea, widely recognised as the world's number one Ferrari sales executive — a testament to the calibre of professionals Lawrence worked with and the standard his training demanded. His close personal friendship with Tom Hartley — one of the most celebrated independent supercar dealers in the world and author of the acclaimed autobiography <em>The Dealmaker</em> — reflects the depth of his relationships within the global collector car community.
+            </BodyP>
+            <BodyP>
+              This commercial foundation proved essential. When Lawrence began building the Billionaire brand, he did not approach it as a creative exercise. He approached it as a business architect — identifying underserved markets, designing products and services that delivered genuine value, and building systems that could scale without sacrificing quality. It was during this period that the vision for the Billionaire Collection began to crystallise — not as a single brand, but as an entire ecosystem.
             </BodyP>
           </FadeUp>
         </div>
