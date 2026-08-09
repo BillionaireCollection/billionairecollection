@@ -678,7 +678,7 @@ export default function Founder() {
           </FadeUp>
           <FadeUp delay={0.1}>
             <BodyP>
-              Lawrence Colbert's journey into the international music industry as a recording artist gave him a dimension of experience that few entrepreneurs possess. The music business is, at its core, a masterclass in brand building, audience cultivation, and the economics of attention — and Lawrence absorbed every lesson.
+              Lawrence Colbert's journey into the international music industry as a recording artist gave him a dimension of experience that few entrepreneurs possess. Recording under the stage name <strong>L For Real</strong>, he was signed to Music of Life — the pioneering British independent hip hop and dance label founded in 1986 — with publishing through Warner Chappell Music, one of the world's leading music publishers. He subsequently recorded under the monikers <strong>Ghetto Ghost</strong> and <strong>Ghetto Coach</strong>. The music business is, at its core, a masterclass in brand building, audience cultivation, and the economics of attention — and Lawrence absorbed every lesson.
             </BodyP>
             <BodyP>
               His time in the recording industry exposed him to the global machinery of entertainment: the way narratives are constructed, the way audiences are engaged, and the way a single creative identity can transcend geography and culture to achieve international resonance. These were insights that would later inform every aspect of the Billionaire Collection's media strategy.
