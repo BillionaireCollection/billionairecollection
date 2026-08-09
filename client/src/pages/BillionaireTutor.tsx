@@ -112,7 +112,7 @@ export default function BillionaireTutor() {
     title: "Join the Faculty — Billionaire University | Billionaire Collection",
     description: "Billionaire University is selectively recruiting self-made millionaires and billionaires to teach and mentor the next generation of wealth creators. If you built your fortune from the ground up and have a passion to share your lived experience, we want to hear from you.",
     keywords: "billionaire university faculty, wealth coach recruitment, self-made millionaire mentor, teach at billionaire university, billionaire tutor faculty, wealth coaching opportunity, billionaire collection, elite mentorship faculty, self-made billionaire coach",
-    url: "https://www.billionairecollection.com/billionaire-tutor",
+    url: "https://billionairecollection.com/billionaire-tutor",
     image: HERO_BG,
   });
 

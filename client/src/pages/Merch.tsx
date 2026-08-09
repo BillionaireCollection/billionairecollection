@@ -1020,7 +1020,7 @@ export default function Merch() {
     "@type": "Store",
     name: "Billionaire Collection Official Store",
     description: "Premium luxury merchandise from the Billionaire Collection",
-    url: "https://www.billionairecollection.com/marketplace",
+    url: "https://billionairecollection.com/marketplace",
     brand: {
       "@type": "Brand",
       name: "Billionaire Collection",

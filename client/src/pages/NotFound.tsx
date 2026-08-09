@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
+import { useEffect } from "react";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -18,6 +19,23 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 }
 
 export default function NotFound() {
+  // Tell search engines this is a genuine 404 — prevents soft-404 classification
+  useEffect(() => {
+    document.title = "404 — Page Not Found | Billionaire Collection";
+    // Set noindex so Googlebot doesn't try to index non-existent pages
+    let robotsMeta = document.querySelector("meta[name='robots']") as HTMLMetaElement | null;
+    if (!robotsMeta) {
+      robotsMeta = document.createElement("meta");
+      robotsMeta.setAttribute("name", "robots");
+      document.head.appendChild(robotsMeta);
+    }
+    robotsMeta.setAttribute("content", "noindex, nofollow");
+    return () => {
+      // Restore default robots meta when navigating away
+      if (robotsMeta) robotsMeta.setAttribute("content", "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1");
+    };
+  }, []);
+
   return (
     <div style={{ background: "#000", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center" }}>
       <div>

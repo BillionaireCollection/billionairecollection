@@ -8,6 +8,20 @@ import viteConfig from "../../vite.config";
 
 const BASE_URL = "https://billionairecollection.com";
 
+// Known valid SPA routes — any other path is a 404
+const VALID_ROUTES = new Set([
+  "/", "/estates", "/boat", "/air", "/car", "/art", "/chrono", "/crypto",
+  "/media", "/television", "/magazine", "/radio", "/news-brand",
+  "/technology", "/services", "/funding", "/golf", "/travel",
+  "/vitality", "/counsel", "/card", "/card-concierge",
+  "/champagne", "/vodka", "/cigar", "/oud",
+  "/marketplace", "/store", "/news",
+  "/privacy", "/terms", "/contact", "/about",
+  "/golden-ticket", "/billionaire-wisdom", "/billionaire-tutor",
+  "/university", "/ecosystem", "/brands", "/founder",
+  "/admin", "/x-offer", "/offer",
+]);
+
 function injectCanonical(html: string, pathname: string): string {
   const canonical = `${BASE_URL}${pathname === "/" ? "" : pathname.replace(/\/$/, "")}`;
   // Replace the hardcoded root canonical with the page-specific one
@@ -78,15 +92,22 @@ export function serveStatic(app: Express) {
   });
 
   // fall through to index.html if the file doesn't exist
-  app.use("*", (req, res) => {
+  app.use("*", (req, res, next) => {
     const indexPath = path.resolve(distPath, "index.html");
     fs.readFile(indexPath, "utf-8", (err, html) => {
       if (err) {
-        res.status(500).send("Internal Server Error");
+        // Log the error but return a clean 500 — never expose stack traces
+        console.error("[serveStatic] Failed to read index.html:", err.message);
+        res.status(500).set("Content-Type", "text/html").send(
+          "<!doctype html><html><head><title>Server Error</title></head><body><h1>500 — Internal Server Error</h1><p>Please try again shortly.</p></body></html>"
+        );
         return;
       }
+      // Determine HTTP status: unknown paths get 404 so Googlebot doesn't soft-404
+      const isKnownRoute = VALID_ROUTES.has(req.path) || req.path.startsWith("/api/");
+      const statusCode = isKnownRoute ? 200 : 404;
       const injected = injectCanonical(html, req.path);
-      res.status(200).set({ "Content-Type": "text/html" }).end(injected);
+      res.status(statusCode).set({ "Content-Type": "text/html" }).end(injected);
     });
   });
 }

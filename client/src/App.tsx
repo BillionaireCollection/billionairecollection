@@ -30,6 +30,7 @@ import Vodka from "./pages/Vodka";
 import Cigar from "./pages/Cigar";
 import Oud from "./pages/Oud";
 import Marketplace from "./pages/Marketplace";
+import { Redirect } from "wouter";
 import News from "./pages/News";
 import CardConcierge from "./pages/CardConcierge";
 import Card from "./pages/Card";
@@ -111,7 +112,8 @@ function Router() {
             <Route path="/cigar" component={Cigar} />
             <Route path="/oud" component={Oud} />
             <Route path="/marketplace" component={Merch} />
-            <Route path="/store" component={Marketplace} />
+            {/* /store redirects to /marketplace to avoid duplicate canonical */}
+            <Route path="/store"><Redirect to="/marketplace" /></Route>
             <Route path="/news" component={News} />
             <Route path="/privacy" component={Privacy} />
             <Route path="/terms" component={Terms} />
