@@ -401,6 +401,7 @@ export async function upsertManyNewsArticles(articles: InsertNewsArticle[]) {
 
 // ─── Merch Orders ─────────────────────────────────────────────────────────────
 import { merchOrders, InsertMerchOrder } from "../drizzle/schema";
+import { membershipApplications, InsertMembershipApplication } from "../drizzle/schema";
 export async function createMerchOrder(data: Pick<InsertMerchOrder, "email" | "items" | "shippingAddress" | "totalAmount" | "status">) {
   const db = await getDb();
   if (!db) throw new Error("Database not available");
@@ -417,6 +418,30 @@ export async function getMerchOrders() {
   const db = await getDb();
   if (!db) return [];
   return db.select().from(merchOrders).orderBy(sql`${merchOrders.createdAt} DESC`);
+}
+
+// ─── Membership Applications ──────────────────────────────────────────────────
+export async function createMembershipApplication(data: Omit<InsertMembershipApplication, "id" | "createdAt" | "updatedAt">) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const [result] = await db.insert(membershipApplications).values(data);
+  return { id: (result as any).insertId as number };
+}
+
+export async function updateMembershipApplicationStripe(
+  id: number,
+  stripeSessionId: string,
+  paymentStatus: "pending" | "paid" | "failed" | "refunded"
+) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db.update(membershipApplications).set({ stripeSessionId, paymentStatus, amountPaid: paymentStatus === "paid" ? 2500000 : 0 }).where(sql`${membershipApplications.id} = ${id}`);
+}
+
+export async function getMembershipApplications() {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(membershipApplications).orderBy(sql`${membershipApplications.createdAt} DESC`);
 }
 
 export async function updateMerchOrderStatus(

@@ -20,6 +20,7 @@ const VALID_ROUTES = new Set([
   "/golden-ticket", "/billionaire-wisdom", "/billionaire-tutor",
   "/university", "/ecosystem", "/brands", "/founder",
   "/admin", "/x-offer", "/offer",
+  "/membership/apply",
 ]);
 
 function injectCanonical(html: string, pathname: string): string {

@@ -58,6 +58,7 @@ import Vitality from "./pages/Vitality";
 import Counsel from "./pages/Counsel";
 import NewsBrand from "./pages/NewsBrand";
 import Founder from "./pages/Founder";
+import Membership from "./pages/Membership";
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -126,6 +127,7 @@ function Router() {
             <Route path="/ecosystem" component={Ecosystem} />
             <Route path="/brands" component={Brands} />
             <Route path="/founder" component={Founder} />
+            <Route path="/membership/apply" component={Membership} />
             <Route component={NotFound} />
           </Switch>
         </Layout>

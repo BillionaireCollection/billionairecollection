@@ -6,8 +6,9 @@
 import Stripe from "stripe";
 import { Request, Response } from "express";
 import { ENV } from "./_core/env.js";
-import { createMerchOrder, updateMerchOrderStatus } from "./db.js";
+import { createMerchOrder, updateMerchOrderStatus, createMembershipApplication, updateMembershipApplicationStripe } from "./db.js";
 import { notifyOwner } from "./_core/notification.js";
+import { sendOwnerEmail } from "./_core/email.js";
 
 // Lazy-initialise so the server still boots if key is missing (dev without Stripe)
 let _stripe: Stripe | null = null;
@@ -95,6 +96,53 @@ export async function createMerchCheckoutSession(input: {
 }
 
 // ---------------------------------------------------------------------------
+// Create a Stripe Checkout Session for the $25,000 membership application fee
+// ---------------------------------------------------------------------------
+export async function createMembershipCheckoutSession(input: {
+  applicationData: {
+    firstName: string; lastName: string; email: string; phone?: string;
+    country?: string; occupation?: string; company?: string; industry?: string;
+    linkedIn?: string; capitalRange?: string; ecosystemInterests?: string;
+    aspirations?: string; contribution?: string; personalIntro?: string;
+    referralName?: string; referralEmail?: string;
+  };
+  origin: string;
+}): Promise<{ checkoutUrl: string; applicationId: number }> {
+  const stripe = getStripe();
+  const application = await createMembershipApplication({
+    ...input.applicationData,
+    paymentStatus: "pending",
+    status: "submitted",
+  });
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ["card"],
+    mode: "payment",
+    customer_email: input.applicationData.email,
+    line_items: [{
+      price_data: {
+        currency: "usd",
+        unit_amount: 2500000,
+        product_data: {
+          name: "Billionaire Collection — Private Membership Application Fee",
+          description: "Application fee covering dedicated review, verification and interview access.",
+        },
+      },
+      quantity: 1,
+    }],
+    metadata: {
+      application_id: String(application.id),
+      customer_email: input.applicationData.email,
+      customer_name: `${input.applicationData.firstName} ${input.applicationData.lastName}`,
+      type: "membership_application",
+    },
+    client_reference_id: String(application.id),
+    success_url: `${input.origin}/membership/apply?payment=success&id=${application.id}`,
+    cancel_url: `${input.origin}/membership/apply?payment=cancelled`,
+  });
+  return { checkoutUrl: session.url!, applicationId: application.id };
+}
+
+// ---------------------------------------------------------------------------
 // Stripe Webhook handler — must be registered with express.raw() body parser
 // ---------------------------------------------------------------------------
 export async function stripeWebhookHandler(
@@ -151,6 +199,23 @@ export async function stripeWebhookHandler(
         }).catch(() => {/* non-blocking */});
       } catch (err) {
         console.error(`[Stripe Webhook] Failed to update order ${orderId}:`, err);
+      }
+    }
+
+    // Membership application payment
+    const applicationId = session.metadata?.application_id
+      ? parseInt(session.metadata.application_id, 10)
+      : null;
+    if (applicationId && session.metadata?.type === "membership_application") {
+      try {
+        await updateMembershipApplicationStripe(applicationId, session.id, "paid");
+        const name = session.metadata?.customer_name ?? "Unknown";
+        const memberEmail = session.metadata?.customer_email ?? "unknown";
+        const amount = session.amount_total ? `$${(session.amount_total / 100).toLocaleString()}` : "$25,000";
+        notifyOwner({ title: `🏆 New Membership Application — ${name}`, content: `**Applicant:** ${name}\n**Email:** ${memberEmail}\n**Amount:** ${amount}\n**ID:** ${applicationId}` }).catch(() => {});
+        sendOwnerEmail(`New Membership Application — ${name}`, `New Private Membership Application\n\nName: ${name}\nEmail: ${memberEmail}\nAmount: ${amount}\nApplication ID: ${applicationId}`).catch(() => {});
+      } catch (err) {
+        console.error(`[Stripe Webhook] Failed to update membership application ${applicationId}:`, err);
       }
     }
   }

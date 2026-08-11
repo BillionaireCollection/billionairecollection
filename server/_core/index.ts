@@ -87,6 +87,7 @@ async function startServer() {
       { loc: "/billionaire-wisdom", priority: "0.70", changefreq: "monthly" },
       // Other
       { loc: "/golden-ticket", priority: "0.70", changefreq: "monthly" },
+      { loc: "/membership/apply", priority: "0.90", changefreq: "monthly" },
       { loc: "/contact", priority: "0.65", changefreq: "monthly" },
       { loc: "/news", priority: "0.85", changefreq: "daily" },
       { loc: "/privacy", priority: "0.30", changefreq: "yearly" },

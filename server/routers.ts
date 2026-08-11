@@ -31,7 +31,8 @@ import {
   createMerchOrder,
   getMerchOrders,
 } from "./db";
-import { createMerchCheckoutSession } from "./stripe";
+import { getMembershipApplications } from "./db";
+import { createMerchCheckoutSession, createMembershipCheckoutSession } from "./stripe";
 import { TRPCError } from "@trpc/server";
 import { notifyOwner } from "./_core/notification";
 import { sendOwnerEmail } from "./_core/email";
@@ -363,6 +364,38 @@ export const appRouter = router({
   admin: router({
     stats: adminProcedure.query(async () => getAdminStats()),
     listUsers: adminProcedure.query(async () => getUsers()),
+  }),
+
+  membership: router({
+    submitApplication: publicProcedure
+      .input(z.object({
+        firstName: z.string().min(1),
+        lastName: z.string().min(1),
+        email: z.string().email(),
+        phone: z.string().optional(),
+        country: z.string().optional(),
+        occupation: z.string().optional(),
+        company: z.string().optional(),
+        industry: z.string().optional(),
+        linkedIn: z.string().optional(),
+        capitalRange: z.string().optional(),
+        ecosystemInterests: z.string().optional(),
+        aspirations: z.string().optional(),
+        contribution: z.string().optional(),
+        personalIntro: z.string().optional(),
+        referralName: z.string().optional(),
+        referralEmail: z.string().optional(),
+        origin: z.string().url(),
+      }))
+      .mutation(async ({ input }) => {
+        const { origin, ...applicationData } = input;
+        const { checkoutUrl, applicationId } = await createMembershipCheckoutSession({
+          applicationData,
+          origin,
+        });
+        return { checkoutUrl, applicationId };
+      }),
+    listApplications: adminProcedure.query(async () => getMembershipApplications()),
   }),
 });
 

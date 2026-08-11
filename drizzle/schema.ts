@@ -188,3 +188,33 @@ export const merchOrders = mysqlTable("merch_orders", {
 });
 export type MerchOrder = typeof merchOrders.$inferSelect;
 export type InsertMerchOrder = typeof merchOrders.$inferInsert;
+
+// ─── Membership Applications ──────────────────────────────────────────────────
+export const membershipApplications = mysqlTable("membership_applications", {
+  id: int("id").autoincrement().primaryKey(),
+  firstName: varchar("firstName", { length: 128 }).notNull(),
+  lastName: varchar("lastName", { length: 128 }).notNull(),
+  email: varchar("email", { length: 320 }).notNull(),
+  phone: varchar("phone", { length: 64 }),
+  country: varchar("country", { length: 128 }),
+  occupation: varchar("occupation", { length: 255 }),
+  company: varchar("company", { length: 255 }),
+  industry: varchar("industry", { length: 255 }),
+  linkedIn: varchar("linkedIn", { length: 512 }),
+  capitalRange: varchar("capitalRange", { length: 128 }),
+  ecosystemInterests: text("ecosystemInterests"),
+  aspirations: text("aspirations"),
+  contribution: text("contribution"),
+  personalIntro: text("personalIntro"),
+  referralName: varchar("referralName", { length: 255 }),
+  referralEmail: varchar("referralEmail", { length: 320 }),
+  stripeSessionId: varchar("stripeSessionId", { length: 255 }),
+  paymentStatus: mysqlEnum("paymentStatus", ["pending", "paid", "failed", "refunded"]).default("pending").notNull(),
+  amountPaid: int("amountPaid").default(0),
+  status: mysqlEnum("status", ["submitted", "reviewing", "interview", "approved", "rejected", "withdrawn"]).default("submitted").notNull(),
+  notes: text("notes"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+export type MembershipApplication = typeof membershipApplications.$inferSelect;
+export type InsertMembershipApplication = typeof membershipApplications.$inferInsert;
