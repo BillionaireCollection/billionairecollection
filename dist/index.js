@@ -167,6 +167,32 @@ var merchOrders = mysqlTable("merch_orders", {
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull()
 });
+var membershipApplications = mysqlTable("membership_applications", {
+  id: int("id").autoincrement().primaryKey(),
+  firstName: varchar("firstName", { length: 128 }).notNull(),
+  lastName: varchar("lastName", { length: 128 }).notNull(),
+  email: varchar("email", { length: 320 }).notNull(),
+  phone: varchar("phone", { length: 64 }),
+  country: varchar("country", { length: 128 }),
+  occupation: varchar("occupation", { length: 255 }),
+  company: varchar("company", { length: 255 }),
+  industry: varchar("industry", { length: 255 }),
+  linkedIn: varchar("linkedIn", { length: 512 }),
+  capitalRange: varchar("capitalRange", { length: 128 }),
+  ecosystemInterests: text("ecosystemInterests"),
+  aspirations: text("aspirations"),
+  contribution: text("contribution"),
+  personalIntro: text("personalIntro"),
+  referralName: varchar("referralName", { length: 255 }),
+  referralEmail: varchar("referralEmail", { length: 320 }),
+  stripeSessionId: varchar("stripeSessionId", { length: 255 }),
+  paymentStatus: mysqlEnum("paymentStatus", ["pending", "paid", "failed", "refunded"]).default("pending").notNull(),
+  amountPaid: int("amountPaid").default(0),
+  status: mysqlEnum("status", ["submitted", "reviewing", "interview", "approved", "rejected", "withdrawn"]).default("submitted").notNull(),
+  notes: text("notes"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull()
+});
 
 // server/_core/env.ts
 var ENV = {
@@ -475,6 +501,22 @@ async function getMerchOrders() {
   const db = await getDb();
   if (!db) return [];
   return db.select().from(merchOrders).orderBy(sql`${merchOrders.createdAt} DESC`);
+}
+async function createMembershipApplication(data) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const [result] = await db.insert(membershipApplications).values(data);
+  return { id: result.insertId };
+}
+async function updateMembershipApplicationStripe(id, stripeSessionId, paymentStatus) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db.update(membershipApplications).set({ stripeSessionId, paymentStatus, amountPaid: paymentStatus === "paid" ? 25e5 : 0 }).where(sql`${membershipApplications.id} = ${id}`);
+}
+async function getMembershipApplications() {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(membershipApplications).orderBy(sql`${membershipApplications.createdAt} DESC`);
 }
 async function updateMerchOrderStatus(orderId, status) {
   const db = await getDb();
@@ -1010,129 +1052,6 @@ var systemRouter = router({
 
 // server/stripe.ts
 import Stripe from "stripe";
-var _stripe = null;
-function getStripe() {
-  if (!_stripe) {
-    if (!ENV.stripeSecretKey) throw new Error("STRIPE_SECRET_KEY is not set");
-    _stripe = new Stripe(ENV.stripeSecretKey, { apiVersion: "2026-06-24.dahlia" });
-  }
-  return _stripe;
-}
-async function createMerchCheckoutSession(input) {
-  const stripe = getStripe();
-  const totalAmount = input.items.reduce(
-    (sum, item) => sum + item.unitPrice * item.qty,
-    0
-  );
-  const order = await createMerchOrder({
-    email: input.email,
-    items: JSON.stringify(input.items),
-    shippingAddress: JSON.stringify(input.shippingAddress),
-    totalAmount,
-    status: "pending"
-  });
-  const lineItems = input.items.map((item) => ({
-    price_data: {
-      currency: "usd",
-      unit_amount: item.unitPrice,
-      // already in cents
-      product_data: {
-        name: `${item.name}${item.color ? ` \u2014 ${item.color}` : ""}${item.size ? ` / ${item.size}` : ""}`,
-        description: "Billionaire Collection Official Merchandise"
-      }
-    },
-    quantity: item.qty
-  }));
-  const session = await stripe.checkout.sessions.create({
-    payment_method_types: ["card"],
-    mode: "payment",
-    customer_email: input.email,
-    line_items: lineItems,
-    allow_promotion_codes: true,
-    shipping_address_collection: {
-      allowed_countries: [
-        "US",
-        "GB",
-        "CA",
-        "AU",
-        "DE",
-        "FR",
-        "IT",
-        "ES",
-        "NL",
-        "AE",
-        "SG",
-        "HK",
-        "JP",
-        "CH",
-        "SE",
-        "NO",
-        "DK",
-        "BE",
-        "AT",
-        "NZ"
-      ]
-    },
-    metadata: {
-      order_id: String(order.id),
-      customer_email: input.email
-    },
-    client_reference_id: String(order.id),
-    success_url: `${input.origin}/marketplace?order=success&id=${order.id}`,
-    cancel_url: `${input.origin}/marketplace?order=cancelled`
-  });
-  return { checkoutUrl: session.url, orderId: order.id };
-}
-async function stripeWebhookHandler(req, res) {
-  const sig = req.headers["stripe-signature"];
-  if (!sig) {
-    res.status(400).send("Missing stripe-signature header");
-    return;
-  }
-  let event;
-  try {
-    event = getStripe().webhooks.constructEvent(
-      req.body,
-      sig,
-      ENV.stripeWebhookSecret
-    );
-  } catch (err) {
-    console.error("[Stripe Webhook] Signature verification failed:", err);
-    res.status(400).send("Webhook signature verification failed");
-    return;
-  }
-  if (event.id.startsWith("evt_test_")) {
-    console.log("[Stripe Webhook] Test event detected, returning verification response");
-    res.json({ verified: true });
-    return;
-  }
-  console.log(`[Stripe Webhook] Event: ${event.type} (${event.id})`);
-  if (event.type === "checkout.session.completed") {
-    const session = event.data.object;
-    const orderId = session.metadata?.order_id ? parseInt(session.metadata.order_id, 10) : null;
-    if (orderId) {
-      try {
-        await updateMerchOrderStatus(orderId, "processing");
-        console.log(`[Stripe Webhook] Order ${orderId} marked as processing`);
-        const email = session.metadata?.customer_email ?? "unknown";
-        const amount = session.amount_total ? `$${(session.amount_total / 100).toFixed(2)}` : "unknown";
-        notifyOwner({
-          title: `\u{1F4B3} Payment Received \u2014 Order #${orderId}`,
-          content: `**Customer:** ${email}
-**Amount:** ${amount}
-**Stripe Session:** ${session.id}`
-        }).catch(() => {
-        });
-      } catch (err) {
-        console.error(`[Stripe Webhook] Failed to update order ${orderId}:`, err);
-      }
-    }
-  }
-  res.json({ received: true });
-}
-
-// server/routers.ts
-import { TRPCError as TRPCError3 } from "@trpc/server";
 
 // server/_core/email.ts
 import nodemailer from "nodemailer";
@@ -1209,7 +1128,187 @@ async function sendOwnerEmail(subject, body) {
   }
 }
 
+// server/stripe.ts
+var _stripe = null;
+function getStripe() {
+  if (!_stripe) {
+    if (!ENV.stripeSecretKey) throw new Error("STRIPE_SECRET_KEY is not set");
+    _stripe = new Stripe(ENV.stripeSecretKey, { apiVersion: "2026-06-24.dahlia" });
+  }
+  return _stripe;
+}
+async function createMerchCheckoutSession(input) {
+  const stripe = getStripe();
+  const totalAmount = input.items.reduce(
+    (sum, item) => sum + item.unitPrice * item.qty,
+    0
+  );
+  const order = await createMerchOrder({
+    email: input.email,
+    items: JSON.stringify(input.items),
+    shippingAddress: JSON.stringify(input.shippingAddress),
+    totalAmount,
+    status: "pending"
+  });
+  const lineItems = input.items.map((item) => ({
+    price_data: {
+      currency: "usd",
+      unit_amount: item.unitPrice,
+      // already in cents
+      product_data: {
+        name: `${item.name}${item.color ? ` \u2014 ${item.color}` : ""}${item.size ? ` / ${item.size}` : ""}`,
+        description: "Billionaire Collection Official Merchandise"
+      }
+    },
+    quantity: item.qty
+  }));
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ["card"],
+    mode: "payment",
+    customer_email: input.email,
+    line_items: lineItems,
+    allow_promotion_codes: true,
+    shipping_address_collection: {
+      allowed_countries: [
+        "US",
+        "GB",
+        "CA",
+        "AU",
+        "DE",
+        "FR",
+        "IT",
+        "ES",
+        "NL",
+        "AE",
+        "SG",
+        "HK",
+        "JP",
+        "CH",
+        "SE",
+        "NO",
+        "DK",
+        "BE",
+        "AT",
+        "NZ"
+      ]
+    },
+    metadata: {
+      order_id: String(order.id),
+      customer_email: input.email
+    },
+    client_reference_id: String(order.id),
+    success_url: `${input.origin}/marketplace?order=success&id=${order.id}`,
+    cancel_url: `${input.origin}/marketplace?order=cancelled`
+  });
+  return { checkoutUrl: session.url, orderId: order.id };
+}
+async function createMembershipCheckoutSession(input) {
+  const stripe = getStripe();
+  const application = await createMembershipApplication({
+    ...input.applicationData,
+    paymentStatus: "pending",
+    status: "submitted"
+  });
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ["card"],
+    mode: "payment",
+    customer_email: input.applicationData.email,
+    line_items: [{
+      price_data: {
+        currency: "usd",
+        unit_amount: 25e5,
+        product_data: {
+          name: "Billionaire Collection \u2014 Private Membership Application Fee",
+          description: "Application fee covering dedicated review, verification and interview access."
+        }
+      },
+      quantity: 1
+    }],
+    metadata: {
+      application_id: String(application.id),
+      customer_email: input.applicationData.email,
+      customer_name: `${input.applicationData.firstName} ${input.applicationData.lastName}`,
+      type: "membership_application"
+    },
+    client_reference_id: String(application.id),
+    success_url: `${input.origin}/membership/apply?payment=success&id=${application.id}`,
+    cancel_url: `${input.origin}/membership/apply?payment=cancelled`
+  });
+  return { checkoutUrl: session.url, applicationId: application.id };
+}
+async function stripeWebhookHandler(req, res) {
+  const sig = req.headers["stripe-signature"];
+  if (!sig) {
+    res.status(400).send("Missing stripe-signature header");
+    return;
+  }
+  let event;
+  try {
+    event = getStripe().webhooks.constructEvent(
+      req.body,
+      sig,
+      ENV.stripeWebhookSecret
+    );
+  } catch (err) {
+    console.error("[Stripe Webhook] Signature verification failed:", err);
+    res.status(400).send("Webhook signature verification failed");
+    return;
+  }
+  if (event.id.startsWith("evt_test_")) {
+    console.log("[Stripe Webhook] Test event detected, returning verification response");
+    res.json({ verified: true });
+    return;
+  }
+  console.log(`[Stripe Webhook] Event: ${event.type} (${event.id})`);
+  if (event.type === "checkout.session.completed") {
+    const session = event.data.object;
+    const orderId = session.metadata?.order_id ? parseInt(session.metadata.order_id, 10) : null;
+    if (orderId) {
+      try {
+        await updateMerchOrderStatus(orderId, "processing");
+        console.log(`[Stripe Webhook] Order ${orderId} marked as processing`);
+        const email = session.metadata?.customer_email ?? "unknown";
+        const amount = session.amount_total ? `$${(session.amount_total / 100).toFixed(2)}` : "unknown";
+        notifyOwner({
+          title: `\u{1F4B3} Payment Received \u2014 Order #${orderId}`,
+          content: `**Customer:** ${email}
+**Amount:** ${amount}
+**Stripe Session:** ${session.id}`
+        }).catch(() => {
+        });
+      } catch (err) {
+        console.error(`[Stripe Webhook] Failed to update order ${orderId}:`, err);
+      }
+    }
+    const applicationId = session.metadata?.application_id ? parseInt(session.metadata.application_id, 10) : null;
+    if (applicationId && session.metadata?.type === "membership_application") {
+      try {
+        await updateMembershipApplicationStripe(applicationId, session.id, "paid");
+        const name = session.metadata?.customer_name ?? "Unknown";
+        const memberEmail = session.metadata?.customer_email ?? "unknown";
+        const amount = session.amount_total ? `$${(session.amount_total / 100).toLocaleString()}` : "$25,000";
+        notifyOwner({ title: `\u{1F3C6} New Membership Application \u2014 ${name}`, content: `**Applicant:** ${name}
+**Email:** ${memberEmail}
+**Amount:** ${amount}
+**ID:** ${applicationId}` }).catch(() => {
+        });
+        sendOwnerEmail(`New Membership Application \u2014 ${name}`, `New Private Membership Application
+
+Name: ${name}
+Email: ${memberEmail}
+Amount: ${amount}
+Application ID: ${applicationId}`).catch(() => {
+        });
+      } catch (err) {
+        console.error(`[Stripe Webhook] Failed to update membership application ${applicationId}:`, err);
+      }
+    }
+  }
+  res.json({ received: true });
+}
+
 // server/routers.ts
+import { TRPCError as TRPCError3 } from "@trpc/server";
 var adminProcedure2 = protectedProcedure.use(({ ctx, next }) => {
   if (ctx.user.role !== "admin") {
     throw new TRPCError3({ code: "FORBIDDEN", message: "Admin access required" });
@@ -1520,6 +1619,35 @@ ${input.message}`
   admin: router({
     stats: adminProcedure2.query(async () => getAdminStats()),
     listUsers: adminProcedure2.query(async () => getUsers())
+  }),
+  membership: router({
+    submitApplication: publicProcedure.input(z2.object({
+      firstName: z2.string().min(1),
+      lastName: z2.string().min(1),
+      email: z2.string().email(),
+      phone: z2.string().optional(),
+      country: z2.string().optional(),
+      occupation: z2.string().optional(),
+      company: z2.string().optional(),
+      industry: z2.string().optional(),
+      linkedIn: z2.string().optional(),
+      capitalRange: z2.string().optional(),
+      ecosystemInterests: z2.string().optional(),
+      aspirations: z2.string().optional(),
+      contribution: z2.string().optional(),
+      personalIntro: z2.string().optional(),
+      referralName: z2.string().optional(),
+      referralEmail: z2.string().optional(),
+      origin: z2.string().url()
+    })).mutation(async ({ input }) => {
+      const { origin, ...applicationData } = input;
+      const { checkoutUrl, applicationId } = await createMembershipCheckoutSession({
+        applicationData,
+        origin
+      });
+      return { checkoutUrl, applicationId };
+    }),
+    listApplications: adminProcedure2.query(async () => getMembershipApplications())
   })
 });
 
@@ -1697,6 +1825,52 @@ var vite_config_default = defineConfig({
 
 // server/_core/vite.ts
 var BASE_URL = "https://billionairecollection.com";
+var VALID_ROUTES = /* @__PURE__ */ new Set([
+  "/",
+  "/estates",
+  "/boat",
+  "/air",
+  "/car",
+  "/art",
+  "/chrono",
+  "/crypto",
+  "/media",
+  "/television",
+  "/magazine",
+  "/radio",
+  "/news-brand",
+  "/technology",
+  "/services",
+  "/funding",
+  "/golf",
+  "/travel",
+  "/vitality",
+  "/counsel",
+  "/card",
+  "/card-concierge",
+  "/champagne",
+  "/vodka",
+  "/cigar",
+  "/oud",
+  "/marketplace",
+  "/store",
+  "/news",
+  "/privacy",
+  "/terms",
+  "/contact",
+  "/about",
+  "/golden-ticket",
+  "/billionaire-wisdom",
+  "/billionaire-tutor",
+  "/university",
+  "/ecosystem",
+  "/brands",
+  "/founder",
+  "/admin",
+  "/x-offer",
+  "/offer",
+  "/membership/apply"
+]);
 function injectCanonical(html, pathname) {
   const canonical = `${BASE_URL}${pathname === "/" ? "" : pathname.replace(/\/$/, "")}`;
   return html.replace(
@@ -1751,15 +1925,20 @@ function serveStatic(app) {
   app.get("/googleb0c6e8d7a35c9529.html", (_req, res) => {
     res.set("Content-Type", "text/html").send("google-site-verification: googleb0c6e8d7a35c9529.html");
   });
-  app.use("*", (req, res) => {
+  app.use("*", (req, res, next) => {
     const indexPath = path2.resolve(distPath, "index.html");
     fs2.readFile(indexPath, "utf-8", (err, html) => {
       if (err) {
-        res.status(500).send("Internal Server Error");
+        console.error("[serveStatic] Failed to read index.html:", err.message);
+        res.status(500).set("Content-Type", "text/html").send(
+          "<!doctype html><html><head><title>Server Error</title></head><body><h1>500 \u2014 Internal Server Error</h1><p>Please try again shortly.</p></body></html>"
+        );
         return;
       }
+      const isKnownRoute = VALID_ROUTES.has(req.path) || req.path.startsWith("/api/");
+      const statusCode = isKnownRoute ? 200 : 404;
       const injected = injectCanonical(html, req.path);
-      res.status(200).set({ "Content-Type": "text/html" }).end(injected);
+      res.status(statusCode).set({ "Content-Type": "text/html" }).end(injected);
     });
   });
 }
@@ -1973,6 +2152,7 @@ async function startServer() {
       { loc: "/billionaire-wisdom", priority: "0.70", changefreq: "monthly" },
       // Other
       { loc: "/golden-ticket", priority: "0.70", changefreq: "monthly" },
+      { loc: "/membership/apply", priority: "0.90", changefreq: "monthly" },
       { loc: "/contact", priority: "0.65", changefreq: "monthly" },
       { loc: "/news", priority: "0.85", changefreq: "daily" },
       { loc: "/privacy", priority: "0.30", changefreq: "yearly" },
