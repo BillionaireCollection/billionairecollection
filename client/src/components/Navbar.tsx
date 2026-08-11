@@ -61,6 +61,7 @@ const NAV_ITEMS: NavItem[] = [
   { label: "Concierge", href: "/card-concierge" },
   { label: "Free Insights", href: "/billionaire-wisdom" },
   { label: "✦ Golden Ticket", href: "/golden-ticket" },
+  { label: "✦ Membership", href: "/membership/apply" },
 ];
 
 function useIsDesktop() {
@@ -230,6 +231,11 @@ export default function Navbar() {
               <Link href="/card-concierge">
                 <button className="btn-gold" style={{ minWidth: "auto", padding: "10px 20px", fontSize: "0.75rem" }}>
                   Billionaire Card
+                </button>
+              </Link>
+              <Link href="/membership/apply">
+                <button style={{ minWidth: "auto", padding: "10px 20px", fontSize: "0.75rem", fontFamily: "'Raleway', sans-serif", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", background: "transparent", border: `1px solid rgba(201,168,76,0.5)`, color: "#C9A84C", cursor: "pointer", transition: "all 0.2s" }}>
+                  Private Membership
                 </button>
               </Link>
             </div>
@@ -418,6 +424,9 @@ export default function Navbar() {
             <div style={{ padding: "1rem 1.5rem 1.5rem", borderTop: `1px solid rgba(201,168,76,0.12)`, display: "flex", flexDirection: "column", gap: "8px", flexShrink: 0 }}>
               <Link href="/golden-ticket" onClick={() => setMobileOpen(false)}>
                 <div style={{ fontFamily: FONT_UI, fontWeight: 700, fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "0.15em", color: GOLD, padding: "11px 16px", border: `1px solid rgba(201,168,76,0.4)`, textAlign: "center", cursor: "pointer" }}>✦ Golden Ticket</div>
+              </Link>
+              <Link href="/membership/apply" onClick={() => setMobileOpen(false)}>
+                <div style={{ fontFamily: FONT_UI, fontWeight: 700, fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "0.15em", color: GOLD, padding: "11px 16px", border: `1px solid rgba(201,168,76,0.4)`, textAlign: "center", cursor: "pointer" }}>✦ Private Membership</div>
               </Link>
               <Link href="/marketplace" onClick={() => setMobileOpen(false)}>
                 <div style={{ fontFamily: FONT_UI, fontWeight: 700, fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "0.15em", color: "#0a0e1a", background: GOLD, padding: "11px 16px", textAlign: "center", cursor: "pointer" }}>✦ Official Store</div>
