@@ -1,6 +1,6 @@
 /* ============================================================
    BILLIONAIRE COLLECTION — Official Store / Merch Page
-   Dark luxury aesthetic: #0a0e1a bg, gold #C9A84C accents,
+   Pure-black luxury aesthetic: #000 bg, gold #C9A84C accents,
    square buttons, Playfair Display + Inter fonts.
    17 products across 6 categories. Cart modal + checkout.
    ============================================================ */
@@ -14,7 +14,7 @@ import { toast } from "sonner";
 
 // ─── Design tokens ────────────────────────────────────────────
 const GOLD = "#C9A84C";
-const NAVY = "#0a0e1a";
+const NAVY = "#000000";
 const IVORY = "#f5f0e8";
 
 // ─── Product catalogue ─────────────────────────────────────────
@@ -232,9 +232,9 @@ const CATEGORIES: Category[] = ["All", "T-Shirts", "Hoodies", "Hats", "Mugs", "P
 // ─── Badge colour map ──────────────────────────────────────────
 const BADGE_STYLES: Record<string, { bg: string; text: string }> = {
   New: { bg: GOLD, text: NAVY },
-  "Best Seller": { bg: "#1a2744", text: GOLD },
-  Premium: { bg: "#2a1a00", text: GOLD },
-  Popular: { bg: "#1a1a2e", text: IVORY },
+  "Best Seller": { bg: "#000000", text: GOLD },
+  Premium: { bg: "#000000", text: GOLD },
+  Popular: { bg: "#000000", text: IVORY },
 };
 
 // ─── Cart types ────────────────────────────────────────────────
@@ -290,8 +290,8 @@ function ProductCard({
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        background: "#ffffff",
-        border: `1px solid ${hovered ? GOLD : "#e5e7eb"}`,
+        background: "#000000",
+        border: `1px solid ${hovered ? GOLD : "rgba(201,168,76,0.22)"}`,
         transition: "border-color 0.25s ease, box-shadow 0.25s ease",
         boxShadow: hovered ? `0 8px 32px rgba(201,168,76,0.15)` : "0 2px 8px rgba(0,0,0,0.06)",
         display: "flex",
@@ -300,7 +300,7 @@ function ProductCard({
       }}
     >
       {/* Image area */}
-      <div style={{ position: "relative", height: "288px", background: "#111827", overflow: "hidden" }}>
+      <div style={{ position: "relative", height: "288px", background: "#000000", overflow: "hidden" }}>
         <img
           src={product.image}
           alt={product.name}
@@ -345,7 +345,7 @@ function ProductCard({
               fontFamily: "Inter, sans-serif",
               fontWeight: 700,
               fontSize: "0.875rem",
-              color: NAVY,
+              color: IVORY,
               lineHeight: 1.3,
               flex: 1,
             }}
@@ -384,7 +384,7 @@ function ProductCard({
           style={{
             fontFamily: "Inter, sans-serif",
             fontSize: "0.75rem",
-            color: "#6b7280",
+            color: "rgba(255,255,255,0.55)",
             lineHeight: 1.5,
             display: "-webkit-box",
             WebkitLineClamp: 2,
@@ -397,8 +397,8 @@ function ProductCard({
 
         {/* Color variants */}
         <div>
-          <div style={{ fontSize: "0.65rem", color: "#9ca3af", fontFamily: "Inter, sans-serif", marginBottom: "6px", letterSpacing: "0.08em" }}>
-            COLOR: <span style={{ color: NAVY, fontWeight: 600 }}>{selectedColor}</span>
+          <div style={{ fontSize: "0.65rem", color: "rgba(255,255,255,0.48)", fontFamily: "Inter, sans-serif", marginBottom: "6px", letterSpacing: "0.08em" }}>
+            COLOR: <span style={{ color: IVORY, fontWeight: 600 }}>{selectedColor}</span>
           </div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
             {product.colors.map((color) => (
@@ -410,9 +410,9 @@ function ProductCard({
                   fontSize: "0.65rem",
                   fontFamily: "Inter, sans-serif",
                   fontWeight: 500,
-                  border: `1px solid ${selectedColor === color ? GOLD : "#d1d5db"}`,
+                  border: `1px solid ${selectedColor === color ? GOLD : "rgba(201,168,76,0.35)"}`,
                   background: selectedColor === color ? GOLD : "transparent",
-                  color: selectedColor === color ? NAVY : "#6b7280",
+                  color: selectedColor === color ? NAVY : "rgba(255,255,255,0.68)",
                   cursor: "pointer",
                   transition: "all 0.15s ease",
                   borderRadius: 0,
@@ -427,8 +427,8 @@ function ProductCard({
         {/* Size selector (if applicable) */}
         {product.sizes && (
           <div>
-            <div style={{ fontSize: "0.65rem", color: "#9ca3af", fontFamily: "Inter, sans-serif", marginBottom: "6px", letterSpacing: "0.08em" }}>
-              SIZE: <span style={{ color: NAVY, fontWeight: 600 }}>{selectedSize}</span>
+            <div style={{ fontSize: "0.65rem", color: "rgba(255,255,255,0.48)", fontFamily: "Inter, sans-serif", marginBottom: "6px", letterSpacing: "0.08em" }}>
+              SIZE: <span style={{ color: IVORY, fontWeight: 600 }}>{selectedSize}</span>
             </div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "4px" }}>
               {product.sizes.map((size) => (
@@ -441,9 +441,9 @@ function ProductCard({
                     fontSize: "0.65rem",
                     fontFamily: "Inter, sans-serif",
                     fontWeight: 600,
-                    border: `1px solid ${selectedSize === size ? GOLD : "#d1d5db"}`,
+                    border: `1px solid ${selectedSize === size ? GOLD : "rgba(201,168,76,0.35)"}`,
                     background: selectedSize === size ? GOLD : "transparent",
-                    color: selectedSize === size ? NAVY : "#6b7280",
+                    color: selectedSize === size ? NAVY : "rgba(255,255,255,0.68)",
                     cursor: "pointer",
                     transition: "all 0.15s ease",
                     borderRadius: 0,
@@ -510,7 +510,7 @@ function CartModal({
   const [countryCode, setCountryCode] = useState("US");
   const [submitting, setSubmitting] = useState(false);
 
-  const placeOrder = trpc.merch.placeOrder.useMutation();
+  const createCheckout = trpc.merch.createCheckout.useMutation();
 
   const subtotal = cart.reduce((sum, item) => sum + item.product.price * item.qty, 0);
 
@@ -521,7 +521,7 @@ function CartModal({
     }
     setSubmitting(true);
     try {
-      await placeOrder.mutateAsync({
+      const { checkoutUrl } = await createCheckout.mutateAsync({
         email,
         items: cart.map((item) => ({
           productId: item.product.id,
@@ -538,10 +538,13 @@ function CartModal({
           zip,
           country_code: countryCode,
         },
+        origin: window.location.origin,
       });
-      setStep("success");
-    } catch {
-      toast.error("Order failed. Please try again.");
+      if (!checkoutUrl) throw new Error("A secure checkout link was not returned.");
+      window.location.assign(checkoutUrl);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Unable to open secure checkout. Please try again.";
+      toast.error(message);
     } finally {
       setSubmitting(false);
     }
@@ -550,7 +553,7 @@ function CartModal({
   const inputStyle: React.CSSProperties = {
     width: "100%",
     padding: "10px 14px",
-    background: "#0d1630",
+    background: "#000000",
     border: `1px solid rgba(201,168,76,0.3)`,
     color: IVORY,
     fontFamily: "Inter, sans-serif",
@@ -692,7 +695,7 @@ function CartModal({
                       display: "flex",
                       gap: "16px",
                       padding: "16px",
-                      background: "rgba(255,255,255,0.04)",
+                        background: "#000000",
                       border: `1px solid rgba(201,168,76,0.1)`,
                     }}
                   >
@@ -701,7 +704,7 @@ function CartModal({
                       style={{
                         width: "64px",
                         height: "64px",
-                        background: `linear-gradient(135deg, #1a2744, #0d1630)`,
+                        background: "#000000",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
@@ -891,7 +894,7 @@ function CartModal({
                 style={{
                   marginTop: "8px",
                   padding: "16px",
-                  background: "rgba(201,168,76,0.06)",
+                  background: "#000000",
                   border: `1px solid rgba(201,168,76,0.15)`,
                 }}
               >
@@ -992,7 +995,7 @@ function CartModal({
                     borderRadius: 0,
                   }}
                 >
-                  {submitting ? "Placing Order..." : `Place Order · ${formatPrice(subtotal)}`}
+                  {submitting ? "Redirecting to Secure Checkout..." : `Secure Checkout · ${formatPrice(subtotal)}`}
                 </button>
               </div>
             )}
@@ -1008,6 +1011,19 @@ export default function Merch() {
   const [activeCategory, setActiveCategory] = useState<Category>("All");
   const [cart, setCart] = useState<CartItem[]>([]);
   const [cartOpen, setCartOpen] = useState(false);
+
+  useEffect(() => {
+    const orderStatus = new URLSearchParams(window.location.search).get("order");
+    if (orderStatus === "success") {
+      toast.success("Payment received", { description: "Thank you. Your order is now being prepared for fulfilment." });
+    }
+    if (orderStatus === "cancelled") {
+      toast.info("Checkout cancelled", { description: "Your cart has not been charged." });
+    }
+    if (orderStatus) {
+      window.history.replaceState({}, "", "/marketplace");
+    }
+  }, []);
 
   useSEO({
     title: "Official Store — Billionaire Collection",
@@ -1077,7 +1093,7 @@ export default function Merch() {
           style={{
             position: "absolute",
             inset: 0,
-            background: `radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,168,76,0.06) 0%, transparent 70%)`,
+            background: "#000000",
             pointerEvents: "none",
           }}
         />
@@ -1350,7 +1366,7 @@ export default function Merch() {
             borderTop: `1px solid rgba(201,168,76,0.15)`,
             borderBottom: `1px solid rgba(201,168,76,0.15)`,
             padding: "48px 0",
-            background: "rgba(201,168,76,0.03)",
+            background: "#000000",
           }}
         >
           <div className="container">

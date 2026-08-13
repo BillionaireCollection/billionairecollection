@@ -274,3 +274,17 @@
 - [x] Golden Ticket Club benefits grid
 - [x] Billionaire Giving section (purposeful capitalism framing)
 - [x] CTA section to apply/join
+
+## Daily News Publication — 12 August 2026
+
+- [x] Research and validate 12 current UHNW news articles across all requested categories
+- [ ] Submit the validated 12-article batch through the live news.upsertMany endpoint — blocked: live Hostinger session secret differs from sandbox JWT_SECRET, returning HTTP 401
+- [ ] Verify the articles appear in the live news feed
+
+## Merchandise Checkout & Visual Correction — 12 August 2026
+
+- [x] Replace the legacy merchandise order submission with the existing Stripe Checkout session flow
+- [x] Validate successful and cancelled merchandise checkout redirects and error states
+- [x] Replace every navy, blue and white merchandise background with the Billionaire Collection pure-black palette
+- [x] Add or update automated coverage for merchandise checkout session creation
+- [ ] Push the completed correction to GitHub and deploy the rebuilt Hostinger bundle

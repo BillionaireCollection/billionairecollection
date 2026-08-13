@@ -76,6 +76,18 @@ describe("newsletter.subscribe", () => {
   });
 });
 
+// ── Merchandise checkout ─────────────────────────────────────────────────────
+
+describe("merch.createCheckout", () => {
+  it("rejects a malformed checkout request before any Stripe session is created", async () => {
+    const caller = appRouter.createCaller(makeCtx(null));
+    await expect(
+      // @ts-expect-error intentional invalid input
+      caller.merch.createCheckout({ email: "not-an-email", items: [] })
+    ).rejects.toThrow();
+  });
+});
+
 // ── Concierge ─────────────────────────────────────────────────────────────────
 
 describe("concierge.submit", () => {
