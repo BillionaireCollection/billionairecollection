@@ -287,4 +287,4 @@
 - [x] Validate successful and cancelled merchandise checkout redirects and error states
 - [x] Replace every navy, blue and white merchandise background with the Billionaire Collection pure-black palette
 - [x] Add or update automated coverage for merchandise checkout session creation
-- [ ] Push the completed correction to GitHub and deploy the rebuilt Hostinger bundle
+- [x] Push the completed correction to GitHub and deploy the rebuilt Hostinger bundle
