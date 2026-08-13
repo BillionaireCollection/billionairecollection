@@ -300,3 +300,9 @@
 - [ ] Publish the validated 13 August article batch from the Hostinger production environment
 - [ ] Verify all 12 articles appear in the live news feed
 - [ ] Document the Hostinger-authorized publication route for future daily news updates
+
+## Mobile Menu Priority — 13 August 2026
+
+- [x] Place Official Store directly above Private Membership in the mobile menu action stack
+- [x] Give Private Membership the gold bottom action-tab treatment previously used by Official Store
+- [ ] Validate, push and deploy the revised menu order

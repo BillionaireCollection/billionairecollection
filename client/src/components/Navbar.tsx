@@ -425,11 +425,11 @@ export default function Navbar() {
               <Link href="/golden-ticket" onClick={() => setMobileOpen(false)}>
                 <div style={{ fontFamily: FONT_UI, fontWeight: 700, fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "0.15em", color: GOLD, padding: "11px 16px", border: `1px solid rgba(201,168,76,0.4)`, textAlign: "center", cursor: "pointer" }}>✦ Golden Ticket</div>
               </Link>
-              <Link href="/membership/apply" onClick={() => setMobileOpen(false)}>
-                <div style={{ fontFamily: FONT_UI, fontWeight: 700, fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "0.15em", color: GOLD, padding: "11px 16px", border: `1px solid rgba(201,168,76,0.4)`, textAlign: "center", cursor: "pointer" }}>✦ Private Membership</div>
-              </Link>
               <Link href="/marketplace" onClick={() => setMobileOpen(false)}>
-                <div style={{ fontFamily: FONT_UI, fontWeight: 700, fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "0.15em", color: "#0a0e1a", background: GOLD, padding: "11px 16px", textAlign: "center", cursor: "pointer" }}>✦ Official Store</div>
+                <div style={{ fontFamily: FONT_UI, fontWeight: 700, fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "0.15em", color: GOLD, padding: "11px 16px", border: `1px solid rgba(201,168,76,0.4)`, textAlign: "center", cursor: "pointer" }}>✦ Official Store</div>
+              </Link>
+              <Link href="/membership/apply" onClick={() => setMobileOpen(false)}>
+                <div style={{ fontFamily: FONT_UI, fontWeight: 700, fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "0.15em", color: "#0a0e1a", background: GOLD, padding: "11px 16px", textAlign: "center", cursor: "pointer" }}>✦ Private Membership</div>
               </Link>
               <Link href="/card-concierge" onClick={() => setMobileOpen(false)}>
                 <div style={{ fontFamily: FONT_UI, fontWeight: 600, fontSize: "0.65rem", textTransform: "uppercase", letterSpacing: "0.12em", color: "rgba(255,255,255,0.4)", textAlign: "center", padding: "6px", cursor: "pointer" }}>Billionaire Card & Concierge</div>
