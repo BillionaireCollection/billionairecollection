@@ -305,4 +305,4 @@
 
 - [x] Place Official Store directly above Private Membership in the mobile menu action stack
 - [x] Give Private Membership the gold bottom action-tab treatment previously used by Official Store
-- [ ] Validate, push and deploy the revised menu order
+- [x] Validate, push and deploy the revised menu order
