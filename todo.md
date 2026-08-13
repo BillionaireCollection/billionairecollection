@@ -288,3 +288,15 @@
 - [x] Replace every navy, blue and white merchandise background with the Billionaire Collection pure-black palette
 - [x] Add or update automated coverage for merchandise checkout session creation
 - [x] Push the completed correction to GitHub and deploy the rebuilt Hostinger bundle
+
+## Daily News Publication — 13 August 2026
+
+- [x] Research and validate 12 current UHNW news articles across all requested categories
+- [ ] Submit the validated 12-article batch through the live news.upsertMany endpoint — blocked: production endpoint returned HTTP 401 to the environment-issued admin bearer token; error logged at /tmp/billionaire-collection-news-upsert-2026-08-13.error.log
+- [ ] Verify the articles appear in the live news feed
+
+## Hostinger-Authorised News Publication — 13 August 2026
+
+- [ ] Publish the validated 13 August article batch from the Hostinger production environment
+- [ ] Verify all 12 articles appear in the live news feed
+- [ ] Document the Hostinger-authorized publication route for future daily news updates

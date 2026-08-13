@@ -1,0 +1,20 @@
+# UHNW News Research — 13 August 2026
+
+## Validated source findings
+
+| Topic | Verified finding | Source |
+|---|---|---|
+| Family offices | UBS surveyed 300+ clients across 30+ markets with average net worth of $2.7bn; 67% of European family offices plan 2026 strategic-allocation changes, prioritising AI, infrastructure, and power/resources. | https://www.ubs.com/je/en/wealthmanagement/who-we-serve/family-office-and-uhnw/global-family-office-report.html |
+| Italy property | Private wealth investors deployed around €1.7bn in Italian commercial real estate during H1 2026, up 15% year-on-year; core capital represented 82% of deployment. | https://www.jll.com/en-us/insights/market-dynamics/italy-private-wealth |
+| Luxury housing | US luxury-home sales rose 6.2% year-on-year in May, while starter-home sales fell 5.4%; the article describes top-5%-value homes at about $1.9m nationally. | https://www.cnbc.com/2026/08/07/housing-k-shaped-economy-luxury-starter-homes.html |
+| Private aviation | North American private-jet activity rose about 4.3% year-on-year in July; ARGUS forecast 3.5% year-on-year growth for August. | https://privatejetcardcomparisons.com/2026/08/11/north-america-records-yet-another-yoy-monthly-increase/ |
+| Integrated travel | Wheels Up and Fraser Yachts announced jet-to-yacht journeys, offering preferred yacht charter access and Fraser's 2,300+ charter-yacht fleet. | https://www.corporatejetinvestor.com/news/wheels-up-fraser-yachts/ |
+| Superyacht builds | Silver Yachts contracted a 26m aluminium explorer catamaran, Project H780, designed for private family worldwide cruising and scheduled for 2028 delivery. | https://www.boatinternational.com/yachts/news/silver-yachts-signs-contract-custom-explorer-catamaran-project-h780 |
+| Monaco brokerage | YachtBuyer reported €42m–€148m asking prices among its ten most expensive yachts scheduled for the 2026 Monaco Yacht Show, topped by Feadship's 71.5m Vanish at €148m. | https://www.yachtbuyer.com/en-us/news/the-most-expensive-yachts-for-sale-at-monaco-yacht-show-2026 |
+| Collector cars | Salon Privé 2026 will introduce Limited Production Supercars and Hypercar Heaven concours classes, reflecting attention on late-1990s to modern performance icons. | https://www.boatinternational.com/boat-presents/salon-prive-2026-blenheim-palace-concours-elegance-supercars |
+| Global art | ArtTactic data cited by Observer puts H1 2026 global sales across Christie's, Sotheby's and Phillips at $6.77bn including buyer's premium, up 69.8% year-on-year. | https://observer.com/2026/07/art-market-auctions-christies-sothebys-h1-2026-auction-results-newhouse-lewis-luxury/ |
+| Italian art | The Italian auction market reached €181.8m in H1 2026, up 8.3% year-on-year, with buyers favouring quality, provenance and aligned estimates. | https://en.ilsole24ore.com/art/italian-auctions-in-the-first-half-of-2026-brisk-but-selective-trading-AJC6FSc |
+| Philanthropy | Fortune reported that California, home to 246 billionaires according to an Oxfam report, ranked last in the Philanthropy Roundtable index at 2.73/10. | https://fortune.com/2026/08/06/california-most-billionaires-worst-for-philanthropic-donations/ |
+| Wealth policy | Cerity Partners describes California's proposed one-time 5% tax on net worth of $1bn or more, subject to the measure and a 31 December 2026 valuation date. | https://ceritypartners.com/insights/california-2026-billionaire-tax/ |
+| Technology markets | UBP noted that AI-related investment is increasingly translating into cloud revenue; it reported average Q2 cloud-revenue growth of 43% and maintained selective technology exposure. | https://www.ubp.com/en/news-insights/newsroom/ubp-house-view-august-2026 |
+| Next-generation wealth | Funds Society's review of the UBS report highlights interest in AI, infrastructure, energy, resources and broader alternative-asset adoption among younger affluent investors. | https://www.fundssociety.com/en/news/business/the-new-rich-versus-the-old-rich-how-wealth-investment-strategies-are-shifting/ |
