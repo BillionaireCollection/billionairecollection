@@ -11,12 +11,6 @@ import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
 import { newsRefreshHandler } from "../scheduledNewsRefresh";
 import { stripeWebhookHandler } from "../stripe";
-import { upsertManyNewsArticles } from "../db";
-// The vetted, date-stamped publication payload is intentionally maintained as a Node-compatible MJS runner source.
-// @ts-expect-error -- JavaScript batch source has no declaration file.
-import { articles as august14News } from "../../publish_news_aug14.mjs";
-
-const shouldPublishAugust14News = process.env.DATABASE_URL?.includes("u802634764_bcollect");
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -38,15 +32,6 @@ async function findAvailablePort(startPort: number = 3000): Promise<number> {
 }
 
 async function startServer() {
-  if (shouldPublishAugust14News) {
-    try {
-      await upsertManyNewsArticles(august14News);
-      console.log(`[News] Hostinger production upsert completed for ${august14News.length} articles dated 2026-08-14.`);
-    } catch (error) {
-      console.error("[News] Hostinger production upsert failed:", error);
-    }
-  }
-
   const app = express();
   const server = createServer(app);
   // Stripe webhook MUST use raw body parser — register BEFORE express.json()
