@@ -306,3 +306,9 @@
 - [x] Place Official Store directly above Private Membership in the mobile menu action stack
 - [x] Give Private Membership the gold bottom action-tab treatment previously used by Official Store
 - [x] Validate, push and deploy the revised menu order
+
+## Daily News Publication — 13 August 2026 (Live Hostinger Run)
+
+- [x] Research and validate 12 current UHNW news articles across all requested categories
+- [ ] Publish the validated batch through the Hostinger-authorized production path
+- [ ] Verify all 12 articles appear in the live news feed
