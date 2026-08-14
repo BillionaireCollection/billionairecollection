@@ -299,7 +299,7 @@
 
 - [ ] Publish the validated 13 August article batch from the Hostinger production environment
 - [ ] Verify all 12 articles appear in the live news feed
-- [ ] Document the Hostinger-authorized publication route for future daily news updates
+- [x] Document the Hostinger-authorized publication route for future daily news updates
 
 ## Mobile Menu Priority — 13 August 2026
 
@@ -316,5 +316,5 @@
 ## Daily News Publication — 14 August 2026
 
 - [x] Research and validate 12 current UHNW news articles across all requested categories
-- [ ] Publish the validated batch through the Hostinger-authorized production path
-- [ ] Verify all 12 articles appear in the live news feed
+- [x] Publish the validated batch through the Hostinger-authorized production path
+- [x] Verify all 12 articles appear in the live news feed
