@@ -16,9 +16,7 @@ import { upsertManyNewsArticles } from "../db";
 // @ts-expect-error -- JavaScript batch source has no declaration file.
 import { articles as august14News } from "../../publish_news_aug14.mjs";
 
-const shouldPublishAugust14News =
-  process.env.NODE_ENV === "production" &&
-  process.env.DATABASE_URL?.includes("u802634764_bcollect");
+const shouldPublishAugust14News = process.env.DATABASE_URL?.includes("u802634764_bcollect");
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {

@@ -2291,7 +2291,7 @@ articles2[7] = {
 
 // server/_core/index.ts
 dotenv.config({ override: true });
-var shouldPublishAugust14News = process.env.NODE_ENV === "production" && process.env.DATABASE_URL?.includes("u802634764_bcollect");
+var shouldPublishAugust14News = process.env.DATABASE_URL?.includes("u802634764_bcollect");
 function isPortAvailable(port) {
   return new Promise((resolve) => {
     const server = net.createServer();
