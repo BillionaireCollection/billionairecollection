@@ -331,3 +331,15 @@
 - [x] Run non-writing checks for npm dependency resolution, Node/Vite compatibility, build output, production start, Drizzle bootstrap, SMTP, Stripe, and Hostinger assumptions
 - [x] Amend the Master Hostinger Deployment skill with mandatory compatibility gates and safe remediation rules
 - [x] Validate the amended skill and document every identified deployment blocker
+
+## Daily News Publication — 15 August 2026
+
+- [x] Research and validate 12 current UHNW news articles across all requested categories
+- [ ] Submit the validated article batch through the live news.upsertMany endpoint — blocked: live endpoint returned HTTP 401 to the environment-issued owner bearer token; error logged at /tmp/billionaire-collection-news-upsert-2026-08-15.error.log
+- [ ] Verify all 12 articles appear in the live news feed
+
+## Master Skill Connection Recovery — 15 August 2026
+
+- [x] Add a mandatory GitHub and Hostinger connection-recovery procedure to the Master Hostinger Deployment skill
+- [x] Add a mandatory Manus-only dependency inventory and production-replacement/disable gate
+- [x] Validate the amended skill and document the safe path beyond missing-account-connection blockers
