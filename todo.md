@@ -325,3 +325,9 @@
 - [x] Integrate secure Billionaire PLC SMTP deployment and verification requirements
 - [x] Integrate Stripe live-checkout and webhook deployment safeguards
 - [x] Validate and package the master skill for reuse
+
+## Master Skill Compatibility Audit — 15 August 2026
+
+- [x] Run non-writing checks for npm dependency resolution, Node/Vite compatibility, build output, production start, Drizzle bootstrap, SMTP, Stripe, and Hostinger assumptions
+- [x] Amend the Master Hostinger Deployment skill with mandatory compatibility gates and safe remediation rules
+- [x] Validate the amended skill and document every identified deployment blocker
