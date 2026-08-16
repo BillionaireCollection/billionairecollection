@@ -338,8 +338,20 @@
 - [ ] Submit the validated article batch through the live news.upsertMany endpoint — blocked: live endpoint returned HTTP 401 to the environment-issued owner bearer token; error logged at /tmp/billionaire-collection-news-upsert-2026-08-15.error.log
 - [ ] Verify all 12 articles appear in the live news feed
 
+## Daily News Publication — 15 August 2026 (Direct Endpoint Retry)
+
+- [ ] Refresh and validate 12 current UHNW news articles across all requested categories
+- [ ] Submit the refreshed article batch through the live news.upsertMany endpoint
+- [ ] Verify all 12 articles appear in the live news feed or log the direct endpoint failure
+
 ## Master Skill Connection Recovery — 15 August 2026
 
 - [x] Add a mandatory GitHub and Hostinger connection-recovery procedure to the Master Hostinger Deployment skill
 - [x] Add a mandatory Manus-only dependency inventory and production-replacement/disable gate
 - [x] Validate the amended skill and document the safe path beyond missing-account-connection blockers
+
+## Billionaire Tutor Image Restoration — 15 August 2026
+
+- [x] Identify the original Billionaire University logo assets and affected small-image placements
+- [x] Restore only the original Billionaire University logos in the Billionaire Tutor small-image placements
+- [ ] Validate, push to GitHub, and deploy the targeted image restoration

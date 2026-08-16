@@ -19,6 +19,7 @@ const FONT_UI = "'Raleway', sans-serif";
 const HERO_BG = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1800&q=80";
 const OPPORTUNITY_BG = "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1400&q=80";
 const WHY_JOIN_BG = "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1400&q=80";
+const BILLIONAIRE_UNIVERSITY_LOGO = "/manus-storage/billionaire-university-logo_6c9dd2b2.png";
 
 function SectionBadge({ children }: { children: React.ReactNode }) {
   return (
@@ -302,7 +303,7 @@ export default function BillionaireTutor() {
                 {/* BU Logo above ecosystem diagram — centred */}
                 <div style={{ marginBottom: "1.5rem", display: "flex", justifyContent: "center" }}>
                   <img
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80"
+                    src={BILLIONAIRE_UNIVERSITY_LOGO}
                     alt="Billionaire University"
                     style={{ height: "140px", width: "auto" }}
                   />
@@ -342,7 +343,7 @@ export default function BillionaireTutor() {
       <div style={{ background: "#000", paddingBottom: "4rem", display: "flex", justifyContent: "center" }}>
         <FadeUp>
           <img
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80"
+            src={BILLIONAIRE_UNIVERSITY_LOGO}
             alt="Billionaire University"
             style={{ height: "120px", width: "auto", opacity: 0.7 }}
           />
@@ -392,7 +393,7 @@ export default function BillionaireTutor() {
       <div style={{ background: "#050505", paddingBottom: "4rem", display: "flex", justifyContent: "center" }}>
         <FadeUp>
           <img
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80"
+            src={BILLIONAIRE_UNIVERSITY_LOGO}
             alt="Billionaire University"
             style={{ height: "120px", width: "auto", opacity: 0.7 }}
           />
@@ -639,7 +640,7 @@ export default function BillionaireTutor() {
             {/* BU Logo in footer */}
             <div style={{ display: "flex", justifyContent: "center", marginBottom: "2rem" }}>
               <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80"
+                src={BILLIONAIRE_UNIVERSITY_LOGO}
                 alt="Billionaire University"
                 style={{ height: "140px", width: "auto", opacity: 0.85 }}
               />
