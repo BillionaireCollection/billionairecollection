@@ -354,4 +354,4 @@
 
 - [x] Identify the original Billionaire University logo assets and affected small-image placements
 - [x] Restore only the original Billionaire University logos in the Billionaire Tutor small-image placements
-- [x] Validate, push to GitHub, and deploy the targeted image restoration
+- [ ] Commit the rebuilt dist bundle, push to GitHub, and redeploy the targeted image restoration
