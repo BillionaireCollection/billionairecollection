@@ -19,7 +19,7 @@ const FONT_UI = "'Raleway', sans-serif";
 const HERO_BG = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1800&q=80";
 const OPPORTUNITY_BG = "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1400&q=80";
 const WHY_JOIN_BG = "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1400&q=80";
-const BILLIONAIRE_UNIVERSITY_LOGO = "/manus-storage/billionaire-university-logo_6c9dd2b2.png";
+const BILLIONAIRE_UNIVERSITY_LOGO = "/billionaire-university-logo.webp";
 
 function SectionBadge({ children }: { children: React.ReactNode }) {
   return (
