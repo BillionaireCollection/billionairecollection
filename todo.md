@@ -377,4 +377,4 @@
 ## Founder Page BBC Interview Identification — 20 August 2026
 
 - [x] Update the featured-interview introduction to identify the video as a BBC interview
-- [ ] Validate, push to GitHub, and deploy the targeted Founder-page copy correction
+- [x] Validate, push to GitHub, and deploy the targeted Founder-page copy correction
