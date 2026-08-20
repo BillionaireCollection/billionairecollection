@@ -355,3 +355,26 @@
 - [x] Identify the original Billionaire University logo assets and affected small-image placements
 - [x] Restore only the original Billionaire University logos in the Billionaire Tutor small-image placements
 - [x] Commit the rebuilt dist bundle, push to GitHub, and redeploy the targeted image restoration
+
+## Daily News Publication — 17 August 2026
+
+- [x] Research and validate 12 current UHNW news articles across all requested categories
+- [ ] Submit the validated article batch through the live news.upsertMany endpoint — blocked: production endpoint returned HTTP 401 to the environment-issued owner bearer token; error logged at /tmp/billionaire-collection-news-upsert-2026-08-17.error.log
+- [ ] Verify all 12 articles appear in the live news feed or log the direct endpoint failure
+
+## Daily News Publication — 18 August 2026
+
+- [x] Research and validate 12 current UHNW news articles across all requested categories
+- [ ] Submit the validated article batch through the live news.upsertMany endpoint — blocked: production endpoint returned HTTP 401 to the environment-issued owner bearer token; error logged at /tmp/billionaire-collection-news-upsert-2026-08-18.error.log
+- [ ] Verify all 12 articles appear in the live news feed or log the direct endpoint failure
+
+## Daily News Publication — 19 August 2026
+
+- [x] Research and validate 12 current UHNW news articles across all requested categories
+- [ ] Submit the validated article batch through the live news.upsertMany endpoint — blocked: production endpoint returned HTTP 401 to the environment-issued owner bearer token; error logged at /tmp/billionaire-collection-news-upsert-2026-08-19.error.log
+- [ ] Verify all 12 articles appear in the live news feed or log the direct endpoint failure
+
+## Founder Page BBC Interview Identification — 20 August 2026
+
+- [x] Update the featured-interview introduction to identify the video as a BBC interview
+- [ ] Validate, push to GitHub, and deploy the targeted Founder-page copy correction

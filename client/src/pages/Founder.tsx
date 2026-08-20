@@ -574,7 +574,7 @@ export default function Founder() {
                   lineHeight: 1.7,
                 }}
               >
-                In this featured interview, Lawrence Colbert discusses the changing geography of global wealth and the historic moment when China emerged as home to more billionaires than the United States.
+                In this featured interview with the BBC, Lawrence Colbert discusses the changing geography of global wealth and the historic moment when China emerged as home to more billionaires than the United States.
               </p>
             </div>
           </FadeUp>
