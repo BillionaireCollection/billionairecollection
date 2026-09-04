@@ -378,3 +378,31 @@
 
 - [x] Update the featured-interview introduction to identify the video as a BBC interview
 - [x] Validate, push to GitHub, and deploy the targeted Founder-page copy correction
+
+## Daily News Publication — 2 September 2026
+
+- [x] Research and validate 12 current billionaire and UHNW stories across wealth, luxury property, superyachts, aviation, automotive, art and lifestyle
+- [x] Build a 2 September payload with URL-safe slugs, allowed categories, compliant Unsplash images and exactly two featured articles
+- [ ] Submit only through the requested live news.upsertMany tRPC endpoint and retain a non-secret direct error log if rejected — blocked: production returned HTTP 401 `Please login (10001)`; error logged at /tmp/billionaire-collection-news-upsert-2026-09-02.error.log
+- [x] Report the precise direct-publication result without using a fallback route
+
+## Daily News Publication — 3 September 2026
+
+- [x] Research and validate 12 current billionaire and UHNW stories across wealth, luxury property, superyachts, aviation, automotive, art and lifestyle
+- [x] Build a 3 September payload with URL-safe slugs, allowed categories, compliant Unsplash images and exactly two featured articles
+- [ ] Submit only through the requested live news.upsertMany tRPC endpoint and retain a non-secret direct error log if rejected — blocked: production returned HTTP 401 `Please login (10001)`; error logged at /tmp/billionaire-collection-news-upsert-2026-09-03.error.log
+- [x] Report the precise direct-publication result without using a fallback route
+
+## Daily News Publication — 4 September 2026
+
+- [x] Research and validate 12 current billionaire and UHNW stories across wealth, luxury property, superyachts, aviation, automotive, art and lifestyle
+- [x] Build a 4 September payload with URL-safe slugs, allowed categories, compliant Unsplash images and exactly two featured articles
+- [ ] Submit only through the requested live news.upsertMany tRPC endpoint and retain a non-secret direct error log if rejected — blocked: production returned HTTP 401 `Please login (10001)`; error logged at /tmp/billionaire-collection-news-upsert-2026-09-04.error.log
+- [x] Report the precise direct-publication result without using a fallback route
+
+## Media Kit & Rate Card Page — 4 September 2026
+
+- [x] Stage and upload the supplied media-kit ZIP and USD rate-card document as durable website download assets
+- [x] Create a branded contextual Media Kit page with the Charter Partner offer, rate highlights and contact details
+- [x] Register the public page route and provide direct downloads for both supplied assets
+- [x] Add focused tests, validate the build and visually verify the page; pending GitHub push and Hostinger deployment

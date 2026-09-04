@@ -1,0 +1,8 @@
+# UHNW News Research — 3 September 2026
+
+| Category | Source | Date | Validated finding |
+|---|---|---:|---|
+| Markets | [Caproasia — 1789 Capital / Polymarket](https://www.caproasia.com/2026/09/02/united-states-president-billionaire-donald-trump-age-80-eldest-son-donald-trump-jr-venture-capital-firm-1789-capital-to-invest-300-million-in-united-states-prediction-market-company-polymarket-at/) | 2 Sep 2026 | Caproasia reports that 1789 Capital, Donald Trump Jr.’s venture-capital firm, is to invest $300m in Polymarket at a $21bn valuation. |
+| Technology / Markets | [Caproasia — SB Energy IPO](https://www.caproasia.com/2026/09/02/japan-billionaire-masayoshi-son-softbank-group-subsidiary-sb-energy-files-for-nasdaq-ipo-to-raise-7-billion-at-50-billion-valuation-founded-in-2019-by-softbank-group/) | 2 Sep 2026 | SoftBank Group subsidiary SB Energy, founded by Masayoshi Son’s group in 2019, filed for a Nasdaq IPO targeting $7bn at a $50bn valuation, according to Caproasia. |
+| Superyachts | [Forbes — Lürssen 2026 deliveries](https://www.forbes.com/sites/billspringer/2026/09/02/lrssen-launch-unprecedented-6-new-superyachts-in-2026/) | 2 Sep 2026 | Lürssen delivered six full-custom superyachts in 2026: ODISEA, DEEP BLUE, BOARDWALK, O3, NAUSICAÄ and NIXIE. The ships range from 75m to 140m and include hybrid diesel-electric propulsion and energy storage on NIXIE. |
+| Automotive / Markets | [Art & Object — Monterey Car Week](https://www.artandobject.com/news/what-montereys-762-million-car-week-says-about-whos-buying) | 2 Sep 2026 | Monterey Car Week auction houses realised a record $762m, with 11 cars sold above $10m. The article links growing demand for 1990s and 2000s supercars to younger, tech-wealth collectors. |
