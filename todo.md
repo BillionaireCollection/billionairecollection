@@ -417,3 +417,15 @@
 
 - [x] Add Media Kit as a visible primary navigation item on desktop and mobile
 - [x] Validate the new navigation item, rebuild the production bundle, push to GitHub and deploy to Hostinger
+
+## Media Kit Showreel — 4 September 2026
+
+- [x] Stage and upload the supplied Billionaire Collection showreel as a production-safe video asset
+- [x] Embed the showreel directly above the Starter Packages section on the Media Kit page
+- [ ] Add regression coverage, validate responsive rendering, rebuild, push and deploy the showreel update
+
+## Media Kit Showreel Hosted Storage Adjustment — 4 September 2026
+
+- [x] Upload the supplied showreel to an externally served production asset URL
+- [x] Replace the oversized local showreel copy with the hosted asset reference
+- [ ] Verify the checkpoint, GitHub and Hostinger deployment with the hosted showreel

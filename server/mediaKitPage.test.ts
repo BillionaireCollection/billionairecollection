@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 
@@ -30,5 +30,13 @@ describe("Media Kit page", () => {
     const navigation = readFileSync(resolve(projectRoot, "client/src/components/Navbar.tsx"), "utf8");
     expect(navigation).toContain('{ label: "Media Kit", href: "/media-kit" }');
     expect(navigation).toContain('[{ label: "News", href: "/news" }, { label: "Media Kit", href: "/media-kit" }');
+  });
+
+  it("places the supplied showreel immediately before Starter Packages", () => {
+    expect(existsSync(resolve(projectRoot, "client/public/billionaire-collection-showreel.mp4"))).toBe(false);
+    expect(page).toContain('const SHOWREEL_URL = "https://billionairecollection.github.io/billionairecollection/billionaire-collection-showreel.mp4";');
+    expect(page).toContain('aria-label="Billionaire Collection Showreel"');
+    expect(page).toContain("controls");
+    expect(page.indexOf('aria-label="Billionaire Collection Showreel"')).toBeLessThan(page.indexOf(">Starter Packages</span>"));
   });
 });

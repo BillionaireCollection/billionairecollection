@@ -8,6 +8,7 @@ const FONT_HEADING = "'Playfair Display', Georgia, serif";
 const FONT_UI = "'Raleway', sans-serif";
 const MEDIA_KIT_URL = "/billionaire-media-kit.zip";
 const RATE_CARD_URL = "/billionaire-usd-rate-card.md";
+const SHOWREEL_URL = "https://billionairecollection.github.io/billionairecollection/billionaire-collection-showreel.mp4";
 
 const formats = [
   ["Native Story", "$12,000 – $18,000", "$6,000 – $9,000"],
@@ -131,6 +132,27 @@ export default function MediaKit() {
         </div>
       </section>
 
+      <section aria-label="Billionaire Collection showreel" style={{ padding: "4.5rem 0 0" }}>
+        <div className="container">
+          <div style={{ borderTop: "1px solid rgba(201,168,76,0.28)", paddingTop: "1.5rem", marginBottom: "1.5rem", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "1rem" }}>
+            <span style={{ fontFamily: FONT_UI, fontSize: "0.68rem", fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", color: GOLD }}>Billionaire Collection Showreel</span>
+            <span style={{ width: "3.25rem", height: "1px", background: GOLD, opacity: 0.72 }} />
+          </div>
+          <div style={{ background: "#030303", border: "1px solid rgba(201,168,76,0.24)", padding: "clamp(0.4rem, 1vw, 0.7rem)", boxShadow: "0 30px 70px rgba(0,0,0,0.35)" }}>
+            <video
+              controls
+              playsInline
+              preload="metadata"
+              aria-label="Billionaire Collection Showreel"
+              style={{ display: "block", width: "100%", aspectRatio: "16 / 9", background: "#000" }}
+            >
+              <source src={SHOWREEL_URL} type="video/mp4" />
+              Your browser does not support the Billionaire Collection showreel.
+            </video>
+          </div>
+        </div>
+      </section>
+
       <section style={{ padding: "7rem 0" }}>
         <div className="container">
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "end", gap: "2rem", flexWrap: "wrap", marginBottom: "2.25rem" }}>
@@ -176,6 +198,9 @@ export default function MediaKit() {
         }
         @media (max-width: 820px) {
           .container > div[style*="minmax(280px"] { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 640px) {
+          video[aria-label="Billionaire Collection Showreel"] { aspect-ratio: 16 / 9; }
         }
       `}</style>
     </div>
