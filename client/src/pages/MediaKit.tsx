@@ -6,8 +6,8 @@ import { useJsonLd } from "@/hooks/useJsonLd";
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
 const FONT_UI = "'Raleway', sans-serif";
-const MEDIA_KIT_URL = "/manus-storage/billionaire-media-kit_bca047b3.zip";
-const RATE_CARD_URL = "/manus-storage/billionaire-usd-rate-card_604d9edf.md";
+const MEDIA_KIT_URL = "/billionaire-media-kit.zip";
+const RATE_CARD_URL = "/billionaire-usd-rate-card.md";
 
 const formats = [
   ["Native Story", "$12,000 – $18,000", "$6,000 – $9,000"],

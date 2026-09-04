@@ -9,8 +9,8 @@ describe("Media Kit page", () => {
   const router = readFileSync(resolve(projectRoot, "client/src/App.tsx"), "utf8");
 
   it("exposes both supplied downloadable assets", () => {
-    expect(page).toContain("/manus-storage/billionaire-media-kit_bca047b3.zip");
-    expect(page).toContain("/manus-storage/billionaire-usd-rate-card_604d9edf.md");
+    expect(page).toContain("/billionaire-media-kit.zip");
+    expect(page).toContain("/billionaire-usd-rate-card.md");
     expect(page).toContain("Download Media Kit");
     expect(page).toContain("Download USD Rate Card");
   });
