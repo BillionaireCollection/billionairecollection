@@ -406,3 +406,14 @@
 - [x] Create a branded contextual Media Kit page with the Charter Partner offer, rate highlights and contact details
 - [x] Register the public page route and provide direct downloads for both supplied assets
 - [x] Add focused tests, validate the build, visually verify the page, push to GitHub and deploy the rebuilt Hostinger bundle
+
+## Media Kit Publication Verification — 4 September 2026
+
+- [ ] Verify the live /media-kit route and download URLs are serving the published release
+- [ ] Complete and verify any necessary production publication action
+- [ ] Confirm the page's direct-access and main-navigation status to the user
+
+## Media Kit Main Navigation — 4 September 2026
+
+- [x] Add Media Kit as a visible primary navigation item on desktop and mobile
+- [ ] Validate the new navigation item, rebuild the production bundle, push to GitHub and deploy to Hostinger

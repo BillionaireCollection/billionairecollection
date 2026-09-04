@@ -25,4 +25,10 @@ describe("Media Kit page", () => {
     expect(router).toContain('import MediaKit from "./pages/MediaKit";');
     expect(router).toContain('<Route path="/media-kit" component={MediaKit} />');
   });
+
+  it("keeps Media Kit visible in desktop and mobile site navigation", () => {
+    const navigation = readFileSync(resolve(projectRoot, "client/src/components/Navbar.tsx"), "utf8");
+    expect(navigation).toContain('{ label: "Media Kit", href: "/media-kit" }');
+    expect(navigation).toContain('[{ label: "News", href: "/news" }, { label: "Media Kit", href: "/media-kit" }');
+  });
 });

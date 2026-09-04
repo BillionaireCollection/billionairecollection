@@ -58,6 +58,7 @@ const NAV_ITEMS: NavItem[] = [
   },
   { label: "Store", href: "/marketplace" },
   { label: "News", href: "/news" },
+  { label: "Media Kit", href: "/media-kit" },
   { label: "Concierge", href: "/card-concierge" },
   { label: "Free Insights", href: "/billionaire-wisdom" },
   { label: "✦ Golden Ticket", href: "/golden-ticket" },
@@ -180,7 +181,7 @@ export default function Navbar() {
 
           {/* Desktop Nav — only rendered on large screens */}
           {isDesktop && (
-            <div style={{ display: "flex", alignItems: "center", gap: "2rem" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "clamp(0.65rem, 0.8vw, 1.25rem)", minWidth: 0 }}>
               {NAV_ITEMS.map((item) => (
                 <div
                   key={item.label}
@@ -192,7 +193,7 @@ export default function Navbar() {
                       <span style={{
                         fontFamily: FONT_UI,
                         fontWeight: item.href?.includes('golden') ? 600 : 400,
-                        fontSize: "0.875rem",
+                        fontSize: "0.75rem",
                         textTransform: "uppercase",
                         letterSpacing: "0.05em",
                         color: item.href?.includes('golden') ? GOLD : (location === item.href ? GOLD : "rgba(255,255,255,0.7)"),
@@ -201,6 +202,7 @@ export default function Navbar() {
                         display: "flex",
                         alignItems: "center",
                         gap: "4px",
+                        whiteSpace: "nowrap",
                       }}
                         onMouseEnter={(e) => { if (!item.href?.includes('golden') && location !== item.href) (e.target as HTMLElement).style.color = "#fff"; }}
                         onMouseLeave={(e) => { if (!item.href?.includes('golden') && location !== item.href) (e.target as HTMLElement).style.color = "rgba(255,255,255,0.7)"; }}
@@ -212,7 +214,7 @@ export default function Navbar() {
                     <span style={{
                       fontFamily: FONT_UI,
                       fontWeight: 400,
-                      fontSize: "0.875rem",
+                      fontSize: "0.75rem",
                       textTransform: "uppercase",
                       letterSpacing: "0.05em",
                       color: activeMenu === item.label ? GOLD : "rgba(255,255,255,0.7)",
@@ -221,6 +223,7 @@ export default function Navbar() {
                       display: "flex",
                       alignItems: "center",
                       gap: "4px",
+                      whiteSpace: "nowrap",
                     }}>
                       {item.label}
                       <ChevronDown size={12} style={{ transition: "transform 0.2s", transform: activeMenu === item.label ? "rotate(180deg)" : "rotate(0deg)" }} />
@@ -228,16 +231,18 @@ export default function Navbar() {
                   )}
                 </div>
               ))}
-              <Link href="/card-concierge">
-                <button className="btn-gold" style={{ minWidth: "auto", padding: "10px 20px", fontSize: "0.75rem" }}>
-                  Billionaire Card
-                </button>
-              </Link>
-              <Link href="/membership/apply">
-                <button style={{ minWidth: "auto", padding: "10px 20px", fontSize: "0.75rem", fontFamily: "'Raleway', sans-serif", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", background: "transparent", border: `1px solid rgba(201,168,76,0.5)`, color: "#C9A84C", cursor: "pointer", transition: "all 0.2s" }}>
-                  Private Membership
-                </button>
-              </Link>
+              <div className="desktop-secondary-ctas" style={{ display: "flex", alignItems: "center", gap: "0.65rem" }}>
+                <Link href="/card-concierge">
+                  <button className="btn-gold" style={{ minWidth: "auto", padding: "10px 16px", fontSize: "0.7rem" }}>
+                    Billionaire Card
+                  </button>
+                </Link>
+                <Link href="/membership/apply">
+                  <button style={{ minWidth: "auto", padding: "10px 16px", fontSize: "0.7rem", fontFamily: "'Raleway', sans-serif", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", background: "transparent", border: `1px solid rgba(201,168,76,0.5)`, color: "#C9A84C", cursor: "pointer", transition: "all 0.2s", whiteSpace: "nowrap" }}>
+                    Private Membership
+                  </button>
+                </Link>
+              </div>
             </div>
           )}
 
@@ -406,7 +411,7 @@ export default function Navbar() {
 
               {/* Standalone links */}
               <div style={{ display: "flex", flexDirection: "column", gap: "1px", marginBottom: "1.5rem" }}>
-                {[{ label: "News", href: "/news" }, { label: "Free Insights", href: "/billionaire-wisdom" }].map(item => (
+                {[{ label: "News", href: "/news" }, { label: "Media Kit", href: "/media-kit" }, { label: "Free Insights", href: "/billionaire-wisdom" }].map(item => (
                   <Link key={item.href} href={item.href} onClick={() => setMobileOpen(false)}>
                     <div style={{ fontFamily: FONT_UI, fontWeight: 500, fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.06em", color: "rgba(255,255,255,0.75)", padding: "9px 0", borderBottom: "1px solid rgba(201,168,76,0.06)", cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center" }}
                       onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "#fff"}
@@ -438,6 +443,7 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
+      <style>{`@media (max-width: 1400px) { .desktop-secondary-ctas { display: none !important; } }`}</style>
     </>
   );
 }
