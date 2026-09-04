@@ -409,11 +409,11 @@
 
 ## Media Kit Publication Verification — 4 September 2026
 
-- [ ] Verify the live /media-kit route and download URLs are serving the published release
-- [ ] Complete and verify any necessary production publication action
-- [ ] Confirm the page's direct-access and main-navigation status to the user
+- [x] Verify the live /media-kit route and download URLs are serving the published release
+- [x] Complete and verify the required production publication action through the Git-connected Hostinger build
+- [x] Confirm the page's direct-access and main-navigation status to the user
 
 ## Media Kit Main Navigation — 4 September 2026
 
 - [x] Add Media Kit as a visible primary navigation item on desktop and mobile
-- [ ] Validate the new navigation item, rebuild the production bundle, push to GitHub and deploy to Hostinger
+- [x] Validate the new navigation item, rebuild the production bundle, push to GitHub and deploy to Hostinger
