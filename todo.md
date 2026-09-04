@@ -405,4 +405,4 @@
 - [x] Stage and upload the supplied media-kit ZIP and USD rate-card document as durable website download assets
 - [x] Create a branded contextual Media Kit page with the Charter Partner offer, rate highlights and contact details
 - [x] Register the public page route and provide direct downloads for both supplied assets
-- [x] Add focused tests, validate the build and visually verify the page; pending GitHub push and Hostinger deployment
+- [x] Add focused tests, validate the build, visually verify the page, push to GitHub and deploy the rebuilt Hostinger bundle
