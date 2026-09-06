@@ -435,7 +435,7 @@
 - [x] Review the supplied indexing-report exclusions and identify all affected URL patterns
 - [x] Inspect current canonical tags, robots controls, sitemap entries and HTTP responses for affected routes
 - [x] Implement targeted canonical delivery, sitemap inclusion and the legacy duplicate redirect without altering intended private or duplicate routes
-- [ ] Test, publish and verify the live indexability remediation and identify required Search Console validation actions
+- [x] Test, publish and verify the live indexability remediation; request Search Console validation to prompt Google to recrawl affected URLs
 
 ## Daily News Publication — 5 September 2026
 
