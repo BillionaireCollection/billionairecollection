@@ -429,3 +429,24 @@
 - [x] Upload the supplied showreel to an externally served production asset URL
 - [x] Replace the oversized local showreel copy with the hosted asset reference
 - [x] Verify the checkpoint, GitHub and Hostinger deployment with the hosted showreel
+
+## Search Console Indexing Report Remediation — 6 September 2026
+
+- [x] Review the supplied indexing-report exclusions and identify all affected URL patterns
+- [x] Inspect current canonical tags, robots controls, sitemap entries and HTTP responses for affected routes
+- [x] Implement targeted canonical delivery, sitemap inclusion and the legacy duplicate redirect without altering intended private or duplicate routes
+- [ ] Test, publish and verify the live indexability remediation and identify required Search Console validation actions
+
+## Daily News Publication — 5 September 2026
+
+- [x] Research and validate 12 current billionaire and UHNW stories across wealth, luxury property, superyachts, aviation, automotive, art and lifestyle
+- [x] Build a 5 September payload with URL-safe slugs, allowed categories, compliant Unsplash images and exactly two featured articles
+- [ ] Submit only through the requested live news.upsertMany tRPC endpoint and retain a non-secret direct error log if rejected — blocked: production returned HTTP 401 `Please login (10001)`; error logged at /tmp/billionaire-collection-news-upsert-2026-09-05.error.log
+- [x] Report the precise direct-publication result without using a fallback route
+
+## Daily News Publication — 6 September 2026
+
+- [x] Research and validate 12 current billionaire and UHNW stories across wealth, luxury property, superyachts, aviation, automotive, art and lifestyle
+- [x] Build a 6 September payload with URL-safe slugs, allowed categories, compliant Unsplash images and exactly two featured articles
+- [ ] Submit only through the requested live news.upsertMany tRPC endpoint and retain a non-secret direct error log if rejected — blocked: production returned HTTP 401 `Please login (10001)`; error logged at /tmp/billionaire-collection-news-upsert-2026-09-06.error.log
+- [x] Report the precise direct-publication result without using a fallback route

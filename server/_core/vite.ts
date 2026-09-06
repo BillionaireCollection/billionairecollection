@@ -21,15 +21,22 @@ const VALID_ROUTES = new Set([
   "/university", "/ecosystem", "/brands", "/founder",
   "/admin", "/x-offer", "/offer",
   "/membership/apply",
+  "/media-kit",
 ]);
 
-function injectCanonical(html: string, pathname: string): string {
+export function injectCanonical(html: string, pathname: string): string {
   const canonical = `${BASE_URL}${pathname === "/" ? "" : pathname.replace(/\/$/, "")}`;
-  // Replace the hardcoded root canonical with the page-specific one
-  return html.replace(
-    /<link rel="canonical"[^>]*>/,
-    `<link rel="canonical" href="${canonical}" />`
-  );
+  const canonicalTag = `<link rel="canonical" href="${canonical}" />`;
+  const replaced = html.replace(/<link\b[^>]*\brel=["']canonical["'][^>]*>/i, canonicalTag);
+
+  // The static HTML shell does not carry a canonical tag; always inject one
+  // before sending the response so crawlers receive it without JavaScript.
+  if (replaced !== html) return replaced;
+  return html.replace(/<\/head>/i, `  ${canonicalTag}\n</head>`);
+}
+
+export function getRequestPathname(originalUrl: string): string {
+  return new URL(originalUrl, BASE_URL).pathname;
 }
 
 export async function setupVite(app: Express, server: Server) {
@@ -65,7 +72,7 @@ export async function setupVite(app: Express, server: Server) {
           `src="/src/main.tsx?v=${nanoid()}"`
         );
         let page = await vite.transformIndexHtml(url, template);
-        page = injectCanonical(page, req.path);
+        page = injectCanonical(page, getRequestPathname(req.originalUrl));
         res.status(200).set({ "Content-Type": "text/html" }).end(page);
     } catch (e) {
       vite.ssrFixStacktrace(e as Error);
@@ -84,6 +91,12 @@ export function serveStatic(app: Express) {
       `Could not find the build directory: ${distPath}, make sure to build the client first`
     );
   }
+
+  // /store is a legacy alias for the Marketplace. Redirect at HTTP level so
+  // crawlers do not index a second URL for the same content.
+  app.get("/store", (_req, res) => {
+    res.redirect(301, "/marketplace");
+  });
 
   app.use(express.static(distPath));
 
@@ -105,9 +118,10 @@ export function serveStatic(app: Express) {
         return;
       }
       // Determine HTTP status: unknown paths get 404 so Googlebot doesn't soft-404
-      const isKnownRoute = VALID_ROUTES.has(req.path) || req.path.startsWith("/api/");
+      const pathname = getRequestPathname(req.originalUrl);
+      const isKnownRoute = VALID_ROUTES.has(pathname) || pathname.startsWith("/api/");
       const statusCode = isKnownRoute ? 200 : 404;
-      const injected = injectCanonical(html, req.path);
+      const injected = injectCanonical(html, pathname);
       res.status(statusCode).set({ "Content-Type": "text/html" }).end(injected);
     });
   });

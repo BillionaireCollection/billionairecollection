@@ -1869,14 +1869,19 @@ var VALID_ROUTES = /* @__PURE__ */ new Set([
   "/admin",
   "/x-offer",
   "/offer",
-  "/membership/apply"
+  "/membership/apply",
+  "/media-kit"
 ]);
 function injectCanonical(html, pathname) {
   const canonical = `${BASE_URL}${pathname === "/" ? "" : pathname.replace(/\/$/, "")}`;
-  return html.replace(
-    /<link rel="canonical"[^>]*>/,
-    `<link rel="canonical" href="${canonical}" />`
-  );
+  const canonicalTag = `<link rel="canonical" href="${canonical}" />`;
+  const replaced = html.replace(/<link\b[^>]*\brel=["']canonical["'][^>]*>/i, canonicalTag);
+  if (replaced !== html) return replaced;
+  return html.replace(/<\/head>/i, `  ${canonicalTag}
+</head>`);
+}
+function getRequestPathname(originalUrl) {
+  return new URL(originalUrl, BASE_URL).pathname;
 }
 async function setupVite(app, server) {
   const serverOptions = {
@@ -1906,7 +1911,7 @@ async function setupVite(app, server) {
         `src="/src/main.tsx?v=${nanoid()}"`
       );
       let page = await vite.transformIndexHtml(url, template);
-      page = injectCanonical(page, req.path);
+      page = injectCanonical(page, getRequestPathname(req.originalUrl));
       res.status(200).set({ "Content-Type": "text/html" }).end(page);
     } catch (e) {
       vite.ssrFixStacktrace(e);
@@ -1921,6 +1926,9 @@ function serveStatic(app) {
       `Could not find the build directory: ${distPath}, make sure to build the client first`
     );
   }
+  app.get("/store", (_req, res) => {
+    res.redirect(301, "/marketplace");
+  });
   app.use(express.static(distPath));
   app.get("/googleb0c6e8d7a35c9529.html", (_req, res) => {
     res.set("Content-Type", "text/html").send("google-site-verification: googleb0c6e8d7a35c9529.html");
@@ -1935,9 +1943,10 @@ function serveStatic(app) {
         );
         return;
       }
-      const isKnownRoute = VALID_ROUTES.has(req.path) || req.path.startsWith("/api/");
+      const pathname = getRequestPathname(req.originalUrl);
+      const isKnownRoute = VALID_ROUTES.has(pathname) || pathname.startsWith("/api/");
       const statusCode = isKnownRoute ? 200 : 404;
-      const injected = injectCanonical(html, req.path);
+      const injected = injectCanonical(html, pathname);
       res.status(statusCode).set({ "Content-Type": "text/html" }).end(injected);
     });
   });
@@ -2135,6 +2144,7 @@ async function startServer() {
       { loc: "/television", priority: "0.80", changefreq: "monthly" },
       { loc: "/radio", priority: "0.75", changefreq: "monthly" },
       { loc: "/media", priority: "0.75", changefreq: "monthly" },
+      { loc: "/media-kit", priority: "0.75", changefreq: "monthly" },
       // Products
       { loc: "/champagne", priority: "0.75", changefreq: "monthly" },
       { loc: "/vodka", priority: "0.75", changefreq: "monthly" },

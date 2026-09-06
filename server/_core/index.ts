@@ -70,6 +70,7 @@ async function startServer() {
       { loc: "/television", priority: "0.80", changefreq: "monthly" },
       { loc: "/radio", priority: "0.75", changefreq: "monthly" },
       { loc: "/media", priority: "0.75", changefreq: "monthly" },
+      { loc: "/media-kit", priority: "0.75", changefreq: "monthly" },
       // Products
       { loc: "/champagne", priority: "0.75", changefreq: "monthly" },
       { loc: "/vodka", priority: "0.75", changefreq: "monthly" },
