@@ -141,7 +141,7 @@ const TIMELINE = [
   { stage: "04", label: "Recording Career", desc: "Entered the international music industry as a recording artist, gaining first-hand experience of global media, branding, and entertainment." },
   { stage: "05", label: "Sales & Consulting", desc: "Delivered elite sales training to Ferrari, Rolls-Royce, Bentley, Lamborghini, and Porsche — teaching the world's finest sales professionals how to operate at an even higher level." },
   { stage: "06", label: "BILLIONAIRE Brand", desc: "Created the BILLIONAIRE brand, establishing a distinctive identity at the intersection of wealth, aspiration, and lifestyle." },
-  { stage: "07", label: "Billionaire Magazine", desc: "Founded Billionaire Magazine in London — a landmark publication serving the global ultra-high-net-worth community." },
+  { stage: "07", label: "Billionaire Magazine", desc: "Founded and owns Billionaire Magazine in London — a landmark publication serving the global ultra-high-net-worth community." },
   { stage: "08", label: "Billionaire University", desc: "Launched Billionaire University, a structured education platform designed to close the gap between inspiration and implementation for entrepreneurs worldwide." },
   { stage: "09", label: "The Ecosystem", desc: "Formed the Billionaire Collection — an integrated ecosystem spanning brokerage, media, education, products, and services for the world's most successful individuals." },
   { stage: "10", label: "Golden Ticket Club", desc: "Developed the Golden Ticket Club and Billionaire Giving — combining access, recognition, and purposeful philanthropy within a single membership framework." },
@@ -257,11 +257,11 @@ function VideoEmbed() {
 export default function Founder() {
   /* ── SEO ── */
   useSEO({
-    title: "Lawrence Colbert | Founder and CEO of Billionaire Collection",
+    title: "Lawrence Colbert | Founder & Owner of Billionaire Magazine and Billionaire Collection",
     description:
-      "Lawrence Colbert is the Founder, CEO, and trademark holder of Billionaire Collection — the parent company of 40+ luxury brands including Billionaire Magazine, Billionaire University, Billionaire Estates, Billionaire Air, Billionaire Boat, Billionaire Car, and over 40 Billionaire websites and brands. Est. London.",
+      "Lawrence Colbert is the Founder, Owner and Chief Executive Officer of Billionaire Collection and Founder and Owner of Billionaire Magazine. He leads the London-founded luxury ecosystem behind 40+ Billionaire brands, websites and ventures.",
     keywords:
-      "Lawrence Colbert, Lawrence Colbert founder, Lawrence Colbert CEO, Billionaire Collection founder, Billionaire Collection owner, Billionaire Magazine founder, Billionaire Magazine owner, Billionaire University founder, Billionaire University owner, Billionaire Collection trademark, Billionaire brands owner, UHNW entrepreneur, luxury ecosystem founder, Billionaire Collection CEO, Lawrence Colbert entrepreneur, Lawrence Colbert London, Billionaire Collection trademark holder, CEO Lawrence Colbert, @CeoLawrence, Lawrence Colbert billionaire, billionaire collection 40 brands",
+      "Lawrence Colbert, Lawrence Colbert founder and owner, Lawrence Colbert CEO, Billionaire Collection founder, Billionaire Collection owner, Billionaire Magazine founder, Billionaire Magazine owner, Billionaire Magazine founder and owner, Billionaire University founder, Billionaire University owner, Billionaire Collection trademark holder, Billionaire brands owner, UHNW entrepreneur, luxury ecosystem founder, luxury media founder, Billionaire Collection CEO, Lawrence Colbert entrepreneur, Lawrence Colbert London, CEO Lawrence Colbert, @CeoLawrence, billionaire collection 40 brands",
     image: FOUNDER_IMG,
     url: "https://billionairecollection.com/founder",
   });
@@ -275,8 +275,8 @@ export default function Founder() {
       name: "Lawrence Colbert",
       givenName: "Lawrence",
       familyName: "Colbert",
-      jobTitle: "Founder and Chief Executive Officer",
-      description: "Lawrence Colbert is the Founder, CEO, and trademark holder of Billionaire Collection — the global parent company of over 40 luxury brands and websites including Billionaire Magazine, Billionaire University, Billionaire Estates, Billionaire Air, Billionaire Boat, Billionaire Car, Billionaire Card, Billionaire Chrono, Billionaire Art, Billionaire Vodka, Billionaire Champagne, Billionaire Oud, Billionaire Cigar, Billionaire Vitality, Billionaire Funding, Billionaire Counsel, Billionaire Golf, Billionaire Travel, Billionaire Television, Billionaire Radio, and more. Established in London.",
+      jobTitle: "Founder, Owner and Chief Executive Officer",
+      description: "Lawrence Colbert is the Founder, Owner and Chief Executive Officer of Billionaire Collection, and Founder and Owner of Billionaire Magazine. He leads the London-founded parent ecosystem behind over 40 luxury brands and websites spanning media, education, brokerage, technology, products, membership and philanthropy.",
       url: "https://billionairecollection.com/founder",
       image: FOUNDER_IMG,
       worksFor: {
@@ -284,6 +284,12 @@ export default function Founder() {
         "@id": "https://billionairecollection.com/#organization",
         name: "Billionaire Collection",
         url: "https://billionairecollection.com/",
+      },
+      affiliation: {
+        "@type": "Organization",
+        name: "Billionaire Magazine",
+        url: "https://billionairecollectionmagazine.com",
+        description: "Billionaire Magazine is founded and owned by Lawrence Colbert.",
       },
       owns: [
         { "@type": "Organization", "name": "Billionaire Collection", "url": "https://billionairecollection.com" },
@@ -348,6 +354,23 @@ export default function Founder() {
         "Longevity and wellness",
         "Philanthropy",
       ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "@id": "https://billionairecollection.com/founder#webpage",
+      name: "Lawrence Colbert | Founder & Owner of Billionaire Magazine and Billionaire Collection",
+      url: "https://billionairecollection.com/founder",
+      description: "The official profile of Lawrence Colbert, Founder, Owner and Chief Executive Officer of Billionaire Collection and Founder and Owner of Billionaire Magazine.",
+      inLanguage: "en-GB",
+      isPartOf: { "@id": "https://billionairecollection.com/#website" },
+      mainEntity: { "@id": "https://billionairecollection.com/founder#lawrence-colbert" },
+      about: [
+        { "@id": "https://billionairecollection.com/founder#lawrence-colbert" },
+        { "@id": "https://billionairecollection.com/#organization" },
+        { "@type": "Organization", name: "Billionaire Magazine", url: "https://billionairecollectionmagazine.com" },
+      ],
+      primaryImageOfPage: { "@type": "ImageObject", url: FOUNDER_IMG },
     },
     {
       "@context": "https://schema.org",
@@ -434,7 +457,7 @@ export default function Founder() {
                 padding: "6px 14px",
               }}
             >
-            Founder of the Billionaire Collection
+            Founder & Owner of Billionaire Collection & Billionaire Magazine
           </p>
         </motion.div>
 
@@ -491,7 +514,7 @@ export default function Founder() {
               marginBottom: "0.75rem",
             }}
           >
-            Founder and Chief Executive Officer
+            Founder, Owner and Chief Executive Officer
           </motion.p>
 
           <motion.p
@@ -507,7 +530,7 @@ export default function Founder() {
               maxWidth: "520px",
             }}
           >
-            Architect of a global ecosystem built around wealth, knowledge, access and legacy.
+            Founder and owner of Billionaire Magazine and the global Billionaire Collection ecosystem, built around wealth, knowledge, access and legacy.
           </motion.p>
 
           <motion.a
@@ -603,7 +626,7 @@ export default function Founder() {
           </FadeUp>
           <FadeUp delay={0.1}>
             <BodyP>
-              Lawrence Colbert is the Founder and Chief Executive Officer of the Billionaire Collection — a global luxury and education ecosystem that spans media, brokerage, lifestyle, technology, and philanthropy. Built over more than two decades of entrepreneurial endeavour, the Billionaire Collection stands today as one of the most ambitious and distinctive platforms ever created for ultra-high-net-worth individuals and the aspirational communities that surround them.
+              Lawrence Colbert is the Founder, Owner and Chief Executive Officer of the Billionaire Collection — a global luxury and education ecosystem that spans media, brokerage, lifestyle, technology, and philanthropy. He is also the Founder and Owner of Billionaire Magazine, the flagship publication that established the editorial voice of the wider ecosystem. Built over more than two decades of entrepreneurial endeavour, the Billionaire Collection stands today as one of the most ambitious and distinctive platforms created for ultra-high-net-worth individuals and the aspirational communities that surround them.
             </BodyP>
             <PullQuote>
               "I did not build the Billionaire Collection to impress the world. I built it to serve the world's most exceptional people — and to create a pathway for the next generation to join them."
@@ -776,7 +799,7 @@ export default function Founder() {
           </FadeUp>
           <FadeUp delay={0.1}>
             <BodyP>
-              The Billionaire Collection's media division — encompassing Billionaire Magazine, Billionaire Television, and Billionaires Radio — represents one of the most distinctive media platforms serving the ultra-high-net-worth community anywhere in the world. Founded in London, Billionaire Magazine established the editorial voice that would define the entire ecosystem: authoritative, intelligent, and uncompromisingly premium.
+              The Billionaire Collection's media division — encompassing Billionaire Magazine, Billionaire Television, and Billionaires Radio — represents one of the most distinctive media platforms serving the ultra-high-net-worth community anywhere in the world. As Founder and Owner of Billionaire Magazine, Lawrence Colbert established the London-founded publication and the editorial voice that would define the entire ecosystem: authoritative, intelligent, and uncompromisingly premium.
             </BodyP>
             <BodyP>
               Lawrence understood from the beginning that media was not merely a marketing channel. It was a platform for ideas, a forum for the exchange of intelligence, and a means of building the kind of trust and authority that no advertising campaign can manufacture. The Billionaire Collection's media properties have, over the years, become genuine destinations for the world's most successful individuals — people who expect their media to match the standard of everything else in their lives.
@@ -1300,7 +1323,7 @@ export default function Founder() {
                   marginBottom: "0.3rem",
                 }}
               >
-                Founder and Chief Executive Officer
+                Founder, Owner and Chief Executive Officer
               </p>
               <p
                 style={{
@@ -1313,7 +1336,7 @@ export default function Founder() {
                   marginBottom: "0.3rem",
                 }}
               >
-                Billionaire Collection
+                Billionaire Collection & Billionaire Magazine
               </p>
               <p
                 style={{

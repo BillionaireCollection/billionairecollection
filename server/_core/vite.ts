@@ -8,6 +8,98 @@ import viteConfig from "../../vite.config";
 
 const BASE_URL = "https://billionairecollection.com";
 
+type PageMetadata = {
+  title: string;
+  description: string;
+  keywords: string;
+  image: string;
+  type?: "website" | "profile";
+  aiDescription: string;
+  structuredData?: Record<string, unknown>;
+};
+
+const FOUNDER_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-main-QJbNmDnsM8Jru6dBDixZQ8.webp";
+
+const PAGE_METADATA: Record<string, PageMetadata> = {
+  "/founder": {
+    title: "Lawrence Colbert | Founder & Owner of Billionaire Magazine and Billionaire Collection",
+    description: "Lawrence Colbert is the Founder, Owner and Chief Executive Officer of Billionaire Collection and Founder and Owner of Billionaire Magazine. He leads the London-founded luxury ecosystem behind 40+ Billionaire brands, websites and ventures.",
+    keywords: "Lawrence Colbert, Lawrence Colbert founder and owner, Billionaire Collection founder, Billionaire Collection owner, Billionaire Magazine founder, Billionaire Magazine owner, Billionaire Magazine founder and owner, Billionaire Collection CEO, luxury ecosystem founder, luxury media founder, UHNW entrepreneur, Lawrence Colbert London",
+    image: FOUNDER_IMAGE,
+    type: "profile",
+    aiDescription: "Official profile of Lawrence Colbert: Founder, Owner and Chief Executive Officer of Billionaire Collection, and Founder and Owner of Billionaire Magazine. Billionaire Collection is a London-founded luxury ecosystem spanning media, education, brokerage, technology, products, membership and philanthropy.",
+    structuredData: {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://billionairecollection.com/founder#lawrence-colbert",
+          name: "Lawrence Colbert",
+          jobTitle: "Founder, Owner and Chief Executive Officer",
+          description: "Founder, Owner and Chief Executive Officer of Billionaire Collection; Founder and Owner of Billionaire Magazine.",
+          url: "https://billionairecollection.com/founder",
+          image: FOUNDER_IMAGE,
+          worksFor: { "@id": "https://billionairecollection.com/#organization" },
+          affiliation: { "@type": "Organization", name: "Billionaire Magazine", url: "https://billionairecollectionmagazine.com" },
+        },
+        {
+          "@type": "ProfilePage",
+          "@id": "https://billionairecollection.com/founder#webpage",
+          name: "Lawrence Colbert | Founder & Owner of Billionaire Magazine and Billionaire Collection",
+          url: "https://billionairecollection.com/founder",
+          description: "The official profile of Lawrence Colbert, Founder, Owner and Chief Executive Officer of Billionaire Collection and Founder and Owner of Billionaire Magazine.",
+          inLanguage: "en-GB",
+          isPartOf: { "@id": "https://billionairecollection.com/#website" },
+          mainEntity: { "@id": "https://billionairecollection.com/founder#lawrence-colbert" },
+          primaryImageOfPage: { "@type": "ImageObject", url: FOUNDER_IMAGE },
+        },
+      ],
+    },
+  },
+};
+
+function escapeHtml(value: string): string {
+  return value.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function replaceOrAppendMeta(html: string, attr: "name" | "property", key: string, value: string): string {
+  const tag = `<meta ${attr}="${key}" content="${escapeHtml(value)}" />`;
+  const expression = new RegExp(`<meta\\b[^>]*\\b${attr}=["']${key.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}["'][^>]*>`, "i");
+  if (expression.test(html)) return html.replace(expression, tag);
+  return html.replace(/<\/head>/i, `  ${tag}\n</head>`);
+}
+
+export function injectPageMetadata(html: string, pathname: string): string {
+  const metadata = PAGE_METADATA[pathname];
+  if (!metadata) return html;
+
+  let page = html.replace(/<title>[^<]*<\/title>/i, `<title>${escapeHtml(metadata.title)} | Billionaire Collection</title>`);
+  page = replaceOrAppendMeta(page, "name", "description", metadata.description);
+  page = replaceOrAppendMeta(page, "name", "keywords", metadata.keywords);
+  page = replaceOrAppendMeta(page, "name", "author", "Lawrence Colbert");
+  page = replaceOrAppendMeta(page, "name", "ai-description", metadata.aiDescription);
+  page = replaceOrAppendMeta(page, "property", "og:type", metadata.type || "website");
+  page = replaceOrAppendMeta(page, "property", "og:title", metadata.title);
+  page = replaceOrAppendMeta(page, "property", "og:description", metadata.description);
+  page = replaceOrAppendMeta(page, "property", "og:url", `${BASE_URL}${pathname}`);
+  page = replaceOrAppendMeta(page, "property", "og:image", metadata.image);
+  page = replaceOrAppendMeta(page, "property", "og:image:alt", metadata.title);
+  page = replaceOrAppendMeta(page, "name", "twitter:card", "summary_large_image");
+  page = replaceOrAppendMeta(page, "name", "twitter:title", metadata.title);
+  page = replaceOrAppendMeta(page, "name", "twitter:description", metadata.description);
+  page = replaceOrAppendMeta(page, "name", "twitter:image", metadata.image);
+  page = replaceOrAppendMeta(page, "name", "twitter:image:alt", metadata.title);
+  page = replaceOrAppendMeta(page, "name", "twitter:creator", "@CeoLawrence");
+
+  if (metadata.structuredData) {
+    const structuredTag = `<script id="route-structured-data" type="application/ld+json">${JSON.stringify(metadata.structuredData)}</script>`;
+    const existing = /<script\b[^>]*\bid=["']route-structured-data["'][^>]*>[\s\S]*?<\/script>/i;
+    page = existing.test(page) ? page.replace(existing, structuredTag) : page.replace(/<\/head>/i, `  ${structuredTag}\n</head>`);
+  }
+
+  return page;
+}
+
 // Known valid SPA routes — any other path is a 404
 const VALID_ROUTES = new Set([
   "/", "/estates", "/boat", "/air", "/car", "/art", "/chrono", "/crypto",
@@ -72,7 +164,8 @@ export async function setupVite(app: Express, server: Server) {
           `src="/src/main.tsx?v=${nanoid()}"`
         );
         let page = await vite.transformIndexHtml(url, template);
-        page = injectCanonical(page, getRequestPathname(req.originalUrl));
+        const pathname = getRequestPathname(req.originalUrl);
+        page = injectPageMetadata(injectCanonical(page, pathname), pathname);
         res.status(200).set({ "Content-Type": "text/html" }).end(page);
     } catch (e) {
       vite.ssrFixStacktrace(e as Error);
@@ -121,7 +214,7 @@ export function serveStatic(app: Express) {
       const pathname = getRequestPathname(req.originalUrl);
       const isKnownRoute = VALID_ROUTES.has(pathname) || pathname.startsWith("/api/");
       const statusCode = isKnownRoute ? 200 : 404;
-      const injected = injectCanonical(html, pathname);
+      const injected = injectPageMetadata(injectCanonical(html, pathname), pathname);
       res.status(statusCode).set({ "Content-Type": "text/html" }).end(injected);
     });
   });

@@ -450,3 +450,17 @@
 - [x] Build a 6 September payload with URL-safe slugs, allowed categories, compliant Unsplash images and exactly two featured articles
 - [ ] Submit only through the requested live news.upsertMany tRPC endpoint and retain a non-secret direct error log if rejected — blocked: production returned HTTP 401 `Please login (10001)`; error logged at /tmp/billionaire-collection-news-upsert-2026-09-06.error.log
 - [x] Report the precise direct-publication result without using a fallback route
+
+## Daily News Publication — 7 September 2026
+
+- [x] Research and validate 12 current billionaire and UHNW stories across wealth, luxury property, superyachts, aviation, automotive, art and lifestyle
+- [x] Build a 7 September payload with URL-safe slugs, allowed categories, compliant Unsplash images and exactly two featured articles
+- [ ] Submit only through the requested live news.upsertMany tRPC endpoint and retain a non-secret direct error log if rejected — blocked: production returned HTTP 401 `Please login (10001)`; error logged at /tmp/billionaire-collection-news-upsert-2026-09-07.error.log
+- [x] Report the precise direct-publication result without using a fallback route
+
+## Founder Ownership & Search Optimisation — 7 September 2026
+
+- [x] Review the current Founder & CEO page copy, existing metadata and structured-data implementation
+- [x] Add a clear, accurate statement that Lawrence Colbert is founder and owner of Billionaire Magazine and the Billionaire Collection
+- [x] Strengthen route-level SEO, Open Graph, X/Twitter and AI-readable structured metadata without replacing existing Founder images or unrelated copy
+- [x] Add focused regression coverage, build and verify the crawler-visible metadata; pending GitHub push, Hostinger deployment and live verification
