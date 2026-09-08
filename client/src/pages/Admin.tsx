@@ -190,6 +190,7 @@ export default function Admin() {
   const contactEnqs = trpc.contact.list.useQuery(undefined, { enabled: activeTab === "contact" && isAdmin });
   const newsletterSubs = trpc.newsletter.list.useQuery(undefined, { enabled: activeTab === "newsletter" && isAdmin });
   const usersList = trpc.admin.listUsers.useQuery(undefined, { enabled: activeTab === "users" && isAdmin });
+  const mediaKitDownloads = trpc.mediaKit.downloadStats.useQuery(undefined, { enabled: isAdmin });
 
   // Status update mutations
   const updateCard = trpc.card.updateStatus.useMutation({ onSuccess: () => cardApps.refetch() });
@@ -301,6 +302,8 @@ export default function Admin() {
             <StatCard label="Concierge Requests" value={stats.data.totalConciergeRequests} sub={String(stats.data.pendingConciergeRequests)} />
             <StatCard label="Contact Enquiries" value={stats.data.totalContactEnquiries} sub={String(stats.data.newContactEnquiries)} />
             <StatCard label="Newsletter Subscribers" value={stats.data.totalNewsletterSubscribers} />
+            <StatCard label="Media Kit Downloads" value={mediaKitDownloads.data?.mediaKit ?? 0} />
+            <StatCard label="Rate Card Downloads" value={mediaKitDownloads.data?.rateCard ?? 0} />
           </div>
         )}
 

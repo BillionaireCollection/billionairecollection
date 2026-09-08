@@ -484,3 +484,12 @@
 - [x] Design a client-ready USD Rate Card PDF with the approved Charter Partner offer, rate tables and starter packages
 - [x] Validate typography, page flow, content accuracy and visual brand alignment for both PDFs
 - [x] Replace the placeholder downloads on the live Media Kit page, rebuild, push to GitHub, deploy through Hostinger and verify both PDF links
+
+## Media Kit Partner Conversion Features — 8 September 2026
+
+- [x] Add a branded custom-proposal request form below the Media Kit download controls
+- [x] Persist proposal requests through the existing contact-enquiry admin workflow and owner-notification path
+- [x] Embed accessible previews for the professional Media Kit and USD Rate Card PDFs before download
+- [x] Record each Media Kit and USD Rate Card download click in server-side analytics
+- [x] Add regression coverage, verify responsive layout, compile the production bundle and create the non-destructive analytics table in production
+- [ ] Push, deploy and verify the live proposal form, PDF previews and tracked download workflow

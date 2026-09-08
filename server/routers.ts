@@ -30,6 +30,8 @@ import {
   upsertManyNewsArticles,
   createMerchOrder,
   getMerchOrders,
+  recordMediaKitDownload,
+  getMediaKitDownloadStats,
 } from "./db";
 import { getMembershipApplications } from "./db";
 import { createMerchCheckoutSession, createMembershipCheckoutSession } from "./stripe";
@@ -157,6 +159,21 @@ export const appRouter = router({
         return { success: true };
       }),
     list: adminProcedure.query(async () => getContactEnquiries()),
+  }),
+
+  mediaKit: router({
+    trackDownload: publicProcedure
+      .input(z.object({ asset: z.enum(["media_kit", "rate_card"]) }))
+      .mutation(async ({ input }) => {
+        try {
+          await recordMediaKitDownload(input.asset);
+        } catch {
+          // A non-essential analytics write must never interrupt a legitimate download.
+          console.warn("[Media Kit] Download event could not be recorded");
+        }
+        return { success: true };
+      }),
+    downloadStats: adminProcedure.query(async () => getMediaKitDownloadStats()),
   }),
 
   marketplace: router({

@@ -94,6 +94,11 @@ var contactEnquiries = mysqlTable("contact_enquiries", {
   notes: text("notes"),
   createdAt: timestamp("createdAt").defaultNow().notNull()
 });
+var mediaKitDownloadEvents = mysqlTable("media_kit_download_events", {
+  id: int("id").autoincrement().primaryKey(),
+  asset: mysqlEnum("asset", ["media_kit", "rate_card"]).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull()
+});
 var marketplaceListings = mysqlTable("marketplace_listings", {
   id: int("id").autoincrement().primaryKey(),
   title: varchar("title", { length: 255 }).notNull(),
@@ -337,6 +342,19 @@ async function getContactEnquiries() {
   const db = await getDb();
   if (!db) return [];
   return db.select().from(contactEnquiries).orderBy(desc(contactEnquiries.createdAt));
+}
+async function recordMediaKitDownload(asset) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db.insert(mediaKitDownloadEvents).values({ asset });
+}
+async function getMediaKitDownloadStats() {
+  const db = await getDb();
+  if (!db) return { mediaKit: 0, rateCard: 0, total: 0 };
+  const rows = await db.select({ asset: mediaKitDownloadEvents.asset, count: sql`count(*)` }).from(mediaKitDownloadEvents).groupBy(mediaKitDownloadEvents.asset);
+  const mediaKit = Number(rows.find((row) => row.asset === "media_kit")?.count ?? 0);
+  const rateCard = Number(rows.find((row) => row.asset === "rate_card")?.count ?? 0);
+  return { mediaKit, rateCard, total: mediaKit + rateCard };
 }
 async function getActiveListings(category) {
   const db = await getDb();
@@ -1433,6 +1451,17 @@ ${input.message}`
       return { success: true };
     }),
     list: adminProcedure2.query(async () => getContactEnquiries())
+  }),
+  mediaKit: router({
+    trackDownload: publicProcedure.input(z2.object({ asset: z2.enum(["media_kit", "rate_card"]) })).mutation(async ({ input }) => {
+      try {
+        await recordMediaKitDownload(input.asset);
+      } catch {
+        console.warn("[Media Kit] Download event could not be recorded");
+      }
+      return { success: true };
+    }),
+    downloadStats: adminProcedure2.query(async () => getMediaKitDownloadStats())
   }),
   marketplace: router({
     listings: publicProcedure.input(z2.object({ category: z2.string().optional() })).query(async ({ input }) => getActiveListings(input.category)),

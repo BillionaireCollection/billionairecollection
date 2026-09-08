@@ -41,4 +41,13 @@ describe("Media Kit page", () => {
     expect(page).toContain("controls");
     expect(page.indexOf('aria-label="Billionaire Collection Showreel"')).toBeLessThan(page.indexOf(">Starter Packages</span>"));
   });
+
+  it("offers proposal capture, embedded PDF previews and tracked download actions", () => {
+    expect(page).toContain("trpc.contact.submit.useMutation");
+    expect(page).toContain('subject: "Media Kit Custom Proposal Request"');
+    expect(page).toContain('division: "Billionaire Media — Media Kit"');
+    expect(page).toContain("trpc.mediaKit.trackDownload.useMutation");
+    expect(page).toContain('title={`Preview: ${document.title}`}');
+    expect(page).toContain("Download interest is recorded in aggregate");
+  });
 });

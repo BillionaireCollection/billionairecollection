@@ -100,6 +100,16 @@ export const contactEnquiries = mysqlTable("contact_enquiries", {
 export type ContactEnquiry = typeof contactEnquiries.$inferSelect;
 export type InsertContactEnquiry = typeof contactEnquiries.$inferInsert;
 
+// ─── Media Kit Download Analytics ─────────────────────────────────────────────
+// Records only which public collateral asset was requested and when. No visitor
+// identity, IP address, fingerprint or other personal data is collected here.
+export const mediaKitDownloadEvents = mysqlTable("media_kit_download_events", {
+  id: int("id").autoincrement().primaryKey(),
+  asset: mysqlEnum("asset", ["media_kit", "rate_card"]).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+export type MediaKitDownloadEvent = typeof mediaKitDownloadEvents.$inferSelect;
+
 // ─── Marketplace Listings ─────────────────────────────────────────────────────
 export const marketplaceListings = mysqlTable("marketplace_listings", {
   id: int("id").autoincrement().primaryKey(),

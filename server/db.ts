@@ -13,6 +13,7 @@ import {
   InsertCardApplication,
   contactEnquiries,
   InsertContactEnquiry,
+  mediaKitDownloadEvents,
   marketplaceListings,
   goldenTicketApplications,
   InsertGoldenTicketApplication,
@@ -180,6 +181,26 @@ export async function getContactEnquiries() {
   const db = await getDb();
   if (!db) return [];
   return db.select().from(contactEnquiries).orderBy(desc(contactEnquiries.createdAt));
+}
+
+// ─── Media Kit Download Analytics ─────────────────────────────────────────────
+export async function recordMediaKitDownload(asset: "media_kit" | "rate_card") {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db.insert(mediaKitDownloadEvents).values({ asset });
+}
+
+export async function getMediaKitDownloadStats() {
+  const db = await getDb();
+  if (!db) return { mediaKit: 0, rateCard: 0, total: 0 };
+
+  const rows = await db
+    .select({ asset: mediaKitDownloadEvents.asset, count: sql<number>`count(*)` })
+    .from(mediaKitDownloadEvents)
+    .groupBy(mediaKitDownloadEvents.asset);
+  const mediaKit = Number(rows.find((row: { asset: "media_kit" | "rate_card"; count: number }) => row.asset === "media_kit")?.count ?? 0);
+  const rateCard = Number(rows.find((row: { asset: "media_kit" | "rate_card"; count: number }) => row.asset === "rate_card")?.count ?? 0);
+  return { mediaKit, rateCard, total: mediaKit + rateCard };
 }
 
 // ─── Marketplace Listings ─────────────────────────────────────────────────────

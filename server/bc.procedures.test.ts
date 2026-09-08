@@ -202,6 +202,23 @@ describe("contact.submit", () => {
   });
 });
 
+// ── Media Kit Download Analytics ─────────────────────────────────────────────
+describe("mediaKit.trackDownload", () => {
+  it("rejects any asset outside the two approved professional PDFs", async () => {
+    const caller = appRouter.createCaller(makeCtx(null));
+    await expect(
+      // @ts-expect-error intentional invalid analytics asset
+      caller.mediaKit.trackDownload({ asset: "other" })
+    ).rejects.toThrow();
+  });
+
+  it("acknowledges a valid download event without disrupting the visitor flow", async () => {
+    const caller = appRouter.createCaller(makeCtx(null));
+    const result = await caller.mediaKit.trackDownload({ asset: "media_kit" });
+    expect(result.success).toBe(true);
+  });
+});
+
 // ── Marketplace ───────────────────────────────────────────────────────────────
 
 describe("marketplace.listings", () => {

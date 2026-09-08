@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { Download, ExternalLink } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
 import { useJsonLd } from "@/hooks/useJsonLd";
+import { trpc } from "@/lib/trpc";
 
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
@@ -25,11 +27,12 @@ const packages = [
   ["Full Collection", "$75,000", "Campaign magazine, television, radio and vertical placement."],
 ];
 
-function DownloadButton({ href, children, gold = false }: { href: string; children: React.ReactNode; gold?: boolean }) {
+function DownloadButton({ href, children, gold = false, onTrack }: { href: string; children: React.ReactNode; gold?: boolean; onTrack: () => void }) {
   return (
     <a
       href={href}
       download
+      onClick={onTrack}
       className={gold ? "btn-gold" : "btn-ghost-gold"}
       style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "0.65rem", textDecoration: "none" }}
     >
@@ -40,6 +43,39 @@ function DownloadButton({ href, children, gold = false }: { href: string; childr
 }
 
 export default function MediaKit() {
+  const [proposal, setProposal] = useState({ name: "", email: "", phone: "", company: "", focus: "", message: "" });
+  const [proposalSubmitted, setProposalSubmitted] = useState(false);
+  const [proposalError, setProposalError] = useState("");
+  const trackDownload = trpc.mediaKit.trackDownload.useMutation();
+  const submitProposal = trpc.contact.submit.useMutation({
+    onSuccess: () => {
+      setProposalSubmitted(true);
+      setProposal({ name: "", email: "", phone: "", company: "", focus: "", message: "" });
+    },
+    onError: (error) => setProposalError(error.message || "We could not submit your request. Please try again."),
+  });
+
+  const trackAssetDownload = (asset: "media_kit" | "rate_card") => {
+    trackDownload.mutate({ asset });
+  };
+
+  const handleProposalSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    setProposalError("");
+    if (!proposal.name || !proposal.email || !proposal.company || !proposal.focus || !proposal.message) {
+      setProposalError("Please complete the required fields so we can shape a relevant proposal.");
+      return;
+    }
+    submitProposal.mutate({
+      name: proposal.name,
+      email: proposal.email,
+      phone: proposal.phone || undefined,
+      subject: "Media Kit Custom Proposal Request",
+      division: "Billionaire Media — Media Kit",
+      message: `Company: ${proposal.company}\nPartnership focus: ${proposal.focus}\n\nProposal brief:\n${proposal.message}`,
+    });
+  };
+
   useSEO({
     title: "Media Kit & Rate Card | Billionaire Collection",
     description: "Download the Billionaire Collection media kit and USD Charter Partner rate card. Discover premium editorial, film, audio, social and event partnership opportunities.",
@@ -87,10 +123,83 @@ export default function MediaKit() {
               Explore integrated editorial, film, audio, social and experiential opportunities across the Billionaire Collection ecosystem. The Charter Partner offer provides a limited-time introduction to our partnership platform.
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", marginTop: "2.5rem" }}>
-              <DownloadButton href={MEDIA_KIT_URL} gold>Download Media Kit</DownloadButton>
-              <DownloadButton href={RATE_CARD_URL}>Download USD Rate Card</DownloadButton>
+              <DownloadButton href={MEDIA_KIT_URL} gold onTrack={() => trackAssetDownload("media_kit")}>Download Media Kit</DownloadButton>
+              <DownloadButton href={RATE_CARD_URL} onTrack={() => trackAssetDownload("rate_card")}>Download USD Rate Card</DownloadButton>
             </div>
+            <p style={{ fontFamily: FONT_UI, fontSize: "0.72rem", lineHeight: 1.6, color: "rgba(255,255,255,0.36)", margin: "1rem 0 0" }}>Download interest is recorded in aggregate to help our team understand partner demand. No visitor identity is collected by these download events.</p>
           </motion.div>
+        </div>
+      </section>
+
+      <section aria-label="Custom partnership proposal" style={{ padding: "6.5rem 0 0" }}>
+        <div className="container">
+          <div className="media-kit-proposal" style={{ display: "grid", gridTemplateColumns: "minmax(0, 0.8fr) minmax(0, 1.2fr)", gap: "clamp(2.5rem, 7vw, 7rem)", padding: "clamp(1.5rem, 4vw, 4rem)", border: "1px solid rgba(201,168,76,0.27)", background: "linear-gradient(135deg, rgba(201,168,76,0.09), rgba(255,255,255,0.02) 42%, rgba(0,0,0,0.1))" }}>
+            <div>
+              <span className="bc-badge" style={{ display: "inline-block", marginBottom: "1.25rem" }}>Custom Proposal</span>
+              <h2 style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "clamp(2rem, 4vw, 3.75rem)", lineHeight: 1.05, margin: 0 }}>Shape a partnership <span style={{ color: GOLD }}>around your ambition.</span></h2>
+              <p style={{ fontFamily: FONT_UI, color: "rgba(255,255,255,0.62)", lineHeight: 1.8, margin: "1.5rem 0 0" }}>Tell us what you would like to achieve. The Billionaire Collection team will respond with a proposal appropriate to your category, timing and preferred platform mix.</p>
+              <p style={{ fontFamily: FONT_UI, color: GOLD, fontSize: "0.82rem", lineHeight: 1.7, margin: "2rem 0 0" }}>Private enquiries are handled by the Billionaire Collection team.</p>
+            </div>
+            <div>
+              {proposalSubmitted ? (
+                <div style={{ border: "1px solid rgba(201,168,76,0.32)", padding: "2rem", minHeight: "100%", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                  <span className="bc-badge" style={{ alignSelf: "flex-start", marginBottom: "1.25rem" }}>Proposal Requested</span>
+                  <h3 style={{ fontFamily: FONT_HEADING, color: "#fff", fontWeight: 400, fontSize: "2rem", margin: 0 }}>Thank you.</h3>
+                  <p style={{ fontFamily: FONT_UI, color: "rgba(255,255,255,0.63)", lineHeight: 1.8, margin: "1rem 0 1.5rem" }}>Your request has been received. A member of the team will review your brief and return with an appropriate next step.</p>
+                  <button type="button" className="btn-ghost-gold" onClick={() => setProposalSubmitted(false)}>Submit another request</button>
+                </div>
+              ) : (
+                <form onSubmit={handleProposalSubmit} style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: "1rem" }}>
+                  <input aria-label="Your name" required placeholder="Your name *" value={proposal.name} onChange={(event) => setProposal({ ...proposal, name: event.target.value })} style={formInputStyle} />
+                  <input aria-label="Business email" required type="email" placeholder="Business email *" value={proposal.email} onChange={(event) => setProposal({ ...proposal, email: event.target.value })} style={formInputStyle} />
+                  <input aria-label="Company" required placeholder="Company *" value={proposal.company} onChange={(event) => setProposal({ ...proposal, company: event.target.value })} style={formInputStyle} />
+                  <input aria-label="Telephone" type="tel" placeholder="Telephone (optional)" value={proposal.phone} onChange={(event) => setProposal({ ...proposal, phone: event.target.value })} style={formInputStyle} />
+                  <select aria-label="Partnership focus" required value={proposal.focus} onChange={(event) => setProposal({ ...proposal, focus: event.target.value })} style={{ ...formInputStyle, gridColumn: "1 / -1" }}>
+                    <option value="" disabled>Partnership focus *</option>
+                    <option value="Editorial">Editorial</option>
+                    <option value="Film / Showreel">Film / Showreel</option>
+                    <option value="Audio / Radio">Audio / Radio</option>
+                    <option value="Social">Social</option>
+                    <option value="Event / Salon">Event / Salon</option>
+                    <option value="Integrated campaign">Integrated campaign</option>
+                  </select>
+                  <textarea aria-label="Proposal brief" required placeholder="Tell us about your objective, timing and the audience you want to reach. *" rows={6} value={proposal.message} onChange={(event) => setProposal({ ...proposal, message: event.target.value })} style={{ ...formInputStyle, gridColumn: "1 / -1", resize: "vertical" }} />
+                  {proposalError && <p role="alert" style={{ gridColumn: "1 / -1", margin: 0, fontFamily: FONT_UI, color: "#e79090", fontSize: "0.82rem" }}>{proposalError}</p>}
+                  <button type="submit" className="btn-gold" disabled={submitProposal.isPending} style={{ gridColumn: "1 / -1", width: "100%", opacity: submitProposal.isPending ? 0.7 : 1 }}>
+                    {submitProposal.isPending ? "Requesting proposal…" : "Request a Custom Proposal"}
+                  </button>
+                </form>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section aria-label="Document previews" style={{ padding: "6.5rem 0 0" }}>
+        <div className="container">
+          <div style={{ maxWidth: "48rem", marginBottom: "2.5rem" }}>
+            <span className="bc-badge" style={{ display: "inline-block", marginBottom: "1.25rem" }}>Preview the Documents</span>
+            <h2 style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "clamp(2rem, 4vw, 3.75rem)", lineHeight: 1.08, margin: 0 }}>Read the detail <span style={{ color: GOLD }}>before you download.</span></h2>
+            <p style={{ fontFamily: FONT_UI, lineHeight: 1.8, color: "rgba(255,255,255,0.62)", margin: "1.3rem 0 0" }}>Review the partnership platform and full rate structure directly on this page, then download the professional PDFs for internal circulation.</p>
+          </div>
+          <div className="media-kit-previews" style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: "1.5rem" }}>
+            {[
+              { title: "Media Kit", description: "Platform, formats, Charter Partner terms and starter packages.", url: MEDIA_KIT_URL, asset: "media_kit" as const },
+              { title: "USD Rate Card", description: "Open rates, Charter Partner pricing and campaign guidance.", url: RATE_CARD_URL, asset: "rate_card" as const },
+            ].map((document) => (
+              <article key={document.title} style={{ border: "1px solid rgba(201,168,76,0.24)", background: "#030303", overflow: "hidden" }}>
+                <div style={{ padding: "1.5rem 1.5rem 1.25rem", borderBottom: "1px solid rgba(201,168,76,0.18)", display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "1rem" }}>
+                  <div>
+                    <span style={{ fontFamily: FONT_UI, fontSize: "0.67rem", color: GOLD, letterSpacing: "0.14em", textTransform: "uppercase" }}>Professional PDF</span>
+                    <h3 style={{ margin: "0.4rem 0 0", color: "#fff", fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "1.6rem" }}>{document.title}</h3>
+                    <p style={{ margin: "0.5rem 0 0", color: "rgba(255,255,255,0.55)", fontFamily: FONT_UI, fontSize: "0.82rem", lineHeight: 1.6 }}>{document.description}</p>
+                  </div>
+                  <DownloadButton href={document.url} onTrack={() => trackAssetDownload(document.asset)}>Download</DownloadButton>
+                </div>
+                <iframe title={`Preview: ${document.title}`} src={`${document.url}#view=FitH`} loading="lazy" style={{ display: "block", width: "100%", height: "33rem", border: 0, background: "#151515" }} />
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -192,6 +301,7 @@ export default function MediaKit() {
       <style>{`
         @media (max-width: 760px) {
           .media-kit-packages { grid-template-columns: 1fr !important; }
+          .media-kit-previews, .media-kit-proposal { grid-template-columns: 1fr !important; }
         }
         @media (max-width: 680px) {
           .media-kit-packages + * { min-width: 0; }
@@ -206,3 +316,15 @@ export default function MediaKit() {
     </div>
   );
 }
+
+const formInputStyle: React.CSSProperties = {
+  width: "100%",
+  minWidth: 0,
+  color: "#fff",
+  background: "rgba(0,0,0,0.58)",
+  border: "1px solid rgba(201,168,76,0.28)",
+  padding: "0.9rem 1rem",
+  fontFamily: FONT_UI,
+  fontSize: "0.88rem",
+  outline: "none",
+};
