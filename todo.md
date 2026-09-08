@@ -493,3 +493,18 @@
 - [x] Record each Media Kit and USD Rate Card download click in server-side analytics
 - [x] Add regression coverage, verify responsive layout, compile the production bundle and create the non-destructive analytics table in production
 - [x] Push, deploy and verify the live proposal form, PDF previews and tracked download workflow
+
+## Reusable Media Kit Page Skill — 8 September 2026
+
+- [x] Distil the Billionaire Collection Media Kit page, PDF and conversion implementation into a generic reusable workflow
+- [x] Create a complete adaptable skill for Billionaire Television, Billionaire Radio, Millionaire Magazine and other media brands
+- [x] Include design, content, PDFs, asset handling, form capture, tracking, privacy, testing and deployment specifications
+- [x] Validate the skill against the required skill-creation standards and package it for reuse
+
+## Media Kit Trust, Success and Reader Enhancements — 8 September 2026
+
+- [x] Verify the partner names and feature attribution against the user-approved past media partnerships and their official sites
+- [x] Add a clearly attributed Trusted By section below the custom-proposal form
+- [x] Add a premium, accessible post-submission thank-you popup to the custom-proposal flow
+- [x] Add an accessible full-screen reader for both embedded PDF previews with robust mobile fallback controls
+- [x] Add focused regression coverage and validate the desktop and mobile layout; pending production publication and live verification

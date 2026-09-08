@@ -50,4 +50,24 @@ describe("Media Kit page", () => {
     expect(page).toContain('title={`Preview: ${document.title}`}');
     expect(page).toContain("Download interest is recorded in aggregate");
   });
+
+  it("attributes the approved past media partnerships and BBC Newsday feature", () => {
+    expect(page).toContain("Trusted By");
+    expect(page).toContain("Selected past media partnerships and a featured BBC Newsday interview.");
+    expect(page).toContain("TOP MARQUES");
+    expect(page).toContain("DUBAI YACHT");
+    expect(page).toContain("LUXURY PROPERTY");
+    expect(page).toContain("BIG BOYS");
+    expect(page).toContain("BBC");
+    expect(page).toContain("NEWSDAY");
+  });
+
+  it("provides a premium proposal-success dialog and full-screen PDF reading mode", () => {
+    expect(page).toContain("isProposalSuccessOpen");
+    expect(page).toContain("Proposal Requested");
+    expect(page).toContain("Your custom-proposal request is with the Billionaire Collection team.");
+    expect(page).toContain("Full-Screen Reading Mode");
+    expect(page).toContain('title={`Full-screen reader: ${readerDocument.title}`}');
+    expect(page).toContain("Open ${document.title} in full-screen reading mode");
+  });
 });
