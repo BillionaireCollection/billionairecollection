@@ -492,4 +492,4 @@
 - [x] Embed accessible previews for the professional Media Kit and USD Rate Card PDFs before download
 - [x] Record each Media Kit and USD Rate Card download click in server-side analytics
 - [x] Add regression coverage, verify responsive layout, compile the production bundle and create the non-destructive analytics table in production
-- [ ] Push, deploy and verify the live proposal form, PDF previews and tracked download workflow
+- [x] Push, deploy and verify the live proposal form, PDF previews and tracked download workflow
