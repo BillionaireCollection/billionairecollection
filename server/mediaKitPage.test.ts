@@ -8,9 +8,11 @@ describe("Media Kit page", () => {
   const page = readFileSync(resolve(projectRoot, "client/src/pages/MediaKit.tsx"), "utf8");
   const router = readFileSync(resolve(projectRoot, "client/src/App.tsx"), "utf8");
 
-  it("exposes both supplied downloadable assets", () => {
-    expect(page).toContain("/billionaire-media-kit.zip");
-    expect(page).toContain("/billionaire-usd-rate-card.md");
+  it("exposes both professional PDF downloads", () => {
+    expect(existsSync(resolve(projectRoot, "client/public/billionaire-collection-media-kit.pdf"))).toBe(true);
+    expect(existsSync(resolve(projectRoot, "client/public/billionaire-collection-usd-rate-card.pdf"))).toBe(true);
+    expect(page).toContain("/billionaire-collection-media-kit.pdf");
+    expect(page).toContain("/billionaire-collection-usd-rate-card.pdf");
     expect(page).toContain("Download Media Kit");
     expect(page).toContain("Download USD Rate Card");
   });

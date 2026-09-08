@@ -464,3 +464,23 @@
 - [x] Add a clear, accurate statement that Lawrence Colbert is founder and owner of Billionaire Magazine and the Billionaire Collection
 - [x] Strengthen route-level SEO, Open Graph, X/Twitter and AI-readable structured metadata without replacing existing Founder images or unrelated copy
 - [x] Add focused regression coverage, build, push to GitHub, deploy through Hostinger and verify the live Founder page and crawler-visible metadata
+
+## Daily News Publication — 8 September 2026
+
+- [x] Research and validate 12 current billionaire and UHNW stories across wealth, luxury property, superyachts, aviation, automotive, art and lifestyle
+- [x] Build an 8 September payload with URL-safe slugs, allowed categories, compliant Unsplash images and exactly two featured articles
+- [ ] Submit only through the requested live news.upsertMany tRPC endpoint and retain a non-secret direct error log if rejected — blocked: production returned HTTP 401 `Please login (10001)`; error logged at /tmp/billionaire-collection-news-upsert-2026-09-08.error.log
+- [x] Report the precise direct-publication result without using a fallback route
+
+## Media Kit & Rate Card Brand Review — 8 September 2026
+
+- [x] Inspect the supplied Media Kit archive and USD Rate Card as a client-facing package
+- [x] Assess visual quality, hierarchy, readability and alignment with Billionaire Collection’s black-and-gold luxury brand
+- [x] Report clear, prioritised recommendations without altering the files
+
+## Professional Media Kit & Rate Card PDFs — 8 September 2026
+
+- [x] Design a client-ready Billionaire Collection Media Kit PDF using only verified ecosystem and partnership information
+- [x] Design a client-ready USD Rate Card PDF with the approved Charter Partner offer, rate tables and starter packages
+- [x] Validate typography, page flow, content accuracy and visual brand alignment for both PDFs
+- [x] Replace the placeholder downloads in the Media Kit page and rebuild; pending GitHub push, Hostinger deployment and live PDF-link verification

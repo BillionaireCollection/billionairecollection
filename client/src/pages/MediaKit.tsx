@@ -6,8 +6,8 @@ import { useJsonLd } from "@/hooks/useJsonLd";
 const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
 const FONT_UI = "'Raleway', sans-serif";
-const MEDIA_KIT_URL = "/billionaire-media-kit.zip";
-const RATE_CARD_URL = "/billionaire-usd-rate-card.md";
+const MEDIA_KIT_URL = "/billionaire-collection-media-kit.pdf";
+const RATE_CARD_URL = "/billionaire-collection-usd-rate-card.pdf";
 const SHOWREEL_URL = "https://billionairecollection.github.io/billionairecollection/billionaire-collection-showreel.mp4";
 
 const formats = [
