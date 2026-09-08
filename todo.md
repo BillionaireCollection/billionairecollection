@@ -507,4 +507,4 @@
 - [x] Add a clearly attributed Trusted By section below the custom-proposal form
 - [x] Add a premium, accessible post-submission thank-you popup to the custom-proposal flow
 - [x] Add an accessible full-screen reader for both embedded PDF previews with robust mobile fallback controls
-- [x] Add focused regression coverage and validate the desktop and mobile layout; pending production publication and live verification
+- [x] Add focused regression coverage, validate desktop and mobile layout, publish the update and verify the live reader interaction
