@@ -483,4 +483,4 @@
 - [x] Design a client-ready Billionaire Collection Media Kit PDF using only verified ecosystem and partnership information
 - [x] Design a client-ready USD Rate Card PDF with the approved Charter Partner offer, rate tables and starter packages
 - [x] Validate typography, page flow, content accuracy and visual brand alignment for both PDFs
-- [x] Replace the placeholder downloads in the Media Kit page and rebuild; pending GitHub push, Hostinger deployment and live PDF-link verification
+- [x] Replace the placeholder downloads on the live Media Kit page, rebuild, push to GitHub, deploy through Hostinger and verify both PDF links
