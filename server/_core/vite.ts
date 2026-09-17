@@ -5,58 +5,14 @@ import { nanoid } from "nanoid";
 import path from "path";
 import { createServer as createViteServer } from "vite";
 import viteConfig from "../../vite.config";
-
-const BASE_URL = "https://billionairecollection.com";
-
-type PageMetadata = {
-  title: string;
-  description: string;
-  keywords: string;
-  image: string;
-  type?: "website" | "profile";
-  aiDescription: string;
-  structuredData?: Record<string, unknown>;
-};
-
-const FOUNDER_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-main-QJbNmDnsM8Jru6dBDixZQ8.webp";
-
-const PAGE_METADATA: Record<string, PageMetadata> = {
-  "/founder": {
-    title: "Lawrence Colbert | Founder & Owner of Billionaire Magazine and Billionaire Collection",
-    description: "Lawrence Colbert is the Founder, Owner and Chief Executive Officer of Billionaire Collection and Founder and Owner of Billionaire Magazine. He leads the London-founded luxury ecosystem behind 40+ Billionaire brands, websites and ventures.",
-    keywords: "Lawrence Colbert, Lawrence Colbert founder and owner, Billionaire Collection founder, Billionaire Collection owner, Billionaire Magazine founder, Billionaire Magazine owner, Billionaire Magazine founder and owner, Billionaire Collection CEO, luxury ecosystem founder, luxury media founder, UHNW entrepreneur, Lawrence Colbert London",
-    image: FOUNDER_IMAGE,
-    type: "profile",
-    aiDescription: "Official profile of Lawrence Colbert: Founder, Owner and Chief Executive Officer of Billionaire Collection, and Founder and Owner of Billionaire Magazine. Billionaire Collection is a London-founded luxury ecosystem spanning media, education, brokerage, technology, products, membership and philanthropy.",
-    structuredData: {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Person",
-          "@id": "https://billionairecollection.com/founder#lawrence-colbert",
-          name: "Lawrence Colbert",
-          jobTitle: "Founder, Owner and Chief Executive Officer",
-          description: "Founder, Owner and Chief Executive Officer of Billionaire Collection; Founder and Owner of Billionaire Magazine.",
-          url: "https://billionairecollection.com/founder",
-          image: FOUNDER_IMAGE,
-          worksFor: { "@id": "https://billionairecollection.com/#organization" },
-          affiliation: { "@type": "Organization", name: "Billionaire Magazine", url: "https://billionairecollectionmagazine.com" },
-        },
-        {
-          "@type": "ProfilePage",
-          "@id": "https://billionairecollection.com/founder#webpage",
-          name: "Lawrence Colbert | Founder & Owner of Billionaire Magazine and Billionaire Collection",
-          url: "https://billionairecollection.com/founder",
-          description: "The official profile of Lawrence Colbert, Founder, Owner and Chief Executive Officer of Billionaire Collection and Founder and Owner of Billionaire Magazine.",
-          inLanguage: "en-GB",
-          isPartOf: { "@id": "https://billionairecollection.com/#website" },
-          mainEntity: { "@id": "https://billionairecollection.com/founder#lawrence-colbert" },
-          primaryImageOfPage: { "@type": "ImageObject", url: FOUNDER_IMAGE },
-        },
-      ],
-    },
-  },
-};
+import {
+  BASE_URL,
+  PAGE_METADATA,
+  normalizePathname,
+  pageImage,
+  pageStructuredData,
+  pageTitle,
+} from "./seoMetadata";
 
 function escapeHtml(value: string): string {
   return value.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -70,32 +26,35 @@ function replaceOrAppendMeta(html: string, attr: "name" | "property", key: strin
 }
 
 export function injectPageMetadata(html: string, pathname: string): string {
-  const metadata = PAGE_METADATA[pathname];
+  const normalizedPathname = normalizePathname(pathname);
+  const metadata = PAGE_METADATA[normalizedPathname];
   if (!metadata) return html;
 
-  let page = html.replace(/<title>[^<]*<\/title>/i, `<title>${escapeHtml(metadata.title)} | Billionaire Collection</title>`);
+  const canonical = `${BASE_URL}${normalizedPathname === "/" ? "" : normalizedPathname}`;
+  const title = pageTitle(metadata.title);
+  const image = pageImage(metadata);
+  let page = html.replace(/<title>[^<]*<\/title>/i, `<title>${escapeHtml(title)}</title>`);
   page = replaceOrAppendMeta(page, "name", "description", metadata.description);
   page = replaceOrAppendMeta(page, "name", "keywords", metadata.keywords);
-  page = replaceOrAppendMeta(page, "name", "author", "Lawrence Colbert");
+  page = replaceOrAppendMeta(page, "name", "author", "Billionaire Collection");
   page = replaceOrAppendMeta(page, "name", "ai-description", metadata.aiDescription);
   page = replaceOrAppendMeta(page, "property", "og:type", metadata.type || "website");
-  page = replaceOrAppendMeta(page, "property", "og:title", metadata.title);
+  page = replaceOrAppendMeta(page, "property", "og:title", title);
   page = replaceOrAppendMeta(page, "property", "og:description", metadata.description);
-  page = replaceOrAppendMeta(page, "property", "og:url", `${BASE_URL}${pathname}`);
-  page = replaceOrAppendMeta(page, "property", "og:image", metadata.image);
-  page = replaceOrAppendMeta(page, "property", "og:image:alt", metadata.title);
+  page = replaceOrAppendMeta(page, "property", "og:url", canonical);
+  page = replaceOrAppendMeta(page, "property", "og:image", image);
+  page = replaceOrAppendMeta(page, "property", "og:image:alt", title);
   page = replaceOrAppendMeta(page, "name", "twitter:card", "summary_large_image");
-  page = replaceOrAppendMeta(page, "name", "twitter:title", metadata.title);
+  page = replaceOrAppendMeta(page, "name", "twitter:title", title);
   page = replaceOrAppendMeta(page, "name", "twitter:description", metadata.description);
-  page = replaceOrAppendMeta(page, "name", "twitter:image", metadata.image);
-  page = replaceOrAppendMeta(page, "name", "twitter:image:alt", metadata.title);
-  page = replaceOrAppendMeta(page, "name", "twitter:creator", "@CeoLawrence");
+  page = replaceOrAppendMeta(page, "name", "twitter:image", image);
+  page = replaceOrAppendMeta(page, "name", "twitter:image:alt", title);
+  page = replaceOrAppendMeta(page, "name", "twitter:creator", metadata.twitterCreator || "@BillionaireCol");
 
-  if (metadata.structuredData) {
-    const structuredTag = `<script id="route-structured-data" type="application/ld+json">${JSON.stringify(metadata.structuredData)}</script>`;
-    const existing = /<script\b[^>]*\bid=["']route-structured-data["'][^>]*>[\s\S]*?<\/script>/i;
-    page = existing.test(page) ? page.replace(existing, structuredTag) : page.replace(/<\/head>/i, `  ${structuredTag}\n</head>`);
-  }
+  const structuredData = pageStructuredData(normalizedPathname, metadata);
+  const structuredTag = `<script id="route-structured-data" type="application/ld+json">${JSON.stringify(structuredData)}</script>`;
+  const existing = /<script\b[^>]*\bid=["']route-structured-data["'][^>]*>[\s\S]*?<\/script>/i;
+  page = existing.test(page) ? page.replace(existing, structuredTag) : page.replace(/<\/head>/i, `  ${structuredTag}\n</head>`);
 
   return page;
 }
@@ -116,8 +75,11 @@ const VALID_ROUTES = new Set([
   "/media-kit",
 ]);
 
+const NON_INDEXABLE_ROUTES = new Set(["/admin", "/x-offer", "/offer"]);
+
 export function injectCanonical(html: string, pathname: string): string {
-  const canonical = `${BASE_URL}${pathname === "/" ? "" : pathname.replace(/\/$/, "")}`;
+  const normalizedPathname = normalizePathname(pathname);
+  const canonical = `${BASE_URL}${normalizedPathname === "/" ? "" : normalizedPathname}`;
   const canonicalTag = `<link rel="canonical" href="${canonical}" />`;
   const replaced = html.replace(/<link\b[^>]*\brel=["']canonical["'][^>]*>/i, canonicalTag);
 
@@ -129,6 +91,15 @@ export function injectCanonical(html: string, pathname: string): string {
 
 export function getRequestPathname(originalUrl: string): string {
   return new URL(originalUrl, BASE_URL).pathname;
+}
+
+export function isIndexablePath(pathname: string): boolean {
+  return !NON_INDEXABLE_ROUTES.has(normalizePathname(pathname));
+}
+
+export function injectIndexabilityDirective(html: string, pathname: string): string {
+  if (isIndexablePath(pathname)) return html;
+  return replaceOrAppendMeta(html, "name", "robots", "noindex, nofollow, noarchive");
 }
 
 export async function setupVite(app: Express, server: Server) {
@@ -165,7 +136,7 @@ export async function setupVite(app: Express, server: Server) {
         );
         let page = await vite.transformIndexHtml(url, template);
         const pathname = getRequestPathname(req.originalUrl);
-        page = injectPageMetadata(injectCanonical(page, pathname), pathname);
+        page = injectIndexabilityDirective(injectPageMetadata(injectCanonical(page, pathname), pathname), pathname);
         res.status(200).set({ "Content-Type": "text/html" }).end(page);
     } catch (e) {
       vite.ssrFixStacktrace(e as Error);
@@ -191,7 +162,9 @@ export function serveStatic(app: Express) {
     res.redirect(301, "/marketplace");
   });
 
-  app.use(express.static(distPath));
+  // Disable Express's implicit index.html response so the home page follows the
+  // same canonical and metadata-injection path as all other public routes.
+  app.use(express.static(distPath, { index: false }));
 
   // Google Search Console ownership verification
   app.get("/googleb0c6e8d7a35c9529.html", (_req, res) => {
@@ -214,7 +187,10 @@ export function serveStatic(app: Express) {
       const pathname = getRequestPathname(req.originalUrl);
       const isKnownRoute = VALID_ROUTES.has(pathname) || pathname.startsWith("/api/");
       const statusCode = isKnownRoute ? 200 : 404;
-      const injected = injectPageMetadata(injectCanonical(html, pathname), pathname);
+      const injected = injectIndexabilityDirective(injectPageMetadata(injectCanonical(html, pathname), pathname), pathname);
+      if (!isIndexablePath(pathname)) {
+        res.set("X-Robots-Tag", "noindex, nofollow, noarchive");
+      }
       res.status(statusCode).set({ "Content-Type": "text/html" }).end(injected);
     });
   });

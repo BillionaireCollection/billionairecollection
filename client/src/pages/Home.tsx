@@ -136,9 +136,9 @@ function HomepageNewsTeaser() {
 
 export default function Home() {
   useSEO({
-    title: "Billionaire Collection | UHNW Services & Luxury Ecosystem",
-    description: "Billionaire Collection is the global parent company and premier hub for ultra high net worth services, luxury lifestyle brands, and billionaire ecosystem companies. Access exclusive services across aviation, real estate, media, education, and more.",
-    keywords: "billionaire collection, billionaire services, ultra high net worth services, UHNW services, billionaire magazine, billionaire ecosystem, luxury ecosystem, billionaire estates, billionaire air, billionaire university, wealth management for billionaires, UHNW lifestyle solutions, billionaire concierge services, exclusive billionaire brands, UHNW aviation services, billionaire collection parent company",
+    title: "Billionaire Collection | Luxury Services for Billionaires & UHNW Individuals",
+    description: "Billionaire Collection is a London-founded luxury ecosystem for billionaires and ultra-high-net-worth individuals, connecting private aviation, superyachts, ultra-prime real estate, rare automobiles, fine art, concierge and curated experiences.",
+    keywords: "Billionaire Collection, billionaire services, luxury services for billionaires, UHNW services, ultra-high-net-worth, luxury ecosystem, private aviation, superyachts, ultra-prime real estate, luxury concierge",
     url: "https://billionairecollection.com",
   });
   useJsonLd({
@@ -214,9 +214,9 @@ export default function Home() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.95, delay: 0.35, ease: [0.23, 1, 0.32, 1] }}
-            style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "clamp(1.1rem, 2.8vw, 2.5rem)", lineHeight: 1.15, color: GOLD, maxWidth: "900px", marginBottom: "7rem", letterSpacing: "-0.01em", whiteSpace: "nowrap", fontStyle: "italic" }}
+            style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "clamp(1.1rem, 2.8vw, 2.5rem)", lineHeight: 1.15, color: GOLD, maxWidth: "900px", marginBottom: "7rem", letterSpacing: "normal", wordBreak: "break-word", overflowWrap: "break-word" }}
           >
-            The Place for <span style={{ color: "#fff" }}>Everything You Desire</span>
+            Billionaire Collection: The Place for <span style={{ color: "#fff" }}>Everything You Desire</span>
           </motion.h1>
 
           {/* Sub-description — single refined sentence */}
@@ -226,7 +226,7 @@ export default function Home() {
             transition={{ duration: 0.85, delay: 0.5, ease: [0.23, 1, 0.32, 1] }}
             style={{ fontFamily: FONT_UI, fontWeight: 300, fontSize: "clamp(0.875rem, 1.5vw, 1.0625rem)", color: "rgba(255,255,255,0.5)", maxWidth: "440px", lineHeight: 1.8, marginBottom: "3rem", letterSpacing: "0.01em" }}
           >
-            The world’s premier ecosystem of luxury brands, exclusive opportunities, private access, and exceptional experiences.
+            Billionaire Collection connects luxury brands, exclusive opportunities, private access, and exceptional experiences for billionaires and ultra-high-net-worth individuals.
           </motion.p>
 
           {/* Est. London — below subtitle */}

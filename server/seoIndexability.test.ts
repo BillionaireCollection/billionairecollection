@@ -1,7 +1,14 @@
 import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { getRequestPathname, injectCanonical, injectPageMetadata } from "./_core/vite";
+import {
+  getRequestPathname,
+  injectCanonical,
+  injectIndexabilityDirective,
+  injectPageMetadata,
+  isIndexablePath,
+} from "./_core/vite";
+import { PAGE_METADATA } from "./_core/seoMetadata";
 
 describe("server-delivered indexability controls", () => {
   it("adds a route-specific canonical when the HTML shell has none", () => {
@@ -9,6 +16,11 @@ describe("server-delivered indexability controls", () => {
     expect(injectCanonical(html, "/media-kit")).toContain(
       '<link rel="canonical" href="https://billionairecollection.com/media-kit" />'
     );
+  });
+
+  it("routes the production home page through metadata injection rather than serving index.html directly", () => {
+    const staticServer = readFileSync(resolve(process.cwd(), "server/_core/vite.ts"), "utf8");
+    expect(staticServer).toContain("express.static(distPath, { index: false })");
   });
 
   it("replaces an existing canonical rather than adding a duplicate", () => {
@@ -26,7 +38,8 @@ describe("server-delivered indexability controls", () => {
   it("keeps the public Media Kit route crawlable and listed in the sitemap source", () => {
     const source = readFileSync(resolve(process.cwd(), "server/_core/index.ts"), "utf8");
     const staticServer = readFileSync(resolve(process.cwd(), "server/_core/vite.ts"), "utf8");
-    expect(source).toContain('{ loc: "/media-kit", priority: "0.75", changefreq: "monthly" }');
+    expect(PAGE_METADATA).toHaveProperty("/media-kit");
+    expect(source).toContain("Object.keys(PAGE_METADATA)");
     expect(staticServer).toContain('"/media-kit"');
   });
 
@@ -39,12 +52,42 @@ describe("server-delivered indexability controls", () => {
     const shell = "<!doctype html><html><head><title>Billionaire Collection</title></head><body></body></html>";
     const result = injectPageMetadata(shell, "/founder");
 
-    expect(result).toContain("Lawrence Colbert | Founder &amp; Owner of Billionaire Magazine and Billionaire Collection");
+    expect(result).toContain("Lawrence Colbert | Founder &amp; Owner of Billionaire Collection and Billionaire Magazine");
     expect(result).toContain('property="og:type" content="profile"');
     expect(result).toContain('name="twitter:creator" content="@CeoLawrence"');
     expect(result).toContain('name="ai-description"');
     expect(result).toContain('id="route-structured-data"');
     expect(result).toContain("Founder and Owner of Billionaire Magazine");
+  });
+
+  it("delivers a focused homepage entity title, description and WebPage markup before JavaScript executes", () => {
+    const shell = "<!doctype html><html><head><title>Old</title></head><body></body></html>";
+    const result = injectPageMetadata(shell, "/");
+
+    expect(result).toContain("Billionaire Collection | Luxury Services for Billionaires &amp; UHNW Individuals");
+    expect(result).toContain("luxury ecosystem for billionaires and ultra-high-net-worth individuals");
+    expect(result).toContain('property="og:url" content="https://billionairecollection.com"');
+    expect(result).toContain('id="route-structured-data"');
+    expect(result).toContain('"@type":"WebPage"');
+  });
+
+  it("delivers distinct, crawler-visible metadata for public routes", () => {
+    const shell = "<!doctype html><html><head><title>Old</title></head><body></body></html>";
+    const result = injectPageMetadata(injectCanonical(shell, "/air/"), "/air/");
+
+    expect(result).toContain("Billionaire Air | Private Aviation &amp; Jet Charter | Billionaire Collection");
+    expect(result).toContain('rel="canonical" href="https://billionairecollection.com/air"');
+    expect(result).toContain('property="og:url" content="https://billionairecollection.com/air"');
+  });
+
+  it("prevents private and promotional routes from being indexed", () => {
+    const shell = "<!doctype html><html><head><title>Old</title></head><body></body></html>";
+    expect(isIndexablePath("/admin")).toBe(false);
+    expect(isIndexablePath("/x-offer")).toBe(false);
+    expect(isIndexablePath("/news")).toBe(true);
+    expect(injectIndexabilityDirective(shell, "/admin")).toContain(
+      'name="robots" content="noindex, nofollow, noarchive"'
+    );
   });
 
   it("states Lawrence Colbert's Founder-and-Owner roles in the visible Founder-page copy", () => {
