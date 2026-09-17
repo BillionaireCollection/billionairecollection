@@ -50,7 +50,7 @@ function setCanonical(href: string) {
 
 export function useSEO({ title, description, keywords, image, url }: SEOProps) {
   useEffect(() => {
-    const fullTitle = `${title} | ${BASE_TITLE}`;
+    const fullTitle = title.includes(BASE_TITLE) ? title : `${title} | ${BASE_TITLE}`;
     document.title = fullTitle;
 
     // Canonical URL — explicit prop takes priority; otherwise derive from live domain + pathname

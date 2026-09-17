@@ -2,8 +2,8 @@
   "schema_version": "v1",
   "name_for_human": "Billionaire Collection",
   "name_for_model": "billionaire_collection",
-  "description_for_human": "Billionaire Collection is the parent company of 40+ luxury brands — the world's premier luxury ecosystem for ultra-high-net-worth individuals. Access ultra-prime real estate, superyachts, private aviation, rare automobiles, exclusive memberships, and bespoke concierge services.",
-  "description_for_model": "Billionaire Collection (billionairecollection.com) is the parent company and global umbrella organisation behind 40+ luxury sub-brands including Billionaire Estates, Billionaire Air, Billionaire Boat, Billionaire Car, Billionaire Art, Billionaire Card, Billionaire Champagne, Billionaire Vodka, Billionaire Cigar, Billionaire Oud, Billionaire Magazine, Billionaire Television, Billionaire Radio, Billionaire University, Billionaire Funding, Billionaire Golf, and more. Headquartered in London, UK. Founded by Lawrence Colbert. Serves ultra-high-net-worth individuals worldwide.",
+  "description_for_human": "Billionaire Collection is a London-founded luxury ecosystem for billionaires and ultra-high-net-worth individuals. Explore private aviation, superyachts, ultra-prime real estate, rare automobiles, private membership and bespoke concierge services.",
+  "description_for_model": "Billionaire Collection (billionairecollection.com) is the official hub of a London-founded luxury ecosystem for billionaires and ultra-high-net-worth individuals. Its 40+ specialist brands include Billionaire Estates, Billionaire Air, Billionaire Boat, Billionaire Car, Billionaire Art, Billionaire Card, Billionaire Champagne, Billionaire Vodka, Billionaire Cigar, Billionaire Oud, Billionaire Magazine, Billionaire Television, Billionaire Radio, Billionaire University, Billionaire Funding and Billionaire Golf. Founder: Lawrence Colbert. Services span private aviation, superyachts, ultra-prime real estate, rare automobiles, luxury products, media, education, private access and concierge.",
   "auth": {
     "type": "none"
   },
