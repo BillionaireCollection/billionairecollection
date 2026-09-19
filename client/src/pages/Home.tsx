@@ -55,7 +55,7 @@ const PRODUCTS = [
 ];
 
 const DIVISIONS = [
-  { label: "Media", desc: "Television, Magazine & Radio", href: "/media", img: "/bc-division-media-new.jpg" },
+  { label: "Media", desc: "Television, Magazine & Radio", href: "/media", img: "/billionaire-magazine-print-residence.jpg" },
   { label: "Technology", desc: "University, Digital & Vitality", href: "/technology", img: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-division-technology-nWtUGuzYcwAKr9AmPRXHQt.webp" },
   { label: "Services", desc: "Funding, Golf, Travel & Card", href: "/services", img: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-division-services-em9tFW6VuRLTSTwzJ4RNkf.webp" },
 ];
