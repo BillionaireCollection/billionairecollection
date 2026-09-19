@@ -7,7 +7,7 @@ import {
   injectIndexabilityDirective,
   injectPageMetadata,
   isIndexablePath,
-} from "./_core/vite";
+} from "./_core/static";
 import { PAGE_METADATA } from "./_core/seoMetadata";
 
 describe("server-delivered indexability controls", () => {
@@ -19,7 +19,7 @@ describe("server-delivered indexability controls", () => {
   });
 
   it("routes the production home page through metadata injection rather than serving index.html directly", () => {
-    const staticServer = readFileSync(resolve(process.cwd(), "server/_core/vite.ts"), "utf8");
+    const staticServer = readFileSync(resolve(process.cwd(), "server/_core/static.ts"), "utf8");
     expect(staticServer).toContain("express.static(distPath, { index: false })");
   });
 
@@ -37,15 +37,25 @@ describe("server-delivered indexability controls", () => {
 
   it("keeps the public Media Kit route crawlable and listed in the sitemap source", () => {
     const source = readFileSync(resolve(process.cwd(), "server/_core/index.ts"), "utf8");
-    const staticServer = readFileSync(resolve(process.cwd(), "server/_core/vite.ts"), "utf8");
+    const staticServer = readFileSync(resolve(process.cwd(), "server/_core/static.ts"), "utf8");
     expect(PAGE_METADATA).toHaveProperty("/media-kit");
     expect(source).toContain("Object.keys(PAGE_METADATA)");
     expect(staticServer).toContain('"/media-kit"');
   });
 
   it("uses a permanent HTTP redirect for the legacy store alias", () => {
-    const staticServer = readFileSync(resolve(process.cwd(), "server/_core/vite.ts"), "utf8");
+    const staticServer = readFileSync(resolve(process.cwd(), "server/_core/static.ts"), "utf8");
     expect(staticServer).toContain('res.redirect(301, "/marketplace")');
+  });
+
+  it("loads Vite only through the development branch so the production bundle stays Vite-free", () => {
+    const entry = readFileSync(resolve(process.cwd(), "server/_core/index.ts"), "utf8");
+    const developmentServer = readFileSync(resolve(process.cwd(), "server/_core/vite.ts"), "utf8");
+
+    expect(entry).toContain('await import("./vite")');
+    expect(entry).toContain('import { serveStatic } from "./static"');
+    expect(developmentServer).toContain('import("vite")');
+    expect(developmentServer).not.toContain('from "vite"');
   });
 
   it("delivers Founder ownership, social and AI metadata before JavaScript executes", () => {
