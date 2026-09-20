@@ -205,7 +205,7 @@ export default function Home() {
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.3) 55%, transparent 100%)" }} />
 
         {/* Content — bottom-anchored editorial layout */}
-        <div className="container" style={{ position: "relative", zIndex: 1, paddingTop: "clamp(10rem, 20vh, 16rem)", width: "100%" }}>
+        <div id="homepage-hero-content" className="container" style={{ position: "relative", zIndex: 1, paddingTop: "clamp(10rem, 20vh, 16rem)", width: "100%" }}>
 
 
 
@@ -216,7 +216,7 @@ export default function Home() {
             transition={{ duration: 0.95, delay: 0.35, ease: [0.23, 1, 0.32, 1] }}
             style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "clamp(1.1rem, 2.8vw, 2.5rem)", lineHeight: 1.15, color: GOLD, maxWidth: "900px", marginBottom: "7rem", letterSpacing: "normal", wordBreak: "break-word", overflowWrap: "break-word" }}
           >
-            Billionaire Collection: The Place for <span style={{ color: "#fff" }}>Everything You Desire</span>
+            <em style={{ color: "#fff", fontStyle: "italic" }}>The place for everything you desire</em>
           </motion.h1>
 
           {/* Sub-description — single refined sentence */}
@@ -323,6 +323,7 @@ export default function Home() {
           @media (max-width: 1023px) {
             #hero-sphere-mobile-inline { display: flex !important; }
             #hero-scroll-indicator { display: none !important; }
+            #homepage-hero-content { padding-top: clamp(12rem, 24vh, 14rem) !important; }
           }
         `}</style>
       </section>
