@@ -488,16 +488,15 @@ export default function Founder() {
             style={{
               fontFamily: FONT_HEADING,
               fontWeight: 700,
-              fontSize: "clamp(3rem, 8vw, 6.5rem)",
-              lineHeight: 0.95,
+              fontSize: "clamp(1.6rem, 6.25vw, 5rem)",
+              lineHeight: 1,
               letterSpacing: "-0.02em",
               color: "#fff",
+              whiteSpace: "nowrap",
               marginBottom: "1.25rem",
             }}
           >
-            Lawrence
-            <br />
-            <span style={{ color: GOLD }}>Colbert</span>
+            Lawrence <span style={{ color: GOLD }}>Colbert</span>
           </motion.h1>
 
           <motion.p
