@@ -53,7 +53,7 @@ export default function Chrono() {
       heroTitle="Where Rarity Meets"
       heroAccent="Absolute Precision"
       heroSubtitle="The private watch division of Billionaire Collection. Acquiring and placing only the world's most significant timepieces — strictly above one million dollars — for a closed circle of discerning collectors."
-      heroImage="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=800&q=80"
+      heroImage="/chrono-patek-philippe-diamond-timepiece.jpg"
       heroCta={{ label: "Enquire Now", href: "https://billionairechrono.com" }}
       heroCtaSecondary={{ label: "View Collection", href: "https://billionairechrono.com" }}
       aboutTitle="Investment-Grade Horology at the Absolute Pinnacle"
