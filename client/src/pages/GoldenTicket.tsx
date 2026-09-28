@@ -1,6 +1,6 @@
 /* ============================================================
    BILLIONAIRE COLLECTION — The Golden Ticket
-   The symbolic heart of the ecosystem. Not a product — a key.
+   A private invitation to the art of living well.
    Journey: Inspire → Invite → Transform → Create a Legacy
    ============================================================ */
 
@@ -179,7 +179,7 @@ function EcosystemOrbit() {
         {/* Golden Ticket label — sits below the HTML sphere overlay */}
         <text x={SVG_CX} y={SVG_CY + 120} textAnchor="middle" fill="rgba(201,168,76,0.8)" fontSize="9" letterSpacing="2" fontFamily="Raleway, sans-serif">BILLIONAIRE COLLECTION</text>
         <text x={SVG_CX} y={SVG_CY + 138} textAnchor="middle" fill="#e8d5a0" fontSize="14" fontFamily="Playfair Display, Georgia, serif">❆ Golden Ticket ❆</text>
-        <text x={SVG_CX} y={SVG_CY + 153} textAnchor="middle" fill="rgba(201,168,76,0.5)" fontSize="7" letterSpacing="3" fontFamily="Raleway, sans-serif">THE KEY TO EVERYTHING</text>
+        <text x={SVG_CX} y={SVG_CY + 153} textAnchor="middle" fill="rgba(201,168,76,0.5)" fontSize="7" letterSpacing="3" fontFamily="Raleway, sans-serif">A PRIVATE INVITATION</text>
 
         {/* Orbit icons */}
         {ORBIT_ITEMS.map((item, i) => {
@@ -448,9 +448,9 @@ const GIVING_CAUSES = [
 /* ── Main component ── */
 export default function GoldenTicket() {
   useSEO({
-    title: "The Golden Ticket — Key to the Billionaire Collection Ecosystem",
+    title: "The Golden Ticket — An Invitation to the Art of Living Well",
     description:
-      "The Golden Ticket is not a product — it is the key that unlocks the entire Billionaire Collection ecosystem. Join the Golden Ticket Club: a global community of entrepreneurs and changemakers who believe success should create impact.",
+      "The Golden Ticket is Billionaire Collection’s considered invitation to exceptional experiences, private access and a global circle of entrepreneurs, investors and cultural leaders who believe success should create enduring impact.",
     keywords:
       "Golden Ticket Billionaire Collection, Golden Ticket Club, purposeful capitalism, luxury ecosystem membership, billionaire community, entrepreneurs changemakers, Billionaire Giving, UHNW membership",
   });
@@ -477,9 +477,9 @@ export default function GoldenTicket() {
     {
       "@context": "https://schema.org",
       "@type": "Service",
-      name: "The Golden Ticket — Billionaire Collection Ecosystem Key",
+      name: "The Golden Ticket — A Considered Invitation",
       description:
-        "The Golden Ticket is the symbolic heart of the Billionaire Collection ecosystem — unlocking access to every division, the Golden Ticket Club community, and Billionaire Giving.",
+        "The Golden Ticket is Billionaire Collection’s considered invitation to its divisions, the Golden Ticket Club community and Billionaire Giving.",
       url: "https://billionairecollection.com/golden-ticket",
       serviceType: "Exclusive Ecosystem Membership",
       provider: {
@@ -510,7 +510,7 @@ export default function GoldenTicket() {
   return (
     <div style={{ background: "#000", overflowX: "hidden" }}>
       {/* ══════════════════════════════════════════
-          HERO — The Key to Everything
+          HERO — The Art of Living Well
       ══════════════════════════════════════════ */}
       <section
         style={{
@@ -631,7 +631,7 @@ export default function GoldenTicket() {
                 marginBottom: "0.25rem",
               }}
             >
-              Not a Product.
+              An Invitation
             </span>
             <span
               style={{
@@ -640,7 +640,7 @@ export default function GoldenTicket() {
                 color: "#fff",
               }}
             >
-              A Key.
+              to the Exceptional.
             </span>
           </motion.h1>
 
@@ -658,10 +658,9 @@ export default function GoldenTicket() {
               lineHeight: 1.8,
             }}
           >
-            The Golden Ticket unlocks the entire Billionaire Collection
-            ecosystem — and more importantly, it opens the door to a global
-            community of entrepreneurs and changemakers who believe that success
-            should also create impact.
+            The Golden Ticket is a considered invitation to private access,
+            extraordinary experiences and a global circle of people who believe
+            that success is best measured by how richly — and responsibly — one lives.
           </motion.p>
 
           <motion.div
@@ -674,7 +673,7 @@ export default function GoldenTicket() {
               <button className="btn-gold">Request Your Golden Ticket</button>
             </a>
             <a href="#philosophy">
-              <button className="btn-ghost-gold">Discover the Philosophy</button>
+              <button className="btn-ghost-gold">Explore the Art of Living</button>
             </a>
           </motion.div>
         </div>
@@ -789,13 +788,13 @@ export default function GoldenTicket() {
                   color: "#fff",
                   lineHeight: 1.2,
                   marginBottom: "2rem",
-                }}
-              >
-                This isn't just where you buy{" "}
-                <span style={{ color: GOLD }}>luxury services.</span>
+              }}
+            >
+                A life well lived is never{" "}
+                <span style={{ color: GOLD }}>merely acquired.</span>
                 <br />
-                This is where you become part of{" "}
-                <span style={{ color: GOLD }}>something bigger.</span>
+                It is patiently{" "}
+                <span style={{ color: GOLD }}>cultivated.</span>
               </h2>
               <GoldDivider />
             </div>
@@ -813,16 +812,16 @@ export default function GoldenTicket() {
                 textAlign: "center",
               }}
             >
-              The Golden Ticket was born from a simple but radical idea: that
-              the world's most successful people should also be its most
-              impactful. Not through charity — through{" "}
+              The Golden Ticket begins with a simple, enduring conviction: that
+              prosperity reaches its highest expression when it is accompanied
+              by discernment, generosity and purpose. Every considered engagement
+              across the Billionaire Collection contributes to{" "}
               <em style={{ color: GOLD_LIGHT, fontStyle: "normal" }}>
                 purposeful capitalism
               </em>
-              . Every purchase across the Billionaire Collection ecosystem
-              contributes a portion of proceeds to solving some of the world's
-              greatest challenges. Not as a donation. As a natural consequence
-              of living extraordinarily.
+              , directing a portion of proceeds towards solving some of the
+              world's most pressing challenges. Not as an afterthought, but as a
+              natural expression of living extraordinarily.
             </p>
           </FadeUp>
 
@@ -838,14 +837,14 @@ export default function GoldenTicket() {
                 textAlign: "center",
               }}
             >
-              The Golden Ticket is the symbol of that commitment. It is the key
-              that unlocks every division of the ecosystem — from Estates and
-              Aviation to University and Media — and it is the emblem of
-              membership in the{" "}
+              The Golden Ticket is the emblem of that commitment: a discreet
+              invitation to discover the breadth of the Collection — from Estates
+              and Aviation to University and Media — while taking one's place in
+              the{" "}
               <em style={{ color: GOLD_LIGHT, fontStyle: "normal" }}>
                 Golden Ticket Club
               </em>
-              : a curated global community of entrepreneurs, investors, and
+              : a considered global circle of entrepreneurs, investors and
               leaders who are building legacies that outlast them.
             </p>
           </FadeUp>
@@ -861,23 +860,20 @@ export default function GoldenTicket() {
                 textAlign: "center",
               }}
             >
-              Two things, clearly distinguished: the{" "}
-              <em style={{ color: GOLD_LIGHT, fontStyle: "normal" }}>
-                Golden Ticket
-              </em>{" "}
-              is the iconic symbol — the key itself. The{" "}
+              The Golden Ticket names the invitation; the{" "}
               <em style={{ color: GOLD_LIGHT, fontStyle: "normal" }}>
                 Golden Ticket Club
               </em>{" "}
-              is the community of members it admits you to. One is the door.
-              The other is everything on the other side of it.
+              names the circle it convenes. Together they create a more
+              considered way to move through the Collection, with access shaped
+              by taste, trust and contribution.
             </p>
           </FadeUp>
         </div>
       </section>
 
       {/* ══════════════════════════════════════════
-          ECOSYSTEM ORBIT — The Key Unlocks It All
+          ECOSYSTEM ORBIT — A Considered Invitation
       ══════════════════════════════════════════ */}
       <section
         style={{
@@ -903,8 +899,8 @@ export default function GoldenTicket() {
                   marginBottom: "1.25rem",
                 }}
               >
-                One Key.{" "}
-                <span style={{ color: GOLD }}>Every Door.</span>
+                One Invitation.{" "}
+                <span style={{ color: GOLD }}>A World, Curated.</span>
               </h2>
               <p
                 style={{
@@ -917,9 +913,9 @@ export default function GoldenTicket() {
                   lineHeight: 1.75,
                 }}
               >
-                The Golden Ticket sits at the centre of everything — unlocking
-                every division, every experience, and every opportunity within
-                the Billionaire Collection ecosystem.
+                The Golden Ticket places each member at the centre of the
+                Collection, introducing a considered world of divisions,
+                experiences and opportunities brought together with discretion.
               </p>
             </div>
           </FadeUp>
@@ -973,21 +969,21 @@ export default function GoldenTicket() {
             number="I"
             label="Inspire"
             title="Discover a Different Way to Live"
-            body="Most people collect things. Golden Ticket members collect moments, relationships, and impact. The journey begins when you first encounter the idea that luxury and legacy are not opposites — they are the same thing, pursued at the highest level. You are not just buying access to the world's finest services. You are choosing to live with intention."
+            body="Most people collect things. Golden Ticket members cultivate moments, relationships and impact. The journey begins with the recognition that luxury and legacy are not opposites — they are the same pursuit, approached with greater intention. You are not merely seeking the world's finest services. You are choosing to live with discernment."
             delay={0.1}
           />
           <JourneyStep
             number="II"
             label="Invite"
             title="Join the Golden Ticket Club"
-            body="The Golden Ticket is not sold. It is extended. Once you hold it, you are welcomed into the Golden Ticket Club — a community of extraordinary individuals who have chosen to combine their success with their values. The Club is intimate by design: every member is known, every voice matters, and every connection is meaningful."
+            body="Full membership is offered by invitation after a considered review. Those who hold it are welcomed into the Golden Ticket Club — a community of extraordinary individuals who have chosen to align their success with their values. The Club is intimate by design: every member is known, every voice matters and every connection is meaningful."
             delay={0.15}
           />
           <JourneyStep
             number="III"
             label="Transform"
-            title="Access Everything. Contribute to Something Greater."
-            body="With your Golden Ticket, every corner of the ecosystem opens to you — from private aviation and ultra-prime estates to Billionaire University's education programmes and the Media division's global platforms. And with every transaction, a portion flows into Billionaire Giving — directly funding solutions to the world's most pressing challenges. You are not just living well. You are creating change."
+            title="Experience the Collection. Contribute to Something Greater."
+            body="With your Golden Ticket, the Collection is revealed in full — from private aviation and ultra-prime estates to Billionaire University's education programmes and the Media division's global platforms. With every transaction, a portion flows into Billionaire Giving, directly funding solutions to the world's most pressing challenges. You are not simply living well. You are creating change."
             delay={0.2}
           />
           <JourneyStep
@@ -1989,4 +1985,3 @@ export default function GoldenTicket() {
     </div>
   );
 }
-
