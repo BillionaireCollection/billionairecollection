@@ -640,7 +640,7 @@ export default function GoldenTicket() {
                 color: "#fff",
               }}
             >
-              Impactful Life.
+              Impactful Life
             </span>
           </motion.h1>
 

@@ -9,7 +9,8 @@ describe("Golden Ticket editorial voice", () => {
     const source = readFileSync(goldenTicketPage, "utf8");
 
     expect(source).toContain("The Key to an");
-    expect(source).toContain("Impactful Life.");
+    expect(source).toContain("Impactful Life");
+    expect(source).not.toContain("Impactful Life.");
     expect(source).toContain("The Golden Ticket — The Key to an Impactful Life");
     expect(source).toContain("A life well lived is never");
     expect(source).toContain("A World, Curated.");
