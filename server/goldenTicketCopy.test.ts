@@ -5,11 +5,12 @@ import { describe, expect, it } from "vitest";
 const goldenTicketPage = resolve(process.cwd(), "client/src/pages/GoldenTicket.tsx");
 
 describe("Golden Ticket editorial voice", () => {
-  it("uses the refined invitation framing and removes the former product/key proposition", () => {
+  it("uses the impact-focused proposition and removes the former product/key proposition", () => {
     const source = readFileSync(goldenTicketPage, "utf8");
 
-    expect(source).toContain("An Invitation");
-    expect(source).toContain("to the Exceptional.");
+    expect(source).toContain("The Key to an");
+    expect(source).toContain("Impactful Life.");
+    expect(source).toContain("The Golden Ticket — The Key to an Impactful Life");
     expect(source).toContain("A life well lived is never");
     expect(source).toContain("A World, Curated.");
     expect(source).toContain("Explore the Art of Living");

@@ -1,6 +1,6 @@
 /* ============================================================
    BILLIONAIRE COLLECTION — The Golden Ticket
-   A private invitation to the art of living well.
+   The key to an impactful life.
    Journey: Inspire → Invite → Transform → Create a Legacy
    ============================================================ */
 
@@ -448,7 +448,7 @@ const GIVING_CAUSES = [
 /* ── Main component ── */
 export default function GoldenTicket() {
   useSEO({
-    title: "The Golden Ticket — An Invitation to the Art of Living Well",
+    title: "The Golden Ticket — The Key to an Impactful Life",
     description:
       "The Golden Ticket is Billionaire Collection’s considered invitation to exceptional experiences, private access and a global circle of entrepreneurs, investors and cultural leaders who believe success should create enduring impact.",
     keywords:
@@ -477,7 +477,7 @@ export default function GoldenTicket() {
     {
       "@context": "https://schema.org",
       "@type": "Service",
-      name: "The Golden Ticket — A Considered Invitation",
+      name: "The Golden Ticket — The Key to an Impactful Life",
       description:
         "The Golden Ticket is Billionaire Collection’s considered invitation to its divisions, the Golden Ticket Club community and Billionaire Giving.",
       url: "https://billionairecollection.com/golden-ticket",
@@ -631,7 +631,7 @@ export default function GoldenTicket() {
                 marginBottom: "0.25rem",
               }}
             >
-              An Invitation
+              The Key to an
             </span>
             <span
               style={{
@@ -640,7 +640,7 @@ export default function GoldenTicket() {
                 color: "#fff",
               }}
             >
-              to the Exceptional.
+              Impactful Life.
             </span>
           </motion.h1>
 
