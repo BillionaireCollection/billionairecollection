@@ -190,6 +190,11 @@ export const PAGE_METADATA: Record<string, PageMetadata> = {
     "Submit a private membership enquiry to Billionaire Collection and begin the qualification process for access to the ecosystem's services and opportunities.",
     "Billionaire Collection membership, apply for private membership, luxury membership, UHNW membership"
   ),
+  "/subscribe": page(
+    "Private Listings Subscription | Billionaire Collection",
+    "Begin a confidential application for private listing access through Billionaire Collection, including off-market opportunities across the UHNW ecosystem.",
+    "private listings subscription, off-market luxury listings, Billionaire Collection private access, UHNW opportunities, luxury membership"
+  ),
   "/champagne": page(
     "Billionaire Champagne | Exceptional Cuvées",
     "Billionaire Champagne presents exceptional cuvées and celebratory experiences within the Billionaire Collection product portfolio.",

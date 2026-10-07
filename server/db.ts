@@ -155,6 +155,20 @@ export async function getConciergeRequests() {
   return db.select().from(conciergeRequests).orderBy(desc(conciergeRequests.createdAt));
 }
 
+type OwnerEmailDeliveryStatus = "pending" | "sent" | "failed";
+
+export async function recordConciergeOwnerEmailDelivery(
+  id: number,
+  status: OwnerEmailDeliveryStatus,
+) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const auditNote = `[Owner email ${status}: ${new Date().toISOString()}]`;
+  await db.update(conciergeRequests)
+    .set({ notes: sql`concat_ws('\n', ${conciergeRequests.notes}, ${auditNote})` })
+    .where(eq(conciergeRequests.id, id));
+}
+
 // ─── Card Applications ──────────────────────────────────────────────────────────
 export async function createCardApplication(data: InsertCardApplication) {
   const db = await getDb();
@@ -181,6 +195,18 @@ export async function getContactEnquiries() {
   const db = await getDb();
   if (!db) return [];
   return db.select().from(contactEnquiries).orderBy(desc(contactEnquiries.createdAt));
+}
+
+export async function recordContactOwnerEmailDelivery(
+  id: number,
+  status: OwnerEmailDeliveryStatus,
+) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const auditNote = `[Owner email ${status}: ${new Date().toISOString()}]`;
+  await db.update(contactEnquiries)
+    .set({ notes: sql`concat_ws('\n', ${contactEnquiries.notes}, ${auditNote})` })
+    .where(eq(contactEnquiries.id, id));
 }
 
 // ─── Media Kit Download Analytics ─────────────────────────────────────────────

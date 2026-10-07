@@ -65,7 +65,7 @@ export default function Estates() {
       heroSubtitle="Access the world's most exclusive properties — from Mayfair penthouses and Monaco villas to Malibu clifftop estates and private Caribbean islands."
       heroImage="https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-estates-5tXLsMCEXgogpiaShTiVMe.webp"
       heroCta={{ label: "Enquire Now", href: "https://billionaireestates.com" }}
-      heroCtaSecondary={{ label: "View Listings", href: "/marketplace" }}
+      heroCtaSecondary={{ label: "View Listings", href: "/subscribe?interest=Billionaire%20Estates" }}
       aboutTitle="Where Architecture Meets Aspiration"
       aboutBody={[
   "Billionaire Estates is the world's most exclusive real estate brokerage, specialising in ultra-prime residential and commercial properties across every major global market.",

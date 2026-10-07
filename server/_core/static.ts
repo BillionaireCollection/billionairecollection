@@ -67,6 +67,7 @@ const VALID_ROUTES = new Set([
   "/university", "/ecosystem", "/brands", "/founder",
   "/admin", "/x-offer", "/offer",
   "/membership/apply",
+  "/subscribe",
   "/media-kit",
 ]);
 

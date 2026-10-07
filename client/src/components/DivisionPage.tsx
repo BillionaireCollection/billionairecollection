@@ -49,6 +49,24 @@ export default function DivisionPage({
   listings, listingsTitle,
   ctaBanner, partnerLogos, externalWebsite,
 }: DivisionPageProps) {
+  const enquiryHref = (interest: string) => {
+    const params = new URLSearchParams({
+      division: badge,
+      subject: `${badge} — ${interest}`,
+    });
+    return `/contact?${params.toString()}`;
+  };
+  const listingSubscriptionHref = `/subscribe?interest=${encodeURIComponent(badge)}`;
+  const primaryCta = heroCta
+    ? { ...heroCta, href: enquiryHref(heroCta.label) }
+    : undefined;
+  const secondaryCta = heroCtaSecondary?.label.toLowerCase().includes("view")
+    ? { ...heroCtaSecondary, href: listingSubscriptionHref }
+    : heroCtaSecondary;
+  const bannerCta = ctaBanner
+    ? { ...ctaBanner, btnHref: enquiryHref(ctaBanner.btnLabel) }
+    : undefined;
+
   return (
     <div style={{ background: "#000" }}>
       <PageHero
@@ -57,8 +75,8 @@ export default function DivisionPage({
         titleAccent={heroAccent}
         subtitle={heroSubtitle}
         image={heroImage}
-        cta={heroCta}
-        ctaSecondary={heroCtaSecondary}
+        cta={primaryCta}
+        ctaSecondary={secondaryCta}
       />
 
       {/* About section */}
@@ -74,10 +92,10 @@ export default function DivisionPage({
                   {para}
                 </p>
               ))}
-              {heroCta && (
+              {primaryCta && (
                 <div style={{ marginTop: "2rem" }}>
-                  <a href={heroCta.href}>
-                    <button className="btn-ghost-gold">{heroCta.label}</button>
+                  <a href={primaryCta.href}>
+                    <button className="btn-ghost-gold">{primaryCta.label}</button>
                   </a>
                 </div>
               )}
@@ -147,7 +165,7 @@ export default function DivisionPage({
 
             <FadeUp delay={0.3}>
               <div style={{ textAlign: "center", marginTop: "3rem" }}>
-                <Link href="/marketplace">
+                <Link href={listingSubscriptionHref}>
                   <button className="btn-ghost-gold">View All Listings</button>
                 </Link>
               </div>
@@ -179,18 +197,18 @@ export default function DivisionPage({
       )}
 
       {/* CTA Banner */}
-      {ctaBanner && (
+      {bannerCta && (
         <section style={{ padding: "8rem 0", background: "rgba(201,168,76,0.03)", borderTop: "1px solid rgba(201,168,76,0.1)" }}>
           <div className="container" style={{ textAlign: "center" }}>
             <FadeUp>
               <h2 style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "clamp(1.75rem, 3vw, 2.75rem)", color: "#fff", marginBottom: "1rem" }}>
-                {ctaBanner.title}
+                {bannerCta.title}
               </h2>
               <p style={{ fontFamily: FONT_UI, fontWeight: 300, fontSize: "1rem", color: "rgba(255,255,255,0.5)", maxWidth: "500px", margin: "0 auto 2.5rem", lineHeight: 1.7 }}>
-                {ctaBanner.sub}
+                {bannerCta.sub}
               </p>
-              <a href={ctaBanner.btnHref}>
-                <button className="btn-gold">{ctaBanner.btnLabel}</button>
+              <a href={bannerCta.btnHref}>
+                <button className="btn-gold">{bannerCta.btnLabel}</button>
               </a>
               {externalWebsite && (
                 <div style={{ marginTop: "1.5rem" }}>

@@ -55,7 +55,7 @@ export default function Crypto() {
       heroSubtitle="Navigate the digital asset landscape with confidence — from Bitcoin and Ethereum to tokenised real-world assets and exclusive Web3 opportunities for UHNW investors."
       heroImage="https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-lifestyle-AH2eKQkWWtkQqo8wcxHVw2.webp"
       heroCta={{ label: "Enquire Now", href: "/card-concierge" }}
-      heroCtaSecondary={{ label: "View Listings", href: "/marketplace" }}
+      heroCtaSecondary={{ label: "View Listings", href: "/subscribe?interest=Billionaire%20Crypto" }}
       aboutTitle="The New Frontier of Wealth"
       aboutBody={[
   "Billionaire Crypto provides ultra-high-net-worth individuals with sophisticated access to digital asset markets — from direct cryptocurrency holdings to tokenised real-world assets and exclusive DeFi opportunities.",

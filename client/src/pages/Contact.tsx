@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import PageHero from "@/components/PageHero";
 import { trpc } from "@/lib/trpc";
 import { useSEO } from "@/hooks/useSEO";
@@ -92,6 +92,7 @@ export default function Contact() {
   }
 ]);
   const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
+  const [division, setDivision] = useState("general");
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
 
@@ -103,6 +104,20 @@ export default function Contact() {
     onError: (err) => setError(err.message || "Something went wrong. Please try again."),
   });
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const divisionParam = params.get("division")?.trim();
+    const subjectParam = params.get("subject")?.trim();
+    if (!divisionParam && !subjectParam) return;
+
+    if (divisionParam) setDivision(divisionParam);
+    setForm((current) => ({
+      ...current,
+      subject: current.subject || subjectParam || `${divisionParam ?? "Billionaire Collection"} Enquiry`,
+      message: current.message || (divisionParam ? `I would like to discuss ${divisionParam} with the Billionaire Collection team.` : ""),
+    }));
+  }, []);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
@@ -110,7 +125,7 @@ export default function Contact() {
       setError("Please fill in all required fields.");
       return;
     }
-    submitMutation.mutate({ ...form, division: "general" });
+    submitMutation.mutate({ ...form, division });
   };
 
   return (

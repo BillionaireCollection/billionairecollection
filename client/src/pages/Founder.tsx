@@ -469,8 +469,8 @@ export default function Founder() {
             style={{ marginBottom: "2rem" }}
           >
             <img
-              src="/forever-in-service-book.jpg"
-              alt="Forever In Service — by Lawrence Colbert"
+              src="/forever-in-service-book-2026.jpg"
+              alt="Forever In Service: A Lifetime of Service and a Legacy of Excellence — by Lawrence Colbert"
               style={{
                 width: "clamp(300px, 80vw, 560px)",
                 height: "auto",
@@ -479,6 +479,15 @@ export default function Founder() {
                 border: "1px solid rgba(201,168,76,0.2)",
               }}
             />
+            <a
+              href="https://a.co/d/00clGz60"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Buy Forever In Service by Lawrence Colbert on Amazon"
+              style={{ display: "inline-flex", marginTop: "1rem", textDecoration: "none" }}
+            >
+              <span className="btn-ghost-gold" style={{ padding: "0.85rem 1.35rem", fontSize: "0.6875rem", letterSpacing: "0.14em" }}>Buy on Amazon</span>
+            </a>
           </motion.div>
 
           <motion.h1

@@ -321,6 +321,12 @@ async function getConciergeRequests() {
   if (!db) return [];
   return db.select().from(conciergeRequests).orderBy(desc(conciergeRequests.createdAt));
 }
+async function recordConciergeOwnerEmailDelivery(id, status) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const auditNote = `[Owner email ${status}: ${(/* @__PURE__ */ new Date()).toISOString()}]`;
+  await db.update(conciergeRequests).set({ notes: sql`concat_ws('\n', ${conciergeRequests.notes}, ${auditNote})` }).where(eq(conciergeRequests.id, id));
+}
 async function createCardApplication(data) {
   const db = await getDb();
   if (!db) throw new Error("Database not available");
@@ -342,6 +348,12 @@ async function getContactEnquiries() {
   const db = await getDb();
   if (!db) return [];
   return db.select().from(contactEnquiries).orderBy(desc(contactEnquiries.createdAt));
+}
+async function recordContactOwnerEmailDelivery(id, status) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const auditNote = `[Owner email ${status}: ${(/* @__PURE__ */ new Date()).toISOString()}]`;
+  await db.update(contactEnquiries).set({ notes: sql`concat_ws('\n', ${contactEnquiries.notes}, ${auditNote})` }).where(eq(contactEnquiries.id, id));
 }
 async function recordMediaKitDownload(asset) {
   const db = await getDb();
@@ -1073,76 +1085,60 @@ import Stripe from "stripe";
 
 // server/_core/email.ts
 import nodemailer from "nodemailer";
-var _transport = null;
+var transport = null;
 function getTransport() {
   const host = "smtp.office365.com";
-  const port = parseInt(process.env.SMTP_PORT || "587", 10);
+  const port = Number.parseInt(process.env.SMTP_PORT || "587", 10);
   const user = process.env.SMTP_USERNAME || process.env.SMTP_USER || "";
   const pass = process.env.SMTP_PASSWORD || process.env.SMTP_PASS || "";
-  if (!_transport) {
-    _transport = nodemailer.createTransport({
+  if (!transport) {
+    transport = nodemailer.createTransport({
       host,
       port,
       secure: false,
-      // STARTTLS — not SSL
       requireTLS: true,
-      // Enforce TLS upgrade (required for Office 365)
       auth: { user, pass },
-      tls: {
-        minVersion: "TLSv1.2",
-        rejectUnauthorized: true
-      },
+      tls: { minVersion: "TLSv1.2", rejectUnauthorized: true },
       connectionTimeout: 1e4,
       greetingTimeout: 1e4,
       socketTimeout: 15e3
     });
   }
-  return { transport: _transport, user, pass, host, port };
+  return { transport, user, pass };
 }
-async function sendOwnerEmail(subject, body) {
-  const { transport, user, pass, host, port } = getTransport();
+function escapeHtml(value) {
+  return value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+}
+function normaliseSubject(subject) {
+  return subject.replace(/[\r\n]+/g, " ").trim().slice(0, 180);
+}
+async function sendOwnerEmail(subject, body, options = {}) {
+  const { transport: smtpTransport, user, pass } = getTransport();
   const fromEmail = process.env.SMTP_FROM_EMAIL || user;
   const toEmail = process.env.SMTP_TO_EMAIL || process.env.NOTIFY_EMAIL || user;
-  console.log(`[Email] Attempting: "${subject}" via ${host}:${port} from ${fromEmail} to ${toEmail}`);
-  if (!pass) {
-    console.warn("[Email] SMTP password not configured (SMTP_PASSWORD or SMTP_PASS) \u2014 skipping.");
-    return;
-  }
-  if (!user) {
-    console.warn("[Email] SMTP username not configured (SMTP_USERNAME or SMTP_USER) \u2014 skipping.");
-    return;
+  if (!user || !pass || !fromEmail || !toEmail) {
+    console.warn("[Email] Owner notification skipped: SMTP configuration is incomplete.");
+    return { delivered: false, status: "failed" };
   }
   try {
-    await transport.verify();
-    console.log("[Email] SMTP handshake verified");
+    await smtpTransport.verify();
+    const safeSubject = normaliseSubject(subject);
     const plainBody = body.replace(/\*\*(.*?)\*\*/g, "$1");
-    const htmlBody = body.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>").replace(/\n/g, "<br>");
-    const html = `<!DOCTYPE html>
-<html>
-<head><meta charset="utf-8"></head>
-<body style="background:#000;color:#fff;font-family:Georgia,serif;padding:32px;">
-  <div style="max-width:600px;margin:0 auto;border:1px solid #C9A84C;padding:32px;">
-    <h2 style="color:#C9A84C;margin-top:0;">${subject}</h2>
-    <div style="line-height:1.8;">${htmlBody}</div>
-    <hr style="border-color:#C9A84C;margin-top:32px;">
-    <p style="color:#666;font-size:12px;">
-      Billionaire Collection \u2014 <a href="https://billionairecollection.com" style="color:#C9A84C;">billionairecollection.com</a>
-    </p>
-  </div>
-</body>
-</html>`;
-    await transport.sendMail({
+    const htmlBody = escapeHtml(body).replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>").replace(/\n/g, "<br>");
+    await smtpTransport.sendMail({
       from: `"Billionaire Collection" <${fromEmail}>`,
       to: toEmail,
-      subject: `[BC] ${subject}`,
+      replyTo: options.replyTo,
+      subject: `[BC] ${safeSubject}`,
       text: plainBody,
-      html
+      html: `<!doctype html><html><head><meta charset="utf-8"></head><body style="background:#000;color:#fff;font-family:Georgia,serif;padding:32px;"><div style="max-width:600px;margin:0 auto;border:1px solid #C9A84C;padding:32px;"><h2 style="color:#C9A84C;margin-top:0;">${escapeHtml(safeSubject)}</h2><div style="line-height:1.8;">${htmlBody}</div><hr style="border-color:#C9A84C;margin-top:32px;"><p style="color:#888;font-size:12px;">Billionaire Collection \u2014 billionairecollection.com</p></div></body></html>`
     });
-    console.log(`[Email] Sent: ${subject}`);
-  } catch (err) {
-    const msg = err instanceof Error ? err.message : String(err);
-    _transport = null;
-    console.error(`[Email] Failed: ${msg}`);
+    console.info("[Email] Owner notification delivered.");
+    return { delivered: true, status: "sent" };
+  } catch {
+    transport = null;
+    console.warn("[Email] Owner notification delivery failed.");
+    return { delivered: false, status: "failed" };
   }
 }
 
@@ -1249,8 +1245,8 @@ async function createMembershipCheckoutSession(input) {
       type: "membership_application"
     },
     client_reference_id: String(application.id),
-    success_url: `${input.origin}/membership/apply?payment=success&id=${application.id}`,
-    cancel_url: `${input.origin}/membership/apply?payment=cancelled`
+    success_url: `${input.origin}${input.successPath ?? "/membership/apply"}?payment=success&id=${application.id}`,
+    cancel_url: `${input.origin}${input.successPath ?? "/membership/apply"}?payment=cancelled`
   });
   return { checkoutUrl: session.url, applicationId: application.id };
 }
@@ -1374,8 +1370,10 @@ var appRouter = router({
       budget: z2.string().optional(),
       preferredDate: z2.string().optional()
     })).mutation(async ({ input }) => {
-      await createConciergeRequest(input);
-      sendOwnerEmail(
+      const request = await createConciergeRequest(input);
+      const requestId = Number(request.insertId);
+      await recordConciergeOwnerEmailDelivery(requestId, "pending").catch(() => void 0);
+      void sendOwnerEmail(
         `New Concierge Request \u2014 ${input.name} (${input.requestType})`,
         `**Name:** ${input.name}
 **Email:** ${input.email}
@@ -1384,9 +1382,14 @@ var appRouter = router({
 **Budget:** ${input.budget ?? "\u2014"}
 **Preferred Date:** ${input.preferredDate ?? "\u2014"}
 
-${input.description}`
-      ).catch((err) => console.error("[Notification] Concierge email failed:", err));
-      return { success: true };
+${input.description}`,
+        { replyTo: input.email }
+      ).then((delivery) => recordConciergeOwnerEmailDelivery(requestId, delivery.status)).catch(() => recordConciergeOwnerEmailDelivery(requestId, "failed")).catch(() => void 0);
+      void notifyOwner({
+        title: "New Concierge Request",
+        content: "A new concierge request has been securely recorded. Review it in the Billionaire Collection admin area."
+      }).catch(() => void 0);
+      return { success: true, reference: requestId };
     }),
     list: adminProcedure2.query(async () => getConciergeRequests())
   }),
@@ -1436,8 +1439,10 @@ ${input.description}`
       message: z2.string().min(10),
       division: z2.string().optional()
     })).mutation(async ({ input }) => {
-      await createContactEnquiry(input);
-      sendOwnerEmail(
+      const enquiry = await createContactEnquiry(input);
+      const enquiryId = Number(enquiry.insertId);
+      await recordContactOwnerEmailDelivery(enquiryId, "pending").catch(() => void 0);
+      void sendOwnerEmail(
         `New Contact Enquiry \u2014 ${input.name} (${input.subject})`,
         `**Name:** ${input.name}
 **Email:** ${input.email}
@@ -1445,10 +1450,14 @@ ${input.description}`
 **Subject:** ${input.subject}
 **Division:** ${input.division ?? "general"}
 
-${input.message}`
-      ).catch(() => {
-      });
-      return { success: true };
+${input.message}`,
+        { replyTo: input.email }
+      ).then((delivery) => recordContactOwnerEmailDelivery(enquiryId, delivery.status)).catch(() => recordContactOwnerEmailDelivery(enquiryId, "failed")).catch(() => void 0);
+      void notifyOwner({
+        title: "New Website Enquiry",
+        content: "A new website enquiry has been securely recorded. Review it in the Billionaire Collection admin area."
+      }).catch(() => void 0);
+      return { success: true, reference: enquiryId };
     }),
     list: adminProcedure2.query(async () => getContactEnquiries())
   }),
@@ -1667,12 +1676,14 @@ ${input.message}`
       personalIntro: z2.string().optional(),
       referralName: z2.string().optional(),
       referralEmail: z2.string().optional(),
-      origin: z2.string().url()
+      origin: z2.string().url(),
+      successPath: z2.string().regex(/^\/[a-z0-9/?=&_-]*$/i).optional()
     })).mutation(async ({ input }) => {
-      const { origin, ...applicationData } = input;
+      const { origin, successPath, ...applicationData } = input;
       const { checkoutUrl, applicationId } = await createMembershipCheckoutSession({
         applicationData,
-        origin
+        origin,
+        successPath
       });
       return { checkoutUrl, applicationId };
     }),
@@ -1868,6 +1879,11 @@ var PAGE_METADATA = {
     "Submit a private membership enquiry to Billionaire Collection and begin the qualification process for access to the ecosystem's services and opportunities.",
     "Billionaire Collection membership, apply for private membership, luxury membership, UHNW membership"
   ),
+  "/subscribe": page(
+    "Private Listings Subscription | Billionaire Collection",
+    "Begin a confidential application for private listing access through Billionaire Collection, including off-market opportunities across the UHNW ecosystem.",
+    "private listings subscription, off-market luxury listings, Billionaire Collection private access, UHNW opportunities, luxury membership"
+  ),
   "/champagne": page(
     "Billionaire Champagne | Exceptional Cuv\xE9es",
     "Billionaire Champagne presents exceptional cuv\xE9es and celebratory experiences within the Billionaire Collection product portfolio.",
@@ -1983,11 +1999,11 @@ function pageStructuredData(pathname, metadata) {
 }
 
 // server/_core/static.ts
-function escapeHtml(value) {
+function escapeHtml2(value) {
   return value.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 function replaceOrAppendMeta(html, attr, key, value) {
-  const tag = `<meta ${attr}="${key}" content="${escapeHtml(value)}" />`;
+  const tag = `<meta ${attr}="${key}" content="${escapeHtml2(value)}" />`;
   const expression = new RegExp(`<meta\\b[^>]*\\b${attr}=["']${key.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}["'][^>]*>`, "i");
   if (expression.test(html)) return html.replace(expression, tag);
   return html.replace(/<\/head>/i, `  ${tag}
@@ -2000,7 +2016,7 @@ function injectPageMetadata(html, pathname) {
   const canonical = `${BASE_URL}${normalizedPathname === "/" ? "" : normalizedPathname}`;
   const title = pageTitle(metadata.title);
   const image = pageImage(metadata);
-  let page2 = html.replace(/<title>[^<]*<\/title>/i, `<title>${escapeHtml(title)}</title>`);
+  let page2 = html.replace(/<title>[^<]*<\/title>/i, `<title>${escapeHtml2(title)}</title>`);
   page2 = replaceOrAppendMeta(page2, "name", "description", metadata.description);
   page2 = replaceOrAppendMeta(page2, "name", "keywords", metadata.keywords);
   page2 = replaceOrAppendMeta(page2, "name", "author", "Billionaire Collection");
@@ -2069,6 +2085,7 @@ var VALID_ROUTES = /* @__PURE__ */ new Set([
   "/x-offer",
   "/offer",
   "/membership/apply",
+  "/subscribe",
   "/media-kit"
 ]);
 var NON_INDEXABLE_ROUTES = /* @__PURE__ */ new Set(["/admin", "/x-offer", "/offer"]);

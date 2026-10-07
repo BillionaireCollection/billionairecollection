@@ -55,7 +55,7 @@ export default function Air() {
       heroSubtitle="Charter, acquire, or manage the world's finest private jets — from Gulfstream G800 to Airbus ACJ — with complete discretion and unrivalled service."
       heroImage="https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-aviation-K37Bb2CGs26HxxPg9N8RhR.webp"
       heroCta={{ label: "Enquire Now", href: "https://billionaireair.com" }}
-      heroCtaSecondary={{ label: "View Listings", href: "/marketplace" }}
+      heroCtaSecondary={{ label: "View Listings", href: "/subscribe?interest=Billionaire%20Air" }}
       aboutTitle="The Sky Is Not the Limit"
       aboutBody={[
   "Billionaire Air is the premier private aviation brokerage for ultra-high-net-worth individuals, offering aircraft acquisition, charter, management, and bespoke aviation solutions worldwide.",
