@@ -6,8 +6,10 @@ import { publicProcedure, protectedProcedure, router } from "./_core/trpc";
 import {
   subscribeNewsletter,
   createConciergeRequest,
+  recordConciergeOwnerEmailDelivery,
   createCardApplication,
   createContactEnquiry,
+  recordContactOwnerEmailDelivery,
   getActiveListings,
   getFeaturedListings,
   createGoldenTicketApplication,
@@ -93,13 +95,21 @@ export const appRouter = router({
         preferredDate: z.string().optional(),
       }))
       .mutation(async ({ input }) => {
-        await createConciergeRequest(input);
-        // Notify owner
-        sendOwnerEmail(
+        const request = await createConciergeRequest(input);
+        const requestId = Number((request as { insertId?: number }).insertId);
+        await recordConciergeOwnerEmailDelivery(requestId, "pending").catch(() => undefined);
+        void sendOwnerEmail(
           `New Concierge Request — ${input.name} (${input.requestType})`,
           `**Name:** ${input.name}\n**Email:** ${input.email}\n**Phone:** ${input.phone ?? "—"}\n**Request Type:** ${input.requestType}\n**Budget:** ${input.budget ?? "—"}\n**Preferred Date:** ${input.preferredDate ?? "—"}\n\n${input.description}`,
-        ).catch((err) => console.error('[Notification] Concierge email failed:', err));
-        return { success: true };
+          { replyTo: input.email },
+        ).then((delivery) => recordConciergeOwnerEmailDelivery(requestId, delivery.status))
+          .catch(() => recordConciergeOwnerEmailDelivery(requestId, "failed"))
+          .catch(() => undefined);
+        void notifyOwner({
+          title: "New Concierge Request",
+          content: "A new concierge request has been securely recorded. Review it in the Billionaire Collection admin area.",
+        }).catch(() => undefined);
+        return { success: true, reference: requestId };
       }),
     list: adminProcedure.query(async () => getConciergeRequests()),
   }),
@@ -150,13 +160,21 @@ export const appRouter = router({
         division: z.string().optional(),
       }))
       .mutation(async ({ input }) => {
-        await createContactEnquiry(input);
-        // Notify owner
-        sendOwnerEmail(
+        const enquiry = await createContactEnquiry(input);
+        const enquiryId = Number((enquiry as { insertId?: number }).insertId);
+        await recordContactOwnerEmailDelivery(enquiryId, "pending").catch(() => undefined);
+        void sendOwnerEmail(
           `New Contact Enquiry — ${input.name} (${input.subject})`,
           `**Name:** ${input.name}\n**Email:** ${input.email}\n**Phone:** ${input.phone ?? "—"}\n**Subject:** ${input.subject}\n**Division:** ${input.division ?? "general"}\n\n${input.message}`,
-        ).catch(() => {/* non-blocking */});
-        return { success: true };
+          { replyTo: input.email },
+        ).then((delivery) => recordContactOwnerEmailDelivery(enquiryId, delivery.status))
+          .catch(() => recordContactOwnerEmailDelivery(enquiryId, "failed"))
+          .catch(() => undefined);
+        void notifyOwner({
+          title: "New Website Enquiry",
+          content: "A new website enquiry has been securely recorded. Review it in the Billionaire Collection admin area.",
+        }).catch(() => undefined);
+        return { success: true, reference: enquiryId };
       }),
     list: adminProcedure.query(async () => getContactEnquiries()),
   }),
@@ -403,12 +421,14 @@ export const appRouter = router({
         referralName: z.string().optional(),
         referralEmail: z.string().optional(),
         origin: z.string().url(),
+        successPath: z.string().regex(/^\/[a-z0-9/?=&_-]*$/i).optional(),
       }))
       .mutation(async ({ input }) => {
-        const { origin, ...applicationData } = input;
+        const { origin, successPath, ...applicationData } = input;
         const { checkoutUrl, applicationId } = await createMembershipCheckoutSession({
           applicationData,
           origin,
+          successPath,
         });
         return { checkoutUrl, applicationId };
       }),

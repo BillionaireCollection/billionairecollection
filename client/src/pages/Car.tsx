@@ -55,7 +55,7 @@ export default function Car() {
       heroSubtitle="Acquire the world's most coveted automobiles — from one-off Ferrari hypercars to bespoke Rolls-Royce commissions — through our exclusive automotive brokerage."
       heroImage="https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-main-QJbNmDnsM8Jru6dBDixZQ8.webp"
       heroCta={{ label: "Enquire Now", href: "https://billionairecar.com" }}
-      heroCtaSecondary={{ label: "View Listings", href: "/marketplace" }}
+      heroCtaSecondary={{ label: "View Listings", href: "/subscribe?interest=Billionaire%20Car" }}
       aboutTitle="Automotive Excellence Without Compromise"
       aboutBody={[
   "Billionaire Car is the world's most exclusive automotive brokerage, specialising in rare, limited-edition, and bespoke vehicles from the world's most prestigious manufacturers.",

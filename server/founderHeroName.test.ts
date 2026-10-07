@@ -11,4 +11,10 @@ describe("Founder hero name", () => {
     expect(source).toContain('Lawrence <span style={{ color: GOLD }}>Colbert</span>');
     expect(source).not.toContain("Lawrence\n            <br />\n            <span style={{ color: GOLD }}>Colbert</span>");
   });
+
+  it("uses the supplied Forever In Service edition with an Amazon purchase link", () => {
+    expect(source).toContain('src="/forever-in-service-book-2026.jpg"');
+    expect(source).toContain('href="https://a.co/d/00clGz60"');
+    expect(source).toContain("Buy on Amazon");
+  });
 });

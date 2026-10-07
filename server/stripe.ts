@@ -107,6 +107,7 @@ export async function createMembershipCheckoutSession(input: {
     referralName?: string; referralEmail?: string;
   };
   origin: string;
+  successPath?: string;
 }): Promise<{ checkoutUrl: string; applicationId: number }> {
   const stripe = getStripe();
   const application = await createMembershipApplication({
@@ -136,8 +137,8 @@ export async function createMembershipCheckoutSession(input: {
       type: "membership_application",
     },
     client_reference_id: String(application.id),
-    success_url: `${input.origin}/membership/apply?payment=success&id=${application.id}`,
-    cancel_url: `${input.origin}/membership/apply?payment=cancelled`,
+    success_url: `${input.origin}${input.successPath ?? "/membership/apply"}?payment=success&id=${application.id}`,
+    cancel_url: `${input.origin}${input.successPath ?? "/membership/apply"}?payment=cancelled`,
   });
   return { checkoutUrl: session.url!, applicationId: application.id };
 }

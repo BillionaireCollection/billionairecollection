@@ -43,6 +43,15 @@ describe("server-delivered indexability controls", () => {
     expect(staticServer).toContain('"/media-kit"');
   });
 
+  it("keeps the private subscription route crawlable with distinct metadata", () => {
+    const staticServer = readFileSync(resolve(process.cwd(), "server/_core/static.ts"), "utf8");
+    expect(PAGE_METADATA).toHaveProperty("/subscribe");
+    expect(staticServer).toContain('"/subscribe"');
+    expect(injectPageMetadata("<html><head></head><body></body></html>", "/subscribe")).toContain(
+      "Private Listings Subscription"
+    );
+  });
+
   it("uses a permanent HTTP redirect for the legacy store alias", () => {
     const staticServer = readFileSync(resolve(process.cwd(), "server/_core/static.ts"), "utf8");
     expect(staticServer).toContain('res.redirect(301, "/marketplace")');

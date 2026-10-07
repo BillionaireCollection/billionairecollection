@@ -62,7 +62,7 @@ export default function Vitality() {
       heroAccent="Longevity"
       heroSubtitle="The ultra-premium wellness and longevity division of Billionaire Collection — delivering the world's most advanced biohacking protocols, private longevity clinics, and bespoke health optimisation programmes to ultra-high-net-worth individuals."
       heroImage="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80"
-      heroCta={{ label: "Begin Your Programme", href: "/concierge" }}
+      heroCta={{ label: "Begin Your Programme", href: "/contact?division=Billionaire%20Vitality&subject=Billionaire%20Vitality%20Programme" }}
       heroCtaSecondary={{ label: "Learn More", href: "/technology" }}
       aboutTitle="The Science of Living Exceptionally"
       aboutBody={[
@@ -106,7 +106,7 @@ export default function Vitality() {
         title: "Invest in Your Most Valuable Asset",
         sub: "Our longevity specialists will design a bespoke health optimisation programme tailored to your biology, lifestyle, and goals — with access to therapies and clinics unavailable through any other channel.",
         btnLabel: "Speak to a Longevity Specialist",
-        btnHref: "/concierge",
+        btnHref: "/contact?division=Billionaire%20Vitality&subject=Billionaire%20Vitality%20Specialist%20Enquiry",
       }}
       partnerLogos={[
         "Human Longevity Inc.",

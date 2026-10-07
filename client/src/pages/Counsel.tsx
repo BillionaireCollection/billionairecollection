@@ -62,7 +62,7 @@ export default function Counsel() {
       heroAccent="the Highest Level"
       heroSubtitle="The ultra-premium legal advisory division of Billionaire Collection — connecting ultra-high-net-worth individuals with the world's most elite legal minds for wealth structuring, asset protection, and complex cross-border transactions."
       heroImage="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=80"
-      heroCta={{ label: "Request a Consultation", href: "/concierge" }}
+      heroCta={{ label: "Request a Consultation", href: "/contact?division=Billionaire%20Counsel&subject=Billionaire%20Counsel%20Consultation" }}
       heroCtaSecondary={{ label: "Learn More", href: "/services" }}
       aboutTitle="Counsel Reserved for Those Who Operate at the Pinnacle"
       aboutBody={[
@@ -106,7 +106,7 @@ export default function Counsel() {
         title: "Protect What You Have Built",
         sub: "Our legal specialists will connect you with the world's most elite private client counsel — tailored to your specific circumstances, delivered with absolute discretion.",
         btnLabel: "Request a Private Consultation",
-        btnHref: "/concierge",
+        btnHref: "/contact?division=Billionaire%20Counsel&subject=Billionaire%20Counsel%20Private%20Consultation",
       }}
       partnerLogos={[
         "Withers LLP",

@@ -55,7 +55,7 @@ export default function Art() {
       heroSubtitle="Acquire, sell, and invest in the world's most significant works of art through our curated advisory service — in partnership with Christie's and leading private dealers."
       heroImage="https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-lifestyle-AH2eKQkWWtkQqo8wcxHVw2.webp"
       heroCta={{ label: "Enquire Now", href: "https://billionaireart.com" }}
-      heroCtaSecondary={{ label: "View Listings", href: "/marketplace" }}
+      heroCtaSecondary={{ label: "View Listings", href: "/subscribe?interest=Billionaire%20Art" }}
       aboutTitle="Art as the Ultimate Investment"
       aboutBody={[
   "Billionaire Art provides ultra-high-net-worth collectors with access to the world's most significant works of art, from Old Masters to contemporary blue-chip artists.",

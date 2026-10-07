@@ -60,6 +60,7 @@ import NewsBrand from "./pages/NewsBrand";
 import Founder from "./pages/Founder";
 import Membership from "./pages/Membership";
 import MediaKit from "./pages/MediaKit";
+import Subscribe from "./pages/Subscribe";
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -129,6 +130,7 @@ function Router() {
             <Route path="/brands" component={Brands} />
             <Route path="/founder" component={Founder} />
             <Route path="/membership/apply" component={Membership} />
+            <Route path="/subscribe" component={Subscribe} />
             <Route path="/media-kit" component={MediaKit} />
             <Route component={NotFound} />
           </Switch>

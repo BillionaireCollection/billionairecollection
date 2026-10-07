@@ -55,7 +55,7 @@ export default function Chrono() {
       heroSubtitle="The private watch division of Billionaire Collection. Acquiring and placing only the world's most significant timepieces — strictly above one million dollars — for a closed circle of discerning collectors."
       heroImage="/chrono-patek-philippe-diamond-timepiece.jpg"
       heroCta={{ label: "Enquire Now", href: "https://billionairechrono.com" }}
-      heroCtaSecondary={{ label: "View Collection", href: "https://billionairechrono.com" }}
+      heroCtaSecondary={{ label: "View Collection", href: "/subscribe?interest=Billionaire%20Chrono" }}
       aboutTitle="Investment-Grade Horology at the Absolute Pinnacle"
       aboutBody={[
   "Billionaire Chrono operates above traditional auction houses and retail dealers. Every timepiece is investment-grade, museum-worthy, and drawn from the absolute pinnacle of horology — never anything under one million dollars.",

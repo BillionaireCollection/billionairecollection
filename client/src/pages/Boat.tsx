@@ -55,7 +55,7 @@ export default function Boat() {
       heroSubtitle="Acquire, charter, or commission a bespoke superyacht from the world's leading builders — Lürssen, Feadship, Benetti, and beyond."
       heroImage="https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-yacht-hFeRjh9nRnBaKqx8rPSF24.webp"
       heroCta={{ label: "Enquire Now", href: "https://billionaireboat.com" }}
-      heroCtaSecondary={{ label: "View Listings", href: "/marketplace" }}
+      heroCtaSecondary={{ label: "View Listings", href: "/subscribe?interest=Billionaire%20Boat" }}
       aboutTitle="Command the Seas in Absolute Luxury"
       aboutBody={[
   "Billionaire Boat represents the most prestigious superyacht brokerage in the world, offering an unparalleled portfolio of vessels for sale, charter, and bespoke new construction.",

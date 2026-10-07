@@ -437,7 +437,7 @@ export default function Home() {
 
           <FadeUp delay={0.3}>
             <div style={{ textAlign: "center", marginTop: "3rem" }}>
-              <Link href="/marketplace">
+              <Link href="/subscribe?interest=Billionaire%20Collection">
                 <button className="btn-ghost-gold">View All Listings</button>
               </Link>
             </div>
