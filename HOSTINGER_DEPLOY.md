@@ -1,107 +1,66 @@
 # Hostinger Deployment Guide — Billionaire Collection
 
-## Overview
+## Approved production configuration
 
-This project is pre-built. The `dist/` folder is committed to the repository and contains the production-ready server bundle (`dist/index.js`) and the compiled React frontend (`dist/public/`). Hostinger does **not** need to run a build step.
+This is a **Node.js Web App** deployment. The repository contains the verified pre-built `dist/` output; Hostinger must not perform a build.
 
----
-
-## Hostinger Build & Output Settings
-
-| Setting | Value |
+| Hostinger setting | Required value |
 |---|---|
-| **Package manager** | `npm` |
-| **Build command** | `None` |
-| **Output directory** | `dist` |
-| **Entry file** | `dist/index.js` |
+| Package manager | `npm` |
+| Build command | `None` |
+| Entry file | `dist/index.js` |
+| Output directory | `dist` |
+| Node.js | `20.x` or `22.x` |
+| Start command | `NODE_ENV=production node dist/index.js` |
 
-> **Important:** Set Build command to **None**. The `dist/` folder is already built and committed to the repo. Hostinger only needs to run `node dist/index.js`.
+> The `dist/` folder and `dist/database-setup.sql` are committed release artifacts. Never replace this Node app with a static Git website, and do not set a Hostinger build command.
 
----
+## Required environment variables
 
-## Environment Variables
+Configure secrets only in **Hostinger → Deployments → Settings → Environment Variables**. Never commit values or expose server secrets to the browser bundle.
 
-Set the following in Hostinger → Deployments → Settings → Environment Variables:
+| Variable | Scope | Purpose |
+|---|---|---|
+| `NODE_ENV` | Server | Set to `production`. |
+| `PORT` | Server | Hostinger-assigned application listener port. |
+| `DATABASE_URL` | Server | MySQL connection string for application data; use the Hostinger internal database host. |
+| `JWT_SECRET` | Server secret | Signs authenticated session tokens. |
+| `VITE_APP_ID` | Client build | Identifies the Manus OAuth application. |
+| `OAUTH_SERVER_URL` | Server | Manus OAuth backend URL. |
+| `VITE_OAUTH_PORTAL_URL` | Client build | Manus OAuth portal URL. |
+| `VITE_APP_TITLE` | Client build | Application title. |
+| `VITE_APP_LOGO` | Client build | Public brand-logo URL when configured. |
+| `STRIPE_SECRET_KEY` | Server secret | Creates private-membership Stripe Checkout sessions. |
+| `STRIPE_WEBHOOK_SECRET` | Server secret | Verifies the Stripe webhook signature. |
+| `VITE_STRIPE_PUBLISHABLE_KEY` | Client build | Stripe publishable key only. |
+| `SMTP_HOST` | Server | Microsoft 365 SMTP host: `smtp.office365.com`. |
+| `SMTP_PORT` | Server | Microsoft 365 SMTP port: `587`. |
+| `SMTP_SECURE` | Server | `false`; STARTTLS is required. |
+| `SMTP_USERNAME` | Server | Protected Billionaire PLC sender identity. |
+| `SMTP_PASSWORD` | Server secret | Protected Billionaire PLC SMTP credential. |
+| `SMTP_FROM_EMAIL` | Server | Owner-notification sender address. |
+| `SMTP_TO_EMAIL` | Server | Owner-notification recipient address. |
+| `NEWS_API_KEY` | Server secret | Required only if the scheduled news provider is enabled. |
+| `VITE_ANALYTICS_ENDPOINT` | Client build | Required only when website analytics is enabled. |
+| `VITE_ANALYTICS_WEBSITE_ID` | Client build | Required only when website analytics is enabled. |
 
-| Key | Value |
-|---|---|
-| `NODE_ENV` | `production` |
-| `DATABASE_URL` | `mysql://u802634764_bcuser:<password>@127.0.0.1:3306/u802634764_bcdb` |
-| `JWT_SECRET` | Any long random string (min 32 chars) |
-| `VITE_APP_ID` | Manus OAuth App ID |
-| `STRIPE_SECRET_KEY` | `sk_live_...` |
-| `VITE_STRIPE_PUBLISHABLE_KEY` | `pk_live_...` |
-| `STRIPE_WEBHOOK_SECRET` | `whsec_...` |
+## Release process
 
----
+1. Run the full test suite, TypeScript check and production build locally.
+2. Confirm `dist/index.js`, `dist/public/index.html` and `dist/database-setup.sql` are non-empty.
+3. Confirm the production bundle does not import Vite.
+4. Commit the intended source changes and regenerated `dist/` assets; do not commit credentials, daily research payloads or error logs.
+5. Push the release to the GitHub `main` branch.
+6. Trigger the Git-connected Hostinger Node.js build using the approved Hostinger API workflow.
+7. Verify the live custom domain returns HTTP 200 with `x-powered-by: Express`, then verify the relevant routes and assets.
 
-## Database Migration
+## Payments and enquiries
 
-After the first successful deployment, run the database migrations to create all tables in the Hostinger MySQL database.
+- Private listing access uses server-created Stripe Checkout sessions; the browser must only receive the hosted checkout URL.
+- The Stripe webhook endpoint must use the live domain and validate `STRIPE_WEBHOOK_SECRET` before payment state changes.
+- Enquiries are persisted before delivery is attempted. Owner email is sent server-side via Microsoft 365 STARTTLS using the protected Billionaire PLC SMTP connector.
+- Keep Stripe and SMTP credentials server-only. Do not include values in documentation, commits, screenshots or logs.
 
-**Option A — Via SSH:**
-```bash
-cd /path/to/app
-npm run db:push
-```
+## Database bootstrap
 
-**Option B — Via phpMyAdmin:**
-Run the SQL migration scripts from the `drizzle/migrations/` folder in the Hostinger phpMyAdmin panel.
-
----
-
-## Deployment Steps
-
-1. In Hostinger, go to **Websites → Your Site → Git** and connect the GitHub repository: `https://github.com/BillionaireCollection/billionairecollection`
-2. Set the branch to `main`
-3. In **Build and output settings**, configure as shown in the table above
-4. Add all required environment variables
-5. Click **Deploy** (or **Save and redeploy**)
-6. After successful deployment, run database migrations (see above)
-
----
-
-## Stripe Webhook
-
-After deployment, update the Stripe webhook endpoint in the Stripe Dashboard to:
-```
-https://yourdomain.com/api/stripe/webhook
-```
-
----
-
-## Local Development
-
-```bash
-npm install
-npm run dev
-```
-
-## Production Build (if needed to regenerate dist/)
-
-```bash
-npm run build
-```
-
-This regenerates `dist/index.js` (server bundle) and `dist/public/` (React frontend).
-
----
-
-## Troubleshooting
-
-| Problem | Solution |
-|---|---|
-| White screen / 404 on page refresh | Entry file must be `dist/index.js` — confirm in Hostinger settings |
-| Stripe webhook 400 errors | Check `STRIPE_WEBHOOK_SECRET` matches the Stripe dashboard value exactly |
-| Database connection refused | Use `127.0.0.1` as host for Hostinger MySQL (not `localhost`) |
-| App crashes on start | Check all environment variables are set correctly |
-
----
-
-## Package Manager
-
-This project uses **npm**. The lockfile is `package-lock.json`. Do not use pnpm or yarn.
-
----
-
-*Last updated: July 19, 2026*
+`dist/database-setup.sql` contains the non-destructive CREATE TABLE statements required to initialise a fresh MySQL instance. Run it through the approved Hostinger database workflow only when provisioning a new database; do not run schema changes speculatively on production.
