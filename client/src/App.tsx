@@ -12,7 +12,6 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import BackToTop from "./components/BackToTop";
-import CookieConsent from "./components/CookieConsent";
 import NewsletterPrompt from "./components/NewsletterPrompt";
 
 // Pages
@@ -75,7 +74,6 @@ function Layout({ children }: { children: React.ReactNode }) {
       </main>
       <Footer />
       <NewsletterPrompt />
-      <CookieConsent />
     </div>
   );
 }

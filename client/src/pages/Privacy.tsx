@@ -1,11 +1,9 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
 import { useSEO } from "@/hooks/useSEO";
 import { useJsonLd } from "@/hooks/useJsonLd";
 
-const GOLD = "#C9A84C";
 const FONT_HEADING = "'Playfair Display', Georgia, serif";
 const FONT_UI = "'Raleway', sans-serif";
 
@@ -22,7 +20,7 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 export default function Privacy() {
   useSEO({
     title: "Privacy Policy | Billionaire Collection",
-    description: "Privacy policy for Billionaire Collection, including information about enquiries, newsletter marketing consent and cookie preferences.",
+    description: "Privacy policy for Billionaire Collection, including information about enquiries, newsletter marketing consent and cookies.",
     keywords: "Billionaire Collection privacy policy, luxury brand data protection, GDPR compliance, Billionaire Collection legal, privacy notice",
   });
   useJsonLd([
@@ -48,7 +46,7 @@ export default function Privacy() {
     "@context": "https://schema.org",
     "@type": "WebPage",
     "name": "Privacy Policy \u2014 Billionaire Collection",
-    "description": "Privacy policy for Billionaire Collection, including information about enquiries, newsletter marketing consent and cookie preferences.",
+    "description": "Privacy policy for Billionaire Collection, including information about enquiries, newsletter marketing consent and cookies.",
     "url": "https://billionairecollection.com/privacy",
     "publisher": {
       "@type": "Organization",
@@ -74,7 +72,7 @@ export default function Privacy() {
               <h3 style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "1.25rem", color: "#fff", margin: "2rem 0 1rem" }}>Newsletter Marketing</h3>
               <p style={{ marginBottom: "1.5rem" }}>We send the Billionaire Daily Brief and related marketing communications only where you have actively opted in. You may withdraw consent or unsubscribe at any time using the link in an email or by contacting us.</p>
               <h3 style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "1.25rem", color: "#fff", margin: "2rem 0 1rem" }}>Cookies and Similar Technologies</h3>
-              <p style={{ marginBottom: "1.5rem" }}>We use essential browser storage to remember your cookie preference. Optional analytics are not loaded unless you choose “Accept analytics” in the cookie banner. You can update this choice at any time by selecting <button type="button" onClick={() => window.dispatchEvent(new Event("bc:open-cookie-settings"))} style={{ border: 0, padding: 0, background: "transparent", color: GOLD, font: "inherit", textDecoration: "underline", cursor: "pointer" }}>Cookie settings</button>.</p>
+              <p style={{ marginBottom: "1.5rem" }}>This website does not load optional analytics tracking scripts. Essential browser technologies may be used to provide core site functionality and maintain your chosen interactions.</p>
               <h3 style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "1.25rem", color: "#fff", margin: "2rem 0 1rem" }}>Contact Us</h3>
               <p>If you have questions about this Privacy Policy, please contact us at info@billionaireplc.com or +44 207 183 1700.</p>
             </div>

@@ -4,6 +4,7 @@ import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..");
 const read = (relative: string) => fs.readFileSync(path.join(root, relative), "utf8");
+const exists = (relative: string) => fs.existsSync(path.join(root, relative));
 
 describe("marketing consent and public claim controls", () => {
   it("delays newsletter capture and requires affirmative marketing consent", () => {
@@ -18,13 +19,12 @@ describe("marketing consent and public claim controls", () => {
     expect(router).toContain("marketingConsent: z.literal(true)");
   });
 
-  it("does not load analytics from the base HTML before consent", () => {
+  it("does not render a cookie notice or load optional analytics", () => {
     const html = read("client/index.html");
-    const consent = read("client/src/components/CookieConsent.tsx");
+    const app = read("client/src/App.tsx");
     expect(html).not.toContain("data-website-id");
-    expect(consent).toContain("loadAnalyticsAfterConsent");
-    expect(consent).toContain("Accept analytics");
-    expect(consent).toContain("Essential only");
+    expect(app).not.toContain("CookieConsent");
+    expect(exists("client/src/components/CookieConsent.tsx")).toBe(false);
   });
 
   it("removes unsupported scale figures from the homepage", () => {
