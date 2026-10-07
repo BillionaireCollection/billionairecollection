@@ -62,10 +62,10 @@ export const appRouter = router({
 
   newsletter: router({
     subscribe: publicProcedure
-      .input(z.object({ email: z.string().email(), name: z.string().optional(), source: z.string().optional() }))
+      .input(z.object({ email: z.string().email(), name: z.string().optional(), source: z.string().optional(), marketingConsent: z.literal(true) }))
       .mutation(async ({ input }) => {
         try {
-          await subscribeNewsletter({ email: input.email, name: input.name, source: input.source ?? "website" });
+          await subscribeNewsletter({ email: input.email, name: input.name, source: input.source ?? "website", marketingConsentAt: new Date() });
           // Notify owner only on new subscription
           sendOwnerEmail(
             `New Newsletter Subscriber — ${input.email}`,

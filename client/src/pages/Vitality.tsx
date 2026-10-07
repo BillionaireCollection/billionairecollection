@@ -108,14 +108,6 @@ export default function Vitality() {
         btnLabel: "Speak to a Longevity Specialist",
         btnHref: "/contact?division=Billionaire%20Vitality&subject=Billionaire%20Vitality%20Specialist%20Enquiry",
       }}
-      partnerLogos={[
-        "Human Longevity Inc.",
-        "Cleveland Clinic",
-        "Viome",
-        "Fountain Life",
-        "SHA Wellness",
-        "Lanserhof",
-      ]}
     />
   );
 }

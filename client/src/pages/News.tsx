@@ -6,6 +6,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
+import { Link } from "wouter";
 import PageHero from "@/components/PageHero";
 // Data now served from DB via tRPC (daily AGENT cron refresh)
 import { trpc } from "@/lib/trpc";
@@ -96,6 +97,7 @@ export default function News() {
 ]);
   const [activeCategory, setActiveCategory] = useState("All");
   const [email, setEmail] = useState("");
+  const [marketingConsent, setMarketingConsent] = useState(false);
   const [subscribed, setSubscribed] = useState(false);
   const [subscribeError, setSubscribeError] = useState("");
 
@@ -355,8 +357,9 @@ export default function News() {
             ) : (
               <>
               {subscribeError && <p style={{ fontFamily: FONT_UI, fontSize: "0.8125rem", color: "#e57373", marginBottom: "0.5rem" }}>{subscribeError}</p>}
-              <form onSubmit={(e) => { e.preventDefault(); setSubscribeError(""); subscribeMutation.mutate({ email }); }} style={{ display: "flex", justifyContent: "center", gap: "0", maxWidth: "480px", margin: "0 auto" }}>
-                <input
+              <form onSubmit={(e) => { e.preventDefault(); setSubscribeError(""); if (marketingConsent) subscribeMutation.mutate({ email, source: "news_page", marketingConsent: true }); }} style={{ display: "grid", gap: "0.7rem", maxWidth: "480px", margin: "0 auto", textAlign: "left" }}>
+                <div style={{ display: "flex", justifyContent: "center", gap: "0" }}>
+                  <input
                   type="email"
                   required
                   value={email}
@@ -373,10 +376,15 @@ export default function News() {
                     color: "#fff",
                     outline: "none",
                   }}
-                />
-                <button type="submit" className="btn-gold" style={{ minWidth: "auto", padding: "14px 24px", fontSize: "0.75rem", whiteSpace: "nowrap" }}>
-                  Subscribe
-                </button>
+                  />
+                  <button type="submit" className="btn-gold" disabled={!marketingConsent || subscribeMutation.isPending} style={{ minWidth: "auto", padding: "14px 24px", fontSize: "0.75rem", whiteSpace: "nowrap", opacity: !marketingConsent || subscribeMutation.isPending ? 0.6 : 1 }}>
+                    {subscribeMutation.isPending ? "…" : "Subscribe"}
+                  </button>
+                </div>
+                <label style={{ display: "flex", alignItems: "flex-start", gap: "0.55rem", fontFamily: FONT_UI, color: "rgba(255,255,255,0.55)", fontSize: "0.6875rem", lineHeight: 1.55, cursor: "pointer" }}>
+                  <input type="checkbox" checked={marketingConsent} onChange={(event) => setMarketingConsent(event.target.checked)} style={{ marginTop: "3px", accentColor: GOLD }} />
+                  <span>I agree to receive the Billionaire Daily Brief and related marketing communications. I can unsubscribe at any time. See the <Link href="/privacy"><span style={{ color: GOLD, textDecoration: "underline" }}>Privacy Policy</span></Link>.</span>
+                </label>
               </form>
               </>)
             }

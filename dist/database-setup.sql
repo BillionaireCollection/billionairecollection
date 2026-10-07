@@ -167,6 +167,7 @@ CREATE TABLE `newsletter_subscribers` (
 	`email` varchar(320) NOT NULL,
 	`name` varchar(255),
 	`source` varchar(64) DEFAULT 'website',
+	`marketingConsentAt` timestamp NOT NULL DEFAULT (now()),
 	`isActive` boolean NOT NULL DEFAULT true,
 	`createdAt` timestamp NOT NULL DEFAULT (now()),
 	CONSTRAINT `newsletter_subscribers_id` PRIMARY KEY(`id`),

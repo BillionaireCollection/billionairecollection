@@ -238,7 +238,7 @@ export const PAGE_METADATA: Record<string, PageMetadata> = {
   "/founder": {
     title: "Lawrence Colbert | Founder & Owner of Billionaire Collection and Billionaire Magazine",
     description:
-      "Lawrence Colbert is the Founder, Owner and Chief Executive Officer of Billionaire Collection and Founder and Owner of Billionaire Magazine. He leads the London-founded luxury ecosystem behind 40+ Billionaire brands, websites and ventures.",
+      "Lawrence Colbert is the Founder, Owner and Chief Executive Officer of Billionaire Collection and Founder and Owner of Billionaire Magazine. He leads the London-founded luxury ecosystem spanning media, education, brokerage, technology, products, membership and philanthropy.",
     keywords:
       "Lawrence Colbert, Lawrence Colbert founder and owner, Billionaire Collection founder, Billionaire Collection owner, Billionaire Magazine founder, Billionaire Magazine owner, Billionaire Collection CEO, luxury ecosystem founder, luxury media founder, UHNW entrepreneur, Lawrence Colbert London",
     image: FOUNDER_IMAGE,

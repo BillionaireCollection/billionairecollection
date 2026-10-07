@@ -65,8 +65,8 @@ const DIVISIONS = ["All", "Brokerage", "Products", "Media", "Technology", "Servi
 
 export default function Brands() {
   useSEO({
-    title: "Our Brands | Billionaire Collection — The Complete UHNW Brand Portfolio",
-    description: "Explore the complete Billionaire Collection brand portfolio — 28+ ultra-premium brands including Billionaire Magazine, Billionaire Air, Billionaire Estates, Billionaire University, and more. The world's most comprehensive UHNW brand ecosystem.",
+    title: "Our Brands | Billionaire Collection Curated Portfolio",
+    description: "Explore the Billionaire Collection brand portfolio across brokerage, products, media, technology and services.",
     keywords: "billionaire collection brands, billionaire magazine, billionaire air, billionaire estates, billionaire university, billionaire card, billionaire boat, billionaire television, UHNW brands, ultra high net worth brands, billionaire brand portfolio",
     url: "https://billionairecollection.com/brands",
   });
@@ -101,7 +101,7 @@ export default function Brands() {
         badge="Our Brands"
         title="The Complete Billionaire"
         titleAccent="Brand Portfolio"
-        subtitle="28+ ultra-premium brands. One parent company. Billionaire Collection is the world's most comprehensive UHNW brand ecosystem — from Billionaire Magazine and Billionaire Air to Billionaire University and the Billionaire Card."
+        subtitle="A curated portfolio across brokerage, products, media, technology and services — from Billionaire Magazine and Billionaire Air to Billionaire University and the Billionaire Card."
         image="https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-lifestyle-AH2eKQkWWtkQqo8wcxHVw2.webp"
         height="80vh"
       />
@@ -180,7 +180,7 @@ export default function Brands() {
                 {[
                   { label: "billionairecollection.com", sub: "Corporate parent hub", gold: true },
                   { label: "billionairecollectionmagazine.com", sub: "Flagship publication", gold: false },
-                  { label: "28+ Brands", sub: "Under the umbrella", gold: true },
+                  { label: "Curated Brands", sub: "Explore the portfolio", gold: true },
                   { label: "5 Divisions", sub: "Brokerage, Products, Media, Tech, Services", gold: false },
                 ].map((item) => (
                   <div key={item.label} className="bc-glass-card" style={{ padding: "2rem", textAlign: "center" }}>

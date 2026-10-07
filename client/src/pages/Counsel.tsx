@@ -108,14 +108,6 @@ export default function Counsel() {
         btnLabel: "Request a Private Consultation",
         btnHref: "/contact?division=Billionaire%20Counsel&subject=Billionaire%20Counsel%20Private%20Consultation",
       }}
-      partnerLogos={[
-        "Withers LLP",
-        "Boodle Hatfield",
-        "Macfarlanes",
-        "Harneys",
-        "Appleby",
-        "Linklaters",
-      ]}
     />
   );
 }

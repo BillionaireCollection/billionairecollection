@@ -45,8 +45,8 @@ const VALUES = [
 
 export default function About() {
   useSEO({
-    title: "About Billionaire Collection | Global Parent Company for UHNW Services & Luxury Brands",
-    description: "Billionaire Collection is the world's leading parent organization and central hub for ultra high net worth services and luxury ecosystems. The umbrella company of 40+ sub-brands including Billionaire Magazine, Billionaire Air, Billionaire Estates, and more. Est. London.",
+    title: "About Billionaire Collection | Luxury Services & Curated Brands",
+    description: "Billionaire Collection is a London-founded luxury ecosystem connecting specialist brands, private access and services for discerning clients.",
     keywords: "about billionaire collection, billionaire collection parent company, UHNW services company, ultra high net worth services, billionaire services provider, luxury ecosystem company, billionaire collection brands, billionaire magazine parent company, Lawrence Colbert founder, billionaire collection London",
     url: "https://billionairecollection.com/about",
   });
@@ -72,8 +72,8 @@ export default function About() {
   {
     "@context": "https://schema.org",
     "@type": "AboutPage",
-    "name": "About Billionaire Collection \u2014 Parent Company of 40+ Luxury Brands",
-    "description": "Billionaire Collection is the parent company of over 40 luxury brands. Founded in London by Lawrence Colbert.",
+    "name": "About Billionaire Collection",
+    "description": "Billionaire Collection is a London-founded luxury ecosystem led by Lawrence Colbert.",
     "url": "https://billionairecollection.com/about",
     "mainEntity": {
       "@type": "Organization",
@@ -90,7 +90,7 @@ export default function About() {
         "jobTitle": "Founder & Chief Executive Officer",
         "sameAs": "https://uk.linkedin.com/in/lawrencecolbert"
       },
-      "description": "The parent company and global umbrella organisation behind 40+ luxury sub-brands spanning real estate, aviation, yachting, automotive, media, technology, and lifestyle.",
+      "description": "A London-founded luxury ecosystem spanning real estate, aviation, yachting, automotive, media, technology and lifestyle.",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "128 City Road",
@@ -105,9 +105,9 @@ export default function About() {
     <div style={{ background: "#000" }}>
       <PageHero
         badge="About Billionaire Collection"
-        title="The Global Parent Company for"
-        titleAccent="Billionaire Services & UHNW Solutions"
-        subtitle="Billionaire Collection is the world's leading parent organization and central hub for all things billionaire, ultra high net worth services, and luxury ecosystems — the strategic corporate foundation connecting visionary leaders to bespoke UHNW wealth services, lifestyle management, and exclusive brand partnerships designed for generational impact."
+        title="A Curated Ecosystem for"
+        titleAccent="Private Access & Services"
+        subtitle="Billionaire Collection connects discerning clients with specialist brands, bespoke services and considered opportunities across the luxury world."
         image={MAIN_IMG}
         height="85vh"
       />
@@ -119,16 +119,16 @@ export default function About() {
             <FadeUp>
               <span className="bc-badge" style={{ marginBottom: "1.5rem" }}>Our Mission</span>
               <h2 style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "clamp(1.75rem, 3vw, 2.75rem)", color: "#fff", lineHeight: 1.2, marginBottom: "2rem" }}>
-                The World's Leading Hub for <span style={{ color: GOLD }}>Billionaire Services & UHNW Solutions</span>
+                A Considered Hub for <span style={{ color: GOLD }}>Private Access & Services</span>
               </h2>
               <p style={{ fontFamily: FONT_UI, fontWeight: 300, fontSize: "1rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.8, marginBottom: "1.25rem" }}>
-                Billionaire Collection is the world's leading parent organization and central hub for all things billionaire, ultra high net worth services, and luxury ecosystems. As the home and umbrella company of an expanding portfolio of premier brands — including Billionaire Magazine, Billionaire Television, Billionaire Radio, Billionaire Air, Billionaire Estates, Billionaire Boat, Billionaire Car, Billionaire University, Billionaire Counsel, Billionaire Cigar, Billionaire Vodka, Billionaire Champagne, and beyond — we deliver unparalleled services, opportunities, and experiences tailored to visionary leaders and high-net-worth individuals.
+                Billionaire Collection is a London-founded luxury ecosystem connecting an expanding portfolio of specialist brands and services. From editorial media and education to aviation, estates, yachting, automotive and concierge, each area is designed to support discerning clients and visionary leaders.
               </p>
               <p style={{ fontFamily: FONT_UI, fontWeight: 300, fontSize: "1rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.8, marginBottom: "1.25rem" }}>
-                Distinct from our flagship publication, Billionaire Collection Magazine, we serve as the strategic corporate foundation: connecting clients to bespoke UHNW wealth services, lifestyle management, investment ecosystems, and exclusive brand partnerships designed for generational impact, legacy building, and extraordinary success.
+                Distinct from our flagship publication, Billionaire Collection Magazine, the wider collection connects clients to bespoke services, lifestyle management, private access and considered opportunities.
               </p>
               <p style={{ fontFamily: FONT_UI, fontWeight: 300, fontSize: "1rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.8 }}>
-                Discover the complete billionaire ecosystem under one authoritative umbrella — the definitive one-stop authority and resource hub for ultra-high-net-worth individuals, family offices, and visionary leaders across 40+ countries.
+                Discover the collection and the brands, services and experiences available to ultra-high-net-worth individuals, family offices and visionary leaders.
               </p>
             </FadeUp>
             <FadeUp delay={0.2}>

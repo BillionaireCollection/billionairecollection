@@ -73,7 +73,6 @@ export default function Crypto() {
 ]}
       listingsTitle="Digital Assets"
       ctaBanner={{ title: "Enter the Digital Frontier", sub: "Our digital asset advisors will guide your crypto strategy with institutional expertise.", btnLabel: "Speak to an Advisor", btnHref: "/card-concierge" }}
-      partnerLogos={["Coinbase Institutional", "Fireblocks", "Anchorage Digital", "Galaxy Digital"]}
     />
   );
 }

@@ -38,7 +38,6 @@ export interface DivisionPageProps {
   listings?: Listing[];
   listingsTitle?: string;
   ctaBanner?: { title: string; sub: string; btnLabel: string; btnHref: string };
-  partnerLogos?: string[];
   externalWebsite?: { label: string; href: string };
 }
 
@@ -47,7 +46,7 @@ export default function DivisionPage({
   heroCta, heroCtaSecondary,
   aboutTitle, aboutBody, features,
   listings, listingsTitle,
-  ctaBanner, partnerLogos, externalWebsite,
+  ctaBanner, externalWebsite,
 }: DivisionPageProps) {
   const enquiryHref = (interest: string) => {
     const params = new URLSearchParams({
@@ -168,28 +167,6 @@ export default function DivisionPage({
                 <Link href={listingSubscriptionHref}>
                   <button className="btn-ghost-gold">View All Listings</button>
                 </Link>
-              </div>
-            </FadeUp>
-          </div>
-        </section>
-      )}
-
-      {/* Partner logos */}
-      {partnerLogos && partnerLogos.length > 0 && (
-        <section style={{ padding: "4rem 0", borderTop: "1px solid rgba(201,168,76,0.1)" }}>
-          <div className="container">
-            <FadeUp>
-              <div style={{ textAlign: "center", marginBottom: "2rem" }}>
-                <span style={{ fontFamily: FONT_UI, fontSize: "0.6875rem", textTransform: "uppercase", letterSpacing: "0.2em", color: "rgba(255,255,255,0.25)" }}>
-                  Trusted Partners
-                </span>
-              </div>
-              <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "2rem 3rem" }}>
-                {partnerLogos.map((p) => (
-                  <span key={p} style={{ fontFamily: FONT_UI, fontWeight: 300, fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.15em", color: "rgba(255,255,255,0.25)" }}>
-                    {p}
-                  </span>
-                ))}
               </div>
             </FadeUp>
           </div>

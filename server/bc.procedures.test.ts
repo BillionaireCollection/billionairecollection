@@ -60,12 +60,19 @@ describe("newsletter.subscribe", () => {
     ).rejects.toThrow();
   });
 
+  it("rejects newsletter registration without affirmative marketing consent", async () => {
+    const caller = appRouter.createCaller(makeCtx(null));
+    // @ts-expect-error Intentional missing consent input
+    await expect(caller.newsletter.subscribe({ email: "test@example.com" })).rejects.toThrow();
+  });
+
   it("accepts a valid email", async () => {
     const caller = appRouter.createCaller(makeCtx(null));
     // DB may not be available in test env — we just check input validation passes
     try {
       const result = await caller.newsletter.subscribe({
         email: "test@example.com",
+        marketingConsent: true,
       });
       expect(result.success).toBe(true);
     } catch (err: unknown) {

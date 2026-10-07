@@ -197,8 +197,8 @@ const DIVISIONS = [
 
 export default function Ecosystem() {
   useSEO({
-    title: "The Billionaire Ecosystem | Billionaire Collection — 40+ UHNW Brands Under One Umbrella",
-    description: "Explore the complete Billionaire Collection ecosystem — 40+ ultra-premium brands spanning brokerage, products, media, technology, and services. The world's most comprehensive UHNW lifestyle and wealth ecosystem, headquartered in London.",
+    title: "The Billionaire Ecosystem | Billionaire Collection Curated Brands",
+    description: "Explore the Billionaire Collection ecosystem across brokerage, products, media, technology and services, headquartered in London.",
     keywords: "billionaire ecosystem, billionaire collection brands, UHNW lifestyle ecosystem, billionaire brands, ultra high net worth brands, billionaire collection divisions, billionaire magazine, billionaire air, billionaire estates, billionaire boat, billionaire university, billionaire card",
     url: "https://billionairecollection.com/ecosystem",
   });
@@ -217,7 +217,7 @@ export default function Ecosystem() {
       "@type": "Organization",
       "name": "Billionaire Collection — The Billionaire Ecosystem",
       "url": "https://billionairecollection.com/ecosystem",
-      "description": "The complete Billionaire Collection ecosystem — 40+ ultra-premium brands spanning brokerage, products, media, technology, and services.",
+      "description": "The Billionaire Collection ecosystem spanning brokerage, products, media, technology and services.",
       "parentOrganization": {
         "@type": "Organization",
         "name": "Billionaire Collection",
@@ -232,7 +232,7 @@ export default function Ecosystem() {
         badge="The Ecosystem"
         title="The Complete Billionaire"
         titleAccent="Collection Ecosystem"
-        subtitle="40+ ultra-premium brands. Five divisions. One unified vision. Billionaire Collection is the world's most comprehensive UHNW lifestyle and wealth ecosystem — the definitive corporate hub for ultra-high-net-worth individuals, family offices, and visionary leaders across 40+ countries."
+        subtitle="A curated portfolio across five divisions. Billionaire Collection connects ultra-high-net-worth individuals, family offices and visionary leaders with specialist brands, services and opportunities."
         image="https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-main-QJbNmDnsM8Jru6dBDixZQ8.webp"
         height="85vh"
       />
@@ -274,7 +274,7 @@ export default function Ecosystem() {
                 Billionaire Collection was founded on a singular conviction: that the world's most successful individuals deserve a single, trusted destination for every aspect of the ultra-luxury lifestyle. Not a directory. Not a marketplace. An ecosystem.
               </p>
               <p style={{ fontFamily: FONT_UI, fontWeight: 300, fontSize: "1.0625rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.85 }}>
-                As the strategic corporate parent and global umbrella organisation, Billionaire Collection connects clients to bespoke UHNW wealth services, lifestyle management, investment ecosystems, and exclusive brand partnerships designed for generational impact, legacy building, and extraordinary success.
+                As a London-founded luxury ecosystem, Billionaire Collection connects clients to bespoke services, lifestyle management, specialist expertise and considered opportunities.
               </p>
             </div>
           </FadeUp>
@@ -359,10 +359,10 @@ export default function Ecosystem() {
           <FadeUp>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "1px", background: "rgba(201,168,76,0.1)" }}>
               {[
-                { label: "40+", sub: "Brands in the ecosystem" },
+                { label: "Curated", sub: "Brand portfolio" },
                 { label: "5", sub: "Core divisions" },
-                { label: "40+", sub: "Countries served" },
-                { label: "20+", sub: "Years of expertise" },
+                { label: "Global", sub: "Perspective" },
+                { label: "Private", sub: "Access" },
                 { label: "24/7", sub: "Concierge access" },
               ].map((stat) => (
                 <div key={stat.label} className="bc-glass-card" style={{ padding: "3rem 2rem", textAlign: "center" }}>

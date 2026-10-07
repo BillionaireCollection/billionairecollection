@@ -58,8 +58,8 @@ export default function Boat() {
       heroCtaSecondary={{ label: "View Listings", href: "/subscribe?interest=Billionaire%20Boat" }}
       aboutTitle="Command the Seas in Absolute Luxury"
       aboutBody={[
-  "Billionaire Boat represents the most prestigious superyacht brokerage in the world, offering an unparalleled portfolio of vessels for sale, charter, and bespoke new construction.",
-  "Our relationships with the world's leading shipyards — including Lürssen, Feadship, Benetti, and the Ferretti Group — ensure access to the finest vessels ever built, as well as the opportunity to commission entirely bespoke new builds.",
+  "Billionaire Boat presents a specialist superyacht service for sale, charter and bespoke new-construction conversations.",
+  "Our team helps qualified clients navigate leading shipyards, brokerage opportunities and the process of commissioning a bespoke vessel.",
   "Whether you seek a 50-metre explorer yacht for Antarctic expeditions or a 100-metre floating palace for Mediterranean summers, our team of naval architects and yacht brokers will guide you to the perfect vessel."
 ]}
       features={[
@@ -76,7 +76,6 @@ export default function Boat() {
       listingsTitle="Featured Yachts"
       ctaBanner={{ title: "Your Dream Yacht Awaits", sub: "From charter to acquisition, our team will find or build the perfect vessel for your lifestyle.", btnLabel: "Speak to a Yacht Broker", btnHref: "https://billionaireboat.com" }}
       externalWebsite={{ label: "Visit billionaireboat.com", href: "https://billionaireboat.com" }}
-      partnerLogos={["Lürssen", "Feadship", "Benetti", "Ferretti Group", "Heesen", "Oceanco"]}
     />
   );
 }

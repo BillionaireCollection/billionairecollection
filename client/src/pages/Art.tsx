@@ -52,14 +52,14 @@ export default function Art() {
       badge="Billionaire Art"
       heroTitle="Fine Art &"
       heroAccent="Collectibles"
-      heroSubtitle="Acquire, sell, and invest in the world's most significant works of art through our curated advisory service — in partnership with Christie's and leading private dealers."
+      heroSubtitle="Acquire, sell and invest in exceptional works of art through a discreet, curator-led advisory service."
       heroImage="https://d2xsxph8kpxj0f.cloudfront.net/310419663028447909/DwwHDtJPUge8HmugY3BgSV/bc-hero-lifestyle-AH2eKQkWWtkQqo8wcxHVw2.webp"
       heroCta={{ label: "Enquire Now", href: "https://billionaireart.com" }}
       heroCtaSecondary={{ label: "View Listings", href: "/subscribe?interest=Billionaire%20Art" }}
       aboutTitle="Art as the Ultimate Investment"
       aboutBody={[
   "Billionaire Art provides ultra-high-net-worth collectors with access to the world's most significant works of art, from Old Masters to contemporary blue-chip artists.",
-  "In partnership with Christie's, Sotheby's, and the world's most respected private dealers, we offer acquisition advisory, collection management, and discreet private sales for the most important works in existence.",
+  "We offer acquisition advisory, collection management and discreet private-sale support for collectors seeking exceptional works.",
   "Our team of art advisors brings decades of experience across every major collecting category — from Impressionist masterworks to post-war American abstraction, from rare antiquities to cutting-edge digital art."
 ]}
       features={[
@@ -76,7 +76,6 @@ export default function Art() {
       listingsTitle="Featured Works"
       ctaBanner={{ title: "Build a World-Class Collection", sub: "Our art advisors will guide you through every aspect of collecting, from acquisition to legacy planning.", btnLabel: "Speak to an Art Advisor", btnHref: "https://billionaireart.com" }}
       externalWebsite={{ label: "Visit billionaireart.com", href: "https://billionaireart.com" }}
-      partnerLogos={["Christie's", "Sotheby's", "Phillips", "Gagosian", "Hauser & Wirth"]}
     />
   );
 }

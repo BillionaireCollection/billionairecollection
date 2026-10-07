@@ -76,7 +76,6 @@ export default function Air() {
       listingsTitle="Featured Aircraft"
       ctaBanner={{ title: "Fly Without Compromise", sub: "Our aviation advisors are available 24/7 to arrange your next flight or guide your aircraft acquisition.", btnLabel: "Request a Flight", btnHref: "https://billionaireair.com" }}
       externalWebsite={{ label: "Visit billionaireair.com", href: "https://billionaireair.com" }}
-      partnerLogos={["Gulfstream", "Bombardier", "Dassault", "Airbus Corporate Jets", "Embraer"]}
     />
   );
 }

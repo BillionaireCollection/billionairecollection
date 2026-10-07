@@ -68,13 +68,13 @@ export default function Estates() {
       heroCtaSecondary={{ label: "View Listings", href: "/subscribe?interest=Billionaire%20Estates" }}
       aboutTitle="Where Architecture Meets Aspiration"
       aboutBody={[
-  "Billionaire Estates is the world's most exclusive real estate brokerage, specialising in ultra-prime residential and commercial properties across every major global market.",
-  "Our network of elite brokers, in partnership with Sotheby's International Realty and the world's leading private property advisors, provides discreet access to properties that never reach the open market.",
+  "Billionaire Estates specialises in ultra-prime residential and commercial property opportunities across leading global markets.",
+  "Our specialist network provides discreet access to property opportunities, including off-market conversations for qualified clients.",
   "From London's most prestigious addresses to private island estates in the Indian Ocean, every property in our portfolio represents the pinnacle of architectural achievement and locational prestige."
 ]}
       features={[
     { icon: "🏛", title: "Off-Market Access", desc: "Exclusive properties not listed publicly" },
-    { icon: "🌍", title: "Global Portfolio", desc: "Properties across 40+ countries" },
+    { icon: "🌍", title: "Global Portfolio", desc: "Opportunities across leading markets" },
     { icon: "🔒", title: "NDA-Protected", desc: "Complete discretion guaranteed" },
     { icon: "⚡", title: "Dedicated Advisor", desc: "Personal property consultant" }
 ]}
@@ -86,7 +86,6 @@ export default function Estates() {
       listingsTitle="Featured Properties"
       ctaBanner={{ title: "Begin Your Property Journey", sub: "Our advisors are ready to present the world's finest properties, tailored to your exact specifications.", btnLabel: "Speak to an Advisor", btnHref: "https://billionaireestates.com" }}
       externalWebsite={{ label: "Visit billionaireestates.com", href: "https://billionaireestates.com" }}
-      partnerLogos={["Sotheby's International Realty", "Knight Frank", "Savills", "Christie's Real Estate"]}
     />
   );
 }

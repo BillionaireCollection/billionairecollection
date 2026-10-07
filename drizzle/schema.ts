@@ -40,6 +40,7 @@ export const newsletterSubscribers = mysqlTable("newsletter_subscribers", {
   email: varchar("email", { length: 320 }).notNull().unique(),
   name: varchar("name", { length: 255 }),
   source: varchar("source", { length: 64 }).default("website"),
+  marketingConsentAt: timestamp("marketingConsentAt").defaultNow().notNull(),
   isActive: boolean("isActive").default(true).notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });

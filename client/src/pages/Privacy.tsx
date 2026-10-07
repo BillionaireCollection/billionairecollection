@@ -21,8 +21,8 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 export default function Privacy() {
   useSEO({
-    title: "Privacy Policy | Billionaire Collection — Parent Company of 40+ Luxury Brands",
-    description: "Privacy policy for Billionaire Collection, the parent company and global umbrella organisation behind 40+ luxury sub-brands. Data protection, GDPR compliance, and information security standards for all Billionaire Collection brands and services.",
+    title: "Privacy Policy | Billionaire Collection",
+    description: "Privacy policy for Billionaire Collection, including information about enquiries, newsletter marketing consent and cookie preferences.",
     keywords: "Billionaire Collection privacy policy, luxury brand data protection, GDPR compliance, Billionaire Collection legal, privacy notice",
   });
   useJsonLd([
@@ -48,7 +48,7 @@ export default function Privacy() {
     "@context": "https://schema.org",
     "@type": "WebPage",
     "name": "Privacy Policy \u2014 Billionaire Collection",
-    "description": "Privacy policy for Billionaire Collection, the parent company of 40+ luxury brands.",
+    "description": "Privacy policy for Billionaire Collection, including information about enquiries, newsletter marketing consent and cookie preferences.",
     "url": "https://billionairecollection.com/privacy",
     "publisher": {
       "@type": "Organization",
@@ -65,12 +65,16 @@ export default function Privacy() {
           <FadeUp>
             <div style={{ fontFamily: FONT_UI, fontSize: "0.9375rem", color: "rgba(255,255,255,0.6)", lineHeight: 1.9 }}>
               <h2 style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "1.75rem", color: "#fff", marginBottom: "1.5rem" }}>Privacy Policy</h2>
-              <p style={{ marginBottom: "1.5rem" }}>Last updated: March 2026</p>
+              <p style={{ marginBottom: "1.5rem" }}>Last updated: October 2026</p>
               <p style={{ marginBottom: "1.5rem" }}>Billionaire Collection ("we", "us", or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.</p>
               <h3 style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "1.25rem", color: "#fff", margin: "2rem 0 1rem" }}>Information We Collect</h3>
               <p style={{ marginBottom: "1.5rem" }}>We collect information you provide directly to us, such as when you create an account, submit a form, or contact us. This may include your name, email address, phone number, and any other information you choose to provide.</p>
               <h3 style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "1.25rem", color: "#fff", margin: "2rem 0 1rem" }}>How We Use Your Information</h3>
               <p style={{ marginBottom: "1.5rem" }}>We use the information we collect to provide, maintain, and improve our services, process transactions, send you technical notices and support messages, and respond to your comments and questions.</p>
+              <h3 style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "1.25rem", color: "#fff", margin: "2rem 0 1rem" }}>Newsletter Marketing</h3>
+              <p style={{ marginBottom: "1.5rem" }}>We send the Billionaire Daily Brief and related marketing communications only where you have actively opted in. You may withdraw consent or unsubscribe at any time using the link in an email or by contacting us.</p>
+              <h3 style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "1.25rem", color: "#fff", margin: "2rem 0 1rem" }}>Cookies and Similar Technologies</h3>
+              <p style={{ marginBottom: "1.5rem" }}>We use essential browser storage to remember your cookie preference. Optional analytics are not loaded unless you choose “Accept analytics” in the cookie banner. You can update this choice at any time by selecting <button type="button" onClick={() => window.dispatchEvent(new Event("bc:open-cookie-settings"))} style={{ border: 0, padding: 0, background: "transparent", color: GOLD, font: "inherit", textDecoration: "underline", cursor: "pointer" }}>Cookie settings</button>.</p>
               <h3 style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "1.25rem", color: "#fff", margin: "2rem 0 1rem" }}>Contact Us</h3>
               <p>If you have questions about this Privacy Policy, please contact us at info@billionaireplc.com or +44 207 183 1700.</p>
             </div>

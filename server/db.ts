@@ -132,7 +132,7 @@ export async function getUserByOpenId(openId: string) {
 export async function subscribeNewsletter(data: InsertNewsletterSubscriber) {
   const db = await getDb();
   if (!db) throw new Error("Database not available");
-  await db.insert(newsletterSubscribers).values(data).onDuplicateKeyUpdate({ set: { isActive: true, name: data.name ?? null } });
+  await db.insert(newsletterSubscribers).values(data).onDuplicateKeyUpdate({ set: { isActive: true, name: data.name ?? null, source: data.source ?? "website", marketingConsentAt: new Date() } });
 }
 
 export async function getNewsletterSubscribers() {

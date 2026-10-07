@@ -76,7 +76,6 @@ export default function Car() {
       listingsTitle="Featured Vehicles"
       ctaBanner={{ title: "Find Your Perfect Machine", sub: "Our automotive advisors will source, acquire, or commission the exact vehicle you desire.", btnLabel: "Speak to an Advisor", btnHref: "/card-concierge" }}
       externalWebsite={{ label: "Visit billionairecar.com", href: "https://billionairecar.com" }}
-      partnerLogos={["Ferrari", "Bugatti", "Rolls-Royce", "Lamborghini", "Porsche", "Pagani", "Koenigsegg"]}
     />
   );
 }

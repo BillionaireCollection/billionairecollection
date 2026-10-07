@@ -49,6 +49,7 @@ var newsletterSubscribers = mysqlTable("newsletter_subscribers", {
   email: varchar("email", { length: 320 }).notNull().unique(),
   name: varchar("name", { length: 255 }),
   source: varchar("source", { length: 64 }).default("website"),
+  marketingConsentAt: timestamp("marketingConsentAt").defaultNow().notNull(),
   isActive: boolean("isActive").default(true).notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull()
 });
@@ -303,7 +304,7 @@ async function getUserByOpenId(openId) {
 async function subscribeNewsletter(data) {
   const db = await getDb();
   if (!db) throw new Error("Database not available");
-  await db.insert(newsletterSubscribers).values(data).onDuplicateKeyUpdate({ set: { isActive: true, name: data.name ?? null } });
+  await db.insert(newsletterSubscribers).values(data).onDuplicateKeyUpdate({ set: { isActive: true, name: data.name ?? null, source: data.source ?? "website", marketingConsentAt: /* @__PURE__ */ new Date() } });
 }
 async function getNewsletterSubscribers() {
   const db = await getDb();
@@ -1340,9 +1341,9 @@ var appRouter = router({
     })
   }),
   newsletter: router({
-    subscribe: publicProcedure.input(z2.object({ email: z2.string().email(), name: z2.string().optional(), source: z2.string().optional() })).mutation(async ({ input }) => {
+    subscribe: publicProcedure.input(z2.object({ email: z2.string().email(), name: z2.string().optional(), source: z2.string().optional(), marketingConsent: z2.literal(true) })).mutation(async ({ input }) => {
       try {
-        await subscribeNewsletter({ email: input.email, name: input.name, source: input.source ?? "website" });
+        await subscribeNewsletter({ email: input.email, name: input.name, source: input.source ?? "website", marketingConsentAt: /* @__PURE__ */ new Date() });
         sendOwnerEmail(
           `New Newsletter Subscriber \u2014 ${input.email}`,
           `**Email:** ${input.email}
@@ -1926,7 +1927,7 @@ var PAGE_METADATA = {
   ),
   "/founder": {
     title: "Lawrence Colbert | Founder & Owner of Billionaire Collection and Billionaire Magazine",
-    description: "Lawrence Colbert is the Founder, Owner and Chief Executive Officer of Billionaire Collection and Founder and Owner of Billionaire Magazine. He leads the London-founded luxury ecosystem behind 40+ Billionaire brands, websites and ventures.",
+    description: "Lawrence Colbert is the Founder, Owner and Chief Executive Officer of Billionaire Collection and Founder and Owner of Billionaire Magazine. He leads the London-founded luxury ecosystem spanning media, education, brokerage, technology, products, membership and philanthropy.",
     keywords: "Lawrence Colbert, Lawrence Colbert founder and owner, Billionaire Collection founder, Billionaire Collection owner, Billionaire Magazine founder, Billionaire Magazine owner, Billionaire Collection CEO, luxury ecosystem founder, luxury media founder, UHNW entrepreneur, Lawrence Colbert London",
     image: FOUNDER_IMAGE,
     type: "profile",

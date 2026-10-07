@@ -76,7 +76,6 @@ export default function Chrono() {
       listingsTitle="Featured Acquisitions"
       ctaBanner={{ title: "Access Reserved for Those Who Collect at the Pinnacle", sub: "Our concierge team is available to source, authenticate, and place the world's most significant timepieces with absolute discretion.", btnLabel: "Request Private Access", btnHref: "https://billionairechrono.com" }}
       externalWebsite={{ label: "Visit billionairechrono.com", href: "https://billionairechrono.com" }}
-      partnerLogos={["Patek Philippe", "Richard Mille", "Jacob & Co.", "Vacheron Constantin", "Audemars Piguet", "A. Lange & Söhne"]}
     />
   );
 }

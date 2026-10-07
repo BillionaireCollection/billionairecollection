@@ -174,9 +174,9 @@ export default function Services() {
         <div className="container">
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1px", background: "rgba(201,168,76,0.1)" }}>
             {[
-              { label: "40+", sub: "Sub-brands in the ecosystem" },
-              { label: "40+", sub: "Countries served globally" },
-              { label: "20+", sub: "Years of luxury expertise" },
+              { label: "Curated", sub: "Service portfolio" },
+              { label: "Global", sub: "Perspective" },
+              { label: "Private", sub: "Client service" },
               { label: "24/7", sub: "Concierge availability" },
             ].map((stat) => (
               <div key={stat.label} className="bc-glass-card" style={{ padding: "3rem", textAlign: "center" }}>

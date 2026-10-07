@@ -80,6 +80,7 @@ const FOOTER_COLS = [
 
 export default function Footer() {
   const [email, setEmail] = useState("");
+  const [marketingConsent, setMarketingConsent] = useState(false);
   const [subscribed, setSubscribed] = useState(false);
   const [subError, setSubError] = useState("");
   const subscribeMutation = trpc.newsletter.subscribe.useMutation({
@@ -114,7 +115,7 @@ export default function Footer() {
             </p>
           ) : (
             <form
-              onSubmit={(e) => { e.preventDefault(); setSubError(""); if (email) subscribeMutation.mutate({ email }); }}
+              onSubmit={(e) => { e.preventDefault(); setSubError(""); if (email && marketingConsent) subscribeMutation.mutate({ email, source: "footer", marketingConsent: true }); }}
               style={{ display: "flex", flexDirection: "column", gap: "0.5rem", maxWidth: "460px", width: "100%" }}
             >
               <div style={{ display: "flex", gap: "0" }}>
@@ -140,11 +141,15 @@ export default function Footer() {
                   type="submit"
                   className="btn-gold"
                   style={{ minWidth: "auto", padding: "12px 20px", fontSize: "0.75rem", whiteSpace: "nowrap" }}
-                  disabled={subscribeMutation.isPending}
+                  disabled={!marketingConsent || subscribeMutation.isPending}
                 >
                   {subscribeMutation.isPending ? "…" : "Subscribe"}
                 </button>
               </div>
+              <label style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem", fontFamily: FONT_UI, color: "rgba(255,255,255,0.52)", fontSize: "0.6875rem", lineHeight: 1.5, cursor: "pointer" }}>
+                <input type="checkbox" checked={marketingConsent} onChange={(event) => setMarketingConsent(event.target.checked)} style={{ marginTop: "3px", accentColor: GOLD }} />
+                <span>I agree to receive the Billionaire Daily Brief and related marketing communications. I can unsubscribe at any time. See the <Link href="/privacy"><span style={{ color: GOLD, textDecoration: "underline" }}>Privacy Policy</span></Link>.</span>
+              </label>
               {subError && <p style={{ fontFamily: FONT_UI, fontSize: "0.75rem", color: "#e57373", margin: 0 }}>{subError}</p>}
             </form>
           )}

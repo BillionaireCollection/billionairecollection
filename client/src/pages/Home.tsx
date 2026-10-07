@@ -5,7 +5,7 @@
    ============================================================ */
 
 import { motion, useInView } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { useRef } from "react";
 import { Link } from "wouter";
 import SphereAnimation from "@/components/SphereAnimation";
 import { useSEO } from "@/hooks/useSEO";
@@ -61,38 +61,23 @@ const DIVISIONS = [
 ];
 
 const BRANDS = [
-  "Louis Vuitton", "Hermès", "Chanel", "Gucci", "Cartier", "Dior",
-  "Rolex", "Tiffany & Co.", "Bugatti", "Porsche", "Lamborghini",
-  "Sotheby's", "Loro Piana", "Lomond Yachts", "Lürssen", "Graff",
+  { label: "Louis Vuitton", href: "https://www.louisvuitton.com/" },
+  { label: "Hermès", href: "https://www.hermes.com/" },
+  { label: "Chanel", href: "https://www.chanel.com/" },
+  { label: "Gucci", href: "https://www.gucci.com/" },
+  { label: "Cartier", href: "https://www.cartier.com/" },
+  { label: "Dior", href: "https://www.dior.com/" },
+  { label: "Rolex", href: "https://www.rolex.com/" },
+  { label: "Tiffany & Co.", href: "https://www.tiffany.com/" },
+  { label: "Bugatti", href: "https://www.bugatti.com/" },
+  { label: "Porsche", href: "https://www.porsche.com/" },
+  { label: "Lamborghini", href: "https://www.lamborghini.com/" },
+  { label: "Sotheby's", href: "https://www.sothebys.com/" },
+  { label: "Loro Piana", href: "https://us.loropiana.com/" },
+  { label: "Lomond Yachts", href: "https://lomondyachts.com/" },
+  { label: "Lürssen", href: "https://www.lurssen.com/" },
+  { label: "Graff", href: "https://www.graff.com/" },
 ];
-
-function AnimatedCounter({ target, suffix = "", prefix = "" }: { target: number; suffix?: string; prefix?: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
-  const [display, setDisplay] = useState(0);
-  const started = useRef(false);
-
-  useEffect(() => {
-    if (!inView || started.current) return;
-    started.current = true;
-    let startTs: number | null = null;
-    const duration = 2000;
-    const step = (ts: number) => {
-      if (!startTs) startTs = ts;
-      const progress = Math.min((ts - startTs) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setDisplay(Math.round(eased * target));
-      if (progress < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  }, [inView, target]);
-
-  return (
-    <span ref={ref}>
-      {prefix}{display.toLocaleString()}{suffix}
-    </span>
-  );
-}
 
 function HomepageNewsTeaser() {
   const { data } = trpc.news.list.useQuery({ limit: 4 });
@@ -103,7 +88,7 @@ function HomepageNewsTeaser() {
     { category: "Superyachts", title: "The World's 10 Largest Superyachts Delivered in 2026", source: "Robb Report", publishedAt: new Date() },
     { category: "Real Estate", title: "Ultra-Prime London Properties Break Record at £200M", source: "Financial Times", publishedAt: new Date() },
     { category: "Private Aviation", title: "Gulfstream G800 Sets New Transatlantic Speed Record", source: "Forbes", publishedAt: new Date() },
-    { category: "Wealth", title: "Global UHNW Population Surges to 395,000 Individuals", source: "Barron's", publishedAt: new Date() },
+    { category: "Wealth", title: "Wealth Creators Shape New Global Markets", source: "Billionaire News", publishedAt: new Date() },
   ];
 
   const items = articles.length > 0 ? articles : fallback;
@@ -147,9 +132,9 @@ export default function Home() {
     {
       "@type": "WebSite",
       "name": "Billionaire Collection",
-      "alternateName": "Billionaire Collection \u2014 The World's Premier Luxury Ecosystem",
+      "alternateName": "Billionaire Collection Luxury Ecosystem",
       "url": "https://billionairecollection.com",
-      "description": "Billionaire Collection is the parent company of 40+ luxury sub-brands \u2014 the world's premier luxury ecosystem for ultra-high-net-worth individuals.",
+      "description": "Billionaire Collection is a London-founded luxury ecosystem connecting private access, specialist services and curated experiences for ultra-high-net-worth individuals.",
       "potentialAction": {
         "@type": "SearchAction",
         "target": {
@@ -333,16 +318,16 @@ export default function Home() {
         <div className="container">
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: "2rem", textAlign: "center" }}>
             {[
-              { value: 40, suffix: "+", label: "Countries" },
-              { value: 395000, suffix: "+", label: "UHNW Members" },
-              { value: 12, suffix: "B+", prefix: "$", label: "Assets Managed" },
-              { value: 24, suffix: "/7", label: "Concierge" },
-              { value: 500, suffix: "+", label: "Elite Partners" },
+              { value: "Private", label: "Access" },
+              { value: "Curated", label: "Opportunities" },
+              { value: "Global", label: "Perspective" },
+              { value: "24/7", label: "Concierge" },
+              { value: "Discreet", label: "Enquiries" },
             ].map((stat, i) => (
               <FadeUp key={stat.label} delay={i * 0.08}>
                 <div>
                   <div style={{ fontFamily: FONT_HEADING, fontWeight: 400, fontSize: "clamp(1.75rem, 3vw, 2.5rem)", color: GOLD, marginBottom: "0.5rem", letterSpacing: "-0.02em" }}>
-                    <AnimatedCounter target={stat.value} suffix={stat.suffix} prefix={stat.prefix} />
+                    {stat.value}
                   </div>
                   <div style={{ fontFamily: FONT_UI, fontSize: "0.6875rem", textTransform: "uppercase", letterSpacing: "0.15em", color: "rgba(255,255,255,0.4)" }}>{stat.label}</div>
                 </div>
@@ -366,7 +351,7 @@ export default function Home() {
                 Billionaire Collection is not merely a marketplace — it is a complete lifestyle ecosystem engineered for those who demand the absolute finest. From ultra-prime real estate to bespoke superyachts, from private aviation to rare spirits, every offering is curated to the highest standard.
               </p>
               <p style={{ fontFamily: FONT_UI, fontWeight: 300, fontSize: "1rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.8, marginBottom: "2rem" }}>
-                Our global network of elite partners — spanning Christie's, Sotheby's International Realty, Virtuoso, Ferretti Group, and the world's most prestigious fashion houses — ensures access to assets and experiences unavailable anywhere else.
+                Our considered approach brings together specialist knowledge, private access and a clear understanding of the details that matter to discerning clients.
               </p>
               <Link href="/marketplace">
                 <button className="btn-ghost-gold">Discover the Collection</button>
@@ -556,17 +541,17 @@ export default function Home() {
           <FadeUp>
             <div style={{ textAlign: "center", marginBottom: "3rem" }}>
               <span style={{ fontFamily: FONT_UI, fontSize: "0.6875rem", textTransform: "uppercase", letterSpacing: "0.2em", color: "rgba(255,255,255,0.3)" }}>
-                Curated Partners & Brands
+                Curated Brands
               </span>
             </div>
             <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "2rem 3rem" }}>
               {BRANDS.map((brand) => (
-                <span key={brand} style={{ fontFamily: FONT_UI, fontWeight: 300, fontSize: "0.8125rem", textTransform: "uppercase", letterSpacing: "0.12em", color: "rgba(255,255,255,0.3)", transition: "color 0.2s", cursor: "default" }}
-                  onMouseEnter={(e) => { (e.target as HTMLElement).style.color = "rgba(201,168,76,0.7)"; }}
-                  onMouseLeave={(e) => { (e.target as HTMLElement).style.color = "rgba(255,255,255,0.3)"; }}
+                <a key={brand.label} href={brand.href} target="_blank" rel="noopener noreferrer" style={{ fontFamily: FONT_UI, fontWeight: 300, fontSize: "0.8125rem", textTransform: "uppercase", letterSpacing: "0.12em", color: "rgba(255,255,255,0.3)", transition: "color 0.2s", textDecoration: "none" }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "rgba(201,168,76,0.9)"; }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.3)"; }}
                 >
-                  {brand}
-                </span>
+                  {brand.label}
+                </a>
               ))}
             </div>
           </FadeUp>
@@ -795,7 +780,7 @@ export default function Home() {
             {[
               {
                 q: "What is Billionaire Collection?",
-                a: "Billionaire Collection is the world's leading parent organization and central hub for all things billionaire, ultra high net worth services, and luxury ecosystems. It serves as the umbrella company for 40+ sub-brands spanning aviation, real estate, superyachts, automotive, media, education, and luxury products."
+                a: "Billionaire Collection is a London-founded luxury ecosystem connecting specialist brands, private access and services across aviation, real estate, superyachts, automotive, media, education and luxury products."
               },
               {
                 q: "What UHNW services does Billionaire Collection offer?",
@@ -807,7 +792,7 @@ export default function Home() {
               },
               {
                 q: "Who is Billionaire Collection for?",
-                a: "Billionaire Collection is designed for ultra-high-net-worth individuals, family offices, visionary entrepreneurs, and leaders who demand access to the world's most exclusive services, assets, and experiences. Our ecosystem serves clients across 40+ countries with assets and opportunities unavailable anywhere else."
+                a: "Billionaire Collection is designed for ultra-high-net-worth individuals, family offices, visionary entrepreneurs and leaders seeking private access to specialist services, assets and experiences."
               },
               {
                 q: "What is the Billionaire Card?",
@@ -815,7 +800,7 @@ export default function Home() {
               },
               {
                 q: "Where is Billionaire Collection based?",
-                a: "Billionaire Collection is established in London, United Kingdom, and operates globally across 40+ countries through its network of elite partners, sub-brands, and affiliate companies."
+                a: "Billionaire Collection is established in London, United Kingdom, and serves an international client base through its specialist brands and service network."
               },
             ].map((faq, i) => (
               <FadeUp key={faq.q} delay={i * 0.06}>
