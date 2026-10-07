@@ -571,3 +571,11 @@
 - [x] Build a 17 September payload with URL-safe slugs, allowed categories, compliant Unsplash images and exactly two featured articles
 - [ ] Submit only through the requested live news.upsertMany tRPC endpoint and retain a non-secret direct error log if rejected — blocked: production returned HTTP 401 `Please login (10001)`; error logged at /tmp/billionaire-collection-news-upsert-2026-09-17.error.log
 - [x] Report the precise direct-publication result without using a fallback route
+
+
+## Daily News Publication — 7 October 2026
+
+- [x] Research and validate 12 current billionaire and UHNW stories across wealth, luxury property, superyachts, aviation, automotive, art and lifestyle
+- [x] Build a 7 October payload with URL-safe slugs, allowed categories, compliant Unsplash images and exactly two featured articles
+- [ ] Submit only through the requested live news.upsertMany tRPC endpoint and retain a non-secret direct error log if rejected — blocked: production returned HTTP 401 `Please login (10001)`; error logged at /tmp/billionaire-collection-news-upsert-2026-10-07.error.log
+- [x] Report the precise direct-publication result without using a fallback route
