@@ -1344,13 +1344,20 @@ var appRouter = router({
     subscribe: publicProcedure.input(z2.object({ email: z2.string().email(), name: z2.string().optional(), source: z2.string().optional(), marketingConsent: z2.literal(true) })).mutation(async ({ input }) => {
       try {
         await subscribeNewsletter({ email: input.email, name: input.name, source: input.source ?? "website", marketingConsentAt: /* @__PURE__ */ new Date() });
-        sendOwnerEmail(
+        const delivery = await sendOwnerEmail(
           `New Newsletter Subscriber \u2014 ${input.email}`,
           `**Email:** ${input.email}
 **Name:** ${input.name ?? "\u2014"}
-**Source:** ${input.source ?? "website"}`
-        ).catch(() => {
-        });
+**Source:** ${input.source ?? "website"}`,
+          { replyTo: input.email }
+        );
+        if (!delivery.delivered) {
+          console.warn("[Newsletter] Owner email delivery failed after subscriber persistence.");
+        }
+        void notifyOwner({
+          title: "New Newsletter Subscriber",
+          content: "A new newsletter subscriber has been securely recorded. Review it in the Billionaire Collection admin area."
+        }).catch(() => void 0);
       } catch (err) {
         const msg = err instanceof Error ? err.message : String(err);
         if (!msg.includes("duplicate") && !msg.includes("Duplicate") && !msg.includes("ER_DUP")) {

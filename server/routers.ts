@@ -66,11 +66,18 @@ export const appRouter = router({
       .mutation(async ({ input }) => {
         try {
           await subscribeNewsletter({ email: input.email, name: input.name, source: input.source ?? "website", marketingConsentAt: new Date() });
-          // Notify owner only on new subscription
-          sendOwnerEmail(
+          const delivery = await sendOwnerEmail(
             `New Newsletter Subscriber — ${input.email}`,
             `**Email:** ${input.email}\n**Name:** ${input.name ?? "—"}\n**Source:** ${input.source ?? "website"}`,
-          ).catch(() => {/* non-blocking */});
+            { replyTo: input.email },
+          );
+          if (!delivery.delivered) {
+            console.warn("[Newsletter] Owner email delivery failed after subscriber persistence.");
+          }
+          void notifyOwner({
+            title: "New Newsletter Subscriber",
+            content: "A new newsletter subscriber has been securely recorded. Review it in the Billionaire Collection admin area.",
+          }).catch(() => undefined);
         } catch (err: unknown) {
           // Silently swallow duplicate email errors — treat as already subscribed
           const msg = err instanceof Error ? err.message : String(err);

@@ -19,6 +19,16 @@ describe("marketing consent and public claim controls", () => {
     expect(router).toContain("marketingConsent: z.literal(true)");
   });
 
+  it("awaits bounded newsletter owner-email delivery and triggers a secondary owner alert", () => {
+    const router = read("server/routers.ts");
+    const email = read("server/_core/email.ts");
+    expect(router).toContain("const delivery = await sendOwnerEmail(");
+    expect(router).toContain("{ replyTo: input.email }");
+    expect(router).toContain("if (!delivery.delivered)");
+    expect(router).toContain('title: "New Newsletter Subscriber"');
+    expect(email).toContain("await smtpTransport.verify()");
+  });
+
   it("does not render a cookie notice or load optional analytics", () => {
     const html = read("client/index.html");
     const app = read("client/src/App.tsx");
