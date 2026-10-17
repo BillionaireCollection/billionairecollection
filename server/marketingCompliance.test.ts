@@ -53,6 +53,20 @@ describe("marketing consent and public claim controls", () => {
     expect(home).toContain("https://www.lurssen.com/");
   });
 
+  it("does not present Cognition Water as an ecosystem website in public directories or metadata", () => {
+    for (const file of [
+      "client/src/pages/Home.tsx",
+      "client/src/components/Footer.tsx",
+      "client/src/pages/Founder.tsx",
+      "client/index.html",
+      "client/public/ai-plugin.json",
+      "client/public/llms.txt",
+    ]) {
+      expect(read(file).toLowerCase()).not.toContain("cognition water");
+      expect(read(file).toLowerCase()).not.toContain("cognitionwater.com");
+    }
+  });
+
   it("removes unverified partnership language from division content", () => {
     for (const page of ["Air", "Art", "Boat", "Car", "Chrono", "Counsel", "Crypto", "Estates", "Travel", "Vitality"]) {
       const source = read(`client/src/pages/${page}.tsx`);

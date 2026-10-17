@@ -613,7 +613,6 @@ export default function Home() {
               brands: [
                 { name: "Billionaire Vitality", domain: "billionairevitality.com" },
                 { name: "Billionaire Peptide", domain: "billionairepeptide.com" },
-                { name: "Cognition Water", domain: "cognitionwater.com" },
               ],
             },
             {

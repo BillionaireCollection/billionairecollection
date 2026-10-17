@@ -322,7 +322,6 @@ export default function Founder() {
         { "@type": "Organization", "name": "OffMarket Hotel", "url": "https://offmarkethotel.com" },
         { "@type": "Organization", "name": "The Off Market Sale", "url": "https://theoffmarketsale.com" },
         { "@type": "Organization", "name": "Billionaire Peptide", "url": "https://billionairepeptide.com" },
-        { "@type": "Organization", "name": "Cognition Water", "url": "https://cognitionwater.com" },
         { "@type": "Organization", "name": "Billionaire Forex", "url": "https://billionaireforex.com" },
         { "@type": "Organization", "name": "Billionaire Tutor", "url": "https://billionairetutor.com" },
         { "@type": "Organization", "name": "Smarter Mama", "url": "https://smartermama.com" },

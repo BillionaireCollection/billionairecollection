@@ -245,7 +245,6 @@ export default function Footer() {
                   { name: "Billionaire Vitality", href: "https://billionairevitality.com" },
                   { name: "Billionaire Counsel", href: "https://billionairecounsel.com" },
                   { name: "Billionaire Peptide", href: "https://billionairepeptide.com" },
-                  { name: "Cognition Water", href: "https://cognitionwater.com" },
                   { name: "Smarter Mama", href: "https://smartermama.com" },
                 ],
               },
