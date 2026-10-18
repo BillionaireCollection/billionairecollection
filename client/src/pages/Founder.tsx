@@ -178,26 +178,31 @@ const PUBLISHED_WORKS = [
     title: "The Best Book on Sales",
     subtitle: "Master the Art of Selling, Even If You Hate Selling",
     image: "/best-book-on-sales-2026.jpg",
+    href: "https://a.co/d/0cTF4qDX",
   },
   {
     title: "The Founders’ 90-Day Raise",
     subtitle: "Master 2026 Fundraising & Close Pre-Seed to Series A",
-    image: "/founders-90-day-raise-2026.png",
+    image: "/founders-90-day-raise-2026.webp",
+    href: "https://a.co/d/05KACSWh",
   },
   {
     title: "The Super Founder",
     subtitle: "How to Launch and Lead a Successful Company, One Monday at a Time",
     image: "/the-super-founder-2026.jpg",
+    href: "https://a.co/d/00ywbbJ5",
   },
   {
     title: "Beyond Fears",
     subtitle: "The Proven Path from Fear and Procrastination to the Life You Want",
-    image: "/beyond-fears-2026.png",
+    image: "/beyond-fears-2026.webp",
+    href: "https://a.co/d/060cXuKQ",
   },
   {
     title: "The Overnight Millionaire",
     subtitle: "How Fortunes Look Sudden from the Outside",
     image: "/the-overnight-millionaire-2026.webp",
+    href: "https://a.co/d/0872q9cF",
   },
 ];
 
@@ -756,6 +761,8 @@ export default function Founder() {
                     padding: "0.65rem",
                     background: "rgba(255,255,255,0.025)",
                     border: "1px solid rgba(201,168,76,0.2)",
+                    display: "flex",
+                    flexDirection: "column",
                   }}
                 >
                   <div
@@ -774,7 +781,7 @@ export default function Founder() {
                         display: "block",
                         width: "100%",
                         height: "100%",
-                        objectFit: "cover",
+                        objectFit: "contain",
                         transition: "transform 280ms cubic-bezier(0.23, 1, 0.32, 1)",
                       }}
                     />
@@ -803,6 +810,26 @@ export default function Founder() {
                   >
                     {book.subtitle}
                   </p>
+                  <a
+                    href={book.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`View ${book.title} by Lawrence Colbert on Amazon`}
+                    className="btn-ghost-gold"
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      width: "100%",
+                      minWidth: 0,
+                      marginTop: "1.15rem",
+                      padding: "0.72rem 0.55rem",
+                      fontSize: "0.58rem",
+                      letterSpacing: "0.11em",
+                      textDecoration: "none",
+                    }}
+                  >
+                    View on Amazon
+                  </a>
                 </article>
               </FadeUp>
             ))}

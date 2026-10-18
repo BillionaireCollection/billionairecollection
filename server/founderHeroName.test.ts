@@ -28,10 +28,21 @@ describe("Founder hero name", () => {
     expect(recordingArtistIndex).toBeGreaterThan(publishedWorksIndex);
     expect(source).toContain("const PUBLISHED_WORKS = [");
     expect(source).toContain('image: "/best-book-on-sales-2026.jpg"');
-    expect(source).toContain('image: "/founders-90-day-raise-2026.png"');
+    expect(source).toContain('image: "/founders-90-day-raise-2026.webp"');
     expect(source).toContain('image: "/the-super-founder-2026.jpg"');
-    expect(source).toContain('image: "/beyond-fears-2026.png"');
+    expect(source).toContain('image: "/beyond-fears-2026.webp"');
     expect(source).toContain('image: "/the-overnight-millionaire-2026.webp"');
     expect(source).toContain('gridTemplateColumns: "repeat(auto-fit, minmax(145px, 1fr))"');
+  });
+
+  it("provides the supplied Amazon links for every newly added book without cropping a cover", () => {
+    expect(source).toContain('href: "https://a.co/d/0cTF4qDX"');
+    expect(source).toContain('href: "https://a.co/d/05KACSWh"');
+    expect(source).toContain('href: "https://a.co/d/00ywbbJ5"');
+    expect(source).toContain('href: "https://a.co/d/060cXuKQ"');
+    expect(source).toContain('href: "https://a.co/d/0872q9cF"');
+    expect(source).toContain('aria-label={`View ${book.title} by Lawrence Colbert on Amazon`}');
+    expect(source).toContain('objectFit: "contain"');
+    expect(source).toContain("View on Amazon");
   });
 });
