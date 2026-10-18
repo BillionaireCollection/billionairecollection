@@ -28,9 +28,9 @@ describe("Founder hero name", () => {
     expect(recordingArtistIndex).toBeGreaterThan(publishedWorksIndex);
     expect(source).toContain("const PUBLISHED_WORKS = [");
     expect(source).toContain('image: "/best-book-on-sales-2026.jpg"');
-    expect(source).toContain('image: "/founders-90-day-raise-2026.webp"');
+    expect(source).toContain('image: "/founders-90-day-raise-2026.jpg"');
     expect(source).toContain('image: "/the-super-founder-2026.jpg"');
-    expect(source).toContain('image: "/beyond-fears-2026.webp"');
+    expect(source).toContain('image: "/beyond-fears-2026.jpg"');
     expect(source).toContain('image: "/the-overnight-millionaire-2026.webp"');
     expect(source).toContain('gridTemplateColumns: "repeat(auto-fit, minmax(145px, 1fr))"');
   });

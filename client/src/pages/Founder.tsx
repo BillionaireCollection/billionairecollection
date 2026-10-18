@@ -183,7 +183,7 @@ const PUBLISHED_WORKS = [
   {
     title: "The Founders’ 90-Day Raise",
     subtitle: "Master 2026 Fundraising & Close Pre-Seed to Series A",
-    image: "/founders-90-day-raise-2026.webp",
+    image: "/founders-90-day-raise-2026.jpg",
     href: "https://a.co/d/05KACSWh",
   },
   {
@@ -195,7 +195,7 @@ const PUBLISHED_WORKS = [
   {
     title: "Beyond Fears",
     subtitle: "The Proven Path from Fear and Procrastination to the Life You Want",
-    image: "/beyond-fears-2026.webp",
+    image: "/beyond-fears-2026.jpg",
     href: "https://a.co/d/060cXuKQ",
   },
   {
