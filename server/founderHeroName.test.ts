@@ -17,4 +17,21 @@ describe("Founder hero name", () => {
     expect(source).toContain('href="https://a.co/d/00clGz60"');
     expect(source).toContain("Buy on Amazon");
   });
+
+  it("places the five supplied published works between entrepreneurship and the recording-artist story", () => {
+    const entrepreneurIndex = source.indexOf("The Entrepreneur");
+    const publishedWorksIndex = source.indexOf("Published Works");
+    const recordingArtistIndex = source.indexOf("The Recording Artist");
+
+    expect(entrepreneurIndex).toBeGreaterThan(-1);
+    expect(publishedWorksIndex).toBeGreaterThan(entrepreneurIndex);
+    expect(recordingArtistIndex).toBeGreaterThan(publishedWorksIndex);
+    expect(source).toContain("const PUBLISHED_WORKS = [");
+    expect(source).toContain('image: "/best-book-on-sales-2026.jpg"');
+    expect(source).toContain('image: "/founders-90-day-raise-2026.png"');
+    expect(source).toContain('image: "/the-super-founder-2026.jpg"');
+    expect(source).toContain('image: "/beyond-fears-2026.png"');
+    expect(source).toContain('image: "/the-overnight-millionaire-2026.webp"');
+    expect(source).toContain('gridTemplateColumns: "repeat(auto-fit, minmax(145px, 1fr))"');
+  });
 });

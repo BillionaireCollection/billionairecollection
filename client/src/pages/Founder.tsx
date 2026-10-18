@@ -172,6 +172,35 @@ const ECOSYSTEM = [
   { label: "Golden Ticket Club", href: "/golden-ticket" },
 ];
 
+/* ── Selected books by Lawrence Colbert ── */
+const PUBLISHED_WORKS = [
+  {
+    title: "The Best Book on Sales",
+    subtitle: "Master the Art of Selling, Even If You Hate Selling",
+    image: "/best-book-on-sales-2026.jpg",
+  },
+  {
+    title: "The Founders’ 90-Day Raise",
+    subtitle: "Master 2026 Fundraising & Close Pre-Seed to Series A",
+    image: "/founders-90-day-raise-2026.png",
+  },
+  {
+    title: "The Super Founder",
+    subtitle: "How to Launch and Lead a Successful Company, One Monday at a Time",
+    image: "/the-super-founder-2026.jpg",
+  },
+  {
+    title: "Beyond Fears",
+    subtitle: "The Proven Path from Fear and Procrastination to the Life You Want",
+    image: "/beyond-fears-2026.png",
+  },
+  {
+    title: "The Overnight Millionaire",
+    subtitle: "How Fortunes Look Sudden from the Outside",
+    image: "/the-overnight-millionaire-2026.webp",
+  },
+];
+
 /* ── Leadership principles ── */
 const PRINCIPLES = [
   "VISION BEFORE VALIDATION",
@@ -698,7 +727,91 @@ export default function Founder() {
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          4. THE RECORDING ARTIST
+          4. PUBLISHED WORKS
+          ══════════════════════════════════════════════════════ */}
+      <section style={{ padding: sectionPad, background: "#050505" }}>
+        <div style={{ maxWidth: maxW, margin: "0 auto" }}>
+          <FadeUp>
+            <SectionLabel>Published Works</SectionLabel>
+            <SectionH2>Lessons Written for the Long Game</SectionH2>
+          </FadeUp>
+          <FadeUp delay={0.1}>
+            <BodyP style={{ maxWidth: "760px" }}>
+              Lawrence’s experience in sales training, company building, capital formation and personal reinvention is also captured in a body of work for people determined to turn ambition into disciplined action. These books extend the practical approach that underpins Billionaire University: earn trust, create value and build with intent.
+            </BodyP>
+          </FadeUp>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(145px, 1fr))",
+              gap: "clamp(0.85rem, 2vw, 1.5rem)",
+              marginTop: "clamp(2rem, 4vw, 3.25rem)",
+            }}
+          >
+            {PUBLISHED_WORKS.map((book, index) => (
+              <FadeUp key={book.title} delay={0.05 * index}>
+                <article
+                  style={{
+                    height: "100%",
+                    padding: "0.65rem",
+                    background: "rgba(255,255,255,0.025)",
+                    border: "1px solid rgba(201,168,76,0.2)",
+                  }}
+                >
+                  <div
+                    style={{
+                      aspectRatio: "0.72 / 1",
+                      overflow: "hidden",
+                      background: "#101010",
+                      border: "1px solid rgba(255,255,255,0.08)",
+                    }}
+                  >
+                    <img
+                      src={book.image}
+                      alt={`${book.title} by Lawrence Colbert`}
+                      loading="lazy"
+                      style={{
+                        display: "block",
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        transition: "transform 280ms cubic-bezier(0.23, 1, 0.32, 1)",
+                      }}
+                    />
+                  </div>
+                  <h3
+                    style={{
+                      fontFamily: FONT_HEADING,
+                      fontWeight: 400,
+                      fontSize: "clamp(1rem, 1.6vw, 1.2rem)",
+                      lineHeight: 1.2,
+                      color: "#fff",
+                      margin: "1rem 0 0.45rem",
+                    }}
+                  >
+                    {book.title}
+                  </h3>
+                  <p
+                    style={{
+                      fontFamily: FONT_UI,
+                      fontSize: "0.7rem",
+                      lineHeight: 1.55,
+                      letterSpacing: "0.015em",
+                      color: "rgba(255,255,255,0.53)",
+                      margin: 0,
+                    }}
+                  >
+                    {book.subtitle}
+                  </p>
+                </article>
+              </FadeUp>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════
+          5. THE RECORDING ARTIST
           ══════════════════════════════════════════════════════ */}
       <section style={{ padding: sectionPad, background: "#0a0a0a" }}>
         <div style={{ maxWidth: maxW, margin: "0 auto" }}>
